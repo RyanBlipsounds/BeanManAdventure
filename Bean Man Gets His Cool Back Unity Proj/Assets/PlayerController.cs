@@ -16,6 +16,7 @@ public class PlayerController : MonoBehaviour
     public Animator animator;
     public SpriteRenderer spriterenderer;
 
+    //public GameObject UI
 
     void Start()
     {
@@ -48,5 +49,12 @@ public class PlayerController : MonoBehaviour
         }
         animator.SetFloat("Speed", movementSpeed);
         animator.SetFloat("YAxisDirection", movementDirection.y);
+    }
+
+    public void OnTriggerEnter2D(Collider2D collision)
+    {
+        if (collision.gameObject.tag == "NPC") {
+            
+        }
     }
 }
