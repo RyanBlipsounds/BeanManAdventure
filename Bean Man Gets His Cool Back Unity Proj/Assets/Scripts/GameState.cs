@@ -12,7 +12,7 @@ public class GameState : MonoBehaviour
         IsBagged
     }
 
-    private gameState beanState = gameState.IsCool;
+    public gameState beanState = gameState.IsCool;
     private string characterConversation = default;
 
     // Start is called before the first frame update
