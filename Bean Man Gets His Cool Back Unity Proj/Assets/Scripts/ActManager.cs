@@ -27,7 +27,8 @@ public class ActManager : MonoBehaviour
         {
             Debug.Log("BEEAN");
         }
-        else if (m_gameState.beanState == GameState.gameState.IsNotCool) {
+        else if (m_gameState.beanState == GameState.gameState.IsNotCool)
+        {
             Debug.Log("MEN");
         }
         else if (m_gameState.beanState == GameState.gameState.IsBagged)
