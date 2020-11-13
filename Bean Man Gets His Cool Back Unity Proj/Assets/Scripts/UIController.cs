@@ -18,11 +18,6 @@ public class UIController : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        //ResponseBox = GameObject.Find("ResponseBox");
-        //DialogueBox = GameObject.Find("DialogueBox");
-        //CanTalkBox = GameObject.Find("CanTalkBox");
-
-        //CanTalkBox.GetComponent<UIController>().isActive;
 
         transform.position = StartPoint.transform.position;
     }

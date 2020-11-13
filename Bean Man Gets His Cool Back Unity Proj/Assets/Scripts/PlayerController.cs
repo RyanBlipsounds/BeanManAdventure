@@ -16,11 +16,19 @@ public class PlayerController : MonoBehaviour
     public Animator animator;
     public SpriteRenderer spriterenderer;
 
+    public bool characterInRange;
+
+    public UIController _canTalkBox;
+    public UIController _dialogueBox;
+    public UIController _responseBox;
+
     //public GameObject UI
 
     void Start()
     {
-        
+        _canTalkBox = GameObject.Find("CanTalkBox").GetComponent<UIController>();
+        _dialogueBox = GameObject.Find("DialogueBox").GetComponent<UIController>();
+        _responseBox = GameObject.Find("ResponseBox").GetComponent<UIController>();
     }
 
     // Update is called once per frame
@@ -29,6 +37,18 @@ public class PlayerController : MonoBehaviour
         ProcessInputs();
         Move();
         Animate();
+        if (characterInRange)
+        {
+            _canTalkBox.isActive = true;
+            if (Input.GetKeyDown(KeyCode.Space))
+            {
+                _dialogueBox.isActive = true;
+            }
+        }
+        else {
+            _dialogueBox.isActive = false;
+            _canTalkBox.isActive = false;
+        }
     }
 
     void ProcessInputs() {
@@ -54,7 +74,15 @@ public class PlayerController : MonoBehaviour
     public void OnTriggerEnter2D(Collider2D collision)
     {
         if (collision.gameObject.tag == "NPC") {
-            
+            characterInRange = true;
+        }
+    }
+
+    public void OnTriggerExit2D(Collider2D other)
+    {
+        if (other.gameObject.tag == "NPC")
+        {
+            characterInRange = false;
         }
     }
 }
