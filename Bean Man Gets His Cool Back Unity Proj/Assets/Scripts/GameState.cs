@@ -52,7 +52,7 @@ public class GameState : MonoBehaviour
 
     }
 
-    private void grannyClicked()
+    public void grannyClicked()
     {
         conversationDict["ISCOOL"] = "Wassup Bean Man! Beango isn't quite ready yet. Go mingle.";
         conversationDict["ISNOTCOOL"] = "Oh! BM you need some help. Here.";
@@ -66,7 +66,7 @@ public class GameState : MonoBehaviour
 
     }
 
-    private void linaClicked()
+    public void linaClicked()
     {
         conversationDict["ISCOOL"] = "Bean Man! How are you so CoOoOoL?!";
         conversationDict["ISNOTCOOL"] = "*Swipes Left*";

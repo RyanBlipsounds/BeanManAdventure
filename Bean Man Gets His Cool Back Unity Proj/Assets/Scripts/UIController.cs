@@ -34,9 +34,6 @@ public class UIController : MonoBehaviour
         string thisGameObject = this.gameObject.name;
         string currentBeanState = gameState.beanState.ToString();
 
-        gameState.chickpeaClicked();
-;
-
         //gameState.beanState.ToString();
 
         if (isActive)
@@ -56,4 +53,3 @@ public class UIController : MonoBehaviour
         }
     }
 }
-

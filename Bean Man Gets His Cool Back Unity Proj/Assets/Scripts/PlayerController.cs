@@ -16,6 +16,8 @@ public class PlayerController : MonoBehaviour
     public Animator animator;
     public SpriteRenderer spriterenderer;
 
+    public GameState gameState;
+
     public bool characterInRange;
 
     //public GameObject UI
@@ -74,6 +76,21 @@ public class PlayerController : MonoBehaviour
     {
         if (collision.gameObject.tag == "NPC") {
             characterInRange = true;
+            if (collision.gameObject.name == "Chickpea Deputy")
+            {
+                gameState.chickpeaClicked();
+            }
+            if (collision.gameObject.name == "Lina Bean")
+            {
+                gameState.linaClicked();
+            }
+
+            if (collision.gameObject.name == "Granny Smith")
+            {
+                if (gameState.beanState == GameState.gameState.ISCOOL) {
+                    gameState.grannyClicked();
+                }
+            }
         }
     }
 
