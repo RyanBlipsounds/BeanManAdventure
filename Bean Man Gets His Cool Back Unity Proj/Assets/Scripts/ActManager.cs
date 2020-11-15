@@ -23,15 +23,15 @@ public class ActManager : MonoBehaviour
     {
         LoadNewAct();
 
-        if (m_gameState.beanState == GameState.gameState.IsCool)
+        if (m_gameState.beanState == GameState.gameState.ISCOOL)
         {
             Debug.Log("BEEAN");
         }
-        else if (m_gameState.beanState == GameState.gameState.IsNotCool)
+        else if (m_gameState.beanState == GameState.gameState.ISNOTCOOL)
         {
             Debug.Log("MEN");
         }
-        else if (m_gameState.beanState == GameState.gameState.IsBagged)
+        else if (m_gameState.beanState == GameState.gameState.ISBAGGED)
         {
             Debug.Log("UNITE!!");
         }

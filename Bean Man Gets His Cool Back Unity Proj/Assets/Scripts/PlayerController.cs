@@ -18,11 +18,10 @@ public class PlayerController : MonoBehaviour
 
     public bool characterInRange;
 
+    //public GameObject UI
     public UIController _canTalkBox;
     public UIController _dialogueBox;
     public UIController _responseBox;
-
-    //public GameObject UI
 
     void Start()
     {

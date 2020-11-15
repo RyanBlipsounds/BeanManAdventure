@@ -7,17 +7,17 @@ public class GameState : MonoBehaviour
     [SerializeField]
     private UILogic UIScript = default;
 
-    public GameState m_gameState;
+    public GameState m_gameState = null;
     public enum gameState
     {
-        IsCool,
-        IsNotCool,
-        IsBagged
+        ISCOOL,
+        ISNOTCOOL,
+        ISBAGGED
     }
 
-    public gameState beanState = gameState.IsCool;
+    public gameState beanState = gameState.ISCOOL;
     private string characterConversation = default;
-    private Dictionary<string, string> conversationDict = new Dictionary<string, string>();
+    public Dictionary<string, string> conversationDict = new Dictionary<string, string>();
     private bool talkedChickpea = false;
     private bool talkedGranny = false;
 
@@ -38,7 +38,7 @@ public class GameState : MonoBehaviour
         UIScript.State.text = "IS COOL!";
     }
 
-    private void chickpeaClicked()
+    public void chickpeaClicked()
     {
         conversationDict["ISCOOL"] = "J-walked recently? haha, just kidding....";
         conversationDict["ISNOTCOOL"] = "Move Along";
@@ -82,40 +82,40 @@ public class GameState : MonoBehaviour
 
     private void HandleConversation()
     {
-        if (beanState == gameState.IsCool)
+        if (beanState == gameState.ISCOOL)
         {
            
-            UIScript.Chatting.text = conversationDict["ISCOOL"];
+            //UIScript.Chatting.text = conversationDict["ISCOOL"];
 
             if (talkedChickpea)
             {
-                UIScript.Chatting.text = conversationDict["BEANGOHINT"];
+                //UIScript.Chatting.text = conversationDict["BEANGOHINT"];
                 if (talkedGranny)
                 {
-                    beanState = gameState.IsNotCool;
-                    UIScript.State.text = "IS NOT COOL (NO GLASSES)";
+                    beanState = gameState.ISNOTCOOL;
+                    //UIScript.State.text = "IS NOT COOL (NO GLASSES)";
                     talkedChickpea = false;
                     talkedGranny = false;
                 }
             }
         }
 
-        if (beanState == gameState.IsNotCool)
+        if (beanState == gameState.ISNOTCOOL)
         {
-            UIScript.Chatting.text = conversationDict["ISNOTCOOL"];
+            //UIScript.Chatting.text = conversationDict["ISNOTCOOL"];
 
             if (talkedGranny)
             {
-                beanState = gameState.IsBagged;
-                UIScript.State.text = "IS BAGGED";
+                beanState = gameState.ISBAGGED;
+                //UIScript.State.text = "IS BAGGED";
                 talkedChickpea = false;
                 talkedGranny = false;
             }
         }
 
-        if (beanState == gameState.IsBagged)
+        if (beanState == gameState.ISBAGGED)
         {
-            UIScript.Chatting.text = conversationDict["ISNOTCOOL"];
+            //UIScript.Chatting.text = conversationDict["ISNOTCOOL"];
             talkedChickpea = false;
             talkedGranny = false;
         }

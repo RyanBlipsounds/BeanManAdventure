@@ -1,9 +1,14 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using TMPro;
+using Febucci.UI;
 
 public class UIController : MonoBehaviour
 {
+    public TextAnimatorPlayer dialogueBoxAnimator;
+    public GameState gameState;
+
     public GameObject StartPoint;
     public GameObject EndPoint;
     public float speed = 1.0f;
@@ -14,23 +19,41 @@ public class UIController : MonoBehaviour
 
     public bool isActive = false;
     public bool hasMoved = false;
+    public bool textActivated = false;
 
-    // Start is called before the first frame update
     void Start()
     {
-
         transform.position = StartPoint.transform.position;
     }
 
-    // Update is called once per frame
     void Update()
     {
+        var currentState = gameState.beanState;
+        
+
+        string thisGameObject = this.gameObject.name;
+        string currentBeanState = gameState.beanState.ToString();
+
+        gameState.chickpeaClicked();
+;
+
+        //gameState.beanState.ToString();
+
         if (isActive)
         {
+            if (!textActivated && thisGameObject == "DialogueBox")
+            {
+                textActivated = true;
+                dialogueBoxAnimator.ShowText(gameState.conversationDict[currentBeanState]);
+            }
+
             transform.position = Vector2.MoveTowards(transform.position, EndPoint.transform.position, Time.deltaTime * speed);
         }
-        else {
+        else
+        {
+            textActivated = false;
             transform.position = Vector2.MoveTowards(transform.position, StartPoint.transform.position, Time.deltaTime * speed);
         }
     }
 }
+

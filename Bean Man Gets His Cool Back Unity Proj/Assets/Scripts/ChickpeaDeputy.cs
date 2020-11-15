@@ -3,7 +3,7 @@
 public class ChickpeaDeputy : MonoBehaviour
 {
     // Communication constants for conversation
-    public const string ISCOOL = "J-walked recently? haha, just kidding....";
+    public string ISCOOL = "J-walked recently? haha, just kidding....";
     public const string ISNOTCOOL = "Move Along";
     public const string ISBAGGED = "I'm watching you";
     public const string BEANGOHINT = "Don't forget the Daily Beango match with Granny!";
