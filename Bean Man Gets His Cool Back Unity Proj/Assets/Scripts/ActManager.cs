@@ -38,7 +38,7 @@ public class ActManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        LoadGraphic();
+        //LoadGraphic();
     }
 
     private void FadeToBlack(sceneState state, GameObject graphic, GameObject oldGraphic) {
