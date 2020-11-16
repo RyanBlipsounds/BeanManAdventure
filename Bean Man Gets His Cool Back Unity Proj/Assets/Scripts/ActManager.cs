@@ -12,12 +12,13 @@ public class ActManager : MonoBehaviour
 
     private float blackScreenTimeToFade = 0;
 
-    public SpriteRenderer BeangoScreen;
-    public SpriteRenderer ChickPeaLoseEnding;
-    public SpriteRenderer BeanManWinEnding;
+    public GameObject BeangoScreen;
+    public GameObject ChickPeaLoseEnding;
+    public GameObject BeanManWinEnding;
+
     public GameObject BeanManSpawnPosition;
 
-    private float graphicShowTime = 8;
+    private float graphicShowTime = 0;
 
     public bool switchFade = false;
 
@@ -40,7 +41,7 @@ public class ActManager : MonoBehaviour
         LoadGraphic();
     }
 
-    private void FadeToBlack(sceneState state, SpriteRenderer graphic) {
+    private void FadeToBlack(sceneState state, GameObject graphic, GameObject oldGraphic) {
         float blackScreenTmp;
 
         blackScreenTmp = Mathf.Lerp(0, 1, blackScreenTimeToFade / 2);
@@ -55,10 +56,16 @@ public class ActManager : MonoBehaviour
             blackScreenTimeToFade -= Time.deltaTime;
         }
 
-        Debug.Log(blackScreenTmp);
-
         if (blackScreenTmp >= 1)
         {
+            if (graphic != null)
+            {
+                graphic.SetActive(true);
+            }
+            else
+            {
+                oldGraphic.SetActive(false);
+            }
             switchFade = true;
         }
         if (blackScreenTmp < 0)
@@ -71,16 +78,20 @@ public class ActManager : MonoBehaviour
 
     private void LoadGraphic()
     {
-
         Debug.Log(sceneTransitionState);
-
+        Debug.Log("Graphic " + graphicShowTime);
         if (sceneTransitionState == sceneState.started) {
-            FadeToBlack(sceneState.graphic, BeangoScreen);
+            FadeToBlack(sceneState.graphic, BeangoScreen, null);
         }
         if (sceneTransitionState == sceneState.graphic) {
+            graphicShowTime += Time.deltaTime;
             if (graphicShowTime >= 10) {
-                sceneTransitionState = sceneState.backtoscene;
+                //sceneTransitionState = sceneState.backtoscene;
             }
+        }
+        if (sceneTransitionState == sceneState.backtoscene)
+        {
+            FadeToBlack(sceneState.started, null, BeangoScreen);
         }
     }
 
