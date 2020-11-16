@@ -25,6 +25,15 @@ public class PlayerController : MonoBehaviour
     public UIController _dialogueBox;
     public UIController _responseBox;
 
+    public List<GameObject> Characters = new List<GameObject>();
+    public List<NPC> scriptNPCList = new List<NPC>();
+
+    public ActManager _actManager;
+
+    private GameObject thisCharacter = null;
+    private int index = 0;
+    private NPC thisNPCList = null;
+
     void Start()
     {
         _canTalkBox = GameObject.Find("CanTalkBox").GetComponent<UIController>();
@@ -35,14 +44,29 @@ public class PlayerController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        _actManager.LoadNewAct();
+
+        //Movement and Animation
         ProcessInputs();
         Move();
         Animate();
+
         if (characterInRange)
         {
             _canTalkBox.isActive = true;
             if (Input.GetKeyDown(KeyCode.Space))
             {
+                //Sets for the NPC you are speaking to as "Spoken to"
+                if (!_dialogueBox.isActive) {
+                    index = scriptNPCList.IndexOf(thisCharacter.GetComponent<NPC>());
+                    thisNPCList = scriptNPCList[index];
+                    thisNPCList.hasSpoken = true;
+                }
+                if (gameState.beanState == GameState.gameState.BEANGOHINT && thisCharacter.name == "Granny Smith")
+                {
+                    _actManager.LoadNewAct();
+                }
+
                 _dialogueBox.isActive = true;
             }
         }
@@ -75,21 +99,38 @@ public class PlayerController : MonoBehaviour
     public void OnTriggerEnter2D(Collider2D collision)
     {
         if (collision.gameObject.tag == "NPC") {
-            characterInRange = true;
-            if (collision.gameObject.name == "Chickpea Deputy")
+
+            //This initializes 
+            if (!Characters.Contains(collision.gameObject))
             {
-                gameState.chickpeaClicked();
-            }
-            if (collision.gameObject.name == "Lina Bean")
-            {
-                gameState.linaClicked();
+                thisCharacter = GameObject.Find(collision.gameObject.name);
+
+                scriptNPCList.Add(thisCharacter.GetComponent<NPC>());
+                Characters.Add(thisCharacter);
             }
 
-            if (collision.gameObject.name == "Granny Smith")
+            _canTalkBox.canTalkBoxAnimator.ShowText(collision.gameObject.name);
+
+            if (Characters.Count >= index) {
+                index = Characters.IndexOf(collision.gameObject);
+                thisCharacter = Characters[index];
+            }
+
+            characterInRange = true;
+
+            //Sets the Dictionary in GameState to the proper character dict and state
+            gameState.Conversation(collision.gameObject.name);
+
+            if (gameState.beanState == GameState.gameState.ISCOOL)
             {
-                if (gameState.beanState == GameState.gameState.ISCOOL) {
-                    gameState.grannyClicked();
+                foreach (NPC character in scriptNPCList)
+                {
+                    if (character.hasSpoken == false)
+                    {
+                        return;
+                    }
                 }
+                gameState.beanState = GameState.gameState.BEANGOHINT;
             }
         }
     }

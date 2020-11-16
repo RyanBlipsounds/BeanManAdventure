@@ -12,7 +12,9 @@ public class GameState : MonoBehaviour
     {
         ISCOOL,
         ISNOTCOOL,
-        ISBAGGED
+        ISBAGGED,
+        BEANGOHINT,
+        MYGLASSES
     }
 
     public gameState beanState = gameState.ISCOOL;
@@ -24,10 +26,6 @@ public class GameState : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        UIScript.ChickPea.onClick.AddListener(chickpeaClicked); // this will be talking to character
-        UIScript.Lina.onClick.AddListener(linaClicked);
-        UIScript.Granny.onClick.AddListener(grannyClicked);
-
         conversationDict.Add("ISCOOL", "ISCOOL");
         conversationDict.Add("ISNOTCOOL", "ISNOTCOOL");
         conversationDict.Add("ISBAGGED", "ISBAGGED");
@@ -38,47 +36,48 @@ public class GameState : MonoBehaviour
         UIScript.State.text = "IS COOL!";
     }
 
-    public void chickpeaClicked()
-    {
-        conversationDict["ISCOOL"] = "J-walked recently? haha, just kidding....";
-        conversationDict["ISNOTCOOL"] = "Move Along";
-        conversationDict["ISBAGGED"] = "I'm watching you";
-        conversationDict["BEANGOHINT"] = "Don't forget the Daily Beango match with Granny!";
-        conversationDict["MYGLASSES"] = "Did you Steal my Glasses?";
-        conversationDict["ENDCONVO"] = "Stay cool, Deputy";
+    public void Conversation(string gameObjectName) {
+        if (gameObjectName == "Granny Smith") {
+            conversationDict["ISCOOL"] = "Wassup Bean Man! Beango isn't quite ready yet. Go mingle.";
+            conversationDict["ISNOTCOOL"] = "Oh! BM you need some help. Here.";
+            conversationDict["ISBAGGED"] = "Long time no See!";
+            conversationDict["BEANGOHINT"] = "Let's go Beango!"; // This state should push into Beango
+            conversationDict["MYGLASSES"] = "Et...Tu..Granny?";
+            conversationDict["ENDCONVO"] = "I personally think that the bag over the head is just too Cliche.";
 
-        HandleConversation();
-        talkedChickpea = true;
+            HandleConversation();
+            talkedGranny = true;
+            return;
+        }
+        if (gameObjectName == "Chickpea Deputy")
+        {
+            conversationDict["ISCOOL"] = "J-walked recently? haha, just kidding....";
+            conversationDict["ISNOTCOOL"] = "Move Along";
+            conversationDict["ISBAGGED"] = "I'm watching you";
+            conversationDict["BEANGOHINT"] = "Don't forget the Daily Beango match with Granny!";
+            conversationDict["MYGLASSES"] = "Did you Steal my Glasses?";
+            conversationDict["ENDCONVO"] = "Stay cool, Deputy";
 
+            HandleConversation();
+            talkedChickpea = true;
+            return;
+        }
+        if (gameObjectName == "Lina Bean")
+        {
+            conversationDict["ISCOOL"] = "Bean Man! How are you so CoOoOoL?!";
+            conversationDict["ISNOTCOOL"] = "*Swipes Left*";
+            conversationDict["ISBAGGED"] = "Working out WON'T get my attention. *Wink*";
+            conversationDict["BEANGOHINT"] = "I wish we could hang out after Beango at Granny's";
+            conversationDict["MYGLASSES"] = "You look SoOoOo good in my Glasses.";
+            conversationDict["ENDCONVO"] = "I'll see you.    Later.";
+
+            HandleConversation();
+            return;
+        }
+
+        
     }
-
-    public void grannyClicked()
-    {
-        conversationDict["ISCOOL"] = "Wassup Bean Man! Beango isn't quite ready yet. Go mingle.";
-        conversationDict["ISNOTCOOL"] = "Oh! BM you need some help. Here.";
-        conversationDict["ISBAGGED"] = "Long time no See!";
-        conversationDict["BEANGOHINT"] = "Let's go Beango!"; // This state should push into Beango
-        conversationDict["MYGLASSES"] = "Et...Tu..Granny?";
-        conversationDict["ENDCONVO"] = "I personally think that the bag over the head is just too Cliche.";
-
-        HandleConversation();
-        talkedGranny = true;
-
-    }
-
-    public void linaClicked()
-    {
-        conversationDict["ISCOOL"] = "Bean Man! How are you so CoOoOoL?!";
-        conversationDict["ISNOTCOOL"] = "*Swipes Left*";
-        conversationDict["ISBAGGED"] = "Working out WON'T get my attention. *Wink*";
-        conversationDict["BEANGOHINT"] = "I wish we could hang out after Beango at Granny's";
-        conversationDict["MYGLASSES"] = "You look SoOoOo good in my Glasses.";
-        conversationDict["ENDCONVO"] = "I'll see you.    Later.";
-
-        HandleConversation();
-    }
-
-
+    
 
     private void HandleConversation()
     {

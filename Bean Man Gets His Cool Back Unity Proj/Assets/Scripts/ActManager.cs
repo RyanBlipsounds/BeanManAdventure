@@ -10,8 +10,24 @@ public class ActManager : MonoBehaviour
 
     public GameState m_gameState;
 
-    public float timeToFade = 0;
+    private float blackScreenTimeToFade = 0;
 
+    public SpriteRenderer BeangoScreen;
+    public SpriteRenderer ChickPeaLoseEnding;
+    public SpriteRenderer BeanManWinEnding;
+    public GameObject BeanManSpawnPosition;
+
+    private float graphicShowTime = 8;
+
+    public bool switchFade = false;
+
+    public enum sceneState
+    {
+        started,
+        graphic,
+        backtoscene
+    }
+    public sceneState sceneTransitionState = sceneState.started;
 
     void Start()
     {
@@ -21,38 +37,60 @@ public class ActManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        LoadNewAct();
+        LoadGraphic();
+    }
 
-        if (m_gameState.beanState == GameState.gameState.ISCOOL)
+    private void FadeToBlack(sceneState state, SpriteRenderer graphic) {
+        float blackScreenTmp;
+
+        blackScreenTmp = Mathf.Lerp(0, 1, blackScreenTimeToFade / 2);
+
+        BlackScreen.color = new Color(0, 0, 0, blackScreenTmp);
+
+        if (!switchFade)
         {
-            Debug.Log("BEEAN");
+            blackScreenTimeToFade += Time.deltaTime;
         }
-        else if (m_gameState.beanState == GameState.gameState.ISNOTCOOL)
+        else {
+            blackScreenTimeToFade -= Time.deltaTime;
+        }
+
+        Debug.Log(blackScreenTmp);
+
+        if (blackScreenTmp >= 1)
         {
-            Debug.Log("MEN");
+            switchFade = true;
         }
-        else if (m_gameState.beanState == GameState.gameState.ISBAGGED)
+        if (blackScreenTmp < 0)
         {
-            Debug.Log("UNITE!!");
+            switchFade = false;
+            sceneTransitionState = state;
+            blackScreenTmp = 0;
         }
+    }
+
+    private void LoadGraphic()
+    {
+
+        Debug.Log(sceneTransitionState);
+
+        if (sceneTransitionState == sceneState.started) {
+            FadeToBlack(sceneState.graphic, BeangoScreen);
+        }
+        if (sceneTransitionState == sceneState.graphic) {
+            if (graphicShowTime >= 10) {
+                sceneTransitionState = sceneState.backtoscene;
+            }
+        }
+    }
+
+    private void LoadEnding(SpriteRenderer ending) {
+
     }
 
     //In Load New Act, it should probably take dictionary arguments 
     public void LoadNewAct()
     {
-        float tmp;
-
-        timeToFade += Time.deltaTime;
-
-        tmp = Mathf.Lerp(1, 0, timeToFade / 2);
-
-        Debug.Log(tmp);
-
-        BlackScreen.color = new Color(0, 0, 0, tmp);
-
-        if (tmp == 0) {
-
-        }
     }
 
 }

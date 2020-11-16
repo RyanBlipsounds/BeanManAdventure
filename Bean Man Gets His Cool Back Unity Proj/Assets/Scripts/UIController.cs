@@ -7,6 +7,7 @@ using Febucci.UI;
 public class UIController : MonoBehaviour
 {
     public TextAnimatorPlayer dialogueBoxAnimator;
+    public TextAnimatorPlayer canTalkBoxAnimator;
     public GameState gameState;
 
     public GameObject StartPoint;
@@ -21,6 +22,8 @@ public class UIController : MonoBehaviour
     public bool hasMoved = false;
     public bool textActivated = false;
 
+    public string thisGameObject;
+
     void Start()
     {
         transform.position = StartPoint.transform.position;
@@ -31,7 +34,7 @@ public class UIController : MonoBehaviour
         var currentState = gameState.beanState;
         
 
-        string thisGameObject = this.gameObject.name;
+        thisGameObject = this.gameObject.name;
         string currentBeanState = gameState.beanState.ToString();
 
         //gameState.beanState.ToString();
