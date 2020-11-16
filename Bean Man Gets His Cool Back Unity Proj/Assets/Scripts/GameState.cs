@@ -33,7 +33,7 @@ public class GameState : MonoBehaviour
         conversationDict.Add("MYGLASSES", "MYGLASSES");
         conversationDict.Add("ENDCONVO", "ENDCONVO");
 
-        UIScript.State.text = "IS COOL!";
+        //UIScript.State.text = "IS COOL!";
     }
 
     public void Conversation(string gameObjectName) {
