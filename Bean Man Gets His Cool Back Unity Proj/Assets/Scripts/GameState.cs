@@ -74,8 +74,6 @@ public class GameState : MonoBehaviour
             HandleConversation();
             return;
         }
-
-        
     }
     
 

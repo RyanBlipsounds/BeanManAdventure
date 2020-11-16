@@ -44,6 +44,8 @@ public class PlayerController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+
+
         _actManager.LoadNewAct();
 
         //Movement and Animation

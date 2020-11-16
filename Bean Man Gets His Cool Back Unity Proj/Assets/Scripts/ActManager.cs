@@ -22,6 +22,8 @@ public class ActManager : MonoBehaviour
 
     public bool switchFade = false;
 
+    public bool activateGraphicTransition = false;
+
     public enum sceneState
     {
         started,
@@ -38,7 +40,9 @@ public class ActManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        //LoadGraphic();
+        if (activateGraphicTransition == true) {
+            LoadGraphic(BeangoScreen);
+        }
     }
 
     private void FadeToBlack(sceneState state, GameObject graphic, GameObject oldGraphic) {
@@ -50,6 +54,7 @@ public class ActManager : MonoBehaviour
 
         if (!switchFade)
         {
+
             blackScreenTimeToFade += Time.deltaTime;
         }
         else {
@@ -68,30 +73,36 @@ public class ActManager : MonoBehaviour
             }
             switchFade = true;
         }
-        if (blackScreenTmp < 0)
+        if (blackScreenTmp == 0 && switchFade == true)
         {
             switchFade = false;
             sceneTransitionState = state;
             blackScreenTmp = 0;
+            blackScreenTimeToFade = 0;
         }
     }
 
-    private void LoadGraphic()
+    public void LoadGraphic(GameObject graphic)
     {
-        Debug.Log(sceneTransitionState);
+        activateGraphicTransition = true;
+
         Debug.Log("Graphic " + graphicShowTime);
         if (sceneTransitionState == sceneState.started) {
-            FadeToBlack(sceneState.graphic, BeangoScreen, null);
+            FadeToBlack(sceneState.graphic, graphic, null);
         }
         if (sceneTransitionState == sceneState.graphic) {
             graphicShowTime += Time.deltaTime;
-            if (graphicShowTime >= 10) {
-                //sceneTransitionState = sceneState.backtoscene;
+            if (graphicShowTime >= 6) {
+                sceneTransitionState = sceneState.backtoscene;
             }
         }
         if (sceneTransitionState == sceneState.backtoscene)
         {
-            FadeToBlack(sceneState.started, null, BeangoScreen);
+            FadeToBlack(sceneState.started, null, graphic);
+            if (sceneTransitionState == sceneState.started) {
+                activateGraphicTransition = false;
+                return;
+            }
         }
     }
 
