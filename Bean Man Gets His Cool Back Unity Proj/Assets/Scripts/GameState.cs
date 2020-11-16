@@ -7,6 +7,10 @@ public class GameState : MonoBehaviour
     [SerializeField]
     private UILogic UIScript = default;
 
+    [SerializeField]
+    private PlayerController _playerController;
+    public NPC _npc = default;
+
     public GameState m_gameState = null;
     public enum gameState
     {
@@ -88,21 +92,28 @@ public class GameState : MonoBehaviour
 
             if (talkedChickpea)
             {
+                beanState = gameState.BEANGOHINT;
                 //UIScript.Chatting.text = conversationDict["BEANGOHINT"];
-                if (talkedGranny)
-                {
-                    beanState = gameState.ISNOTCOOL;
-                    //UIScript.State.text = "IS NOT COOL (NO GLASSES)";
-                    talkedChickpea = false;
-                    talkedGranny = false;
-                }
+            }
+        }
+
+        if (beanState == gameState.BEANGOHINT) {
+            if (talkedGranny)
+            {
+                beanState = gameState.ISNOTCOOL;
+                //UIScript.State.text = "IS NOT COOL (NO GLASSES)";
+                talkedChickpea = false;
+                talkedGranny = false;
             }
         }
 
         if (beanState == gameState.ISNOTCOOL)
         {
             //UIScript.Chatting.text = conversationDict["ISNOTCOOL"];
-
+            foreach (NPC character in _playerController.scriptNPCList) {
+                character.ShowGlasses();
+            }
+            //_npc.ShowGlasses();
             if (talkedGranny)
             {
                 beanState = gameState.ISBAGGED;

@@ -13,7 +13,6 @@ GameObject:
   - component: {fileID: 353678174518889236}
   - component: {fileID: 353678174518889239}
   - component: {fileID: 353678174518889323}
-  - component: {fileID: 3142365721980570957}
   m_Layer: 0
   m_Name: Granny Smith
   m_TagString: NPC
@@ -140,26 +139,11 @@ MonoBehaviour:
   m_GameObject: {fileID: 353678174518889238}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 7e42b16b82ab7e84691654f6000943d4, type: 3}
+  m_Script: {fileID: 11500000, guid: db9059125766df244b5f099d7cee8524, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   hasSpoken: 0
   glasses: {fileID: 7754311561174028161}
-  gameState: {fileID: 0}
---- !u!114 &3142365721980570957
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 353678174518889238}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 7e42b16b82ab7e84691654f6000943d4, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  hasSpoken: 0
-  glasses: {fileID: 0}
   gameState: {fileID: 0}
 --- !u!1 &7754311561174028161
 GameObject:
@@ -231,7 +215,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 9005065327455587475, guid: bfb7bae9d325a794b977197541b8e8b9,
+  m_Sprite: {fileID: 9005065327455587475, guid: 60ed65a7f2515be4c8f137ee62dcf92f,
     type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0

@@ -8,7 +8,7 @@ public class NPC : MonoBehaviour
     public GameObject glasses = default;
     public GameState gameState = default;
 
-    void showGlasses()
+    public void ShowGlasses()
     {
         glasses.SetActive(true);
     }
