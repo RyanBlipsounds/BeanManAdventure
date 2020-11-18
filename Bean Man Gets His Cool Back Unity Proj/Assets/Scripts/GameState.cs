@@ -10,6 +10,7 @@ public class GameState : MonoBehaviour
     [SerializeField]
     private PlayerController _playerController;
     public NPC _npc = default;
+    public ActManager _actManager = default;
 
     public GameState m_gameState = null;
     public enum gameState
@@ -26,6 +27,7 @@ public class GameState : MonoBehaviour
     public Dictionary<string, string> conversationDict = new Dictionary<string, string>();
     private bool talkedChickpea = false;
     private bool talkedGranny = false;
+    private bool talkedLina = false;
 
     // Start is called before the first frame update
     void Start()
@@ -48,9 +50,6 @@ public class GameState : MonoBehaviour
             conversationDict["BEANGOHINT"] = "Let's go Beango!"; // This state should push into Beango
             conversationDict["MYGLASSES"] = "Et...Tu..Granny?";
             conversationDict["ENDCONVO"] = "I personally think that the bag over the head is just too Cliche.";
-
-            HandleConversation();
-            talkedGranny = true;
             return;
         }
         if (gameObjectName == "Chickpea Deputy")
@@ -62,8 +61,6 @@ public class GameState : MonoBehaviour
             conversationDict["MYGLASSES"] = "Did you Steal my Glasses?";
             conversationDict["ENDCONVO"] = "Stay cool, Deputy";
 
-            HandleConversation();
-            talkedChickpea = true;
             return;
         }
         if (gameObjectName == "Lina Bean")
@@ -75,50 +72,64 @@ public class GameState : MonoBehaviour
             conversationDict["MYGLASSES"] = "You look SoOoOo good in my Glasses.";
             conversationDict["ENDCONVO"] = "I'll see you.    Later.";
 
-            HandleConversation();
             return;
         }
 
         
     }
-    
 
-    private void HandleConversation()
+    public void TalkedTo(string characterName) {
+        if (characterName == "Granny Smith") {
+            talkedGranny = true;
+        }
+        if (characterName == "Chickpea Deputy")
+        {
+            talkedChickpea = true;
+        }
+        if (characterName == "Lina Bean")
+        {
+            talkedLina = true;
+        }
+        HandleConversation(characterName);
+    }
+
+    public void IsNotCool() {
+        beanState = gameState.ISNOTCOOL;
+        
+        foreach (NPC character in _playerController.scriptNPCList)
+        {
+            character.ShowGlasses();
+        }
+    }
+
+    private void HandleConversation(string characterName)
     {
         if (beanState == gameState.ISCOOL)
         {
-           
-            //UIScript.Chatting.text = conversationDict["ISCOOL"];
-
-            if (talkedChickpea)
+            if (talkedChickpea && talkedLina)
             {
                 beanState = gameState.BEANGOHINT;
-                //UIScript.Chatting.text = conversationDict["BEANGOHINT"];
-            }
-        }
-
-        if (beanState == gameState.BEANGOHINT) {
-            if (talkedGranny)
-            {
-                beanState = gameState.ISNOTCOOL;
-                //UIScript.State.text = "IS NOT COOL (NO GLASSES)";
-                talkedChickpea = false;
-                talkedGranny = false;
             }
         }
 
         if (beanState == gameState.ISNOTCOOL)
         {
-            //UIScript.Chatting.text = conversationDict["ISNOTCOOL"];
-            foreach (NPC character in _playerController.scriptNPCList) {
-                character.ShowGlasses();
-            }
             //_npc.ShowGlasses();
-            if (talkedGranny)
+            if (talkedGranny) 
             {
                 beanState = gameState.ISBAGGED;
                 //UIScript.State.text = "IS BAGGED";
                 talkedChickpea = false;
+                talkedGranny = false;
+            }
+        }
+
+        if (beanState == gameState.BEANGOHINT) {
+            if (characterName == "Granny Smith")
+            {
+                _actManager.activateGraphicTransition = true;
+                talkedChickpea = false;
+                talkedLina = false;
                 talkedGranny = false;
             }
         }

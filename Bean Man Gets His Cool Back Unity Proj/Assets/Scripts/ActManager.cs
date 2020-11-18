@@ -18,6 +18,8 @@ public class ActManager : MonoBehaviour
 
     public GameObject BeanManSpawnPosition;
 
+    public PlayerController _playerController;
+
     private float graphicShowTime = 0;
 
     public bool switchFade = false;
@@ -41,7 +43,13 @@ public class ActManager : MonoBehaviour
     void Update()
     {
         if (activateGraphicTransition == true) {
-            LoadGraphic(BeangoScreen);
+            if (m_gameState.beanState == GameState.gameState.ISNOTCOOL || m_gameState.beanState == GameState.gameState.ISCOOL || m_gameState.beanState == GameState.gameState.BEANGOHINT) {
+                LoadGraphic(BeangoScreen);
+            }
+            if (m_gameState.beanState == GameState.gameState.ISBAGGED)
+            {
+                LoadGraphic(BeangoScreen);
+            }
         }
     }
 
@@ -58,6 +66,7 @@ public class ActManager : MonoBehaviour
             blackScreenTimeToFade += Time.deltaTime;
         }
         else {
+            m_gameState.IsNotCool();
             blackScreenTimeToFade -= Time.deltaTime;
         }
 

@@ -49,21 +49,35 @@ public class PlayerController : MonoBehaviour
         _actManager.LoadNewAct();
 
         //Movement and Animation
-        ProcessInputs();
+        if (_actManager.activateGraphicTransition == false)
+        {
+            ProcessInputs();
+        }
+        else {
+            movementSpeed = 0;
+            movementDirection = new Vector2(0.0f, 0.0f);
+            movementDirection.Normalize();
+        }
         Move();
         Animate();
 
+        Dialogue();
+    }
+
+    void Dialogue() {
         if (characterInRange)
         {
             _canTalkBox.isActive = true;
-            if (Input.GetKeyDown(KeyCode.Space))
+            if (Input.GetKeyDown(KeyCode.Space) && _dialogueBox.isActive == false)
             {
                 //Sets for the NPC you are speaking to as "Spoken to"
-                if (!_dialogueBox.isActive) {
+                if (!_dialogueBox.isActive)
+                {
                     index = scriptNPCList.IndexOf(thisCharacter.GetComponent<NPC>());
                     thisNPCList = scriptNPCList[index];
                     thisNPCList.hasSpoken = true;
                 }
+                gameState.TalkedTo(thisCharacter.name);
                 if (gameState.beanState == GameState.gameState.BEANGOHINT && thisCharacter.name == "Granny Smith")
                 {
                     _actManager.LoadNewAct();
@@ -71,8 +85,13 @@ public class PlayerController : MonoBehaviour
 
                 _dialogueBox.isActive = true;
             }
+            else if (Input.GetKeyDown(KeyCode.Space) && _dialogueBox.isActive == true)
+            {
+                _dialogueBox.isActive = false;
+            }
         }
-        else {
+        else
+        {
             _dialogueBox.isActive = false;
             _canTalkBox.isActive = false;
         }
