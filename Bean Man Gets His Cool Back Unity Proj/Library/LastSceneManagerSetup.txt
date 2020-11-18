@@ -1,5 +1,0 @@
-sceneSetups:
-- path: Assets/Plugins/Febucci/Text Animator/Example/00 - Welcome.unity
-  isLoaded: 1
-  isActive: 1
-  isSubScene: 0
