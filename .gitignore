@@ -1,11 +1,11 @@
-/Bean Man Gets His Cool Back Unity Proj/[Ll]ibrary/
-/Bean Man Gets His Cool Back Unity Proj/[Tt]emp/
-/Bean Man Gets His Cool Back Unity Proj/[Oo]bj/
-/Bean Man Gets His Cool Back Unity Proj/[Bb]uilds/
-/Bean Man Gets His Cool Back Unity Proj/[Ll]ogs/
+*/[Ll]ibrary/
+*/[Tt]emp/
+*/[Oo]bj/
+*/[Bb]uilds/
+*/[Ll]ogs/
 
 # Never ignore Asset meta data
-!/Bean Man Gets His Cool Back Unity Proj/[Aa]ssets/**/*.meta
+!*/[Aa]ssets/**/*.meta
 
 # Uncomment this line if you wish to ignore the asset store tools plugin
 # [Aa]ssets/AssetStoreTools*
