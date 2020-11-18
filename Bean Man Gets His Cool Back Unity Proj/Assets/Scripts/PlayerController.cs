@@ -68,6 +68,10 @@ public class PlayerController : MonoBehaviour
             _canTalkBox.isActive = true;
             if (Input.GetKeyDown(KeyCode.Space) && _dialogueBox.isActive == false)
             {
+                if (gameState.beanState == GameState.gameState.ISBAGGED){
+                    _responseBox.isActive = true;
+                }
+
                 if (!_dialogueBox.isActive)
                 {
                     index = scriptNPCList.IndexOf(thisCharacter.GetComponent<NPC>());
@@ -86,10 +90,18 @@ public class PlayerController : MonoBehaviour
             {
                 _dialogueBox.isActive = false;
             }
+            if (Input.GetKeyDown(KeyCode.Y) && _responseBox.isActive == true) {
+                Debug.Log("Yes");
+            }
+            if (Input.GetKeyDown(KeyCode.N) && _responseBox.isActive == true)
+            {
+                Debug.Log("No dawg");
+            }
         }
         else
         {
             _dialogueBox.isActive = false;
+            _responseBox.isActive = false;
             _canTalkBox.isActive = false;
         }
     }

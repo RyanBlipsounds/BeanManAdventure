@@ -62,7 +62,6 @@ public class ActManager : MonoBehaviour
 
         if (!switchFade)
         {
-
             blackScreenTimeToFade += Time.deltaTime;
         }
         else {
