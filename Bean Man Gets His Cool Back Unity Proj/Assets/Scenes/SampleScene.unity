@@ -1193,6 +1193,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 1107528093899379446, guid: bc3ff83dcc2557147819090bff1950bf,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 1872060265132936356, guid: bc3ff83dcc2557147819090bff1950bf,
         type: 3}
       propertyPath: m_IsActive
@@ -1268,6 +1273,11 @@ PrefabInstance:
       propertyPath: _actManager
       value: 
       objectReference: {fileID: 153794104}
+    - target: {fileID: 5022688405291908389, guid: bc3ff83dcc2557147819090bff1950bf,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 7907436519364075475, guid: bc3ff83dcc2557147819090bff1950bf,
         type: 3}
       propertyPath: m_LocalPosition.z

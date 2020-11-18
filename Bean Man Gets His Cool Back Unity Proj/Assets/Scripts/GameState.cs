@@ -100,6 +100,8 @@ public class GameState : MonoBehaviour
         {
             character.ShowGlasses();
         }
+
+        //BEAN MAN SPRITE CHANGE
     }
 
     private void HandleConversation(string characterName)

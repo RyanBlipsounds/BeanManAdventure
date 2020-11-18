@@ -44,8 +44,6 @@ public class PlayerController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-
-
         _actManager.LoadNewAct();
 
         //Movement and Animation
@@ -70,7 +68,6 @@ public class PlayerController : MonoBehaviour
             _canTalkBox.isActive = true;
             if (Input.GetKeyDown(KeyCode.Space) && _dialogueBox.isActive == false)
             {
-                //Sets for the NPC you are speaking to as "Spoken to"
                 if (!_dialogueBox.isActive)
                 {
                     index = scriptNPCList.IndexOf(thisCharacter.GetComponent<NPC>());
