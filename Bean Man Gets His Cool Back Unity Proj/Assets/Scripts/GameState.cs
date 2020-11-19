@@ -78,6 +78,19 @@ public class GameState : MonoBehaviour
         
     }
 
+    public void RandomizeGlasses()
+    {
+        var winningNPC = _playerController.scriptNPCList[Random.Range(0, _playerController.scriptNPCList.Count)];
+
+        winningNPC.spriteRenderer.sprite = winningNPC.glassesList[0];
+        _playerController.scriptNPCList.Remove(winningNPC);
+
+        foreach ( NPC character in _playerController.scriptNPCList)
+        {
+            character.spriteRenderer.sprite = character.glassesList[Random.Range(1, character.glassesList.Count)];
+        }
+    }
+
     public void TalkedTo(string characterName) {
         if (characterName == "Granny Smith") {
             talkedGranny = true;
@@ -98,6 +111,7 @@ public class GameState : MonoBehaviour
         
         foreach (NPC character in _playerController.scriptNPCList)
         {
+            RandomizeGlasses();
             character.ShowGlasses();
         }
         _playerController.NoGlasses();
