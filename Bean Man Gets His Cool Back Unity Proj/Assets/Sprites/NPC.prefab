@@ -239,7 +239,21 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   hasSpoken: 0
   glasses: {fileID: 1220874818093408338}
-  noGlasses: {fileID: 0}
+  noGlasses: {fileID: 9029286352457924729}
+  spriteRenderer: {fileID: 1384248629183027983}
+  glassesList:
+  - {fileID: 9005065327455587475, guid: 60ed65a7f2515be4c8f137ee62dcf92f, type: 3}
+  - {fileID: -7474956901458570760, guid: 60ed65a7f2515be4c8f137ee62dcf92f, type: 3}
+  - {fileID: -7451585173511631839, guid: 60ed65a7f2515be4c8f137ee62dcf92f, type: 3}
+  - {fileID: 2836499191054159970, guid: 60ed65a7f2515be4c8f137ee62dcf92f, type: 3}
+  - {fileID: -7278303480190946302, guid: 60ed65a7f2515be4c8f137ee62dcf92f, type: 3}
+  - {fileID: 7179907864993698877, guid: 60ed65a7f2515be4c8f137ee62dcf92f, type: 3}
+  - {fileID: 1144621885350447491, guid: 60ed65a7f2515be4c8f137ee62dcf92f, type: 3}
+  - {fileID: -6784093457490571611, guid: 60ed65a7f2515be4c8f137ee62dcf92f, type: 3}
+  - {fileID: 5253691519761625066, guid: 60ed65a7f2515be4c8f137ee62dcf92f, type: 3}
+  - {fileID: 3373242119830239354, guid: 60ed65a7f2515be4c8f137ee62dcf92f, type: 3}
+  - {fileID: 7453449074192417815, guid: 60ed65a7f2515be4c8f137ee62dcf92f, type: 3}
+  - {fileID: -2820679870303600787, guid: 60ed65a7f2515be4c8f137ee62dcf92f, type: 3}
   gameState: {fileID: 0}
 --- !u!1 &9029286352457924729
 GameObject:

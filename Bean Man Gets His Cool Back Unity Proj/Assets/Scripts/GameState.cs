@@ -82,6 +82,21 @@ public class GameState : MonoBehaviour
         
     }
 
+    public void RandomizeGlasses()
+    {
+        var copyNPC = new List<NPC>(_playerController.scriptNPCList);
+        NPC winningNPC = copyNPC[Random.Range(0, copyNPC.Count)];
+        Debug.Log("Winning NPC " + winningNPC);
+
+        winningNPC.spriteRenderer.sprite = winningNPC.glassesList[0];
+        copyNPC.Remove(winningNPC);
+
+        foreach ( NPC character in copyNPC)
+        {
+            character.spriteRenderer.sprite = character.glassesList[Random.Range(1, character.glassesList.Count)];
+        }
+    }
+
     public void TalkedTo(string characterName) {
         HandleConversation(characterName);
         if (beanState == GameState.gameState.ISCOOL)
@@ -109,7 +124,8 @@ public class GameState : MonoBehaviour
 
     public void IsNotCool() {
         beanState = gameState.ISNOTCOOL;
-        
+        RandomizeGlasses();
+
         foreach (NPC character in _playerController.scriptNPCList)
         {
             character.ShowGlasses();
