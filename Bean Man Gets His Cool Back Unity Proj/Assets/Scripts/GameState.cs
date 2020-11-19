@@ -98,9 +98,9 @@ public class GameState : MonoBehaviour
     }
 
     public void TalkedTo(string characterName) {
-        HandleConversation(characterName);
         if (beanState == GameState.gameState.ISCOOL)
         {
+            Debug.Log(listTotalNPC.Count + " " + _playerController.scriptNPCList.Count);
             if (listTotalNPC.Count > _playerController.scriptNPCList.Count)
             {
                 return;
@@ -109,6 +109,8 @@ public class GameState : MonoBehaviour
                 beanState = GameState.gameState.BEANGOHINT;
             }
         }
+        HandleConversation(characterName);
+
         if (characterName == "Granny Smith") {
             talkedGranny = true;
         }
@@ -136,7 +138,6 @@ public class GameState : MonoBehaviour
 
     public void IsBagged() {
         beanState = gameState.ISBAGGED;
-        _playerController.Bagged();
     }
 
     private void HandleConversation(string characterName)
@@ -166,10 +167,11 @@ public class GameState : MonoBehaviour
 
         if (beanState == gameState.ISBAGGED)
         {
-            _playerController.Bagged();
+            //_playerController.Bagged();
             //UIScript.Chatting.text = conversationDict["ISNOTCOOL"];
             talkedChickpea = false;
             talkedGranny = false;
         }
     }
 }
+
