@@ -100,8 +100,13 @@ public class GameState : MonoBehaviour
         {
             character.ShowGlasses();
         }
-
+        _playerController.NoGlasses();
         //BEAN MAN SPRITE CHANGE
+    }
+
+    public void IsBagged() {
+        beanState = gameState.ISBAGGED;
+        _playerController.Bagged();
     }
 
     private void HandleConversation(string characterName)
@@ -138,6 +143,7 @@ public class GameState : MonoBehaviour
 
         if (beanState == gameState.ISBAGGED)
         {
+            _playerController.Bagged();
             //UIScript.Chatting.text = conversationDict["ISNOTCOOL"];
             talkedChickpea = false;
             talkedGranny = false;
