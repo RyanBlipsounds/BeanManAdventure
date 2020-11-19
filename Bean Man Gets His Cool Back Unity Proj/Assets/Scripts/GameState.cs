@@ -80,12 +80,14 @@ public class GameState : MonoBehaviour
 
     public void RandomizeGlasses()
     {
-        var winningNPC = _playerController.scriptNPCList[Random.Range(0, _playerController.scriptNPCList.Count)];
+        var copyNPC = new List<NPC>(_playerController.scriptNPCList);
+        NPC winningNPC = copyNPC[Random.Range(0, copyNPC.Count)];
+        Debug.Log("Winning NPC " + winningNPC);
 
         winningNPC.spriteRenderer.sprite = winningNPC.glassesList[0];
-        _playerController.scriptNPCList.Remove(winningNPC);
+        copyNPC.Remove(winningNPC);
 
-        foreach ( NPC character in _playerController.scriptNPCList)
+        foreach ( NPC character in copyNPC)
         {
             character.spriteRenderer.sprite = character.glassesList[Random.Range(1, character.glassesList.Count)];
         }
@@ -108,10 +110,10 @@ public class GameState : MonoBehaviour
 
     public void IsNotCool() {
         beanState = gameState.ISNOTCOOL;
-        
+        RandomizeGlasses();
+
         foreach (NPC character in _playerController.scriptNPCList)
         {
-            RandomizeGlasses();
             character.ShowGlasses();
         }
         _playerController.NoGlasses();

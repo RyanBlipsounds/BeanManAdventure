@@ -68,6 +68,7 @@ public class ActManager : MonoBehaviour
         else {
             if (hasPlayed == false) {
                 m_gameState.IsNotCool();
+                Debug.Log("Triggered");
                 hasPlayed = true;
             }
             blackScreenTimeToFade -= Time.deltaTime;
@@ -98,7 +99,7 @@ public class ActManager : MonoBehaviour
     {
         activateGraphicTransition = true;
 
-        Debug.Log("Graphic " + graphicShowTime);
+        //Debug.Log("Graphic " + graphicShowTime);
         if (sceneTransitionState == sceneState.started) {
             FadeToBlack(sceneState.graphic, graphic, null);
         }
