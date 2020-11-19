@@ -255,6 +255,18 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 79f8dd3af3424224eb9ef8aac3917b9f, type: 3}
+--- !u!95 &626106367 stripped
+Animator:
+  m_CorrespondingSourceObject: {fileID: 5022688405291908391, guid: bc3ff83dcc2557147819090bff1950bf,
+    type: 3}
+  m_PrefabInstance: {fileID: 5022688404974811848}
+  m_PrefabAsset: {fileID: 0}
+--- !u!212 &626106368 stripped
+SpriteRenderer:
+  m_CorrespondingSourceObject: {fileID: 5022688405291908408, guid: bc3ff83dcc2557147819090bff1950bf,
+    type: 3}
+  m_PrefabInstance: {fileID: 5022688404974811848}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &644577085 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 1872060265132936356, guid: bc3ff83dcc2557147819090bff1950bf,
@@ -696,6 +708,18 @@ GameObject:
     type: 3}
   m_PrefabInstance: {fileID: 1653544377}
   m_PrefabAsset: {fileID: 0}
+--- !u!95 &1736524650 stripped
+Animator:
+  m_CorrespondingSourceObject: {fileID: 8095414457196247217, guid: bc3ff83dcc2557147819090bff1950bf,
+    type: 3}
+  m_PrefabInstance: {fileID: 5022688404974811848}
+  m_PrefabAsset: {fileID: 0}
+--- !u!212 &1736524651 stripped
+SpriteRenderer:
+  m_CorrespondingSourceObject: {fileID: 8113067575613442967, guid: bc3ff83dcc2557147819090bff1950bf,
+    type: 3}
+  m_PrefabInstance: {fileID: 5022688404974811848}
+  m_PrefabAsset: {fileID: 0}
 --- !u!20 &1766508713 stripped
 Camera:
   m_CorrespondingSourceObject: {fileID: 5022688404858110647, guid: bc3ff83dcc2557147819090bff1950bf,
@@ -764,6 +788,18 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 79b52d6c4e908324b8658671a2f22a1b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!95 &2101142063 stripped
+Animator:
+  m_CorrespondingSourceObject: {fileID: 4086508702800717892, guid: bc3ff83dcc2557147819090bff1950bf,
+    type: 3}
+  m_PrefabInstance: {fileID: 5022688404974811848}
+  m_PrefabAsset: {fileID: 0}
+--- !u!212 &2101142064 stripped
+SpriteRenderer:
+  m_CorrespondingSourceObject: {fileID: 5914183509694130887, guid: bc3ff83dcc2557147819090bff1950bf,
+    type: 3}
+  m_PrefabInstance: {fileID: 5022688404974811848}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &2141781199
 GameObject:
   m_ObjectHideFlags: 0
@@ -837,6 +873,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 1107528093899379446, guid: bc3ff83dcc2557147819090bff1950bf,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 5022688404735642064, guid: bc3ff83dcc2557147819090bff1950bf,
         type: 3}
       propertyPath: m_Name
@@ -907,5 +948,40 @@ PrefabInstance:
       propertyPath: _actManager
       value: 
       objectReference: {fileID: 153794104}
+    - target: {fileID: 5022688404735642068, guid: bc3ff83dcc2557147819090bff1950bf,
+        type: 3}
+      propertyPath: BaggedSpriteRenderer
+      value: 
+      objectReference: {fileID: 2101142064}
+    - target: {fileID: 5022688404735642068, guid: bc3ff83dcc2557147819090bff1950bf,
+        type: 3}
+      propertyPath: BaggedAnimator
+      value: 
+      objectReference: {fileID: 2101142063}
+    - target: {fileID: 5022688404735642068, guid: bc3ff83dcc2557147819090bff1950bf,
+        type: 3}
+      propertyPath: GlassesAnimator
+      value: 
+      objectReference: {fileID: 626106367}
+    - target: {fileID: 5022688404735642068, guid: bc3ff83dcc2557147819090bff1950bf,
+        type: 3}
+      propertyPath: GlassesSpriteRenderer
+      value: 
+      objectReference: {fileID: 626106368}
+    - target: {fileID: 5022688404735642068, guid: bc3ff83dcc2557147819090bff1950bf,
+        type: 3}
+      propertyPath: NoGlassesanimator
+      value: 
+      objectReference: {fileID: 1736524650}
+    - target: {fileID: 5022688404735642068, guid: bc3ff83dcc2557147819090bff1950bf,
+        type: 3}
+      propertyPath: NoGlassesSpriteRenderer
+      value: 
+      objectReference: {fileID: 1736524651}
+    - target: {fileID: 5022688405291908389, guid: bc3ff83dcc2557147819090bff1950bf,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: bc3ff83dcc2557147819090bff1950bf, type: 3}

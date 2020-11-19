@@ -13,8 +13,13 @@ public class PlayerController : MonoBehaviour
     public Vector2 movementDirection;
     public float movementSpeed;
     public Rigidbody2D rb;
-    public Animator animator;
-    public SpriteRenderer spriterenderer;
+    public Animator GlassesAnimator;
+    public Animator BaggedAnimator;
+    public Animator NoGlassesanimator;
+
+    public SpriteRenderer GlassesSpriteRenderer;
+    public SpriteRenderer NoGlassesSpriteRenderer;
+    public SpriteRenderer BaggedSpriteRenderer;
 
     public GameState gameState;
 
@@ -66,7 +71,6 @@ public class PlayerController : MonoBehaviour
         }
         Move();
         Animate();
-
         Dialogue();
     }
 
@@ -137,12 +141,22 @@ public class PlayerController : MonoBehaviour
 
     void Animate() {
         if (movementDirection.x < 0) {
-            spriterenderer.flipX = false;
+            GlassesSpriteRenderer.flipX = false;
+            BaggedSpriteRenderer.flipX = false;
+            NoGlassesSpriteRenderer.flipX = false;
         } else if(movementDirection.x > 0) {
-            spriterenderer.flipX = true;
+            GlassesSpriteRenderer.flipX = true;
+            BaggedSpriteRenderer.flipX = true;
+            NoGlassesSpriteRenderer.flipX = true;
         }
-        animator.SetFloat("Speed", movementSpeed);
-        animator.SetFloat("YAxisDirection", movementDirection.y);
+        NoGlassesanimator.SetFloat("Speed", movementSpeed);
+        NoGlassesanimator.SetFloat("YAxisDirection", movementDirection.y);
+
+        GlassesAnimator.SetFloat("Speed", movementSpeed);
+        GlassesAnimator.SetFloat("YAxisDirection", movementDirection.y);
+
+        BaggedAnimator.SetFloat("Speed", movementSpeed);
+        BaggedAnimator.SetFloat("YAxisDirection", movementDirection.y);
     }
 
     public void OnTriggerEnter2D(Collider2D collision)
