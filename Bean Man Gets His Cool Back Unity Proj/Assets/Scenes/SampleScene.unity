@@ -461,6 +461,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 267602232, guid: 3dbc8e0314522c2468ee7a49a635f231, type: 3}
+      propertyPath: gameState
+      value: 
+      objectReference: {fileID: 1990546118}
     - target: {fileID: 255112906169007031, guid: 3dbc8e0314522c2468ee7a49a635f231,
         type: 3}
       propertyPath: gameState
@@ -591,6 +595,11 @@ PrefabInstance:
       propertyPath: gameState
       value: 
       objectReference: {fileID: 1990546118}
+    - target: {fileID: 1642355860307535139, guid: 3dbc8e0314522c2468ee7a49a635f231,
+        type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 23
+      objectReference: {fileID: 0}
     - target: {fileID: 5167737920755793008, guid: 3dbc8e0314522c2468ee7a49a635f231,
         type: 3}
       propertyPath: m_gameState
@@ -606,6 +615,11 @@ PrefabInstance:
       propertyPath: _playerController
       value: 
       objectReference: {fileID: 989218380}
+    - target: {fileID: 7401340278360898333, guid: 3dbc8e0314522c2468ee7a49a635f231,
+        type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 24
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 3dbc8e0314522c2468ee7a49a635f231, type: 3}
 --- !u!1001 &1653544377
