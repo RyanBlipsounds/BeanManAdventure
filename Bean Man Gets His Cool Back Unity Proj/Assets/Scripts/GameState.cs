@@ -12,6 +12,8 @@ public class GameState : MonoBehaviour
     public NPC _npc = default;
     public ActManager _actManager = default;
 
+    public List<GameObject> listTotalNPC = new List<GameObject>();
+
     public GameState m_gameState = null;
     public enum gameState
     {
@@ -32,6 +34,8 @@ public class GameState : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        listTotalNPC.AddRange(GameObject.FindGameObjectsWithTag("NPC"));
+
         conversationDict.Add("ISCOOL", "ISCOOL");
         conversationDict.Add("ISNOTCOOL", "ISNOTCOOL");
         conversationDict.Add("ISBAGGED", "ISBAGGED");
@@ -79,6 +83,17 @@ public class GameState : MonoBehaviour
     }
 
     public void TalkedTo(string characterName) {
+        HandleConversation(characterName);
+        if (beanState == GameState.gameState.ISCOOL)
+        {
+            if (listTotalNPC.Count > _playerController.scriptNPCList.Count)
+            {
+                return;
+            }
+            else {
+                beanState = GameState.gameState.BEANGOHINT;
+            }
+        }
         if (characterName == "Granny Smith") {
             talkedGranny = true;
         }
@@ -90,7 +105,6 @@ public class GameState : MonoBehaviour
         {
             talkedLina = true;
         }
-        HandleConversation(characterName);
     }
 
     public void IsNotCool() {
@@ -111,13 +125,6 @@ public class GameState : MonoBehaviour
 
     private void HandleConversation(string characterName)
     {
-        if (beanState == gameState.ISCOOL)
-        {
-            if (talkedChickpea && talkedLina)
-            {
-                beanState = gameState.BEANGOHINT;
-            }
-        }
 
         if (beanState == gameState.ISNOTCOOL)
         {

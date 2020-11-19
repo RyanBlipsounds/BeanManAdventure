@@ -184,17 +184,7 @@ public class PlayerController : MonoBehaviour
             //Sets the Dictionary in GameState to the proper character dict and state
             gameState.Conversation(collision.gameObject.name);
 
-            if (gameState.beanState == GameState.gameState.ISCOOL)
-            {
-                foreach (NPC character in scriptNPCList)
-                {
-                    if (character.hasSpoken == false)
-                    {
-                        return;
-                    }
-                }
-                gameState.beanState = GameState.gameState.BEANGOHINT;
-            }
+
         }
     }
 
