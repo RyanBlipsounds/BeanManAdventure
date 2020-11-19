@@ -20,6 +20,10 @@ public class PlayerController : MonoBehaviour
 
     public bool characterInRange;
 
+    public GameObject GlassesBeanMan;
+    public GameObject NoGlassesBeanMan;
+    public GameObject BaggedBeanMan;
+
     //public GameObject UI
     public UIController _canTalkBox;
     public UIController _dialogueBox;
@@ -36,6 +40,10 @@ public class PlayerController : MonoBehaviour
 
     void Start()
     {
+        GlassesBeanMan.SetActive(true);
+        NoGlassesBeanMan.SetActive(false);
+        BaggedBeanMan.SetActive(false);
+
         _canTalkBox = GameObject.Find("CanTalkBox").GetComponent<UIController>();
         _dialogueBox = GameObject.Find("DialogueBox").GetComponent<UIController>();
         _responseBox = GameObject.Find("ResponseBox").GetComponent<UIController>();
@@ -60,6 +68,17 @@ public class PlayerController : MonoBehaviour
         Animate();
 
         Dialogue();
+    }
+
+    public void NoGlasses() {
+        GlassesBeanMan.SetActive(false);
+        NoGlassesBeanMan.SetActive(true);
+    }
+
+    public void Bagged()
+    {
+        NoGlassesBeanMan.SetActive(false);
+        BaggedBeanMan.SetActive(true);
     }
 
     void Dialogue() {

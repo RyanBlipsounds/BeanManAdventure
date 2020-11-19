@@ -311,6 +311,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 318419600096863073, guid: 79f8dd3af3424224eb9ef8aac3917b9f,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: -0.26
+      objectReference: {fileID: 0}
     - target: {fileID: 353742206097845493, guid: 79f8dd3af3424224eb9ef8aac3917b9f,
         type: 3}
       propertyPath: m_LocalPosition.y
@@ -598,6 +603,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 2275081746022113484, guid: 79f8dd3af3424224eb9ef8aac3917b9f,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 2312038113373758853, guid: 79f8dd3af3424224eb9ef8aac3917b9f,
         type: 3}
       propertyPath: m_Name
@@ -827,25 +837,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 1107528093899379446, guid: bc3ff83dcc2557147819090bff1950bf,
-        type: 3}
-      propertyPath: m_IsActive
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 1872060265132936356, guid: bc3ff83dcc2557147819090bff1950bf,
-        type: 3}
-      propertyPath: m_IsActive
-      value: 0
-      objectReference: {fileID: 0}
     - target: {fileID: 5022688404735642064, guid: bc3ff83dcc2557147819090bff1950bf,
         type: 3}
       propertyPath: m_Name
       value: Beanman
-      objectReference: {fileID: 0}
-    - target: {fileID: 5022688404735642064, guid: bc3ff83dcc2557147819090bff1950bf,
-        type: 3}
-      propertyPath: m_IsActive
-      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 5022688404735642067, guid: bc3ff83dcc2557147819090bff1950bf,
         type: 3}
@@ -912,20 +907,5 @@ PrefabInstance:
       propertyPath: _actManager
       value: 
       objectReference: {fileID: 153794104}
-    - target: {fileID: 5022688404735642068, guid: bc3ff83dcc2557147819090bff1950bf,
-        type: 3}
-      propertyPath: MOVEMENT_BASE_SPEED
-      value: 0.85
-      objectReference: {fileID: 0}
-    - target: {fileID: 5022688405291908389, guid: bc3ff83dcc2557147819090bff1950bf,
-        type: 3}
-      propertyPath: m_IsActive
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 7907436519364075475, guid: bc3ff83dcc2557147819090bff1950bf,
-        type: 3}
-      propertyPath: m_LocalPosition.z
-      value: -2.8
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: bc3ff83dcc2557147819090bff1950bf, type: 3}
