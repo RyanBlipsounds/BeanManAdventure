@@ -168,12 +168,16 @@
 		<relationship name="effects">
 			<destination>{854e6f51-7e05-4741-9ca8-228ffe644e8d}</destination>
 			<destination>{10d828e2-1ad4-488e-9506-53ba3b9886d3}</destination>
+			<destination>{8cec3169-3448-4db5-bbd1-2cfbcbf5c372}</destination>
 		</relationship>
 	</object>
 	<object class="MixerBusPanner" id="{038cedda-a96b-41c3-8672-d771efb88a8b}" />
 	<object class="MixerBusFader" id="{624ef354-bd80-4caa-b44e-2e878038a730}" />
 	<object class="MixerBusFader" id="{854e6f51-7e05-4741-9ca8-228ffe644e8d}" />
 	<object class="ThreeEQEffect" id="{10d828e2-1ad4-488e-9506-53ba3b9886d3}">
+		<property name="lowGain">
+			<value>-3.5</value>
+		</property>
 		<property name="highGain">
 			<value>-19</value>
 		</property>
@@ -182,6 +186,17 @@
 		</property>
 		<property name="highCrossover">
 			<value>1150</value>
+		</property>
+	</object>
+	<object class="CompressorEffect" id="{8cec3169-3448-4db5-bbd1-2cfbcbf5c372}">
+		<property name="threshold">
+			<value>-17.5</value>
+		</property>
+		<property name="ratio">
+			<value>2</value>
+		</property>
+		<property name="gain">
+			<value>-10.5</value>
 		</property>
 	</object>
 </objects>
