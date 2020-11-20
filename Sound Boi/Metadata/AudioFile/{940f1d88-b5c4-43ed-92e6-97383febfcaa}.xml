@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<objects serializationModel="Studio.02.01.00">
+	<object class="AudioFile" id="{940f1d88-b5c4-43ed-92e6-97383febfcaa}">
+		<property name="assetPath">
+			<value>FOOTSTEPS_BOOTS_PLASTIC_GROUND_MAT_STEP04.wav</value>
+		</property>
+		<property name="frequencyInKHz">
+			<value>48</value>
+		</property>
+		<property name="channelCount">
+			<value>1</value>
+		</property>
+		<property name="length">
+			<value>0.58666666666666667</value>
+		</property>
+		<relationship name="masterAssetFolder">
+			<destination>{79485d36-ec74-4e57-9401-e74df5e4eccf}</destination>
+		</relationship>
+	</object>
+</objects>
