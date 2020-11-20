@@ -59,6 +59,7 @@ public class PlayerController : MonoBehaviour
         _canTalkBox = GameObject.Find("CanTalkBox").GetComponent<UIController>();
         _dialogueBox = GameObject.Find("DialogueBox").GetComponent<UIController>();
         _responseBox = GameObject.Find("ResponseBox").GetComponent<UIController>();
+
     }
 
     // Update is called once per frame
@@ -90,7 +91,6 @@ public class PlayerController : MonoBehaviour
         
         if (Bag.transform.position.y < m_BagEndPosition.transform.position.y + 0.01 && bagMoving == true)
         {
-            Debug.Log("Bag is On Head");
             Bagged();
             Bag.SetActive(false);
             bagMoving = false;
@@ -141,7 +141,6 @@ public class PlayerController : MonoBehaviour
                 {
                     _actManager.LoadNewAct();
                 }
-
                 _dialogueBox.isActive = true;
             }
             else if (Input.GetKeyDown(KeyCode.Space) && _dialogueBox.isActive == true)
@@ -152,14 +151,21 @@ public class PlayerController : MonoBehaviour
             if (Input.GetKeyDown(KeyCode.Y) && _responseBox.isActive == true) {
                 if (thisNPCList.isWinner)
                 {
-                    _actManager.LoadEnding();
+                    _actManager.LoadEnding("Bean");
                 }
                 else {
-
+                    foreach (NPC character in scriptNPCList) {
+                        if (character.isWinner == true) {
+                            _actManager.LoadEnding(character.gameObject.name);
+                            break;
+                        }
+                    }
                 }
             }
             if (Input.GetKeyDown(KeyCode.N) && _responseBox.isActive == true)
             {
+                _dialogueBox.isActive = false;
+                _responseBox.isActive = false;
             }
 
         }

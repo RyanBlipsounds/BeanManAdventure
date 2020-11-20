@@ -12,6 +12,7 @@ public class ActManager : MonoBehaviour
 
     private float blackScreenTimeToFade = 0;
 
+    private GameObject EndingScreen;
     public GameObject BeangoScreen;
     public GameObject ChickPeaLoseEnding;
     public GameObject BeanManWinEnding;
@@ -19,6 +20,8 @@ public class ActManager : MonoBehaviour
     public GameObject BeanManSpawnPosition;
 
     public PlayerController _playerController;
+
+    public UIController _narrationBox;
 
     private float graphicShowTime = 0;
 
@@ -37,6 +40,7 @@ public class ActManager : MonoBehaviour
 
     void Start()
     {
+        _narrationBox = GameObject.Find("NarrationBox").GetComponent<UIController>();
         BlackScreen = GameObject.Find("BlackScreen").GetComponent<SpriteRenderer>();
     }
 
@@ -45,11 +49,12 @@ public class ActManager : MonoBehaviour
     {
         if (activateGraphicTransition == true) {
             if (m_gameState.beanState == GameState.gameState.ISNOTCOOL || m_gameState.beanState == GameState.gameState.ISCOOL || m_gameState.beanState == GameState.gameState.BEANGOHINT) {
-                LoadGraphic(BeangoScreen);
+                EndingScreen = BeangoScreen;
+                LoadGraphic(EndingScreen);
             }
-            if (m_gameState.beanState == GameState.gameState.ISBAGGED)
+            if (m_gameState.beanState == GameState.gameState.ISBAGGED || m_gameState.beanState == GameState.gameState.ENDING)
             {
-                LoadGraphic(BeangoScreen);
+                LoadGraphic(EndingScreen);
             }
         }
     }
@@ -66,8 +71,15 @@ public class ActManager : MonoBehaviour
             blackScreenTimeToFade += Time.deltaTime;
         }
         else {
-            if (hasPlayed == false) {
+            if (m_gameState.beanState == GameState.gameState.BEANGOHINT && hasPlayed == false) {
+                Debug.Log("PIZZA");
                 m_gameState.IsNotCool();
+                hasPlayed = true;
+            }
+            if (m_gameState.beanState == GameState.gameState.ISBAGGED && hasPlayed == false)
+            {
+                Debug.Log("PIZZA33");
+                m_gameState.Ending();
                 hasPlayed = true;
             }
             blackScreenTimeToFade -= Time.deltaTime;
@@ -77,10 +89,12 @@ public class ActManager : MonoBehaviour
         {
             if (graphic != null)
             {
+                _narrationBox.isActive = true;
                 graphic.SetActive(true);
             }
             else
             {
+                _narrationBox.isActive = false;
                 oldGraphic.SetActive(false);
             }
             switchFade = true;
@@ -92,10 +106,6 @@ public class ActManager : MonoBehaviour
             blackScreenTmp = 0;
             blackScreenTimeToFade = 0;
         }
-    }
-
-    public void LoadEnding() {
-
     }
 
     public void LoadGraphic(GameObject graphic)
@@ -117,13 +127,32 @@ public class ActManager : MonoBehaviour
             FadeToBlack(sceneState.started, null, graphic);
             if (sceneTransitionState == sceneState.started) {
                 activateGraphicTransition = false;
+                graphicShowTime = 0;
+                hasPlayed = false;
                 return;
             }
         }
     }
 
-    private void LoadEnding(SpriteRenderer ending) {
+    public void LoadEnding(string ending) {
+        if (ending == "Bean") {
+            EndingScreen = BeanManWinEnding;
+        }
+        if (ending == "Lina Bean") {
+            EndingScreen = ChickPeaLoseEnding;
+        }
+        if (ending == "Chickpea Deputy")
+        {
+            EndingScreen = ChickPeaLoseEnding;
+        }
+        if (ending == "Granny Smith") {
+            EndingScreen = ChickPeaLoseEnding;
+        }
+        Debug.Log(ending);
 
+        activateGraphicTransition = true;
+
+        LoadGraphic(EndingScreen);
     }
 
     //In Load New Act, it should probably take dictionary arguments 

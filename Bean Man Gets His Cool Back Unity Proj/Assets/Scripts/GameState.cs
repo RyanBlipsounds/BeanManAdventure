@@ -21,7 +21,8 @@ public class GameState : MonoBehaviour
         ISNOTCOOL,
         ISBAGGED,
         BEANGOHINT,
-        MYGLASSES
+        MYGLASSES,
+        ENDING
     }
 
     public gameState beanState = gameState.ISCOOL;
@@ -137,6 +138,10 @@ public class GameState : MonoBehaviour
 
     public void IsBagged() {
         beanState = gameState.ISBAGGED;
+    }
+
+    public void Ending() {
+        beanState = gameState.ENDING;
     }
 
     private void HandleConversation(string characterName)

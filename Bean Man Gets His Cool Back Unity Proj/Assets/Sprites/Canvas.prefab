@@ -62,11 +62,11 @@ MonoBehaviour:
   dialogueBoxAnimator: {fileID: 1047037951}
   canTalkBoxAnimator: {fileID: 0}
   gameState: {fileID: 0}
-  StartPoint: {fileID: 255112907006885799}
-  EndPoint: {fileID: 255112907448109513}
+  StartPoint: {fileID: 1056836416607956476}
+  EndPoint: {fileID: 3608526204234249733}
   speed: 3
-  ResponseBox: {fileID: 0}
-  DialogueBox: {fileID: 267602229}
+  ResponseBox: {fileID: 255112906169007027}
+  DialogueBox: {fileID: 255112907523466461}
   CanTalkBox: {fileID: 255112907553061667}
   isActive: 0
   hasMoved: 0
@@ -484,8 +484,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 45.95, y: -0.07}
-  m_SizeDelta: {x: 153.88, y: 22.05}
+  m_AnchoredPosition: {x: 31.97, y: 3.81}
+  m_SizeDelta: {x: 125.91, y: 29.82}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &1265915683
 CanvasRenderer:
@@ -541,8 +541,8 @@ MonoBehaviour:
   m_outlineColor:
     serializedVersion: 2
     rgba: 4278190080
-  m_fontSize: 20
-  m_fontSizeBase: 20
+  m_fontSize: 18
+  m_fontSizeBase: 18
   m_fontWeight: 400
   m_enableAutoSizing: 0
   m_fontSizeMin: 18
@@ -558,7 +558,7 @@ MonoBehaviour:
   m_enableWordWrapping: 1
   m_wordWrappingRatios: 0.4
   m_overflowMode: 0
-  m_firstOverflowCharacterIndex: 0
+  m_firstOverflowCharacterIndex: 13
   m_linkedTextComponent: {fileID: 0}
   m_isLinkedTextComponent: 0
   m_isTextTruncated: 0
@@ -1390,8 +1390,8 @@ MonoBehaviour:
   m_outlineColor:
     serializedVersion: 2
     rgba: 4278190080
-  m_fontSize: 20
-  m_fontSizeBase: 20
+  m_fontSize: 18
+  m_fontSizeBase: 18
   m_fontWeight: 400
   m_enableAutoSizing: 0
   m_fontSizeMin: 18
@@ -1607,7 +1607,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 255112905846699294}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -24.631836, y: -27.22548, z: -74.125}
+  m_LocalPosition: {x: -24.631836, y: -27.22548, z: -1}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 255112907006885816}
@@ -2274,7 +2274,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -146, y: -363.05}
+  m_AnchoredPosition: {x: 24, y: -363.05}
   m_SizeDelta: {x: 378.5, y: 142.1}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1 &1643847709208148564
@@ -2303,7 +2303,7 @@ RectTransform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1643847709208148564}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: 0, y: 0, z: -2}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 255112907553061668}
@@ -2386,7 +2386,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -146, y: -106.27}
+  m_AnchoredPosition: {x: 23, y: -106.27}
   m_SizeDelta: {x: 378.5, y: 142.1}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1 &4846323578785417468
@@ -2443,6 +2443,7 @@ MonoBehaviour:
   BeanManWinEnding: {fileID: 0}
   BeanManSpawnPosition: {fileID: 0}
   _playerController: {fileID: 0}
+  _narrationBox: {fileID: 267602232}
   switchFade: 0
   activateGraphicTransition: 0
   sceneTransitionState: 0
@@ -2462,6 +2463,7 @@ MonoBehaviour:
   _playerController: {fileID: 0}
   _npc: {fileID: 0}
   _actManager: {fileID: 0}
+  listTotalNPC: []
   m_gameState: {fileID: 9069917652183381563}
   beanState: 0
 --- !u!1 &6881873354023057357
