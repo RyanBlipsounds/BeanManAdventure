@@ -80,8 +80,13 @@ AnimationClip:
   m_HasMotionFloatCurves: 0
   m_Events:
   - time: 0
+<<<<<<< HEAD
     functionName: 
     data: 
+=======
+    functionName: Playsound
+    data: event:/Footsteps 2
+>>>>>>> 2261e5510181471ea82dd812d388919d0023778c
     objectReferenceParameter: {fileID: 0}
     floatParameter: 0
     intParameter: 0
