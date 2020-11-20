@@ -12,6 +12,8 @@ public class GameState : MonoBehaviour
     public NPC _npc = default;
     public ActManager _actManager = default;
 
+    public List<GameObject> listTotalNPC = new List<GameObject>();
+
     public GameState m_gameState = null;
     public enum gameState
     {
@@ -32,6 +34,8 @@ public class GameState : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        listTotalNPC.AddRange(GameObject.FindGameObjectsWithTag("NPC"));
+
         conversationDict.Add("ISCOOL", "ISCOOL");
         conversationDict.Add("ISNOTCOOL", "ISNOTCOOL");
         conversationDict.Add("ISBAGGED", "ISBAGGED");
@@ -78,7 +82,35 @@ public class GameState : MonoBehaviour
         
     }
 
+    public void RandomizeGlasses()
+    {
+        var copyNPC = new List<NPC>(_playerController.scriptNPCList);
+        NPC winningNPC = copyNPC[Random.Range(0, copyNPC.Count)];
+        Debug.Log("Winning NPC " + winningNPC);
+
+        winningNPC.spriteRenderer.sprite = winningNPC.glassesList[0];
+        copyNPC.Remove(winningNPC);
+
+        foreach ( NPC character in copyNPC)
+        {
+            character.spriteRenderer.sprite = character.glassesList[Random.Range(1, character.glassesList.Count)];
+        }
+    }
+
     public void TalkedTo(string characterName) {
+        if (beanState == GameState.gameState.ISCOOL)
+        {
+            Debug.Log(listTotalNPC.Count + " " + _playerController.scriptNPCList.Count);
+            if (listTotalNPC.Count > _playerController.scriptNPCList.Count)
+            {
+                return;
+            }
+            else {
+                beanState = GameState.gameState.BEANGOHINT;
+            }
+        }
+        HandleConversation(characterName);
+
         if (characterName == "Granny Smith") {
             talkedGranny = true;
         }
@@ -90,29 +122,26 @@ public class GameState : MonoBehaviour
         {
             talkedLina = true;
         }
-        HandleConversation(characterName);
     }
 
     public void IsNotCool() {
         beanState = gameState.ISNOTCOOL;
-        
+        RandomizeGlasses();
+
         foreach (NPC character in _playerController.scriptNPCList)
         {
             character.ShowGlasses();
         }
-
+        _playerController.NoGlasses();
         //BEAN MAN SPRITE CHANGE
+    }
+
+    public void IsBagged() {
+        beanState = gameState.ISBAGGED;
     }
 
     private void HandleConversation(string characterName)
     {
-        if (beanState == gameState.ISCOOL)
-        {
-            if (talkedChickpea && talkedLina)
-            {
-                beanState = gameState.BEANGOHINT;
-            }
-        }
 
         if (beanState == gameState.ISNOTCOOL)
         {
@@ -138,9 +167,11 @@ public class GameState : MonoBehaviour
 
         if (beanState == gameState.ISBAGGED)
         {
+            //_playerController.Bagged();
             //UIScript.Chatting.text = conversationDict["ISNOTCOOL"];
             talkedChickpea = false;
             talkedGranny = false;
         }
     }
 }
+

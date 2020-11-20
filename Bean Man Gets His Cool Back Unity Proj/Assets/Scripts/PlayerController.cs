@@ -13,22 +13,36 @@ public class PlayerController : MonoBehaviour
     public Vector2 movementDirection;
     public float movementSpeed;
     public Rigidbody2D rb;
-    public Animator animator;
-    public SpriteRenderer spriterenderer;
+    public Animator GlassesAnimator;
+    public Animator BaggedAnimator;
+    public Animator NoGlassesanimator;
+
+    public SpriteRenderer GlassesSpriteRenderer;
+    public SpriteRenderer NoGlassesSpriteRenderer;
+    public SpriteRenderer BaggedSpriteRenderer;
 
     public GameState gameState;
 
     public bool characterInRange;
+
+    public GameObject GlassesBeanMan;
+    public GameObject NoGlassesBeanMan;
+    public GameObject BaggedBeanMan;
 
     //public GameObject UI
     public UIController _canTalkBox;
     public UIController _dialogueBox;
     public UIController _responseBox;
 
+    public GameObject Bag;
+    public GameObject m_BagStartPosition;
+    public GameObject m_BagEndPosition;
+
     public List<GameObject> Characters = new List<GameObject>();
     public List<NPC> scriptNPCList = new List<NPC>();
 
     public ActManager _actManager;
+    public bool bagMoving = false;
 
     private GameObject thisCharacter = null;
     private int index = 0;
@@ -36,6 +50,12 @@ public class PlayerController : MonoBehaviour
 
     void Start()
     {
+        Bag.transform.position = m_BagStartPosition.transform.position;
+
+        GlassesBeanMan.SetActive(true);
+        NoGlassesBeanMan.SetActive(false);
+        BaggedBeanMan.SetActive(false);
+
         _canTalkBox = GameObject.Find("CanTalkBox").GetComponent<UIController>();
         _dialogueBox = GameObject.Find("DialogueBox").GetComponent<UIController>();
         _responseBox = GameObject.Find("ResponseBox").GetComponent<UIController>();
@@ -49,7 +69,15 @@ public class PlayerController : MonoBehaviour
         //Movement and Animation
         if (_actManager.activateGraphicTransition == false)
         {
-            ProcessInputs();
+            if (bagMoving == false)
+            {
+                ProcessInputs();
+            }
+            else {
+                movementSpeed = 0;
+                movementDirection = new Vector2(0.0f, 0.0f);
+                movementDirection.Normalize();
+            }
         }
         else {
             movementSpeed = 0;
@@ -58,8 +86,33 @@ public class PlayerController : MonoBehaviour
         }
         Move();
         Animate();
-
         Dialogue();
+        
+        if (Bag.transform.position.y < m_BagEndPosition.transform.position.y + 0.01)
+        {
+            Debug.Log("Bag is On Head");
+            Bagged();
+            bagMoving = false;
+            Bag.SetActive(false);
+        } else if (gameState.beanState == GameState.gameState.ISBAGGED && Bag.transform.position != m_BagEndPosition.transform.position) {
+            bagMoving = true;
+            Bag.transform.position = Vector2.MoveTowards(Bag.transform.position, m_BagEndPosition.transform.position, Time.deltaTime * 1);
+        }
+    }
+
+    public void NoGlasses() {
+        GlassesBeanMan.SetActive(false);
+        NoGlassesBeanMan.SetActive(true);
+    }
+
+    public void Bagged()
+    {
+        NoGlassesBeanMan.SetActive(false);
+        BaggedBeanMan.SetActive(true);
+    }
+
+    void LoadBag() {
+
     }
 
     void Dialogue() {
@@ -68,6 +121,11 @@ public class PlayerController : MonoBehaviour
             _canTalkBox.isActive = true;
             if (Input.GetKeyDown(KeyCode.Space) && _dialogueBox.isActive == false)
             {
+                if (!scriptNPCList.Contains(thisCharacter.GetComponent<NPC>()))
+                {
+                    scriptNPCList.Add(thisCharacter.GetComponent<NPC>());
+                }
+
                 if (gameState.beanState == GameState.gameState.ISBAGGED){
                     _responseBox.isActive = true;
                 }
@@ -89,6 +147,7 @@ public class PlayerController : MonoBehaviour
             else if (Input.GetKeyDown(KeyCode.Space) && _dialogueBox.isActive == true)
             {
                 _dialogueBox.isActive = false;
+                _responseBox.isActive = false;
             }
             if (Input.GetKeyDown(KeyCode.Y) && _responseBox.isActive == true) {
                 Debug.Log("Yes");
@@ -118,12 +177,22 @@ public class PlayerController : MonoBehaviour
 
     void Animate() {
         if (movementDirection.x < 0) {
-            spriterenderer.flipX = false;
+            GlassesSpriteRenderer.flipX = false;
+            BaggedSpriteRenderer.flipX = false;
+            NoGlassesSpriteRenderer.flipX = false;
         } else if(movementDirection.x > 0) {
-            spriterenderer.flipX = true;
+            GlassesSpriteRenderer.flipX = true;
+            BaggedSpriteRenderer.flipX = true;
+            NoGlassesSpriteRenderer.flipX = true;
         }
-        animator.SetFloat("Speed", movementSpeed);
-        animator.SetFloat("YAxisDirection", movementDirection.y);
+        NoGlassesanimator.SetFloat("Speed", movementSpeed);
+        NoGlassesanimator.SetFloat("YAxisDirection", movementDirection.y);
+
+        GlassesAnimator.SetFloat("Speed", movementSpeed);
+        GlassesAnimator.SetFloat("YAxisDirection", movementDirection.y);
+
+        BaggedAnimator.SetFloat("Speed", movementSpeed);
+        BaggedAnimator.SetFloat("YAxisDirection", movementDirection.y);
     }
 
     public void OnTriggerEnter2D(Collider2D collision)
@@ -134,34 +203,16 @@ public class PlayerController : MonoBehaviour
             if (!Characters.Contains(collision.gameObject))
             {
                 thisCharacter = GameObject.Find(collision.gameObject.name);
-
-                scriptNPCList.Add(thisCharacter.GetComponent<NPC>());
-                Characters.Add(thisCharacter);
+                
             }
 
             _canTalkBox.canTalkBoxAnimator.ShowText(collision.gameObject.name);
 
-            if (Characters.Count >= index) {
-                index = Characters.IndexOf(collision.gameObject);
-                thisCharacter = Characters[index];
-            }
 
             characterInRange = true;
 
             //Sets the Dictionary in GameState to the proper character dict and state
             gameState.Conversation(collision.gameObject.name);
-
-            if (gameState.beanState == GameState.gameState.ISCOOL)
-            {
-                foreach (NPC character in scriptNPCList)
-                {
-                    if (character.hasSpoken == false)
-                    {
-                        return;
-                    }
-                }
-                gameState.beanState = GameState.gameState.BEANGOHINT;
-            }
         }
     }
 
