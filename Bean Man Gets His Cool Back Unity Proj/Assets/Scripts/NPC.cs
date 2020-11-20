@@ -10,6 +10,8 @@ public class NPC : MonoBehaviour
     public SpriteRenderer spriteRenderer;
     public List<Sprite> glassesList = new List<Sprite>();
 
+    public bool isWinner = false;
+
     public GameState gameState = default;
 
     public void Start()

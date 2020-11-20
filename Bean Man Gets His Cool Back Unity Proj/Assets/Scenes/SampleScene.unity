@@ -712,6 +712,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 267602229, guid: 3dbc8e0314522c2468ee7a49a635f231, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 267602232, guid: 3dbc8e0314522c2468ee7a49a635f231, type: 3}
       propertyPath: gameState
       value: 
@@ -1120,6 +1124,11 @@ PrefabInstance:
       propertyPath: m_IsActive
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 4086508702800717892, guid: bc3ff83dcc2557147819090bff1950bf,
+        type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 5022688404735642064, guid: bc3ff83dcc2557147819090bff1950bf,
         type: 3}
       propertyPath: m_Name
@@ -1190,5 +1199,10 @@ PrefabInstance:
       propertyPath: _actManager
       value: 
       objectReference: {fileID: 153794104}
+    - target: {fileID: 5914183509694130887, guid: bc3ff83dcc2557147819090bff1950bf,
+        type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: bc3ff83dcc2557147819090bff1950bf, type: 3}

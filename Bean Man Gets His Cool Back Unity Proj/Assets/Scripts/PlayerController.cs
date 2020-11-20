@@ -88,12 +88,12 @@ public class PlayerController : MonoBehaviour
         Animate();
         Dialogue();
         
-        if (Bag.transform.position.y < m_BagEndPosition.transform.position.y + 0.01)
+        if (Bag.transform.position.y < m_BagEndPosition.transform.position.y + 0.01 && bagMoving == true)
         {
             Debug.Log("Bag is On Head");
             Bagged();
-            bagMoving = false;
             Bag.SetActive(false);
+            bagMoving = false;
         } else if (gameState.beanState == GameState.gameState.ISBAGGED && Bag.transform.position != m_BagEndPosition.transform.position) {
             bagMoving = true;
             Bag.transform.position = Vector2.MoveTowards(Bag.transform.position, m_BagEndPosition.transform.position, Time.deltaTime * 1);
@@ -150,12 +150,18 @@ public class PlayerController : MonoBehaviour
                 _responseBox.isActive = false;
             }
             if (Input.GetKeyDown(KeyCode.Y) && _responseBox.isActive == true) {
-                Debug.Log("Yes");
+                if (thisNPCList.isWinner)
+                {
+                    _actManager.LoadEnding();
+                }
+                else {
+
+                }
             }
             if (Input.GetKeyDown(KeyCode.N) && _responseBox.isActive == true)
             {
-                Debug.Log("No dawg");
             }
+
         }
         else
         {

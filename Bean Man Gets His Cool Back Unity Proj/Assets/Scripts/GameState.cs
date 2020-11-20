@@ -78,8 +78,6 @@ public class GameState : MonoBehaviour
 
             return;
         }
-
-        
     }
 
     public void RandomizeGlasses()
@@ -89,6 +87,7 @@ public class GameState : MonoBehaviour
         Debug.Log("Winning NPC " + winningNPC);
 
         winningNPC.spriteRenderer.sprite = winningNPC.glassesList[0];
+        winningNPC.isWinner = true;
         copyNPC.Remove(winningNPC);
 
         foreach ( NPC character in copyNPC)
@@ -142,7 +141,6 @@ public class GameState : MonoBehaviour
 
     private void HandleConversation(string characterName)
     {
-
         if (beanState == gameState.ISNOTCOOL)
         {
             //_npc.ShowGlasses();

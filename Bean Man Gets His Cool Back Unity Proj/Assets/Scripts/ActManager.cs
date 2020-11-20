@@ -68,7 +68,6 @@ public class ActManager : MonoBehaviour
         else {
             if (hasPlayed == false) {
                 m_gameState.IsNotCool();
-                Debug.Log("Triggered");
                 hasPlayed = true;
             }
             blackScreenTimeToFade -= Time.deltaTime;
@@ -93,6 +92,10 @@ public class ActManager : MonoBehaviour
             blackScreenTmp = 0;
             blackScreenTimeToFade = 0;
         }
+    }
+
+    public void LoadEnding() {
+
     }
 
     public void LoadGraphic(GameObject graphic)

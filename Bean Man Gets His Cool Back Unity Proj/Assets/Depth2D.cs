@@ -19,6 +19,5 @@ public class Depth2D : MonoBehaviour
         thisPosition.z = this.transform.position.y / 1000;
 
         m_Character.transform.position = new Vector3(m_Character.transform.position.x, m_Character.transform.position.y, thisPosition.z);
-
     }
 }
