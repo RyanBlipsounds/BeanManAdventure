@@ -761,16 +761,6 @@ PrefabInstance:
       propertyPath: m_Camera
       value: 
       objectReference: {fileID: 1766508713}
-    - target: {fileID: 255112906382016602, guid: 3dbc8e0314522c2468ee7a49a635f231,
-        type: 3}
-      propertyPath: m_RenderMode
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 255112906382016602, guid: 3dbc8e0314522c2468ee7a49a635f231,
-        type: 3}
-      propertyPath: m_PlaneDistance
-      value: 8
-      objectReference: {fileID: 0}
     - target: {fileID: 255112906382016603, guid: 3dbc8e0314522c2468ee7a49a635f231,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -911,6 +901,11 @@ PrefabInstance:
       propertyPath: _playerController
       value: 
       objectReference: {fileID: 989218380}
+    - target: {fileID: 8773220670019093820, guid: 3dbc8e0314522c2468ee7a49a635f231,
+        type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: -83.484985
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 3dbc8e0314522c2468ee7a49a635f231, type: 3}
 --- !u!1001 &1653544377
@@ -1085,7 +1080,6 @@ GameObject:
   m_Component:
   - component: {fileID: 1990546119}
   - component: {fileID: 1990546118}
-  - component: {fileID: 1990546120}
   m_Layer: 0
   m_Name: GameState
   m_TagString: Untagged
@@ -1126,18 +1120,6 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &1990546120
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1990546117}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 79b52d6c4e908324b8658671a2f22a1b, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &2141781199
 GameObject:
   m_ObjectHideFlags: 0
