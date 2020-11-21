@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Path: ../Sound Boi/Build/Desktop/Master.bank
   Name: Master
-  lastModified: 637414784151327307
+  lastModified: 637415631695504315
   LoadResult: 0
   FileSizes: []
   Exists: 1
@@ -36,12 +36,13 @@ MonoBehaviour:
   EditorEvents:
   - {fileID: 7966419518002522534}
   - {fileID: 5225547037193185975}
+  - {fileID: 4195955721536567303}
   EditorParameters: []
   MasterBanks:
   - {fileID: -2912887371067882993}
   StringsBanks:
   - {fileID: 1872126670358714804}
-  stringsBankWriteTime: 637414784151357223
+  stringsBankWriteTime: 637415631695574119
   cacheVersion: 5
 --- !u!114 &1872126670358714804
 MonoBehaviour:
@@ -57,12 +58,35 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Path: ../Sound Boi/Build/Desktop/Master.strings.bank
   Name: Master.strings
-  lastModified: 637414784151357223
+  lastModified: 637415631695574119
   LoadResult: 0
   FileSizes:
   - Name: 
-    Value: 800
+    Value: 848
   Exists: 1
+--- !u!114 &4195955721536567303
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: event:/TalkBox
+  m_EditorClassIdentifier: 
+  Path: event:/TalkBox
+  guid: dc800b3f38ee3d40af016644de0c0735
+  Banks:
+  - {fileID: -2912887371067882993}
+  IsStream: 0
+  Is3D: 0
+  IsOneShot: 1
+  Parameters: []
+  MinDistance: 0
+  MaxDistance: 0
+  Length: 1312
 --- !u!114 &5225547037193185975
 MonoBehaviour:
   m_ObjectHideFlags: 0

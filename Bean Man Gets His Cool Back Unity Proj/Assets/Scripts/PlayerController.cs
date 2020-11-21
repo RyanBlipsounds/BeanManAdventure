@@ -48,6 +48,8 @@ public class PlayerController : MonoBehaviour
     private int index = 0;
     private NPC thisNPCList = null;
 
+    private bool _hasPlayed = false;
+
     void Start()
     {
         Bag.transform.position = m_BagStartPosition.transform.position;
@@ -57,6 +59,7 @@ public class PlayerController : MonoBehaviour
         BaggedBeanMan.SetActive(false);
 
         _canTalkBox = GameObject.Find("CanTalkBox").GetComponent<UIController>();
+        Debug.Log("turd 2");
         _dialogueBox = GameObject.Find("DialogueBox").GetComponent<UIController>();
         _responseBox = GameObject.Find("ResponseBox").GetComponent<UIController>();
 
@@ -119,6 +122,7 @@ public class PlayerController : MonoBehaviour
         if (characterInRange)
         {
             _canTalkBox.isActive = true;
+            Debug.Log("turd 3");
             if (Input.GetKeyDown(KeyCode.Space) && _dialogueBox.isActive == false)
             {
                 if (!scriptNPCList.Contains(thisCharacter.GetComponent<NPC>()))
@@ -174,6 +178,19 @@ public class PlayerController : MonoBehaviour
             _dialogueBox.isActive = false;
             _responseBox.isActive = false;
             _canTalkBox.isActive = false;
+            
+
+        }
+        if (_canTalkBox.isActive == false && _hasPlayed == false)
+        {
+            _hasPlayed = true;
+            FMODUnity.RuntimeManager.PlayOneShot("event:/TalkBox");
+            Debug.Log("Sadboi");
+        } else if(_canTalkBox.isActive == true && _hasPlayed == true)
+        {
+            _hasPlayed = false;
+            FMODUnity.RuntimeManager.PlayOneShot("event:/TalkBox");
+            Debug.Log("Sadboi 2");
         }
     }
 
@@ -219,7 +236,8 @@ public class PlayerController : MonoBehaviour
             }
 
             _canTalkBox.canTalkBoxAnimator.ShowText(collision.gameObject.name);
-
+            Debug.Log("turd 1"); 
+         
 
             characterInRange = true;
 
