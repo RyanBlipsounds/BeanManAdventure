@@ -43,5 +43,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fd20772a499ba1a4cada85bccd1143f7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Character: {x: 0, y: 0, z: 0}
-  thisVector: {x: 0, y: 0, z: 0}
+  m_Character: {fileID: 0}
+  characterPosition: {x: 0, y: 0, z: 0}
+  thisPosition: {x: 0, y: 0, z: 0}

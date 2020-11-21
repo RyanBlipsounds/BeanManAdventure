@@ -110,6 +110,7 @@ public class ActManager : MonoBehaviour
 
     public void LoadGraphic(GameObject graphic)
     {
+
         activateGraphicTransition = true;
 
         //Debug.Log("Graphic " + graphicShowTime);
