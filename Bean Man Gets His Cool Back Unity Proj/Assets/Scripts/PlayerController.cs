@@ -72,6 +72,7 @@ public class PlayerController : MonoBehaviour
         {
             if (bagMoving == false)
             {
+                Dialogue();
                 ProcessInputs();
             }
             else {
@@ -87,9 +88,8 @@ public class PlayerController : MonoBehaviour
         }
         Move();
         Animate();
-        Dialogue();
         
-        if (Bag.transform.position.y < m_BagEndPosition.transform.position.y + 0.01 && bagMoving == true)
+        if (Bag.transform.position.y < m_BagEndPosition.transform.position.y + 0.1 && bagMoving == true)
         {
             Bagged();
             Bag.SetActive(false);

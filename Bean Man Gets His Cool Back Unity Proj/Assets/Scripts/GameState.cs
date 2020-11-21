@@ -49,10 +49,15 @@ public class GameState : MonoBehaviour
 
     public void Conversation(string gameObjectName) {
         if (gameObjectName == "Granny Smith") {
-            conversationDict["ISCOOL"] = "Wassup Bean Man! Beango isn't quite ready yet. Go mingle.";
+            //if(NPC script hasSpoken != true && ISCOOL) {
+            //    conversationDict["ISCOOL"] = "Wassup Bean Man! Beango isn't quite ready yet. Go mingle.";
+            //} else if (beanState == GameState.gameState.ISCOOL || beanState == GameState.gameState.BEANGOHINT)
+            //{
+            //    conversationDict["ISCOOL"] = "Let's go Beango!";
+            //    conversationDict["BEANGOHINT"] = "Let's go Beango!"; // This state should push into Beango
+           // }
             conversationDict["ISNOTCOOL"] = "Oh! BM you need some help. Here.";
             conversationDict["ISBAGGED"] = "Long time no See!";
-            conversationDict["BEANGOHINT"] = "Let's go Beango!"; // This state should push into Beango
             conversationDict["MYGLASSES"] = "Et...Tu..Granny?";
             conversationDict["ENDCONVO"] = "I personally think that the bag over the head is just too Cliche.";
             return;
