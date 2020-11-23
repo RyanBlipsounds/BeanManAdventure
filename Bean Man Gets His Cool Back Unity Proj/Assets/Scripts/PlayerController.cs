@@ -43,8 +43,9 @@ public class PlayerController : MonoBehaviour
 
     public ActManager _actManager;
     public bool bagMoving = false;
+    public bool finishedBagMove = false;
 
-    private GameObject thisCharacter = null;
+    public GameObject thisCharacter = null;
     private int index = 0;
     private NPC thisNPCList = null;
 
@@ -92,12 +93,13 @@ public class PlayerController : MonoBehaviour
         Move();
         Animate();
         
-        if (Bag.transform.position.y < m_BagEndPosition.transform.position.y + 0.1 && bagMoving == true)
+        if (Bag.transform.position.y < m_BagEndPosition.transform.position.y + 0.05 && bagMoving == true && finishedBagMove == false)
         {
             Bagged();
             Bag.SetActive(false);
             bagMoving = false;
-        } else if (gameState.beanState == GameState.gameState.ISBAGGED && Bag.transform.position != m_BagEndPosition.transform.position) {
+            finishedBagMove = true;
+        } else if (gameState.beanState == GameState.gameState.ISBAGGED && Bag.transform.position != m_BagEndPosition.transform.position && finishedBagMove == false) {
             bagMoving = true;
             Bag.transform.position = Vector2.MoveTowards(Bag.transform.position, m_BagEndPosition.transform.position, Time.deltaTime * 1);
         }
@@ -222,35 +224,5 @@ public class PlayerController : MonoBehaviour
 
         BaggedAnimator.SetFloat("Speed", movementSpeed);
         BaggedAnimator.SetFloat("YAxisDirection", movementDirection.y);
-    }
-
-    public void OnTriggerEnter2D(Collider2D collision)
-    {
-        if (collision.gameObject.tag == "NPC") {
-
-            //This initializes 
-            if (!Characters.Contains(collision.gameObject))
-            {
-                thisCharacter = GameObject.Find(collision.gameObject.name);
-                
-            }
-
-            _canTalkBox.canTalkBoxAnimator.ShowText(collision.gameObject.name);
-            Debug.Log("turd 1"); 
-         
-
-            characterInRange = true;
-
-            //Sets the Dictionary in GameState to the proper character dict and state
-            gameState.Conversation(collision.gameObject.name);
-        }
-    }
-
-    public void OnTriggerExit2D(Collider2D other)
-    {
-        if (other.gameObject.tag == "NPC")
-        {
-            characterInRange = false;
-        }
     }
 }
