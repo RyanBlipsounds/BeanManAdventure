@@ -226,7 +226,7 @@ public class GameState : MonoBehaviour
             if (talkedGranny) 
             {
                 beanState = gameState.ISBAGGED;
-                //UIScript.State.text = "IS BAGGED";
+                _UILogic.setCoolness(coolMeterMed);
                 talkedChickpea = false;
                 talkedGranny = false;
             }

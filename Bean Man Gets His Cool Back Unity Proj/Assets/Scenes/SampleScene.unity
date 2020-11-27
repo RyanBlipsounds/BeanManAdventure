@@ -880,6 +880,11 @@ PrefabInstance:
       propertyPath: m_AnchoredPosition.y
       value: -83.484985
       objectReference: {fileID: 0}
+    - target: {fileID: 9069917652183381563, guid: 3dbc8e0314522c2468ee7a49a635f231,
+        type: 3}
+      propertyPath: _UILogic
+      value: 
+      objectReference: {fileID: 1100470254}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 3dbc8e0314522c2468ee7a49a635f231, type: 3}
 --- !u!114 &1593497133 stripped
