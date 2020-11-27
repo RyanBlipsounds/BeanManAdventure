@@ -5,10 +5,11 @@ public class GameState : MonoBehaviour
 {
     // The game's UI
     [SerializeField]
-    private UILogic UIScript = default;
+    private UILogic _UILogic = default;
 
     [SerializeField]
     private PlayerController _playerController;
+
     public NPC _npc = default;
     public ActManager _actManager = default;
 
@@ -32,6 +33,11 @@ public class GameState : MonoBehaviour
     private bool talkedGranny = false;
     private bool talkedLina = false;
 
+    
+    private float coolMeterHigh = 1.0f;
+    private float coolMeterMed = .6f;
+    private float coolMeterLow = .365f;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -43,7 +49,7 @@ public class GameState : MonoBehaviour
         conversationDict.Add("MYGLASSES", "MYGLASSES");
         conversationDict.Add("ENDCONVO", "ENDCONVO");
 
-        //UIScript.State.text = "IS COOL!";
+        _UILogic.setCoolness(coolMeterHigh);
     }
 
     public void Conversation(string gameObjectName) {
@@ -192,6 +198,7 @@ public class GameState : MonoBehaviour
 
     public void IsNotCool() {
         beanState = gameState.ISNOTCOOL;
+        _UILogic.setCoolness(coolMeterLow);
         RandomizeGlasses();
 
         foreach (NPC character in _playerController.scriptNPCList)
@@ -204,6 +211,7 @@ public class GameState : MonoBehaviour
 
     public void IsBagged() {
         beanState = gameState.ISBAGGED;
+        _UILogic.setCoolness(coolMeterMed);
     }
 
     public void Ending() {

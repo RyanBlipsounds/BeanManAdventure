@@ -6,6 +6,7 @@ public class UILogic : MonoBehaviour
     // Main Menu Game Objects
     public GameObject MainMenu;
     public Button MMPlayButton;
+    public Slider coolSlider;
 
     public PlayerController pc;
 
@@ -31,4 +32,8 @@ public class UILogic : MonoBehaviour
         
     }
 
+    public void setCoolness(float coolness)
+    {
+        coolSlider.value = coolness;
+    }
 }
