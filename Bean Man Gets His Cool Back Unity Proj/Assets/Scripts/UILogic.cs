@@ -7,11 +7,14 @@ public class UILogic : MonoBehaviour
     public GameObject MainMenu;
     public Button MMPlayButton;
 
+    public PlayerController pc;
+
 
 
     private void Start()
     {
         MMPlayButton.onClick.AddListener(OnButtonAClicked);
+        pc.bagMoving = true;
     }
     private void OnDestroy()
     {
@@ -20,6 +23,7 @@ public class UILogic : MonoBehaviour
     private void OnButtonAClicked()
     {
         MainMenu.SetActive(false);
+        pc.bagMoving = false;
         // Allow Movement
     }
     private void OnButtonBClicked()

@@ -798,6 +798,11 @@ PrefabInstance:
       propertyPath: gameState
       value: 
       objectReference: {fileID: 1990546118}
+    - target: {fileID: 1922301272520682933, guid: 3dbc8e0314522c2468ee7a49a635f231,
+        type: 3}
+      propertyPath: pc
+      value: 
+      objectReference: {fileID: 1945081241}
     - target: {fileID: 5167737920755793008, guid: 3dbc8e0314522c2468ee7a49a635f231,
         type: 3}
       propertyPath: m_gameState
