@@ -6,12 +6,16 @@ public class UILogic : MonoBehaviour
     // Main Menu Game Objects
     public GameObject MainMenu;
     public Button MMPlayButton;
+    public Slider coolSlider;
+
+    public PlayerController pc;
 
 
 
     private void Start()
     {
         MMPlayButton.onClick.AddListener(OnButtonAClicked);
+        pc.bagMoving = true;
     }
     private void OnDestroy()
     {
@@ -20,6 +24,7 @@ public class UILogic : MonoBehaviour
     private void OnButtonAClicked()
     {
         MainMenu.SetActive(false);
+        pc.bagMoving = false;
         // Allow Movement
     }
     private void OnButtonBClicked()
@@ -27,4 +32,8 @@ public class UILogic : MonoBehaviour
         
     }
 
+    public void setCoolness(float coolness)
+    {
+        coolSlider.value = coolness;
+    }
 }
