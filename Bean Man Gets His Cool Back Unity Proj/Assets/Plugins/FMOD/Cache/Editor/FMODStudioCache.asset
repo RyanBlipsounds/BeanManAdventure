@@ -1,25 +1,5 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!114 &-2912887371067882993
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c18180ecb35941f4682ae60107b85b7c, type: 3}
-  m_Name: bank:/Master.bank
-  m_EditorClassIdentifier: 
-  Path: ../Sound Boi/Build/Desktop/Master.bank
-  Name: Master
-
-  lastModified: 637420860998105328
-
-  LoadResult: 0
-  FileSizes: []
-  Exists: 1
 --- !u!114 &11400000
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -33,21 +13,20 @@ MonoBehaviour:
   m_Name: FMODStudioCache
   m_EditorClassIdentifier: 
   EditorBanks:
-  - {fileID: 1872126670358714804}
-  - {fileID: -2912887371067882993}
+  - {fileID: 6392113596281031596}
+  - {fileID: 3369702041603077526}
   EditorEvents:
-  - {fileID: 7966419518002522534}
-  - {fileID: 5225547037193185975}
-  - {fileID: 4195955721536567303}
+  - {fileID: 3503456595496860185}
+  - {fileID: 3745288727486929619}
+  - {fileID: 4525063142999476406}
   EditorParameters: []
   MasterBanks:
-  - {fileID: -2912887371067882993}
+  - {fileID: 3369702041603077526}
   StringsBanks:
-  - {fileID: 1872126670358714804}
-  stringsBankWriteTime: 637420860998105328
- 
+  - {fileID: 6392113596281031596}
+  stringsBankWriteTime: 637415931754538426
   cacheVersion: 5
---- !u!114 &1872126670358714804
+--- !u!114 &3369702041603077526
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -57,63 +36,15 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: c18180ecb35941f4682ae60107b85b7c, type: 3}
-  m_Name: bank:/Master.strings.bank
+  m_Name: bank:/Master.bank
   m_EditorClassIdentifier: 
-  Path: ../Sound Boi/Build/Desktop/Master.strings.bank
-  Name: Master.strings
-  lastModified: 637420860998105328
+  Path: ../Sound Boi/Build/Desktop/Master.bank
+  Name: Master
+  lastModified: 637415931754498529
   LoadResult: 0
-  FileSizes:
-  - Name: 
-    Value: 848
+  FileSizes: []
   Exists: 1
---- !u!114 &4195955721536567303
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
-  m_Name: event:/TalkBox
-  m_EditorClassIdentifier: 
-  Path: event:/TalkBox
-  guid: dc800b3f38ee3d40af016644de0c0735
-  Banks:
-  - {fileID: -2912887371067882993}
-  IsStream: 0
-  Is3D: 0
-  IsOneShot: 1
-  Parameters: []
-  MinDistance: 0
-  MaxDistance: 0
-  Length: 1312
---- !u!114 &5225547037193185975
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
-  m_Name: event:/Test Guy
-  m_EditorClassIdentifier: 
-  Path: event:/Test Guy
-  guid: ea341bf4d1fbb64ba05edf2bbddcfd35
-  Banks:
-  - {fileID: -2912887371067882993}
-  IsStream: 0
-  Is3D: 0
-  IsOneShot: 1
-  Parameters: []
-  MinDistance: 0
-  MaxDistance: 0
-  Length: 0
---- !u!114 &7966419518002522534
+--- !u!114 &3503456595496860185
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -128,7 +59,7 @@ MonoBehaviour:
   Path: event:/Footsteps 2
   guid: 4e9c5f1ad111804aba32d2b1cd695a5d
   Banks:
-  - {fileID: -2912887371067882993}
+  - {fileID: 3369702041603077526}
   IsStream: 0
   Is3D: 0
   IsOneShot: 1
@@ -136,3 +67,69 @@ MonoBehaviour:
   MinDistance: 0
   MaxDistance: 0
   Length: 608
+--- !u!114 &3745288727486929619
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: event:/TalkBox
+  m_EditorClassIdentifier: 
+  Path: event:/TalkBox
+  guid: dc800b3f38ee3d40af016644de0c0735
+  Banks:
+  - {fileID: 3369702041603077526}
+  IsStream: 0
+  Is3D: 0
+  IsOneShot: 1
+  Parameters: []
+  MinDistance: 0
+  MaxDistance: 0
+  Length: 1312
+--- !u!114 &4525063142999476406
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: event:/Test Guy
+  m_EditorClassIdentifier: 
+  Path: event:/Test Guy
+  guid: ea341bf4d1fbb64ba05edf2bbddcfd35
+  Banks:
+  - {fileID: 3369702041603077526}
+  IsStream: 0
+  Is3D: 0
+  IsOneShot: 1
+  Parameters: []
+  MinDistance: 0
+  MaxDistance: 0
+  Length: 0
+--- !u!114 &6392113596281031596
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c18180ecb35941f4682ae60107b85b7c, type: 3}
+  m_Name: bank:/Master.strings.bank
+  m_EditorClassIdentifier: 
+  Path: ../Sound Boi/Build/Desktop/Master.strings.bank
+  Name: Master.strings
+  lastModified: 637415931754538426
+  LoadResult: 0
+  FileSizes:
+  - Name: 
+    Value: 848
+  Exists: 1

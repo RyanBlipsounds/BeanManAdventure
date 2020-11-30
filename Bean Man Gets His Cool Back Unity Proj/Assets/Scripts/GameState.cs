@@ -35,7 +35,7 @@ public class GameState : MonoBehaviour
 
     
     private float coolMeterHigh = 1.0f;
-    private float coolMeterMed = .6f;
+    private float coolMeterMed = .72f;
     private float coolMeterLow = .365f;
 
     // Start is called before the first frame update

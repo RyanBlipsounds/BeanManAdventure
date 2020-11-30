@@ -810,6 +810,11 @@ PrefabInstance:
       propertyPath: gameState
       value: 
       objectReference: {fileID: 1990546118}
+    - target: {fileID: 511272602993848809, guid: 3dbc8e0314522c2468ee7a49a635f231,
+        type: 3}
+      propertyPath: m_RootOrder
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 1922301272520682933, guid: 3dbc8e0314522c2468ee7a49a635f231,
         type: 3}
       propertyPath: pc
@@ -860,10 +865,10 @@ PrefabInstance:
       propertyPath: _playerController
       value: 
       objectReference: {fileID: 0}
-    - target: {fileID: 7047772172695651114, guid: 3dbc8e0314522c2468ee7a49a635f231,
+    - target: {fileID: 8380489691363899775, guid: 3dbc8e0314522c2468ee7a49a635f231,
         type: 3}
-      propertyPath: m_AnchoredPosition.y
-      value: -9.500004
+      propertyPath: m_RootOrder
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 8380489691363899775, guid: 3dbc8e0314522c2468ee7a49a635f231,
         type: 3}
