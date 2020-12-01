@@ -186,12 +186,13 @@ public class PlayerController : MonoBehaviour
         if (_canTalkBox.isActive == false && _hasPlayed == false)
         {
             _hasPlayed = true;
-            FMODUnity.RuntimeManager.PlayOneShot("event:/TalkBox");
+            // Bruh this sound is horrendous
+            //FMODUnity.RuntimeManager.PlayOneShot("event:/TalkBox");
             Debug.Log("Sadboi");
         } else if(_canTalkBox.isActive == true && _hasPlayed == true)
         {
             _hasPlayed = false;
-            FMODUnity.RuntimeManager.PlayOneShot("event:/TalkBox");
+            //FMODUnity.RuntimeManager.PlayOneShot("event:/TalkBox");
             Debug.Log("Sadboi 2");
         }
     }
