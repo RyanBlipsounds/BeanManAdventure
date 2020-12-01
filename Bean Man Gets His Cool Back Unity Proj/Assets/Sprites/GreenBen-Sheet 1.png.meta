@@ -1,55 +1,55 @@
 fileFormatVersion: 2
-guid: a58349d873741bc4a81245c34675ad11
+guid: 40c2b234a77b01647a27b0e69dd08763
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: 185137042931787630
-    second: GreenBen-Sheet_0
+      213: -5609708218592592635
+    second: GreenBen-Sheet 1_0
   - first:
-      213: -8956190611749717162
-    second: GreenBen-Sheet_1
+      213: -1656810947689255127
+    second: GreenBen-Sheet 1_1
   - first:
-      213: -4403188862084919670
-    second: GreenBen-Sheet_2
+      213: 7106496822277522720
+    second: GreenBen-Sheet 1_2
   - first:
-      213: -9046253537048995787
-    second: GreenBen-Sheet_3
+      213: 2817178295634171752
+    second: GreenBen-Sheet 1_3
   - first:
-      213: 7748302002088117069
-    second: GreenBen-Sheet_4
+      213: 4493804019822796364
+    second: GreenBen-Sheet 1_4
   - first:
-      213: 6475692915495282684
-    second: GreenBen-Sheet_5
+      213: 7303725706852072064
+    second: GreenBen-Sheet 1_5
   - first:
-      213: 8008512584190608841
-    second: GreenBen-Sheet_6
+      213: 2355967430581075670
+    second: GreenBen-Sheet 1_6
   - first:
-      213: -2156708950244987124
-    second: GreenBen-Sheet_7
+      213: -4747924763630700787
+    second: GreenBen-Sheet 1_7
   - first:
-      213: 7585363301371324027
-    second: GreenBen-Sheet_8
+      213: -2072299095158221437
+    second: GreenBen-Sheet 1_8
   - first:
-      213: -803849417323357272
-    second: GreenBen-Sheet_9
+      213: -5883888662639250412
+    second: GreenBen-Sheet 1_9
   - first:
-      213: 8628522134763763007
-    second: GreenBen-Sheet_10
+      213: 175300751879471609
+    second: GreenBen-Sheet 1_10
   - first:
-      213: 6485503181538956831
-    second: GreenBen-Sheet_11
+      213: -4936942378832390270
+    second: GreenBen-Sheet 1_11
   - first:
-      213: 3323896200072255364
-    second: GreenBen-Sheet_12
+      213: -6485904027138951948
+    second: GreenBen-Sheet 1_12
   - first:
-      213: -3136056304924477966
-    second: GreenBen-Sheet_13
+      213: -7487042704918469007
+    second: GreenBen-Sheet 1_13
   - first:
-      213: 1323545524987763987
-    second: GreenBen-Sheet_14
+      213: -8120884178336920878
+    second: GreenBen-Sheet 1_14
   - first:
-      213: -6441587124098251835
-    second: GreenBen-Sheet_15
+      213: 3021165764427800095
+    second: GreenBen-Sheet 1_15
   externalObjects: {}
   serializedVersion: 10
   mipmaps:
@@ -79,7 +79,7 @@ TextureImporter:
   maxTextureSize: 2048
   textureSettings:
     serializedVersion: 2
-    filterMode: -1
+    filterMode: 0
     aniso: -1
     mipBias: -100
     wrapU: 1
@@ -134,7 +134,7 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: GreenBen-Sheet_0
+      name: GreenBen-Sheet 1_0
       rect:
         serializedVersion: 2
         x: 0
@@ -148,14 +148,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: e6727bed82db19200800000000000000
-      internalID: 185137042931787630
+      spriteID: 50df231c8105622b0800000000000000
+      internalID: -5609708218592592635
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: GreenBen-Sheet_1
+      name: GreenBen-Sheet 1_1
       rect:
         serializedVersion: 2
         x: 20
@@ -169,14 +169,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 65b38fd271835b380800000000000000
-      internalID: -8956190611749717162
+      spriteID: 92fe003a833d109e0800000000000000
+      internalID: -1656810947689255127
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: GreenBen-Sheet_2
+      name: GreenBen-Sheet 1_2
       rect:
         serializedVersion: 2
         x: 40
@@ -190,14 +190,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: a8ec87c1f0bb4e2c0800000000000000
-      internalID: -4403188862084919670
+      spriteID: 0254b4145395f9260800000000000000
+      internalID: 7106496822277522720
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: GreenBen-Sheet_3
+      name: GreenBen-Sheet 1_3
       rect:
         serializedVersion: 2
         x: 60
@@ -211,14 +211,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 538d2105650457280800000000000000
-      internalID: -9046253537048995787
+      spriteID: 867173cdbb0a81720800000000000000
+      internalID: 2817178295634171752
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: GreenBen-Sheet_4
+      name: GreenBen-Sheet 1_4
       rect:
         serializedVersion: 2
         x: 80
@@ -232,14 +232,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: d4309ee5e9f778b60800000000000000
-      internalID: 7748302002088117069
+      spriteID: c4e92c362f23d5e30800000000000000
+      internalID: 4493804019822796364
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: GreenBen-Sheet_5
+      name: GreenBen-Sheet 1_5
       rect:
         serializedVersion: 2
         x: 100
@@ -253,14 +253,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: cf72c9e95684ed950800000000000000
-      internalID: 6475692915495282684
+      spriteID: 08a7ec565db0c5560800000000000000
+      internalID: 7303725706852072064
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: GreenBen-Sheet_6
+      name: GreenBen-Sheet 1_6
       rect:
         serializedVersion: 2
         x: 120
@@ -274,14 +274,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 9c54defa3c3f32f60800000000000000
-      internalID: 8008512584190608841
+      spriteID: 6debc2a45e312b020800000000000000
+      internalID: 2355967430581075670
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: GreenBen-Sheet_7
+      name: GreenBen-Sheet 1_7
       rect:
         serializedVersion: 2
         x: 140
@@ -295,14 +295,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: c0fedb0f2a4d112e0800000000000000
-      internalID: -2156708950244987124
+      spriteID: d07f283459bfb1eb0800000000000000
+      internalID: -4747924763630700787
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: GreenBen-Sheet_8
+      name: GreenBen-Sheet 1_8
       rect:
         serializedVersion: 2
         x: 160
@@ -316,14 +316,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: b76a58ecbbf944960800000000000000
-      internalID: 7585363301371324027
+      spriteID: 3851bb4d3f6bd33e0800000000000000
+      internalID: -2072299095158221437
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: GreenBen-Sheet_9
+      name: GreenBen-Sheet 1_9
       rect:
         serializedVersion: 2
         x: 180
@@ -337,14 +337,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 8ab5983c63728d4f0800000000000000
-      internalID: -803849417323357272
+      spriteID: 414707d7f6a385ea0800000000000000
+      internalID: -5883888662639250412
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: GreenBen-Sheet_10
+      name: GreenBen-Sheet 1_10
       rect:
         serializedVersion: 2
         x: 200
@@ -358,14 +358,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: f35703b6a2baeb770800000000000000
-      internalID: 8628522134763763007
+      spriteID: 9f182a4ea1bce6200800000000000000
+      internalID: 175300751879471609
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: GreenBen-Sheet_11
+      name: GreenBen-Sheet 1_11
       rect:
         serializedVersion: 2
         x: 220
@@ -379,14 +379,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: f169b4d28c2210a50800000000000000
-      internalID: 6485503181538956831
+      spriteID: 2879f1140157c7bb0800000000000000
+      internalID: -4936942378832390270
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: GreenBen-Sheet_12
+      name: GreenBen-Sheet 1_12
       rect:
         serializedVersion: 2
         x: 240
@@ -400,14 +400,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 487d393bbf9d02e20800000000000000
-      internalID: 3323896200072255364
+      spriteID: 4f47b1fa6a07df5a0800000000000000
+      internalID: -6485904027138951948
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: GreenBen-Sheet_13
+      name: GreenBen-Sheet 1_13
       rect:
         serializedVersion: 2
         x: 260
@@ -421,14 +421,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 2f53a5df76d7a74d0800000000000000
-      internalID: -3136056304924477966
+      spriteID: 176a723f35ea81890800000000000000
+      internalID: -7487042704918469007
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: GreenBen-Sheet_14
+      name: GreenBen-Sheet 1_14
       rect:
         serializedVersion: 2
         x: 280
@@ -442,14 +442,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 31d14fc74ad2e5210800000000000000
-      internalID: 1323545524987763987
+      spriteID: 2da4328bdd2dc4f80800000000000000
+      internalID: -8120884178336920878
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: GreenBen-Sheet_15
+      name: GreenBen-Sheet 1_15
       rect:
         serializedVersion: 2
         x: 300
@@ -463,8 +463,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 5c3c46eb3a2ea96a0800000000000000
-      internalID: -6441587124098251835
+      spriteID: f1e5a4481465de920800000000000000
+      internalID: 3021165764427800095
       vertices: []
       indices: 
       edges: []
@@ -472,7 +472,7 @@ TextureImporter:
     outline: []
     physicsShape: []
     bones: []
-    spriteID: 02b9d00b36fef6c4ab14dca75d1eeca9
+    spriteID: d68b2bd7f261db246a335b66560dc846
     internalID: 0
     vertices: []
     indices: 

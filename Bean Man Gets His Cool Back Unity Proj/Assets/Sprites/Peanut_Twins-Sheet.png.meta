@@ -1,55 +1,55 @@
 fileFormatVersion: 2
-guid: 8a99dcc10642bf44ca4c9b3f1684896f
+guid: f8fba3199a23a75409a2bd922f761dc9
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: -5582059000584838462
-    second: Peanut Twins-Sheet_0
+      213: 5872071618089458099
+    second: Peanut_Twins-Sheet_0
   - first:
-      213: 2390504905183342737
-    second: Peanut Twins-Sheet_1
+      213: 8741977499525906904
+    second: Peanut_Twins-Sheet_1
   - first:
-      213: 1336104156214009178
-    second: Peanut Twins-Sheet_2
+      213: -2865311261058285298
+    second: Peanut_Twins-Sheet_2
   - first:
-      213: 4571079993453161445
-    second: Peanut Twins-Sheet_3
+      213: -3818235162969365377
+    second: Peanut_Twins-Sheet_3
   - first:
-      213: 9043240446907954387
-    second: Peanut Twins-Sheet_4
+      213: 1754788041897735362
+    second: Peanut_Twins-Sheet_4
   - first:
-      213: 6742831704803888599
-    second: Peanut Twins-Sheet_5
+      213: -3813828423052032787
+    second: Peanut_Twins-Sheet_5
   - first:
-      213: -7425920127115119705
-    second: Peanut Twins-Sheet_6
+      213: -7153665798368475335
+    second: Peanut_Twins-Sheet_6
   - first:
-      213: 8243840762120715965
-    second: Peanut Twins-Sheet_7
+      213: -8162110531514685639
+    second: Peanut_Twins-Sheet_7
   - first:
-      213: 7957228975919431369
-    second: Peanut Twins-Sheet_8
+      213: 3624763106896078678
+    second: Peanut_Twins-Sheet_8
   - first:
-      213: -2556864901785410361
-    second: Peanut Twins-Sheet_9
+      213: 2241023157214087023
+    second: Peanut_Twins-Sheet_9
   - first:
-      213: 6302185408044475828
-    second: Peanut Twins-Sheet_10
+      213: -2008688705756763401
+    second: Peanut_Twins-Sheet_10
   - first:
-      213: 7094263583255661707
-    second: Peanut Twins-Sheet_11
+      213: 2923441341519884325
+    second: Peanut_Twins-Sheet_11
   - first:
-      213: 5057034995111507999
-    second: Peanut Twins-Sheet_12
+      213: 4947573445323275074
+    second: Peanut_Twins-Sheet_12
   - first:
-      213: -1231320219951456522
-    second: Peanut Twins-Sheet_13
+      213: 5138056747810534751
+    second: Peanut_Twins-Sheet_13
   - first:
-      213: -6644330722547907536
-    second: Peanut Twins-Sheet_14
+      213: -5338140072574053596
+    second: Peanut_Twins-Sheet_14
   - first:
-      213: -5311046345121855721
-    second: Peanut Twins-Sheet_15
+      213: 4857406816430619150
+    second: Peanut_Twins-Sheet_15
   externalObjects: {}
   serializedVersion: 10
   mipmaps:
@@ -79,7 +79,7 @@ TextureImporter:
   maxTextureSize: 2048
   textureSettings:
     serializedVersion: 2
-    filterMode: -1
+    filterMode: 0
     aniso: -1
     mipBias: -100
     wrapU: 1
@@ -134,7 +134,7 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: Peanut Twins-Sheet_0
+      name: Peanut_Twins-Sheet_0
       rect:
         serializedVersion: 2
         x: 0
@@ -148,14 +148,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 2c26edaf9ea8882b0800000000000000
-      internalID: -5582059000584838462
+      spriteID: 3b910eb660acd7150800000000000000
+      internalID: 5872071618089458099
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Peanut Twins-Sheet_1
+      name: Peanut_Twins-Sheet_1
       rect:
         serializedVersion: 2
         x: 20
@@ -169,14 +169,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 190384bbb87cc2120800000000000000
-      internalID: 2390504905183342737
+      spriteID: 8d103b5083eb15970800000000000000
+      internalID: 8741977499525906904
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Peanut Twins-Sheet_2
+      name: Peanut_Twins-Sheet_2
       rect:
         serializedVersion: 2
         x: 40
@@ -190,14 +190,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: a5d1f0ea6abca8210800000000000000
-      internalID: 1336104156214009178
+      spriteID: e01c1b1d69e5c38d0800000000000000
+      internalID: -2865311261058285298
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Peanut Twins-Sheet_3
+      name: Peanut_Twins-Sheet_3
       rect:
         serializedVersion: 2
         x: 60
@@ -211,14 +211,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 5ebaba1190dbf6f30800000000000000
-      internalID: 4571079993453161445
+      spriteID: f742e426957e20bc0800000000000000
+      internalID: -3818235162969365377
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Peanut Twins-Sheet_4
+      name: Peanut_Twins-Sheet_4
       rect:
         serializedVersion: 2
         x: 80
@@ -232,14 +232,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 3d4b468f54b008d70800000000000000
-      internalID: 9043240446907954387
+      spriteID: 2c4fa654d624a5810800000000000000
+      internalID: 1754788041897735362
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Peanut Twins-Sheet_5
+      name: Peanut_Twins-Sheet_5
       rect:
         serializedVersion: 2
         x: 100
@@ -253,14 +253,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 7ddc311e5b9539d50800000000000000
-      internalID: 6742831704803888599
+      spriteID: de402b9714f821bc0800000000000000
+      internalID: -3813828423052032787
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Peanut Twins-Sheet_6
+      name: Peanut_Twins-Sheet_6
       rect:
         serializedVersion: 2
         x: 120
@@ -274,14 +274,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 7a331e41df4d1f890800000000000000
-      internalID: -7425920127115119705
+      spriteID: 937c26eabd219bc90800000000000000
+      internalID: -7153665798368475335
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Peanut Twins-Sheet_7
+      name: Peanut_Twins-Sheet_7
       rect:
         serializedVersion: 2
         x: 140
@@ -295,14 +295,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: dbe3713de71086270800000000000000
-      internalID: 8243840762120715965
+      spriteID: 937a79f57bb5abe80800000000000000
+      internalID: -8162110531514685639
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Peanut Twins-Sheet_8
+      name: Peanut_Twins-Sheet_8
       rect:
         serializedVersion: 2
         x: 160
@@ -316,14 +316,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 9ce7f1a2891cd6e60800000000000000
-      internalID: 7957228975919431369
+      spriteID: 6576b7547debd4230800000000000000
+      internalID: 3624763106896078678
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Peanut Twins-Sheet_9
+      name: Peanut_Twins-Sheet_9
       rect:
         serializedVersion: 2
         x: 180
@@ -337,14 +337,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 7c4aa6e2be0348cd0800000000000000
-      internalID: -2556864901785410361
+      spriteID: f678b2320b6b91f10800000000000000
+      internalID: 2241023157214087023
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Peanut Twins-Sheet_10
+      name: Peanut_Twins-Sheet_10
       rect:
         serializedVersion: 2
         x: 200
@@ -358,14 +358,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 4b5242bfc3cd57750800000000000000
-      internalID: 6302185408044475828
+      spriteID: 7fa670db344bf14e0800000000000000
+      internalID: -2008688705756763401
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Peanut Twins-Sheet_11
+      name: Peanut_Twins-Sheet_11
       rect:
         serializedVersion: 2
         x: 220
@@ -379,14 +379,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: b8c81f65423e37260800000000000000
-      internalID: 7094263583255661707
+      spriteID: 520fbfa3966229820800000000000000
+      internalID: 2923441341519884325
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Peanut Twins-Sheet_12
+      name: Peanut_Twins-Sheet_12
       rect:
         serializedVersion: 2
         x: 240
@@ -400,14 +400,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: f183754e8823e2640800000000000000
-      internalID: 5057034995111507999
+      spriteID: 24b36acc5df49a440800000000000000
+      internalID: 4947573445323275074
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Peanut Twins-Sheet_13
+      name: Peanut_Twins-Sheet_13
       rect:
         serializedVersion: 2
         x: 260
@@ -421,14 +421,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 6fe9905a8c879eee0800000000000000
-      internalID: -1231320219951456522
+      spriteID: f55bb09b36b0e4740800000000000000
+      internalID: 5138056747810534751
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Peanut Twins-Sheet_14
+      name: Peanut_Twins-Sheet_14
       rect:
         serializedVersion: 2
         x: 280
@@ -442,14 +442,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 034415839689ac3a0800000000000000
-      internalID: -6644330722547907536
+      spriteID: 42312fcf2ed1be5b0800000000000000
+      internalID: -5338140072574053596
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Peanut Twins-Sheet_15
+      name: Peanut_Twins-Sheet_15
       rect:
         serializedVersion: 2
         x: 300
@@ -463,8 +463,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 717006dfc7f5b46b0800000000000000
-      internalID: -5311046345121855721
+      spriteID: e0a78ee83c9f86340800000000000000
+      internalID: 4857406816430619150
       vertices: []
       indices: 
       edges: []
@@ -472,7 +472,7 @@ TextureImporter:
     outline: []
     physicsShape: []
     bones: []
-    spriteID: 601fe993b8813ee4f980780a70fc5ab2
+    spriteID: d86788497591203458d9fd7fd6db305b
     internalID: 0
     vertices: []
     indices: 
