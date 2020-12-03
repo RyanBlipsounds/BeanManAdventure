@@ -51,6 +51,8 @@ public class PlayerController : MonoBehaviour
 
     private bool _hasPlayed = false;
 
+    private float angle = 10f;
+
     void Start()
     {
         Bag.transform.position = m_BagStartPosition.transform.position;
@@ -103,6 +105,7 @@ public class PlayerController : MonoBehaviour
             bagMoving = true;
             Bag.transform.position = Vector2.MoveTowards(Bag.transform.position, m_BagEndPosition.transform.position, Time.deltaTime * 1);
         }
+
     }
 
     public void NoGlasses() {
