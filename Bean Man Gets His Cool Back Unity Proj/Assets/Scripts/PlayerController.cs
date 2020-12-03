@@ -51,6 +51,8 @@ public class PlayerController : MonoBehaviour
 
     private bool _hasPlayed = false;
 
+   
+
     void Start()
     {
         Bag.transform.position = m_BagStartPosition.transform.position;
