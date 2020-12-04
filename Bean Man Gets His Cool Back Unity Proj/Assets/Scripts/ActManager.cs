@@ -14,8 +14,17 @@ public class ActManager : MonoBehaviour
 
     private GameObject EndingScreen;
     public GameObject BeangoScreen;
-    public GameObject ChickPeaLoseEnding;
+    public GameObject ChickPeaEnding;
     public GameObject BeanManWinEnding;
+    public GameObject LinaBeanEnding;
+    public GameObject PeanutTwinEnding;
+    public GameObject GrannySmithEnding;
+    public GameObject FireHydrantEnding;
+    public GameObject SlimSausageWinning;
+    public GameObject BeanManLeavesBagged;
+    public GameObject BeanManLeaves;
+    public GameObject GreenBenEnding;
+    public GameObject BirthdayCakeEnding;
 
     public GameObject BeanManSpawnPosition;
 
@@ -140,15 +149,37 @@ public class ActManager : MonoBehaviour
             EndingScreen = BeanManWinEnding;
         }
         if (ending == "Lina Bean") {
-            EndingScreen = ChickPeaLoseEnding;
+            EndingScreen = LinaBeanEnding;
         }
         if (ending == "Chickpea Deputy")
         {
-            EndingScreen = ChickPeaLoseEnding;
+            EndingScreen = ChickPeaEnding;
         }
         if (ending == "Granny Smith") {
-            EndingScreen = ChickPeaLoseEnding;
+            EndingScreen = GrannySmithEnding;
         }
+        if (ending == "Peanut Twins")
+        {
+            EndingScreen = PeanutTwinEnding;
+        }
+        if (ending == "Slim Sausage")
+        {
+            EndingScreen = SlimSausageWinning;
+        }
+        if (ending == "Birthday Cake")
+        {
+            EndingScreen = BirthdayCakeEnding;
+        }
+        if (ending == "GreenBen")
+        {
+            EndingScreen = GreenBenEnding;
+        }
+        if (ending == "Fire Hydrant")
+        {
+            EndingScreen = FireHydrantEnding;
+        }
+
+
         Debug.Log(ending);
 
         activateGraphicTransition = true;

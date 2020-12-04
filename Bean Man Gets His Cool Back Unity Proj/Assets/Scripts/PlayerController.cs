@@ -49,6 +49,8 @@ public class PlayerController : MonoBehaviour
     private int index = 0;
     private NPC thisNPCList = null;
 
+    public int fireHydrantTalkCount = 0;
+
     private bool _hasPlayed = false;
 
     void Start()
@@ -130,8 +132,17 @@ public class PlayerController : MonoBehaviour
             {
                 if (!scriptNPCList.Contains(thisCharacter.GetComponent<NPC>()))
                 {
+                    if (thisCharacter.gameObject.name == "Fire Hydrant" && fireHydrantTalkCount < 5)
+                    {
+                        Debug.Log("Fire Hydrant not Alive Yet");
+                        fireHydrantTalkCount++;
+                        //FireHydrantDialogue(fireHydrantTalkCount);
+                        _dialogueBox.isActive = true;
+                        return;
+                    }
                     scriptNPCList.Add(thisCharacter.GetComponent<NPC>());
                 }
+                Debug.Log(fireHydrantTalkCount);
 
                 if (gameState.beanState == GameState.gameState.ISBAGGED){
                     _responseBox.isActive = true;

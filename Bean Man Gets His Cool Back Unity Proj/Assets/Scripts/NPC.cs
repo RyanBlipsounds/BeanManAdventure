@@ -15,6 +15,7 @@ public class NPC : MonoBehaviour
 
     public GameState gameState = default;
     public GameObject player = default;
+    public bool isLeft = true;
 
     public float angle = 90f;
     public float distance = 1f;
@@ -35,26 +36,16 @@ public class NPC : MonoBehaviour
 
         if (player.transform.position.x < transform.position.x)
         {
+            isLeft = true;
             noglassesSpriteRenderer.flipX = false;
             glassesSpriteRenderer.flipX = false;
             actualGlassesSpriteRenderer.flipX = false;
         } else
         {
+            isLeft = false;
             noglassesSpriteRenderer.flipX = true;
             glassesSpriteRenderer.flipX = true;
             actualGlassesSpriteRenderer.flipX = true;
-        }
-
-        if (this.name == "Birthday Cake" && Vector3.Distance(transform.position, player.transform.position) <= distance)
-        {
-
-            var angleTest = Vector3.Angle(player.transform.right, transform.position - player.transform.position);
-            Debug.Log(angleTest);
-
-            if (Vector3.Angle(player.transform.right, transform.position - player.transform.position) < angle)
-            {
-                Debug.Log("Facing Birthday Cake");
-            }
         }
         
     }
