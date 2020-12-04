@@ -52,102 +52,96 @@ public class GameState : MonoBehaviour
         _UILogic.setCoolness(coolMeterHigh);
     }
 
-    public void Conversation(string gameObjectName) {
+    public void Conversation(string gameObjectName, int count) {
+        if (gameObjectName == "Fire Hydrant")
+        {
+            if (count != 6)
+            {
+                string dialogue = "..";
+                dialogue = "..";
+                int countStart = 0;
+                countStart = 0;
+                while (countStart < count)
+                {
+                    dialogue += ".";
+                    countStart++;
+                }
+                conversationDict["ISCOOL"] = dialogue;
+                return;
+            }
+            else {
+                conversationDict["ISCOOL"] = "Why are you talking to me? I'm a fire hydrant.";
+                conversationDict["BEANGOHINT"] = "Why are you talking to me? I'm a fire hydrant.";
+            }
+        }
+        Debug.Log("1");
         if (gameObjectName == "Granny Smith") {
-            conversationDict["ISCOOL"] = "Let's go Beango!";
+            conversationDict["ISCOOL"] = "My main man Bean Man! Beango isn't ready yet, go mingle with other peeps";
             conversationDict["BEANGOHINT"] = "Let's go Beango!"; // This state should push into Beango
-            conversationDict["ISNOTCOOL"] = "Oh! BM you need some help. Here.";
+            conversationDict["ISNOTCOOL"] = "Bean Man! Looks like you lost your glasses some how! Here, take this";
             conversationDict["ISBAGGED"] = "Long time no See!";
             conversationDict["MYGLASSES"] = "Et...Tu..Granny?";
             conversationDict["ENDCONVO"] = "I personally think that the bag over the head is just too Cliche.";
             return;
         }
+        Debug.Log("2");
         if (gameObjectName == "Chickpea Deputy")
         {
-            conversationDict["ISCOOL"] = "J-walked recently? haha, just kidding....";
-            conversationDict["ISNOTCOOL"] = "Move Along";
-            conversationDict["ISBAGGED"] = "I'm watching you";
-            conversationDict["BEANGOHINT"] = "Don't forget the Daily Beango match with Granny!";
-            conversationDict["MYGLASSES"] = "Did you Steal my Glasses?";
-            conversationDict["ENDCONVO"] = "Stay cool, Deputy";
+            conversationDict["ISCOOL"] = "J-walked recently? haha, just kidding...";
+            conversationDict["ISNOTCOOL"] = "Watch yourself.";
+            conversationDict["ISBAGGED"] = "What do you want?";
+            conversationDict["BEANGOHINT"] = "Oh boy Beango? Gosh, I wish I was cool enough to join in!";
 
             return;
         }
+        Debug.Log("3");
         if (gameObjectName == "Lina Bean")
         {
-            conversationDict["ISCOOL"] = "Bean Man! How are you so CoOoOoL?!";
+            conversationDict["ISCOOL"] = "Bean Man! Are we still on for the movies this weekend?!";
             conversationDict["ISNOTCOOL"] = "*Swipes Left*";
             conversationDict["ISBAGGED"] = "Working out WON'T get my attention. *Wink*";
             conversationDict["BEANGOHINT"] = "I wish we could hang out after Beango at Granny's";
-            conversationDict["MYGLASSES"] = "You look SoOoOo good in my Glasses.";
-            conversationDict["ENDCONVO"] = "I'll see you.    Later.";
 
             return;
         }
+        Debug.Log("4");
         if (gameObjectName == "Birthday Cake")
         {
-            
-            conversationDict["ISCOOL"] = "Bean Man! How are you so CoOoOoL?!";
-            conversationDict["ISNOTCOOL"] = "*Swipes Left*";
-            conversationDict["ISBAGGED"] = "Working out WON'T get my attention. *Wink*";
-            conversationDict["BEANGOHINT"] = "I wish we could hang out after Beango at Granny's";
-            conversationDict["MYGLASSES"] = "You look SoOoOo good in my Glasses.";
-            conversationDict["ENDCONVO"] = "I'll see you.    Later.";
+            //NEEDS TO BE LESS OBVIOUS THAT HE IS STARTING A CULT
+            conversationDict["ISCOOL"] = "H-hey Beanman, would you be interested in joining my cul- I mean club?";
+            conversationDict["ISNOTCOOL"] = "Oh, yeah we don't really need you to join us.";
+            conversationDict["ISBAGGED"] = "Hello sir! Are you interested in learning about a fun new religion?";
+            conversationDict["BEANGOHINT"] = "Maybe if I go to beango I can get new members...";
 
             return;
         }
+        Debug.Log("5");
         if (gameObjectName == "Peanut Twins")
         {
-            conversationDict["ISCOOL"] = "Bean Man! How are you so CoOoOoL?!";
-            conversationDict["ISNOTCOOL"] = "*Swipes Left*";
-            conversationDict["ISBAGGED"] = "Working out WON'T get my attention. *Wink*";
-            conversationDict["BEANGOHINT"] = "I wish we could hang out after Beango at Granny's";
-            conversationDict["MYGLASSES"] = "You look SoOoOo good in my Glasses.";
-            conversationDict["ENDCONVO"] = "I'll see you.    Later.";
+            conversationDict["ISCOOL"] = "Bean Man! We want to be just like you when we're older!";
+            conversationDict["ISNOTCOOL"] = "Oh hey Bean Boy, I'm pretty busy. Maybe go talk with that stick?";
+            conversationDict["ISBAGGED"] = "What is it son, I'm very busy.";
+            conversationDict["BEANGOHINT"] = "When we're older, we want to go to Beango with you!";
 
             return;
         }
-        if (gameObjectName == "Green Ben")
+        Debug.Log("6");
+        if (gameObjectName == "GreenBen")
         {
-            conversationDict["ISCOOL"] = "Bean Man! How are you so CoOoOoL?!";
-            conversationDict["ISNOTCOOL"] = "*Swipes Left*";
-            conversationDict["ISBAGGED"] = "Working out WON'T get my attention. *Wink*";
-            conversationDict["BEANGOHINT"] = "I wish we could hang out after Beango at Granny's";
-            conversationDict["MYGLASSES"] = "You look SoOoOo good in my Glasses.";
-            conversationDict["ENDCONVO"] = "I'll see you.    Later.";
+            conversationDict["ISCOOL"] = "Is that you Bean Man?. I really hope I can feel better soon.";
+            conversationDict["ISNOTCOOL"] = "Ouch, what happened to you?";
+            conversationDict["ISBAGGED"] = "Oh you look much better now!";
+            conversationDict["BEANGOHINT"] = "Beango sounds great but I think I need to get some rest.";
 
             return;
         }
-        if (gameObjectName == "Baked Bean")
-        {
-            conversationDict["ISCOOL"] = "Bean Man! How are you so CoOoOoL?!";
-            conversationDict["ISNOTCOOL"] = "*Swipes Left*";
-            conversationDict["ISBAGGED"] = "Working out WON'T get my attention. *Wink*";
-            conversationDict["BEANGOHINT"] = "I wish we could hang out after Beango at Granny's";
-            conversationDict["MYGLASSES"] = "You look SoOoOo good in my Glasses.";
-            conversationDict["ENDCONVO"] = "I'll see you.    Later.";
-
-            return;
-        }
-        if (gameObjectName == "Fire Hydrant")
-        {
-            conversationDict["ISCOOL"] = "Bean Man! How are you so CoOoOoL?!";
-            conversationDict["ISNOTCOOL"] = "*Swipes Left*";
-            conversationDict["ISBAGGED"] = "Working out WON'T get my attention. *Wink*";
-            conversationDict["BEANGOHINT"] = "I wish we could hang out after Beango at Granny's";
-            conversationDict["MYGLASSES"] = "You look SoOoOo good in my Glasses.";
-            conversationDict["ENDCONVO"] = "I'll see you.    Later.";
-
-            return;
-        }
+        Debug.Log("7");
         if (gameObjectName == "Slim Sausage")
         {
-            conversationDict["ISCOOL"] = "Bean Man! How are you so CoOoOoL?!";
-            conversationDict["ISNOTCOOL"] = "*Swipes Left*";
-            conversationDict["ISBAGGED"] = "Working out WON'T get my attention. *Wink*";
-            conversationDict["BEANGOHINT"] = "I wish we could hang out after Beango at Granny's";
-            conversationDict["MYGLASSES"] = "You look SoOoOo good in my Glasses.";
-            conversationDict["ENDCONVO"] = "I'll see you.    Later.";
+            conversationDict["ISCOOL"] = "Yo it's the mean Bean! Not even slim sausage is as slick as you!";
+            conversationDict["ISNOTCOOL"] = "Did I say mean Bean before? What I meant to say was gross.";
+            conversationDict["ISBAGGED"] = "I'm feeling REAL good lately.";
+            conversationDict["BEANGOHINT"] = "I'm rooting for you at Beango tonight my main man Bean Man!";
 
             return;
         }
@@ -182,18 +176,6 @@ public class GameState : MonoBehaviour
             }
         }
         HandleConversation(characterName);
-
-        if (characterName == "Granny Smith") {
-            talkedGranny = true;
-        }
-        if (characterName == "Chickpea Deputy")
-        {
-            talkedChickpea = true;
-        }
-        if (characterName == "Lina Bean")
-        {
-            talkedLina = true;
-        }
     }
 
     public void IsNotCool() {
@@ -220,9 +202,20 @@ public class GameState : MonoBehaviour
 
     private void HandleConversation(string characterName)
     {
+        if (beanState == gameState.ISCOOL)
+        {
+            if (characterName == "Granny Smith")
+            {
+                talkedGranny = false;
+            }
+        }
+
         if (beanState == gameState.ISNOTCOOL)
         {
-            //_npc.ShowGlasses();
+            if (characterName == "Granny Smith")
+            {
+                talkedGranny = true;
+            }
             if (talkedGranny) 
             {
                 beanState = gameState.ISBAGGED;

@@ -26,6 +26,20 @@ public class ActManager : MonoBehaviour
     public GameObject GreenBenEnding;
     public GameObject BirthdayCakeEnding;
 
+    public string EndingScreenText;
+    public string BeangoScreenText;
+    public string ChickPeaEndingText;
+    public string BeanManWinEndingText;
+    public string LinaBeanEndingText;
+    public string PeanutTwinEndingText;
+    public string GrannySmithEndingText;
+    public string FireHydrantEndingText;
+    public string SlimSausageWinningText;
+    public string BeanManLeavesBaggedText;
+    public string BeanManLeavesText;
+    public string GreenBenEndingText;
+    public string BirthdayCakeEndingText;
+
     public GameObject BeanManSpawnPosition;
 
     public PlayerController _playerController;

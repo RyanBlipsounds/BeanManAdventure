@@ -62,7 +62,6 @@ public class PlayerController : MonoBehaviour
         BaggedBeanMan.SetActive(false);
 
         _canTalkBox = GameObject.Find("CanTalkBox").GetComponent<UIController>();
-        Debug.Log("turd 2");
         _dialogueBox = GameObject.Find("DialogueBox").GetComponent<UIController>();
         _responseBox = GameObject.Find("ResponseBox").GetComponent<UIController>();
 
@@ -132,17 +131,28 @@ public class PlayerController : MonoBehaviour
             {
                 if (!scriptNPCList.Contains(thisCharacter.GetComponent<NPC>()))
                 {
-                    if (thisCharacter.gameObject.name == "Fire Hydrant" && fireHydrantTalkCount < 5)
+                    if (thisCharacter.gameObject.name == "Fire Hydrant" && fireHydrantTalkCount < 5 && gameState.beanState == GameState.gameState.ISCOOL)
                     {
-                        Debug.Log("Fire Hydrant not Alive Yet");
                         fireHydrantTalkCount++;
-                        //FireHydrantDialogue(fireHydrantTalkCount);
                         _dialogueBox.isActive = true;
+                        gameState.Conversation(thisCharacter.gameObject.name, fireHydrantTalkCount);
                         return;
+                    }
+                    else if (thisCharacter.gameObject.name == "Fire Hydrant" && gameState.beanState == GameState.gameState.ISCOOL){
+                        thisCharacter.gameObject.tag = "NPC";
+                        gameState.Conversation(thisCharacter.gameObject.name, 6);
                     }
                     scriptNPCList.Add(thisCharacter.GetComponent<NPC>());
                 }
-                Debug.Log(fireHydrantTalkCount);
+
+                if (thisCharacter.gameObject.name == "Fire Hydrant" && thisCharacter.gameObject.tag == "NPC")
+                {
+                    if (gameState.beanState == GameState.gameState.ISNOTCOOL || gameState.beanState == GameState.gameState.ISBAGGED)
+                    {
+                        Debug.Log("Start Vomiting");
+                        return;
+                    }
+                }
 
                 if (gameState.beanState == GameState.gameState.ISBAGGED){
                     _responseBox.isActive = true;

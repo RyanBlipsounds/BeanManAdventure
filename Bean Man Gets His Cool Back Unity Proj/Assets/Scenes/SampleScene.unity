@@ -4379,7 +4379,7 @@ PrefabInstance:
     - target: {fileID: 2312038113373758853, guid: 79f8dd3af3424224eb9ef8aac3917b9f,
         type: 3}
       propertyPath: m_Name
-      value: Greenben
+      value: GreenBen
       objectReference: {fileID: 0}
     - target: {fileID: 2312038113373758856, guid: 79f8dd3af3424224eb9ef8aac3917b9f,
         type: 3}
@@ -22050,6 +22050,7 @@ MonoBehaviour:
   thisNPC: {fileID: 1496643700}
   LeftKnife: {fileID: 2080032905}
   RightKnife: {fileID: 967869687}
+  beanInRange: 0
   BeanMan: {fileID: 1945081241}
 --- !u!1001 &1497841764
 PrefabInstance:
@@ -24387,7 +24388,7 @@ PrefabInstance:
     - target: {fileID: 255112906382016603, guid: 3dbc8e0314522c2468ee7a49a635f231,
         type: 3}
       propertyPath: m_RootOrder
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 255112906382016603, guid: 3dbc8e0314522c2468ee7a49a635f231,
         type: 3}
@@ -29925,6 +29926,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Fire Hydrant
       objectReference: {fileID: 0}
+    - target: {fileID: 2312038113373758853, guid: 79f8dd3af3424224eb9ef8aac3917b9f,
+        type: 3}
+      propertyPath: m_TagString
+      value: Untagged
+      objectReference: {fileID: 0}
     - target: {fileID: 2312038113373758856, guid: 79f8dd3af3424224eb9ef8aac3917b9f,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -30937,7 +30943,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 3
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &1992584107
 PrefabInstance:
@@ -32906,7 +32912,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 2
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &2142578897
 PrefabInstance:
@@ -33166,7 +33172,7 @@ PrefabInstance:
     - target: {fileID: 5022688404735642067, guid: bc3ff83dcc2557147819090bff1950bf,
         type: 3}
       propertyPath: m_RootOrder
-      value: 0
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 5022688404735642067, guid: bc3ff83dcc2557147819090bff1950bf,
         type: 3}

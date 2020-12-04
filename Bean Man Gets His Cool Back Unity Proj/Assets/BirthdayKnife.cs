@@ -9,6 +9,8 @@ public class BirthdayKnife : MonoBehaviour
     public GameObject LeftKnife;
     public GameObject RightKnife;
 
+    public bool beanInRange;
+
     public PlayerController BeanMan;
 
     // Start is called before the first frame update
@@ -20,6 +22,9 @@ public class BirthdayKnife : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        if (beanInRange == true) {
+            return;
+        }
         if (thisNPC.isLeft && BeanMan.GlassesSpriteRenderer.flipX == true)
         {
             LeftKnife.SetActive(false);
@@ -44,5 +49,14 @@ public class BirthdayKnife : MonoBehaviour
             LeftKnife.SetActive(false);
             RightKnife.SetActive(true);
         }
+    }
+
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        beanInRange = true;
+    }
+    private void OnTriggerExit2D(Collider2D other)
+    {
+        beanInRange = false;
     }
 }
