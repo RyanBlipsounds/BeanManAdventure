@@ -35,6 +35,11 @@ public class GameState : MonoBehaviour
     private bool talkedLina = false;
     private bool talkedChickpea = false;
 
+    private void Update()
+    {
+        Debug.Log(beanState);
+    }
+
     // Start is called before the first frame update
     void Start()
     {
@@ -49,6 +54,13 @@ public class GameState : MonoBehaviour
     }
 
     public void Conversation(string gameObjectName, int count) {
+
+        if (gameObjectName == "ExitTown") {
+            conversationDict["ISCOOL"] = "Do you Want to Leave Town?";
+            conversationDict["BEANGOHINT"] = "Do you Want to Leave Town?";
+            conversationDict["ISNOTCOOL"] = "Do you Want to Leave Town?";
+            conversationDict["ISBAGGED"] = "Do you Want to Leave Town?";
+        }
         if (gameObjectName == "Fire Hydrant")
         {
             if (count != 6)
@@ -189,10 +201,14 @@ public class GameState : MonoBehaviour
                 return;
             }
             else {
-                beanState = GameState.gameState.BEANGOHINT;
+                //beanState = GameState.gameState.BEANGOHINT;
             }
         }
         HandleConversation(characterName);
+    }
+
+    public void IsBeanGoHint() {
+        beanState = GameState.gameState.BEANGOHINT;
     }
 
     public void IsNotCool() {
@@ -224,8 +240,11 @@ public class GameState : MonoBehaviour
     /// </summary>
     public void ResetGame()
     {
-        foreach (NPC npc in _playerController.scriptNPCList) {
-            npc.ResetCoolStateNPC();
+        if (_playerController.scriptNPCList.Count != 0) {
+            foreach (NPC npc in _playerController.scriptNPCList)
+            {
+                npc.ResetCoolStateNPC();
+            }
         }
         _playerController.Glasses();
         _playerController.Bag.transform.position = _playerController.m_BagStartPosition.transform.position;

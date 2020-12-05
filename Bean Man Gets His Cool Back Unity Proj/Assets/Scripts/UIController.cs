@@ -43,10 +43,10 @@ public class UIController : MonoBehaviour
 
         if (isActive)
         {
-            if (_actManager.activateGraphicTransition == true) {
+            speed = 3.0f;
+            if (_actManager.sceneTransitionState == ActManager.sceneState.graphic && thisGameObject != "NarrationBox") {
                 isActive = false;
             }
-
             if (!textActivated && thisGameObject == "DialogueBox")
             {
                 textActivated = true;
@@ -57,6 +57,9 @@ public class UIController : MonoBehaviour
         }
         else
         {
+            if (thisGameObject == "NarrationBox") {
+                speed = 9.0f;
+            }
             textActivated = false;
             this.gameObject.transform.position = Vector3.MoveTowards(transform.position, StartPoint.transform.position, Time.deltaTime * speed);
         }

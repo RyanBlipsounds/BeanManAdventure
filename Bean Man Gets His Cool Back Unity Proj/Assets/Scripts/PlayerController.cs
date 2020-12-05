@@ -155,7 +155,9 @@ public class PlayerController : MonoBehaviour
                         
                         gameState.Conversation(thisCharacter.gameObject.name, 6);
                     }
-                    scriptNPCList.Add(thisCharacter.GetComponent<NPC>());
+                    if (thisCharacter.GetComponent<NPC>()) {
+                        scriptNPCList.Add(thisCharacter.GetComponent<NPC>());
+                    }
                 }
 
                 if (thisCharacter.gameObject.name == "Fire Hydrant" && thisCharacter.gameObject.tag == "NPC")
@@ -167,15 +169,17 @@ public class PlayerController : MonoBehaviour
                     }
                 }
 
-                if (gameState.beanState == GameState.gameState.ISBAGGED){
+                if (gameState.beanState == GameState.gameState.ISBAGGED || thisCharacter.gameObject.name == "ExitTown"){
                     _responseBox.isActive = true;
                 }
 
                 if (!_dialogueBox.isActive)
                 {
-                    index = scriptNPCList.IndexOf(thisCharacter.GetComponent<NPC>());
-                    thisNPCList = scriptNPCList[index];
-                    thisNPCList.hasSpoken = true;
+                    if (thisCharacter.gameObject.name != "ExitTown") {
+                        index = scriptNPCList.IndexOf(thisCharacter.GetComponent<NPC>());
+                        thisNPCList = scriptNPCList[index];
+                        thisNPCList.hasSpoken = true;
+                    }
                 }
                 gameState.TalkedTo(thisCharacter.name);
                 if (gameState.beanState == GameState.gameState.BEANGOHINT && thisCharacter.name == "Granny Smith")
@@ -186,38 +190,67 @@ public class PlayerController : MonoBehaviour
             }
             else if (Input.GetKeyDown(KeyCode.Space) && _dialogueBox.isActive == true)
             {
+                if (gameState.listTotalNPC.Count == scriptNPCList.Count)
+                {
+                    gameState.IsBeanGoHint();
+                }
                 _dialogueBox.isActive = false;
                 _responseBox.isActive = false;
             }
-            if (Input.GetKeyDown(KeyCode.Y) && _responseBox.isActive == true) {
+        }
+        else
+        {
+            if (gameState.listTotalNPC.Count == scriptNPCList.Count) {
+                gameState.IsBeanGoHint();
+            }
+        _dialogueBox.isActive = false;
+        _responseBox.isActive = false;
+        _canTalkBox.isActive = false;
+        }
+
+        if (Input.GetKeyDown(KeyCode.Y) && _responseBox.isActive == true)
+        {
+            if (thisCharacter.gameObject.name != "ExitTown")
+            {
                 if (thisNPCList.isWinner)
                 {
                     _actManager.LoadEnding("Beanman");
                 }
-                else {
-                    foreach (NPC character in scriptNPCList) {
-                        if (character.isWinner == true) {
+                else
+                {
+                    foreach (NPC character in scriptNPCList)
+                    {
+                        if (character.isWinner == true)
+                        {
                             _actManager.LoadEnding(character.gameObject.name);
                             break;
                         }
                     }
                 }
             }
-            if (Input.GetKeyDown(KeyCode.N) && _responseBox.isActive == true)
+            else
             {
-                _dialogueBox.isActive = false;
-                _responseBox.isActive = false;
+                if (gameState.beanState == GameState.gameState.BEANGOHINT || gameState.beanState == GameState.gameState.ISCOOL)
+                {
+                    _actManager.LoadEnding("Beanman Leaves Cool Town");
+                }
+                if (gameState.beanState == GameState.gameState.ISNOTCOOL)
+                {
+                    _actManager.LoadEnding("Beanman Leaves Uncool Town");
+                }
+                if (gameState.beanState == GameState.gameState.ISBAGGED)
+                {
+                    _actManager.LoadEnding("Beanman Leaves Bag Town");
+                }
+                gameState.beanState = GameState.gameState.ENDING;
             }
-
         }
-        else
+        if (Input.GetKeyDown(KeyCode.N) && _responseBox.isActive == true)
         {
             _dialogueBox.isActive = false;
             _responseBox.isActive = false;
-            _canTalkBox.isActive = false;
-            
-
         }
+
         if (_canTalkBox.isActive == false && _hasPlayed == false)
         {
             _hasPlayed = true;

@@ -101,13 +101,11 @@ public class ActManager : MonoBehaviour
         else {
             if (m_gameState.beanState == GameState.gameState.BEANGOHINT && hasPlayed == false)
             {
-                Debug.Log("PIZZA");
                 m_gameState.IsNotCool();
                 hasPlayed = true;
             }
             if (m_gameState.beanState == GameState.gameState.ISBAGGED && hasPlayed == false)
             {
-                Debug.Log("PIZZA33");
                 m_gameState.Ending();
                 hasPlayed = true;
             }
@@ -124,6 +122,7 @@ public class ActManager : MonoBehaviour
             else
             {
                 if (m_gameState.beanState == GameState.gameState.ENDING) {
+                    m_gameState.Ending();
                     Debug.Log("ENDING FADE TO MAIN");
                     m_gameState.beanState = GameState.gameState.ISCOOL;
                 }
@@ -173,6 +172,7 @@ public class ActManager : MonoBehaviour
 
     public void LoadEnding(string ending)
     {
+        Debug.Log(ending);
 
         if (ending == "Beanman")
         {
@@ -219,15 +219,17 @@ public class ActManager : MonoBehaviour
         {
             EndingScreen = FireHydrantEnding;
         }
-        Debug.Log(ending);
-        if (!_endingsManager.endingsSeenList.Contains(GameObject.Find(ending))) {
-            _endingsManager.addEnding(GameObject.Find(ending));
-        }
 
+        if (!_endingsManager.endingsSeenList.Contains(EndingScreen))
+        {
+            Debug.Log("New Ending");
+            _endingsManager.addEnding(EndingScreen);
+        }
 
         activateGraphicTransition = true;
 
         LoadGraphic(EndingScreen);
+
     }
 
     //In Load New Act, it should probably take dictionary arguments 
