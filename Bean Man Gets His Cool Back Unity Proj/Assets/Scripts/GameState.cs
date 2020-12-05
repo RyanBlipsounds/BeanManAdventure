@@ -29,14 +29,9 @@ public class GameState : MonoBehaviour
     public gameState beanState = gameState.ISCOOL;
     private string characterConversation = default;
     public Dictionary<string, string> conversationDict = new Dictionary<string, string>();
-    private bool talkedChickpea = false;
     private bool talkedGranny = false;
     private bool talkedLina = false;
-
-    
-    private float coolMeterHigh = 1.0f;
-    private float coolMeterMed = .72f;
-    private float coolMeterLow = .365f;
+    private bool talkedChickpea = false;
 
     // Start is called before the first frame update
     void Start()
@@ -49,7 +44,6 @@ public class GameState : MonoBehaviour
         conversationDict.Add("MYGLASSES", "MYGLASSES");
         conversationDict.Add("ENDCONVO", "ENDCONVO");
 
-        _UILogic.setCoolness(coolMeterHigh);
     }
 
     public void Conversation(string gameObjectName, int count) {
@@ -180,7 +174,6 @@ public class GameState : MonoBehaviour
 
     public void IsNotCool() {
         beanState = gameState.ISNOTCOOL;
-        _UILogic.setCoolness(coolMeterLow);
         RandomizeGlasses();
 
         foreach (NPC character in _playerController.scriptNPCList)
@@ -193,11 +186,24 @@ public class GameState : MonoBehaviour
 
     public void IsBagged() {
         beanState = gameState.ISBAGGED;
-        _UILogic.setCoolness(coolMeterMed);
     }
 
     public void Ending() {
         beanState = gameState.ENDING;
+        ResetGame();
+    }
+
+    /// <summary>
+    /// Resets the game to start playing again
+    /// </summary>
+    public void ResetGame()
+    {
+        beanState = gameState.ISCOOL;
+        _playerController.scriptNPCList.Clear();
+        _playerController.MoveToStart();
+        _UILogic.MainMenu.SetActive(true);
+
+
     }
 
     private void HandleConversation(string characterName)
@@ -219,7 +225,6 @@ public class GameState : MonoBehaviour
             if (talkedGranny) 
             {
                 beanState = gameState.ISBAGGED;
-                _UILogic.setCoolness(coolMeterMed);
                 talkedChickpea = false;
                 talkedGranny = false;
             }

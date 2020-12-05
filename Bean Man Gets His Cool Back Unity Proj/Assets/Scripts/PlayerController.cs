@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -52,6 +53,8 @@ public class PlayerController : MonoBehaviour
     public int fireHydrantTalkCount = 0;
 
     private bool _hasPlayed = false;
+
+    public Transform startTransform = default;
 
     void Start()
     {
@@ -223,6 +226,11 @@ public class PlayerController : MonoBehaviour
         movementDirection = new Vector2(Input.GetAxis("Horizontal"), Input.GetAxis("Vertical"));
         movementSpeed = Mathf.Clamp(movementDirection.magnitude, 0.0f, 1.0f);
         movementDirection.Normalize();
+    }
+
+    public void MoveToStart()
+    {
+        transform.position = startTransform.transform.position;
     }
 
     void Move() {
