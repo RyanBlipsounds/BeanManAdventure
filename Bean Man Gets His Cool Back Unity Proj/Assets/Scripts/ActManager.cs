@@ -9,6 +9,7 @@ public class ActManager : MonoBehaviour
     public Color ColorValue;
 
     public GameState m_gameState;
+    public EndingsManager _endingsManager = default;
 
     private float blackScreenTimeToFade = 0;
 
@@ -70,8 +71,10 @@ public class ActManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (activateGraphicTransition == true) {
-            if (m_gameState.beanState == GameState.gameState.ISNOTCOOL || m_gameState.beanState == GameState.gameState.ISCOOL || m_gameState.beanState == GameState.gameState.BEANGOHINT) {
+        if (activateGraphicTransition == true)
+        {
+            if (m_gameState.beanState == GameState.gameState.ISNOTCOOL || m_gameState.beanState == GameState.gameState.ISCOOL || m_gameState.beanState == GameState.gameState.BEANGOHINT)
+            {
                 EndingScreen = BeangoScreen;
                 LoadGraphic(EndingScreen);
             }
@@ -82,7 +85,8 @@ public class ActManager : MonoBehaviour
         }
     }
 
-    private void FadeToBlack(sceneState state, GameObject graphic, GameObject oldGraphic) {
+    private void FadeToBlack(sceneState state, GameObject graphic, GameObject oldGraphic)
+    {
         float blackScreenTmp;
 
         blackScreenTmp = Mathf.Lerp(0, 1, blackScreenTimeToFade / 2);
@@ -94,7 +98,8 @@ public class ActManager : MonoBehaviour
             blackScreenTimeToFade += Time.deltaTime;
         }
         else {
-            if (m_gameState.beanState == GameState.gameState.BEANGOHINT && hasPlayed == false) {
+            if (m_gameState.beanState == GameState.gameState.BEANGOHINT && hasPlayed == false)
+            {
                 Debug.Log("PIZZA");
                 m_gameState.IsNotCool();
                 hasPlayed = true;
@@ -137,10 +142,12 @@ public class ActManager : MonoBehaviour
         activateGraphicTransition = true;
 
         //Debug.Log("Graphic " + graphicShowTime);
-        if (sceneTransitionState == sceneState.started) {
+        if (sceneTransitionState == sceneState.started)
+        {
             FadeToBlack(sceneState.graphic, graphic, null);
         }
-        if (sceneTransitionState == sceneState.graphic) {
+        if (sceneTransitionState == sceneState.graphic)
+        {
             graphicShowTime += Time.deltaTime;
             if (graphicShowTime >= 6) {
                 sceneTransitionState = sceneState.backtoscene;
@@ -149,7 +156,8 @@ public class ActManager : MonoBehaviour
         if (sceneTransitionState == sceneState.backtoscene)
         {
             FadeToBlack(sceneState.started, null, graphic);
-            if (sceneTransitionState == sceneState.started) {
+            if (sceneTransitionState == sceneState.started)
+            {
                 activateGraphicTransition = false;
                 graphicShowTime = 0;
                 hasPlayed = false;
@@ -158,18 +166,24 @@ public class ActManager : MonoBehaviour
         }
     }
 
-    public void LoadEnding(string ending) {
-        if (ending == "Bean") {
+    public void LoadEnding(string ending)
+    {
+        _endingsManager.addEnding(GameObject.Find(ending).GetComponent<NPC>());
+
+        if (ending == "Bean")
+        {
             EndingScreen = BeanManWinEnding;
         }
-        if (ending == "Lina Bean") {
+        if (ending == "Lina Bean") 
+        {
             EndingScreen = LinaBeanEnding;
         }
         if (ending == "Chickpea Deputy")
         {
             EndingScreen = ChickPeaEnding;
         }
-        if (ending == "Granny Smith") {
+        if (ending == "Granny Smith")
+        {
             EndingScreen = GrannySmithEnding;
         }
         if (ending == "Peanut Twins")
