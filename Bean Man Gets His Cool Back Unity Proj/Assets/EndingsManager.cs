@@ -4,11 +4,11 @@ using UnityEngine;
 
 public class EndingsManager : MonoBehaviour
 {
-    public List<NPC> endingsSeenList = new List<NPC>();
+    public List<GameObject> endingsSeenList = new List<GameObject>();
     public UILogic _UILogic = default;
-    public void addEnding(NPC npc)
+    public void addEnding(GameObject ending)
     {
-        endingsSeenList.Add(npc);
-        _UILogic.updateEndingsCount(endingsSeenList.Count);
+        endingsSeenList.Add(ending);
+        _UILogic.UpdateEndingsCount(endingsSeenList.Count);
     }
 }

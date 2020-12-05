@@ -28,11 +28,22 @@ public class NPC : MonoBehaviour
         noGlasses.SetActive(true);
     }
 
+    public void ResetCoolStateNPC() {
+        glasses.SetActive(false);
+        noGlasses.SetActive(true);
+        hasSpoken = false;
+        isWinner = false;
+    }
+
     public void Update()
     {
         var noglassesSpriteRenderer = noGlasses.GetComponent<SpriteRenderer>();
         var glassesSpriteRenderer = glasses.GetComponent<SpriteRenderer>();
         var actualGlassesSpriteRenderer = glasses.GetComponent<SpriteRenderer>();
+
+        if (gameObject.name == "Fire Hydrant") {
+            return;
+        }
 
         if (player.transform.position.x < transform.position.x)
         {

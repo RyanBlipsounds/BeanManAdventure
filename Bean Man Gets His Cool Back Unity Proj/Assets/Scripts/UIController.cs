@@ -22,6 +22,8 @@ public class UIController : MonoBehaviour
     public bool hasMoved = false;
     public bool textActivated = false;
 
+    public ActManager _actManager;
+
     public string thisGameObject;
 
     void Start()
@@ -41,18 +43,22 @@ public class UIController : MonoBehaviour
 
         if (isActive)
         {
+            if (_actManager.activateGraphicTransition == true) {
+                isActive = false;
+            }
+
             if (!textActivated && thisGameObject == "DialogueBox")
             {
                 textActivated = true;
                 dialogueBoxAnimator.ShowText(gameState.conversationDict[currentBeanState]);
             }
 
-            transform.position = Vector2.MoveTowards(transform.position, EndPoint.transform.position, Time.deltaTime * speed);
+            this.gameObject.transform.position = Vector3.MoveTowards(transform.position, EndPoint.transform.position, Time.deltaTime * speed);
         }
         else
         {
             textActivated = false;
-            transform.position = Vector2.MoveTowards(transform.position, StartPoint.transform.position, Time.deltaTime * speed);
+            this.gameObject.transform.position = Vector3.MoveTowards(transform.position, StartPoint.transform.position, Time.deltaTime * speed);
         }
     }
 }

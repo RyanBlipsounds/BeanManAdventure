@@ -13,7 +13,7 @@ public class ActManager : MonoBehaviour
 
     private float blackScreenTimeToFade = 0;
 
-    private GameObject EndingScreen;
+    public GameObject EndingScreen;
     public GameObject BeangoScreen;
     public GameObject ChickPeaEnding;
     public GameObject BeanManWinEnding;
@@ -26,6 +26,7 @@ public class ActManager : MonoBehaviour
     public GameObject BeanManLeaves;
     public GameObject GreenBenEnding;
     public GameObject BirthdayCakeEnding;
+    public GameObject BeanManUncoolEnding;
 
     public string EndingScreenText;
     public string BeangoScreenText;
@@ -122,6 +123,10 @@ public class ActManager : MonoBehaviour
             }
             else
             {
+                if (m_gameState.beanState == GameState.gameState.ENDING) {
+                    Debug.Log("ENDING FADE TO MAIN");
+                    m_gameState.beanState = GameState.gameState.ISCOOL;
+                }
                 _narrationBox.isActive = false;
                 oldGraphic.SetActive(false);
             }
@@ -168,11 +173,19 @@ public class ActManager : MonoBehaviour
 
     public void LoadEnding(string ending)
     {
-        _endingsManager.addEnding(GameObject.Find(ending).GetComponent<NPC>());
 
-        if (ending == "Bean")
+        if (ending == "Beanman")
         {
             EndingScreen = BeanManWinEnding;
+        }
+        if (ending == "Beanman Leaves Bag Town") {
+            EndingScreen = BeanManLeavesBagged;
+        }
+        if (ending == "Beanman Leaves Cool Town") {
+            EndingScreen = BeanManLeaves;
+        }
+        if (ending == "Beanman Leaves Uncool Town"){
+            EndingScreen = BeanManUncoolEnding;
         }
         if (ending == "Lina Bean") 
         {
@@ -206,9 +219,11 @@ public class ActManager : MonoBehaviour
         {
             EndingScreen = FireHydrantEnding;
         }
-
-
         Debug.Log(ending);
+        if (!_endingsManager.endingsSeenList.Contains(GameObject.Find(ending))) {
+            _endingsManager.addEnding(GameObject.Find(ending));
+        }
+
 
         activateGraphicTransition = true;
 

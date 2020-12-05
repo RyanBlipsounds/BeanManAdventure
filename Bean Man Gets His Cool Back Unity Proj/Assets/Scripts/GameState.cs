@@ -10,6 +10,8 @@ public class GameState : MonoBehaviour
     [SerializeField]
     private PlayerController _playerController;
 
+    public EndingsManager endingsManager;
+
     public NPC _npc = default;
     public ActManager _actManager = default;
 
@@ -68,7 +70,6 @@ public class GameState : MonoBehaviour
                 conversationDict["BEANGOHINT"] = "Why are you talking to me? I'm a fire hydrant.";
             }
         }
-        Debug.Log("1");
         if (gameObjectName == "Granny Smith") {
             conversationDict["ISCOOL"] = "My main man Bean Man! Beango isn't ready yet, go mingle with other peeps";
             conversationDict["BEANGOHINT"] = "Let's go Beango!"; // This state should push into Beango
@@ -78,7 +79,6 @@ public class GameState : MonoBehaviour
             conversationDict["ENDCONVO"] = "I personally think that the bag over the head is just too Cliche.";
             return;
         }
-        Debug.Log("2");
         if (gameObjectName == "Chickpea Deputy")
         {
             conversationDict["ISCOOL"] = "J-walked recently? haha, just kidding...";
@@ -88,7 +88,6 @@ public class GameState : MonoBehaviour
 
             return;
         }
-        Debug.Log("3");
         if (gameObjectName == "Lina Bean")
         {
             conversationDict["ISCOOL"] = "Bean Man! Are we still on for the movies this weekend?!";
@@ -98,7 +97,6 @@ public class GameState : MonoBehaviour
 
             return;
         }
-        Debug.Log("4");
         if (gameObjectName == "Birthday Cake")
         {
             //NEEDS TO BE LESS OBVIOUS THAT HE IS STARTING A CULT
@@ -109,7 +107,6 @@ public class GameState : MonoBehaviour
 
             return;
         }
-        Debug.Log("5");
         if (gameObjectName == "Peanut Twins")
         {
             conversationDict["ISCOOL"] = "Bean Man! We want to be just like you when we're older!";
@@ -119,7 +116,6 @@ public class GameState : MonoBehaviour
 
             return;
         }
-        Debug.Log("6");
         if (gameObjectName == "GreenBen")
         {
             conversationDict["ISCOOL"] = "Is that you Bean Man?. I really hope I can feel better soon.";
@@ -129,7 +125,6 @@ public class GameState : MonoBehaviour
 
             return;
         }
-        Debug.Log("7");
         if (gameObjectName == "Slim Sausage")
         {
             conversationDict["ISCOOL"] = "Yo it's the mean Bean! Not even slim sausage is as slick as you!";
@@ -144,9 +139,37 @@ public class GameState : MonoBehaviour
     public void RandomizeGlasses()
     {
         var copyNPC = new List<NPC>(_playerController.scriptNPCList);
+        bool newWinnerFound;
+        newWinnerFound = false;
         NPC winningNPC = copyNPC[Random.Range(0, copyNPC.Count)];
-        Debug.Log("Winning NPC " + winningNPC);
+        while (newWinnerFound == false) {
+            int count;
+            count = 0;
+            foreach (GameObject endingsFound in endingsManager.endingsSeenList)
+            {
+                if (endingsFound.gameObject.GetComponent<NPC>())
+                {
+                    count++;
+                }
+            }
+            Debug.Log(count + " " + endingsManager.endingsSeenList.Count);
 
+            if (count == _playerController.scriptNPCList.Count)
+            {
+                newWinnerFound = true;
+                count = 0;
+                Debug.Log("All Character Endings have been found. We're choosing a random character as the winner");
+                break;
+            }
+            winningNPC = copyNPC[Random.Range(0, copyNPC.Count)];
+            Debug.Log("Trying this boy " + winningNPC);
+            if (!endingsManager.endingsSeenList.Contains(winningNPC.gameObject))
+            {
+                Debug.Log("This is the winner " + winningNPC);
+                newWinnerFound = true;
+                break;
+            }
+        }
         winningNPC.spriteRenderer.sprite = winningNPC.glassesList[0];
         winningNPC.isWinner = true;
         copyNPC.Remove(winningNPC);
@@ -176,6 +199,8 @@ public class GameState : MonoBehaviour
         beanState = gameState.ISNOTCOOL;
         RandomizeGlasses();
 
+        _playerController.MoveToStart();
+
         foreach (NPC character in _playerController.scriptNPCList)
         {
             character.ShowGlasses();
@@ -189,6 +214,7 @@ public class GameState : MonoBehaviour
     }
 
     public void Ending() {
+        talkedGranny = false;
         beanState = gameState.ENDING;
         ResetGame();
     }
@@ -198,13 +224,18 @@ public class GameState : MonoBehaviour
     /// </summary>
     public void ResetGame()
     {
-        beanState = gameState.ISCOOL;
+        foreach (NPC npc in _playerController.scriptNPCList) {
+            npc.ResetCoolStateNPC();
+        }
+        _playerController.Glasses();
+        _playerController.Bag.transform.position = _playerController.m_BagStartPosition.transform.position;
+        _playerController.bagMoving = true;
         _playerController.scriptNPCList.Clear();
         _playerController.MoveToStart();
         _UILogic.MainMenu.SetActive(true);
-
-
+        
     }
+
 
     private void HandleConversation(string characterName)
     {

@@ -38,7 +38,7 @@ public class PlayerController : MonoBehaviour
     public GameObject Bag;
     public GameObject m_BagStartPosition;
     public GameObject m_BagEndPosition;
-
+    
     public List<GameObject> Characters = new List<GameObject>();
     public List<NPC> scriptNPCList = new List<NPC>();
 
@@ -110,6 +110,13 @@ public class PlayerController : MonoBehaviour
 
     }
 
+    public void Glasses() {
+        GlassesBeanMan.SetActive(true);
+        NoGlassesBeanMan.SetActive(false);
+        BaggedBeanMan.SetActive(false);
+        Bag.SetActive(true);
+    }
+
     public void NoGlasses() {
         GlassesBeanMan.SetActive(false);
         NoGlassesBeanMan.SetActive(true);
@@ -129,7 +136,6 @@ public class PlayerController : MonoBehaviour
         if (characterInRange)
         {
             _canTalkBox.isActive = true;
-            Debug.Log("turd 3");
             if (Input.GetKeyDown(KeyCode.Space) && _dialogueBox.isActive == false)
             {
                 if (!scriptNPCList.Contains(thisCharacter.GetComponent<NPC>()))
@@ -143,6 +149,10 @@ public class PlayerController : MonoBehaviour
                     }
                     else if (thisCharacter.gameObject.name == "Fire Hydrant" && gameState.beanState == GameState.gameState.ISCOOL){
                         thisCharacter.gameObject.tag = "NPC";
+                        if (!gameState.listTotalNPC.Contains(thisCharacter)) {
+                            gameState.listTotalNPC.Add(thisCharacter);
+                        }
+                        
                         gameState.Conversation(thisCharacter.gameObject.name, 6);
                     }
                     scriptNPCList.Add(thisCharacter.GetComponent<NPC>());
@@ -182,7 +192,7 @@ public class PlayerController : MonoBehaviour
             if (Input.GetKeyDown(KeyCode.Y) && _responseBox.isActive == true) {
                 if (thisNPCList.isWinner)
                 {
-                    _actManager.LoadEnding("Bean");
+                    _actManager.LoadEnding("Beanman");
                 }
                 else {
                     foreach (NPC character in scriptNPCList) {
@@ -213,12 +223,10 @@ public class PlayerController : MonoBehaviour
             _hasPlayed = true;
             // Bruh this sound is horrendous
             //FMODUnity.RuntimeManager.PlayOneShot("event:/TalkBox");
-            Debug.Log("Sadboi");
         } else if(_canTalkBox.isActive == true && _hasPlayed == true)
         {
             _hasPlayed = false;
             //FMODUnity.RuntimeManager.PlayOneShot("event:/TalkBox");
-            Debug.Log("Sadboi 2");
         }
     }
 
@@ -247,6 +255,7 @@ public class PlayerController : MonoBehaviour
             BaggedSpriteRenderer.flipX = true;
             NoGlassesSpriteRenderer.flipX = true;
         }
+
         NoGlassesanimator.SetFloat("Speed", movementSpeed);
         NoGlassesanimator.SetFloat("YAxisDirection", movementDirection.y);
 

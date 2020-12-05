@@ -38,7 +38,7 @@ public class UILogic : MonoBehaviour
     /// Update the endings seen count
     /// </summary>
     /// <param name="count">int for the amount of endings seen (from gamestate)</param>
-    public void updateEndingsCount(int count)
+    public void UpdateEndingsCount(int count)
     {
         endingsEncountered.SetActive(true);
         endingsNumber.text = count + " / 10";
