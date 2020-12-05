@@ -1,7 +1,25 @@
 fileFormatVersion: 2
-guid: 5017b0abcedc78040abf1f8c0ef2100f
+guid: da527c388be87c4418bb7ccc160f2dec
 TextureImporter:
-  internalIDToNameTable: []
+  internalIDToNameTable:
+  - first:
+      213: -9129537690469426328
+    second: UI_PlayButton_0
+  - first:
+      213: 4236733694506894230
+    second: UI_PlayButton_1
+  - first:
+      213: -6221114940453031730
+    second: UI_PlayButton_2
+  - first:
+      213: -7743074406336051530
+    second: UI_PlayButton_0
+  - first:
+      213: 4855087884894060290
+    second: UI_PlayButton_1
+  - first:
+      213: -388261316783265128
+    second: UI_PlayButton_2
   externalObjects: {}
   serializedVersion: 10
   mipmaps:
@@ -40,7 +58,7 @@ TextureImporter:
   nPOTScale: 0
   lightmap: 0
   compressionQuality: 50
-  spriteMode: 1
+  spriteMode: 2
   spriteExtrude: 1
   spriteMeshType: 1
   alignment: 0
@@ -84,11 +102,74 @@ TextureImporter:
     forceMaximumCompressionQuality_BC6H_BC7: 0
   spriteSheet:
     serializedVersion: 2
-    sprites: []
+    sprites:
+    - serializedVersion: 2
+      name: UI_PlayButton_0
+      rect:
+        serializedVersion: 2
+        x: 37
+        y: 9
+        width: 96
+        height: 31
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 6b6cbec1ad21b8490800000000000000
+      internalID: -7743074406336051530
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: UI_PlayButton_1
+      rect:
+        serializedVersion: 2
+        x: 171
+        y: 9
+        width: 96
+        height: 31
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 20fb96c35bcb06340800000000000000
+      internalID: 4855087884894060290
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: UI_PlayButton_2
+      rect:
+        serializedVersion: 2
+        x: 305
+        y: 8
+        width: 96
+        height: 31
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 89aab15b36e9c9af0800000000000000
+      internalID: -388261316783265128
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     outline: []
     physicsShape: []
     bones: []
-    spriteID: 5e97eb03825dee720800000000000000
+    spriteID: 466aa83e1b9d63b4bb355b5e4421717a
     internalID: 0
     vertices: []
     indices: 
