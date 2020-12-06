@@ -65,7 +65,7 @@ public class GameState : MonoBehaviour
         // ISCOOL is dynamic. Fire Hydrant needs to be spoken to multiple times to be active.
         if (gameObjectName == "Fire Hydrant")
         {
-            if (count != 4)
+            if (count < 5)
             {
                 string dialogue = "..";
                 dialogue = "..";
@@ -86,7 +86,7 @@ public class GameState : MonoBehaviour
                 conversationDict["ISCOOL"] = "Why are you talking to me? I'm a fire hydrant.";
                 conversationDict["BEANGOHINT"] = "Why are you talking to me? I'm a fire hydrant.";
                 conversationDict["ISNOTCOOL"] = "Bean Man! Looks like you lost your glasses some how! Here, take this";
-                conversationDict["ISBAGGED"] = "Long time no See!";
+                conversationDict["ISBAGGED"] = "Oh thank god. You look so much better";
             }
 
 
@@ -252,6 +252,7 @@ public class GameState : MonoBehaviour
     /// </summary>
     public void ResetGame()
     {
+
         if (_playerController.scriptNPCList.Count != 0) {
             foreach (NPC npc in _playerController.scriptNPCList)
             {
@@ -259,6 +260,7 @@ public class GameState : MonoBehaviour
             }
         }
         _playerController.Glasses();
+        _playerController.fireHydrantTalkCount = 0;
         _playerController.Bag.transform.position = _playerController.m_BagStartPosition.transform.position;
         _playerController.bagMoving = true;
         _playerController.scriptNPCList.Clear();
