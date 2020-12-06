@@ -48,22 +48,24 @@ public class GameState : MonoBehaviour
         conversationDict.Add("ISNOTCOOL", "ISNOTCOOL");
         conversationDict.Add("ISBAGGED", "ISBAGGED");
         conversationDict.Add("BEANGOHINT", "BEANGOHINT");
-        conversationDict.Add("MYGLASSES", "MYGLASSES");
-        conversationDict.Add("ENDCONVO", "ENDCONVO");
 
     }
 
     public void Conversation(string gameObjectName, int count) {
 
+        // Conversation loading for Exit town
         if (gameObjectName == "ExitTown") {
             conversationDict["ISCOOL"] = "Do you Want to Leave Town?";
             conversationDict["BEANGOHINT"] = "Do you Want to Leave Town?";
             conversationDict["ISNOTCOOL"] = "Do you Want to Leave Town?";
             conversationDict["ISBAGGED"] = "Do you Want to Leave Town?";
         }
+
+        // Conversation loading for fire Hydrant
+        // ISCOOL is dynamic. Fire Hydrant needs to be spoken to multiple times to be active.
         if (gameObjectName == "Fire Hydrant")
         {
-            if (count != 6)
+            if (count != 4)
             {
                 string dialogue = "..";
                 dialogue = "..";
@@ -75,22 +77,32 @@ public class GameState : MonoBehaviour
                     countStart++;
                 }
                 conversationDict["ISCOOL"] = dialogue;
+                conversationDict["BEANGOHINT"] = "Why are you talking to me? I'm a fire hydrant.";
+                conversationDict["ISNOTCOOL"] = "Bean Man! Looks like you lost your glasses some how! Here, take this";
+                conversationDict["ISBAGGED"] = "Long time no See!";
                 return;
             }
             else {
                 conversationDict["ISCOOL"] = "Why are you talking to me? I'm a fire hydrant.";
                 conversationDict["BEANGOHINT"] = "Why are you talking to me? I'm a fire hydrant.";
+                conversationDict["ISNOTCOOL"] = "Bean Man! Looks like you lost your glasses some how! Here, take this";
+                conversationDict["ISBAGGED"] = "Long time no See!";
             }
+
+
         }
+
+        // Conversation laoding for Granny Smith
         if (gameObjectName == "Granny Smith") {
             conversationDict["ISCOOL"] = "My main man Bean Man! Beango isn't ready yet, go mingle with other peeps";
             conversationDict["BEANGOHINT"] = "Let's go Beango!"; // This state should push into Beango
             conversationDict["ISNOTCOOL"] = "Bean Man! Looks like you lost your glasses some how! Here, take this";
             conversationDict["ISBAGGED"] = "Long time no See!";
-            conversationDict["MYGLASSES"] = "Et...Tu..Granny?";
-            conversationDict["ENDCONVO"] = "I personally think that the bag over the head is just too Cliche.";
+
             return;
         }
+
+        // Conversation laoding for Chickpea Deputy
         if (gameObjectName == "Chickpea Deputy")
         {
             conversationDict["ISCOOL"] = "J-walked recently? haha, just kidding...";
@@ -100,6 +112,8 @@ public class GameState : MonoBehaviour
 
             return;
         }
+
+        // Conversation laoding for Lina Bean
         if (gameObjectName == "Lina Bean")
         {
             conversationDict["ISCOOL"] = "Bean Man! Are we still on for the movies this weekend?!";
@@ -109,6 +123,8 @@ public class GameState : MonoBehaviour
 
             return;
         }
+
+        // Conversation laoding for Birthday Cake
         if (gameObjectName == "Birthday Cake")
         {
             //NEEDS TO BE LESS OBVIOUS THAT HE IS STARTING A CULT
@@ -119,6 +135,8 @@ public class GameState : MonoBehaviour
 
             return;
         }
+
+        // Conversation laoding for Peanut Twins
         if (gameObjectName == "Peanut Twins")
         {
             conversationDict["ISCOOL"] = "Bean Man! We want to be just like you when we're older!";
@@ -128,6 +146,8 @@ public class GameState : MonoBehaviour
 
             return;
         }
+
+        // Conversation laoding for Greenben
         if (gameObjectName == "GreenBen")
         {
             conversationDict["ISCOOL"] = "Is that you Bean Man?. I really hope I can feel better soon.";
@@ -137,6 +157,8 @@ public class GameState : MonoBehaviour
 
             return;
         }
+
+        // Conversation laoding for Slim Sausage
         if (gameObjectName == "Slim Sausage")
         {
             conversationDict["ISCOOL"] = "Yo it's the mean Bean! Not even slim sausage is as slick as you!";
@@ -148,6 +170,11 @@ public class GameState : MonoBehaviour
         }
     }
 
+    /// <summary>
+    /// Randomized Glasses does two things:
+    /// 1: Assigns winning NPC and assign proper glasses to them
+    /// 2: Assigns random glasses to the rest (RED HERRINGS!)
+    /// </summary>
     public void RandomizeGlasses()
     {
         var copyNPC = new List<NPC>(_playerController.scriptNPCList);
@@ -192,23 +219,8 @@ public class GameState : MonoBehaviour
         }
     }
 
-    public void TalkedTo(string characterName) {
-        if (beanState == GameState.gameState.ISCOOL)
-        {
-            Debug.Log(listTotalNPC.Count + " " + _playerController.scriptNPCList.Count);
-            if (listTotalNPC.Count > _playerController.scriptNPCList.Count)
-            {
-                return;
-            }
-            else {
-                //beanState = GameState.gameState.BEANGOHINT;
-            }
-        }
-        HandleConversation(characterName);
-    }
-
     public void IsBeanGoHint() {
-        beanState = GameState.gameState.BEANGOHINT;
+        beanState = gameState.BEANGOHINT;
     }
 
     public void IsNotCool() {
@@ -255,48 +267,5 @@ public class GameState : MonoBehaviour
         
     }
 
-
-    private void HandleConversation(string characterName)
-    {
-        if (beanState == gameState.ISCOOL)
-        {
-            if (characterName == "Granny Smith")
-            {
-                talkedGranny = false;
-            }
-        }
-
-        if (beanState == gameState.ISNOTCOOL)
-        {
-            if (characterName == "Granny Smith")
-            {
-                talkedGranny = true;
-            }
-            if (talkedGranny) 
-            {
-                beanState = gameState.ISBAGGED;
-                talkedChickpea = false;
-                talkedGranny = false;
-            }
-        }
-
-        if (beanState == gameState.BEANGOHINT) {
-            if (characterName == "Granny Smith")
-            {
-                _actManager.activateGraphicTransition = true;
-                talkedChickpea = false;
-                talkedLina = false;
-                talkedGranny = false;
-            }
-        }
-
-        if (beanState == gameState.ISBAGGED)
-        {
-            //_playerController.Bagged();
-            //UIScript.Chatting.text = conversationDict["ISNOTCOOL"];
-            talkedChickpea = false;
-            talkedGranny = false;
-        }
-    }
 }
 

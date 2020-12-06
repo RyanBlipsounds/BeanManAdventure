@@ -73,7 +73,6 @@ public class PlayerController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        _actManager.LoadNewAct();
 
         //Movement and Animation
         if (_actManager.activateGraphicTransition == false)
@@ -138,16 +137,18 @@ public class PlayerController : MonoBehaviour
             _canTalkBox.isActive = true;
             if (Input.GetKeyDown(KeyCode.Space) && _dialogueBox.isActive == false)
             {
+                // Specifically adds characters to the NPC list
                 if (!scriptNPCList.Contains(thisCharacter.GetComponent<NPC>()))
                 {
+                    // Handle Fire Hydrant NPC Logic
                     if (thisCharacter.gameObject.name == "Fire Hydrant" && fireHydrantTalkCount < 5 && gameState.beanState == GameState.gameState.ISCOOL)
                     {
                         fireHydrantTalkCount++;
                         _dialogueBox.isActive = true;
                         gameState.Conversation(thisCharacter.gameObject.name, fireHydrantTalkCount);
                         return;
-                    }
-                    else if (thisCharacter.gameObject.name == "Fire Hydrant" && gameState.beanState == GameState.gameState.ISCOOL){
+
+                    }else if (thisCharacter.gameObject.name == "Fire Hydrant" && gameState.beanState == GameState.gameState.ISCOOL){
                         thisCharacter.gameObject.tag = "NPC";
                         if (!gameState.listTotalNPC.Contains(thisCharacter)) {
                             gameState.listTotalNPC.Add(thisCharacter);
@@ -155,24 +156,36 @@ public class PlayerController : MonoBehaviour
                         
                         gameState.Conversation(thisCharacter.gameObject.name, 6);
                     }
+
+                    // Adds NPC to list
                     if (thisCharacter.GetComponent<NPC>()) {
                         scriptNPCList.Add(thisCharacter.GetComponent<NPC>());
                     }
                 }
 
+                // Handles Fire Hydrant for ISNOTCOOL and ISBAGGED state
                 if (thisCharacter.gameObject.name == "Fire Hydrant" && thisCharacter.gameObject.tag == "NPC")
                 {
-                    if (gameState.beanState == GameState.gameState.ISNOTCOOL || gameState.beanState == GameState.gameState.ISBAGGED)
+                    
+                    if (gameState.beanState == GameState.gameState.ISNOTCOOL)
                     {
                         Debug.Log("Start Vomiting");
                         return;
                     }
+
+                    if (gameState.beanState == GameState.gameState.ISBAGGED)
+                    {
+                        Debug.Log("Oh man, that bag helps so much.");
+                        return;
+                    }
                 }
 
+                // Handle if Beanman is trying to leave town while bagged
                 if (gameState.beanState == GameState.gameState.ISBAGGED || thisCharacter.gameObject.name == "ExitTown"){
                     _responseBox.isActive = true;
                 }
 
+                // Checks if the NPC has been spoken to
                 if (!_dialogueBox.isActive)
                 {
                     if (thisCharacter.gameObject.name != "ExitTown") {
@@ -181,17 +194,18 @@ public class PlayerController : MonoBehaviour
                         thisNPCList.hasSpoken = true;
                     }
                 }
-                gameState.TalkedTo(thisCharacter.name);
-                if (gameState.beanState == GameState.gameState.BEANGOHINT && thisCharacter.name == "Granny Smith")
-                {
-                    _actManager.LoadNewAct();
-                }
+
                 _dialogueBox.isActive = true;
             }
             else if (Input.GetKeyDown(KeyCode.Space) && _dialogueBox.isActive == true)
             {
                 if (gameState.listTotalNPC.Count == scriptNPCList.Count)
                 {
+                    if (gameState.beanState == GameState.gameState.BEANGOHINT && thisCharacter.gameObject.name == "Granny Smith")
+                    {
+                        _actManager.activateGraphicTransition = true;
+                    }
+
                     gameState.IsBeanGoHint();
                 }
                 _dialogueBox.isActive = false;
@@ -200,14 +214,21 @@ public class PlayerController : MonoBehaviour
         }
         else
         {
-            if (gameState.listTotalNPC.Count == scriptNPCList.Count) {
+            if (gameState.listTotalNPC.Count == scriptNPCList.Count)
+            {
+                if (gameState.beanState == GameState.gameState.BEANGOHINT && thisCharacter.gameObject.name == "Granny Smith")
+                {
+                    // _actManager.activateGraphicTransition = true;
+                }
+
                 gameState.IsBeanGoHint();
             }
-        _dialogueBox.isActive = false;
+            _dialogueBox.isActive = false;
         _responseBox.isActive = false;
         _canTalkBox.isActive = false;
         }
 
+        // Checking if the response box is true and if the "Y" Button is pressed.
         if (Input.GetKeyDown(KeyCode.Y) && _responseBox.isActive == true)
         {
             if (thisCharacter.gameObject.name != "ExitTown")

@@ -232,9 +232,4 @@ public class ActManager : MonoBehaviour
 
     }
 
-    //In Load New Act, it should probably take dictionary arguments 
-    public void LoadNewAct()
-    {
-    }
-
 }
