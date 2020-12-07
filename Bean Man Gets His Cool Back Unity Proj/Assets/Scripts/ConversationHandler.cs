@@ -28,8 +28,6 @@ public class ConversationHandler : MonoBehaviour
 
             _playerController.characterInRange = true;
             
-
-            //Sets the Dictionary in GameState to the proper character dict and state
             _gamestate.Conversation(collision.gameObject.name, 0);
         }
     }

@@ -43,6 +43,7 @@ public class UIController : MonoBehaviour
 
         if (isActive)
         {
+            Debug.Log(gameState.beanState);
             speed = 3.0f;
             if (_actManager.sceneTransitionState == ActManager.sceneState.graphic && thisGameObject != "NarrationBox") {
                 isActive = false;

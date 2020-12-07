@@ -56,6 +56,7 @@ public class PlayerController : MonoBehaviour
 
     public Transform startTransform = default;
 
+    public FireHydrantVomit fireHydrantVomit;
     public bool isVommiting = false;
 
     void Start()
@@ -142,6 +143,7 @@ public class PlayerController : MonoBehaviour
                 // Specifically adds characters to the NPC list
                 if (!scriptNPCList.Contains(thisCharacter.GetComponent<NPC>()))
                 {
+
                     // Handle Fire Hydrant NPC Logic
                     if (thisCharacter.gameObject.name == "Fire Hydrant" && fireHydrantTalkCount < 4 && gameState.beanState == GameState.gameState.ISCOOL)
                     {
@@ -150,15 +152,14 @@ public class PlayerController : MonoBehaviour
                         gameState.Conversation(thisCharacter.gameObject.name, fireHydrantTalkCount);
                         return;
 
-                    }
+                    } 
                     if (thisCharacter.gameObject.name == "Fire Hydrant") {
-                        Debug.Log("Fire hydrant is over 5");
-                    
 
                         if (gameState.beanState == GameState.gameState.ISBAGGED || gameState.beanState == GameState.gameState.ISCOOL) {
                             thisCharacter.gameObject.tag = "NPC";
                             if (!gameState.listTotalNPC.Contains(thisCharacter))
                             {
+                                fireHydrantVomit.fireHydrantActivated = true;
                                 Debug.Log("ADDED FIRE HYDRANT TO GAME STATE LIST");
                                 gameState.listTotalNPC.Add(thisCharacter);
                             }
@@ -170,6 +171,14 @@ public class PlayerController : MonoBehaviour
                     // Adds NPC to list
                     if (thisCharacter.GetComponent<NPC>()) {
                         scriptNPCList.Add(thisCharacter.GetComponent<NPC>());
+                    }
+                }
+
+                if (fireHydrantVomit.fireHydrantActivated == false && thisCharacter.gameObject.name == "Fire Hydrant")
+                {
+                    if (gameState.beanState == GameState.gameState.ISBAGGED || gameState.beanState == GameState.gameState.ISNOTCOOL)
+                    {
+                        return;
                     }
                 }
 
@@ -200,7 +209,6 @@ public class PlayerController : MonoBehaviour
                         thisNPCList.hasSpoken = true;
                     }
                 }
-
                 if (thisCharacter.gameObject.name == "Granny Smith") {
                     if (gameState.beanState == GameState.gameState.BEANGOHINT || gameState.beanState == GameState.gameState.ISCOOL) {
                         if (scriptNPCList.Count == gameState.listTotalNPC.Count)

@@ -79,7 +79,7 @@ public class GameState : MonoBehaviour
                 conversationDict["ISCOOL"] = dialogue;
                 conversationDict["BEANGOHINT"] = "Why are you talking to me? I'm a fire hydrant.";
                 conversationDict["ISNOTCOOL"] = "Bean Man! Looks like you lost your glasses some how! Here, take this";
-                conversationDict["ISBAGGED"] = "Long time no See!";
+                conversationDict["ISBAGGED"] = "Oh thank god. You look so much better";
                 return;
             }
             else {
@@ -98,7 +98,6 @@ public class GameState : MonoBehaviour
             conversationDict["BEANGOHINT"] = "Let's go Beango!"; // This state should push into Beango
             conversationDict["ISNOTCOOL"] = "Bean Man! Looks like you lost your glasses some how! Here, take this";
             conversationDict["ISBAGGED"] = "Long time no See!";
-
             return;
         }
 
@@ -262,6 +261,7 @@ public class GameState : MonoBehaviour
         _playerController.Glasses();
         _playerController.fireHydrantTalkCount = 0;
         _playerController.Bag.transform.position = _playerController.m_BagStartPosition.transform.position;
+        _playerController.finishedBagMove = false;
         _playerController.bagMoving = true;
         _playerController.scriptNPCList.Clear();
         _playerController.MoveToStart();

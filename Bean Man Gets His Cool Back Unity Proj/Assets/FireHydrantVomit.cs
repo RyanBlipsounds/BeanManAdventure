@@ -8,6 +8,8 @@ public class FireHydrantVomit : MonoBehaviour
 
     public PlayerController playerController;
     public GameState gameState;
+
+    public bool fireHydrantActivated = false;
     // Start is called before the first frame update
     void Start()
     {
