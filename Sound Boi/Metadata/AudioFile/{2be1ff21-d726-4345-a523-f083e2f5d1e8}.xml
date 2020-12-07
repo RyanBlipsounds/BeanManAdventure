@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<objects serializationModel="Studio.02.01.00">
+	<object class="AudioFile" id="{2be1ff21-d726-4345-a523-f083e2f5d1e8}">
+		<property name="assetPath">
+			<value>Spencer_W.wav</value>
+		</property>
+		<property name="frequencyInKHz">
+			<value>44.0999985</value>
+		</property>
+		<property name="channelCount">
+			<value>2</value>
+		</property>
+		<property name="length">
+			<value>0.3592063492063492</value>
+		</property>
+		<relationship name="masterAssetFolder">
+			<destination>{79485d36-ec74-4e57-9401-e74df5e4eccf}</destination>
+		</relationship>
+	</object>
+</objects>

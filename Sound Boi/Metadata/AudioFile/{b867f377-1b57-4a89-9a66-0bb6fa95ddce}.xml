@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<objects serializationModel="Studio.02.01.00">
+	<object class="AudioFile" id="{b867f377-1b57-4a89-9a66-0bb6fa95ddce}">
+		<property name="assetPath">
+			<value>Gioia_W.wav</value>
+		</property>
+		<property name="frequencyInKHz">
+			<value>44.0999985</value>
+		</property>
+		<property name="channelCount">
+			<value>2</value>
+		</property>
+		<property name="length">
+			<value>0.16922902494331066</value>
+		</property>
+		<relationship name="masterAssetFolder">
+			<destination>{79485d36-ec74-4e57-9401-e74df5e4eccf}</destination>
+		</relationship>
+	</object>
+</objects>

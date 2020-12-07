@@ -1,5 +1,28 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
+--- !u!114 &-1856484753614589133
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: event:/Music
+  m_EditorClassIdentifier: 
+  Path: event:/Music
+  guid: 72956f9b55b91a43a417cd62fab12c0b
+  Banks:
+  - {fileID: 3369702041603077526}
+  IsStream: 1
+  Is3D: 0
+  IsOneShot: 0
+  Parameters: []
+  MinDistance: 0
+  MaxDistance: 0
+  Length: 10786
 --- !u!114 &11400000
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -19,13 +42,40 @@ MonoBehaviour:
   - {fileID: 3503456595496860185}
   - {fileID: 3745288727486929619}
   - {fileID: 4525063142999476406}
+  - {fileID: 763731089250673967}
+  - {fileID: -1856484753614589133}
+  - {fileID: 8855460696787012258}
+  - {fileID: 4561178409350876853}
   EditorParameters: []
   MasterBanks:
   - {fileID: 3369702041603077526}
   StringsBanks:
   - {fileID: 6392113596281031596}
-  stringsBankWriteTime: 637426198725470098
+  stringsBankWriteTime: 637429369359190658
   cacheVersion: 5
+--- !u!114 &763731089250673967
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: event:/Hydrant Vomit
+  m_EditorClassIdentifier: 
+  Path: event:/Hydrant Vomit
+  guid: 4e9f28e7bcd21d4688ba1211bb43155a
+  Banks:
+  - {fileID: 3369702041603077526}
+  IsStream: 0
+  Is3D: 0
+  IsOneShot: 1
+  Parameters: []
+  MinDistance: 0
+  MaxDistance: 0
+  Length: 3872
 --- !u!114 &3369702041603077526
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -40,7 +90,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Path: ../Sound Boi/Build/Desktop/Master.bank
   Name: Master
-  lastModified: 637426198725460163
+  lastModified: 637429369359130820
   LoadResult: 0
   FileSizes: []
   Exists: 1
@@ -113,6 +163,29 @@ MonoBehaviour:
   MinDistance: 0
   MaxDistance: 0
   Length: 0
+--- !u!114 &4561178409350876853
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: event:/Hydrant Drip
+  m_EditorClassIdentifier: 
+  Path: event:/Hydrant Drip
+  guid: fd813d138d6f7248be92c1b730ab48d5
+  Banks:
+  - {fileID: 3369702041603077526}
+  IsStream: 0
+  Is3D: 0
+  IsOneShot: 1
+  Parameters: []
+  MinDistance: 0
+  MaxDistance: 0
+  Length: 448
 --- !u!114 &6392113596281031596
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -127,9 +200,32 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Path: ../Sound Boi/Build/Desktop/Master.strings.bank
   Name: Master.strings
-  lastModified: 637426198725470098
+  lastModified: 637429369359190658
   LoadResult: 0
   FileSizes:
   - Name: 
-    Value: 848
+    Value: 1020
   Exists: 1
+--- !u!114 &8855460696787012258
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: event:/Wind Ambience
+  m_EditorClassIdentifier: 
+  Path: event:/Wind Ambience
+  guid: ef9287da3f1abc4e844b19be888bfe17
+  Banks:
+  - {fileID: 3369702041603077526}
+  IsStream: 1
+  Is3D: 0
+  IsOneShot: 0
+  Parameters: []
+  MinDistance: 0
+  MaxDistance: 0
+  Length: 32000
