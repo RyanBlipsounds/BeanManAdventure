@@ -61,6 +61,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   dialogueBoxAnimator: {fileID: 1047037951}
   canTalkBoxAnimator: {fileID: 0}
+  narrationBoxText: {fileID: 0}
   gameState: {fileID: 0}
   StartPoint: {fileID: 1056836416607956476}
   EndPoint: {fileID: 3608526204234249733}
@@ -1718,6 +1719,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   dialogueBoxAnimator: {fileID: 0}
   canTalkBoxAnimator: {fileID: 0}
+  narrationBoxText: {fileID: 0}
   gameState: {fileID: 0}
   StartPoint: {fileID: 255112906918460258}
   EndPoint: {fileID: 255112905704455312}
@@ -2102,6 +2104,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   dialogueBoxAnimator: {fileID: 6259634237430535438}
   canTalkBoxAnimator: {fileID: 0}
+  narrationBoxText: {fileID: 0}
   gameState: {fileID: 0}
   StartPoint: {fileID: 255112907006885799}
   EndPoint: {fileID: 255112907448109513}
@@ -2205,6 +2208,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   dialogueBoxAnimator: {fileID: 0}
   canTalkBoxAnimator: {fileID: 2464489981443579276}
+  narrationBoxText: {fileID: 0}
   gameState: {fileID: 0}
   StartPoint: {fileID: 255112905898893880}
   EndPoint: {fileID: 255112906320654856}
@@ -2690,8 +2694,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   fadeToBlack: 0
-  BlackScreen: {fileID: 6678524903312806048}
-  ColorValue: {r: 1, g: 1, b: 1, a: 1}
+  BlackScreen: {fileID: 0}
+  ColorValue: {r: 0, g: 0, b: 0, a: 0}
   m_gameState: {fileID: 0}
   _endingsManager: {fileID: 0}
   EndingScreen: {fileID: 0}
@@ -2704,26 +2708,69 @@ MonoBehaviour:
   FireHydrantEnding: {fileID: 0}
   SlimSausageWinning: {fileID: 0}
   BeanManLeavesBagged: {fileID: 0}
-  BeanManLeaves: {fileID: 0}
+  BeanManLeavesCool: {fileID: 0}
   GreenBenEnding: {fileID: 0}
   BirthdayCakeEnding: {fileID: 0}
   BeanManUncoolEnding: {fileID: 0}
   EndingScreenText: 
-  BeangoScreenText: 
-  ChickPeaEndingText: 
-  BeanManWinEndingText: 
-  LinaBeanEndingText: 
-  PeanutTwinEndingText: 
-  GrannySmithEndingText: 
-  FireHydrantEndingText: 
-  SlimSausageWinningText: 
-  BeanManLeavesBaggedText: 
-  BeanManLeavesText: 
-  GreenBenEndingText: 
-  BirthdayCakeEndingText: 
+  BeangoScreenText: It was a sweaty night of Beango, but Granny and Bean Man cleaned
+    up the house. They were an unstoppable force. It was all hazy, but it was one
+    of the greatest nights of Bean Man and Granny's lives. Although something didn't
+    feel quite right when Bean Man awoke in the morning. Bean had lost his glasses.
+  ChickPeaEndingText: In the quest to get his cool back, Bean Man ran the risk of
+    selecting what he thought were his own glasses, but failed to recognize that
+    Chickpea Deputy had been wearing them all along. Due to this, the glasses gave
+    our Deputy enough confidence to unlock his wizard powers, thus ending the world,
+    and preventing Bean Man from getting his cool back.
+  BeanManWinEndingText: There wasn't a snowballs chance in Beans hell that Bean Man
+    was going to lose his cool today. In this journey, Bean Man thought that had
+    lost his cool when he lost his glasses, but really the cool was inside of him
+    all along. The whole town rejoiced as Bean Man has found his cool for good.
+  BeanManLeavesCoolText: BeanMan knew his cool was so high above Beantown's coolest
+    bean. Even Lina Bean couldn't handle the sheer coolness of his cool. Could there
+    be a cool person more cool than Beanman? He doesn't say so, but he must know
+    so.
+  LinaBeanEndingText: Once Bean Man realized that Lina had his glasses, it was too
+    late. Lina had grown 300 meters and made her way across the Pacific Ocean to
+    Tokyo Japan. Tokyo faced one of it's greatest disasters in Japan's history as
+    Lina tore down the city. The recovery still remains to be seen. Also, Lina reveals
+    that she was edamame the whole time.
+  PeanutTwinEndingText: With great glasses comes great responsibility. After a tiring
+    life of being referred to as the second twin, Peanut Twin number two took it
+    upon himself to invent peanut butter with just a simple sacrifice from Peanut
+    Twin number one and his good friend Butter. Peanut Twin number two made millions
+    off of the idea, lost two of his best friends, and was still just Peanut Twin
+    number two.
+  GrannySmithEndingText: As it turns out, Granny was always jealous of Bean Man.
+    Being only the second coolest in town carries a heavy burden that Granny just
+    couldn't bare. Bean Man could do nothing but watch as his closest homie take
+    the throne and make the town hers. Stay tuned to find out what happens in Bean
+    Man sequel. Coming in 2077
+  FireHydrantEndingText: .....Seriously? You let a Fire Hydrant beat you? A fire
+    hydrant is cooler than you. Just let that sink in.
+  SlimSausageWinningText: Considering that Slim Sausage was a masterclass rapper,
+    there was no chance that Bean Man could keep up with his cool once Sausage had
+    his glasses. Slim Sausage went on to have an illustrious career where he would
+    tour with Frank Sinatra to perform in front of millions, as well as performing
+    for popular figures like Oprah Winbean and Pope Beanedict XVII.
+  BeanManLeavesBaggedText: There was no point. Bean Man just didn't belong. Bean
+    just felt that his life filled with cool had come to an end. He decided to move
+    on to his next journey.
+  BeanManLeavesUncoolText: There was no point. Bean Man just didn't belong. Bean
+    just felt that his life filled with cool had come to an end. He decided to move
+    on to his next journey.
+  GreenBenEndingText: With his cool shiny new glasses, Green Ben was looking and
+    feeling better than ever. But because Green Ben is so selfless, he decided to
+    give Bean Man his glasses back. And even though Bean Man had his glasses back,
+    Green Ben was now the new king in town.
+  BirthdayCakeEndingText: Once the glasses belonged to Birthday Cake, they had the
+    confidence to finally take the full measure they had been wanting to commit to
+    this whole time... to become a delicious treat for their friends. After their
+    friends enjoyed a delicious birthday treat, Birthday Cakes spirit was no longer
+    trapped on earth, and could now live a long and prosperous afterlife.
   BeanManSpawnPosition: {fileID: 0}
   _playerController: {fileID: 0}
-  _narrationBox: {fileID: 267602232}
+  _narrationBox: {fileID: 0}
   switchFade: 0
   activateGraphicTransition: 0
   sceneTransitionState: 0

@@ -8,6 +8,7 @@ public class UIController : MonoBehaviour
 {
     public TextAnimatorPlayer dialogueBoxAnimator;
     public TextAnimatorPlayer canTalkBoxAnimator;
+    public TextAnimatorPlayer narrationBoxText;
     public GameState gameState;
 
     public GameObject StartPoint;
@@ -29,6 +30,7 @@ public class UIController : MonoBehaviour
     void Start()
     {
         transform.position = StartPoint.transform.position;
+
     }
 
     void Update()
@@ -39,10 +41,12 @@ public class UIController : MonoBehaviour
         thisGameObject = this.gameObject.name;
         string currentBeanState = gameState.beanState.ToString();
 
-        //gameState.beanState.ToString();
-
         if (isActive)
         {
+            if (thisGameObject == "NarrationBox")
+            {
+                narrationBoxText.ShowText(_actManager.EndingScreenText);
+            }
             Debug.Log(gameState.beanState);
             speed = 3.0f;
             if (_actManager.sceneTransitionState == ActManager.sceneState.graphic && thisGameObject != "NarrationBox") {
@@ -58,6 +62,10 @@ public class UIController : MonoBehaviour
         }
         else
         {
+            if (thisGameObject == "NarrationBox")
+            {
+                narrationBoxText.StopShowingText();
+            }
             if (thisGameObject == "NarrationBox") {
                 speed = 9.0f;
             }

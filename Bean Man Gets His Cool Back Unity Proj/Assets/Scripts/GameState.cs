@@ -55,7 +55,7 @@ public class GameState : MonoBehaviour
 
         // Conversation loading for Exit town
         if (gameObjectName == "ExitTown") {
-            conversationDict["ISCOOL"] = "Do you Want to Leave Town?";
+
             conversationDict["BEANGOHINT"] = "Do you Want to Leave Town?";
             conversationDict["ISNOTCOOL"] = "Do you Want to Leave Town?";
             conversationDict["ISBAGGED"] = "Do you Want to Leave Town?";
@@ -94,6 +94,7 @@ public class GameState : MonoBehaviour
 
         // Conversation laoding for Granny Smith
         if (gameObjectName == "Granny Smith") {
+
             conversationDict["ISCOOL"] = "My main man Bean Man! Beango isn't ready yet, go mingle with other peeps";
             conversationDict["BEANGOHINT"] = "Let's go Beango!"; // This state should push into Beango
             conversationDict["ISNOTCOOL"] = "Bean Man! Looks like you lost your glasses some how! Here, take this";
@@ -104,7 +105,50 @@ public class GameState : MonoBehaviour
         // Conversation laoding for Chickpea Deputy
         if (gameObjectName == "Chickpea Deputy")
         {
+
             conversationDict["ISCOOL"] = "J-walked recently? haha, just kidding...";
+
+            if (endingsManager.endingsSeenList.Count > 0) {
+                if (endingsManager.endingsSeenList[endingsManager.endingsSeenList.Count - 1] == _actManager.BeanManUncoolEnding || 
+                    endingsManager.endingsSeenList[endingsManager.endingsSeenList.Count - 1] == _actManager.BeanManLeavesCool || 
+                    endingsManager.endingsSeenList[endingsManager.endingsSeenList.Count - 1] == _actManager.BeanManLeavesBagged)
+                {
+                    conversationDict["ISCOOL"] = "tagfaga";
+                }
+                if (endingsManager.endingsSeenList[endingsManager.endingsSeenList.Count - 1] == _actManager.LinaBeanEnding)
+                {
+                    conversationDict["ISCOOL"] = "If I'm not careful, Lina Bean will be the new sherrif in town!";
+                }
+                if (endingsManager.endingsSeenList[endingsManager.endingsSeenList.Count - 1] == _actManager.ChickPeaEnding)
+                {
+                    conversationDict["ISCOOL"] = "I had it. I had so much power. it was all mine... If only those glasses fit me properly.";
+                }
+                if (endingsManager.endingsSeenList[endingsManager.endingsSeenList.Count - 1] == _actManager.FireHydrantEnding)
+                {
+                    conversationDict["ISCOOL"] = "";
+                }
+                if (endingsManager.endingsSeenList[endingsManager.endingsSeenList.Count - 1] == _actManager.GreenBenEnding)
+                {
+                    conversationDict["ISCOOL"] = "Hey Bean! I invited Green Ben to the movies this weekend. He's a real sweet bean!";
+                }
+                if (endingsManager.endingsSeenList[endingsManager.endingsSeenList.Count - 1] == _actManager.BirthdayCakeEnding)
+                {
+                    conversationDict["ISCOOL"] = "Haven't you heard that Traffic Cones are all the rave now!!";
+                }
+                if (endingsManager.endingsSeenList[endingsManager.endingsSeenList.Count - 1] == _actManager.GrannySmithEnding)
+                {
+                    conversationDict["ISCOOL"] = "Beango was so much better last week! Granny had a whole different vibe!";
+                }
+                if (endingsManager.endingsSeenList[endingsManager.endingsSeenList.Count - 1] == _actManager.SlimSausageWinning)
+                {
+                    conversationDict["ISCOOL"] = "Slims new album is fire... it's so great to see him back in town!";
+                }
+                if (endingsManager.endingsSeenList[endingsManager.endingsSeenList.Count - 1] == _actManager.PeanutTwinEnding)
+                {
+                    conversationDict["ISCOOL"] = "I'm glad I didn't eat too much Peanut Butter";
+                }
+            }
+            
             conversationDict["ISNOTCOOL"] = "Watch yourself.";
             conversationDict["ISBAGGED"] = "What do you want?";
             conversationDict["BEANGOHINT"] = "Oh boy Beango? Gosh, I wish I was cool enough to join in!";
@@ -116,6 +160,49 @@ public class GameState : MonoBehaviour
         if (gameObjectName == "Lina Bean")
         {
             conversationDict["ISCOOL"] = "Bean Man! Are we still on for the movies this weekend?!";
+
+            if (endingsManager.endingsSeenList.Count > 0)
+            {
+                if (endingsManager.endingsSeenList[endingsManager.endingsSeenList.Count - 1] == _actManager.BeanManUncoolEnding ||
+                    endingsManager.endingsSeenList[endingsManager.endingsSeenList.Count - 1] == _actManager.BeanManLeavesCool ||
+                    endingsManager.endingsSeenList[endingsManager.endingsSeenList.Count - 1] == _actManager.BeanManLeavesBagged)
+                {
+                    conversationDict["ISCOOL"] = "Mean man! You're back!";
+                }
+                if (endingsManager.endingsSeenList[-1] == _actManager.LinaBeanEnding)
+                {
+                    conversationDict["ISCOOL"] = "Sorry I got a little crazy there... I hope we can still go out to the movies this weekend";
+                }
+                if (endingsManager.endingsSeenList[-1] == _actManager.ChickPeaEnding)
+                {
+                    conversationDict["ISCOOL"] = "Chickpea caught my attention for a little bit there...";
+                }
+                if (endingsManager.endingsSeenList[-1] == _actManager.FireHydrantEnding)
+                {
+                    conversationDict["ISCOOL"] = "Oh hey Bean... Me and Fire Hydrant are going to the movies this weekend instead... Sorry";
+                }
+                if (endingsManager.endingsSeenList[-1] == _actManager.GreenBenEnding)
+                {
+                    conversationDict["ISCOOL"] = "Hey Bean! I invited Green Ben to the movies this weekend. He's a real sweet bean!";
+                }
+                if (endingsManager.endingsSeenList[-1] == _actManager.BirthdayCakeEnding)
+                {
+                    conversationDict["ISCOOL"] = "Haven't you heard that Fire Hydrants are all the rave now!!";
+                }
+                if (endingsManager.endingsSeenList[-1] == _actManager.GrannySmithEnding)
+                {
+                    conversationDict["ISCOOL"] = "Beango was so much better last week! Granny had a whole different vibe!";
+                }
+                if (endingsManager.endingsSeenList[-1] == _actManager.SlimSausageWinning)
+                {
+                    conversationDict["ISCOOL"] = "Slims new album is fire... it's so great to see him back in town!";
+                }
+                if (endingsManager.endingsSeenList[-1] == _actManager.PeanutTwinEnding)
+                {
+                    conversationDict["ISCOOL"] = "I'm glad I didn't eat too much Peanut Butter";
+                }
+            }
+            
             conversationDict["ISNOTCOOL"] = "*Swipes Left*";
             conversationDict["ISBAGGED"] = "Working out WON'T get my attention. *Wink*";
             conversationDict["BEANGOHINT"] = "I wish we could hang out after Beango at Granny's";
@@ -126,8 +213,45 @@ public class GameState : MonoBehaviour
         // Conversation laoding for Birthday Cake
         if (gameObjectName == "Birthday Cake")
         {
-            //NEEDS TO BE LESS OBVIOUS THAT HE IS STARTING A CULT
             conversationDict["ISCOOL"] = "H-hey Beanman, would you be interested in joining my cul- I mean club?";
+
+            if (endingsManager.endingsSeenList[-1] == _actManager.BeanManUncoolEnding || endingsManager.endingsSeenList[-1] == _actManager.BeanManLeavesCool || endingsManager.endingsSeenList[-1] == _actManager.BeanManLeavesBagged)
+            {
+                conversationDict["ISCOOL"] = "You're lucky you aren't a traffic cone... you never would have esacped if you were.";
+            }
+            if (endingsManager.endingsSeenList[-1] == _actManager.LinaBeanEnding)
+            {
+                conversationDict["ISCOOL"] = "";
+            }
+            if (endingsManager.endingsSeenList[-1] == _actManager.ChickPeaEnding)
+            {
+                conversationDict["ISCOOL"] = "Chickpea caught my attention for a little bit there...";
+            }
+            if (endingsManager.endingsSeenList[-1] == _actManager.FireHydrantEnding)
+            {
+                conversationDict["ISCOOL"] = "Oh hey Bean... Me and Fire Hydrant are going to the movies this weekend instead... Sorry";
+            }
+            if (endingsManager.endingsSeenList[-1] == _actManager.GreenBenEnding)
+            {
+                conversationDict["ISCOOL"] = "Hey Bean! I invited Green Ben to the movies this weekend. He's a real sweet bean!";
+            }
+            if (endingsManager.endingsSeenList[-1] == _actManager.BirthdayCakeEnding)
+            {
+                conversationDict["ISCOOL"] = "Haven't you heard that Fire Hydrants are all the rave now!!";
+            }
+            if (endingsManager.endingsSeenList[-1] == _actManager.GrannySmithEnding)
+            {
+                conversationDict["ISCOOL"] = "Beango was so much better last week! Granny had a whole different vibe!";
+            }
+            if (endingsManager.endingsSeenList[-1] == _actManager.SlimSausageWinning)
+            {
+                conversationDict["ISCOOL"] = "Slims new album is fire... it's so great to see him back in town!";
+            }
+            if (endingsManager.endingsSeenList[-1] == _actManager.PeanutTwinEnding)
+            {
+                conversationDict["ISCOOL"] = "I'm glad I didn't eat too much Peanut Butter";
+            }
+            //NEEDS TO BE LESS OBVIOUS THAT HE IS STARTING A CULT
             conversationDict["ISNOTCOOL"] = "Oh, yeah we don't really need you to join us.";
             conversationDict["ISBAGGED"] = "Hello sir! Are you interested in learning about a fun new religion?";
             conversationDict["BEANGOHINT"] = "Maybe if I go to beango I can get new members...";
@@ -220,6 +344,7 @@ public class GameState : MonoBehaviour
 
     public void IsBeanGoHint() {
         beanState = gameState.BEANGOHINT;
+        _actManager.EndingScreenText = _actManager.BeangoScreenText;
     }
 
     public void IsNotCool() {

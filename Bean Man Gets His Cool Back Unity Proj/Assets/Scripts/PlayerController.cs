@@ -34,6 +34,7 @@ public class PlayerController : MonoBehaviour
     public UIController _canTalkBox;
     public UIController _dialogueBox;
     public UIController _responseBox;
+    public UIController _narrationBox;
 
     public GameObject Bag;
     public GameObject m_BagStartPosition;
@@ -234,8 +235,15 @@ public class PlayerController : MonoBehaviour
             }
             else if (Input.GetKeyDown(KeyCode.Space) && _dialogueBox.isActive == true)
             {
-                _dialogueBox.isActive = false;
-                _responseBox.isActive = false;
+                if (thisCharacter.gameObject.name == "Fire Hydrant")
+                {
+                    _dialogueBox.isActive = false;
+                    _responseBox.isActive = false;
+                }
+                else
+                {
+                    _dialogueBox.dialogueBoxAnimator.SkipTypewriter();
+                }
             }
         }
         else
@@ -274,6 +282,7 @@ public class PlayerController : MonoBehaviour
             {
                 if (gameState.beanState == GameState.gameState.BEANGOHINT || gameState.beanState == GameState.gameState.ISCOOL)
                 {
+                    Debug.Log("Here");
                     _actManager.LoadEnding("Beanman Leaves Cool Town");
                 }
                 if (gameState.beanState == GameState.gameState.ISNOTCOOL)
