@@ -298,6 +298,51 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!1 &1185290980108632166
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 6699447132907615870}
+  - component: {fileID: 4395358923640543359}
+  m_Layer: 0
+  m_Name: GameObject
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &6699447132907615870
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1185290980108632166}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0.551, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 5022688404735642067}
+  m_RootOrder: 10
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &4395358923640543359
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1185290980108632166}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 86c6556701af9e04380698b89f691b6e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  attenuationObject: {fileID: 0}
+  ListenerNumber: -1
 --- !u!1 &1872060265132936356
 GameObject:
   m_ObjectHideFlags: 0
@@ -706,6 +751,7 @@ Transform:
   - {fileID: 1534829350812242052}
   - {fileID: 508375513347566075}
   - {fileID: 7448472668423380477}
+  - {fileID: 6699447132907615870}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -739,6 +785,7 @@ MonoBehaviour:
   _canTalkBox: {fileID: 0}
   _dialogueBox: {fileID: 0}
   _responseBox: {fileID: 0}
+  _narrationBox: {fileID: 0}
   Bag: {fileID: 7478925590599173045}
   m_BagStartPosition: {fileID: 5250310996852359521}
   m_BagEndPosition: {fileID: 5233445400695320684}
@@ -750,6 +797,8 @@ MonoBehaviour:
   thisCharacter: {fileID: 0}
   fireHydrantTalkCount: 0
   startTransform: {fileID: 0}
+  fireHydrantVomit: {fileID: 0}
+  isVommiting: 0
 --- !u!50 &3786915276016554564
 Rigidbody2D:
   serializedVersion: 4

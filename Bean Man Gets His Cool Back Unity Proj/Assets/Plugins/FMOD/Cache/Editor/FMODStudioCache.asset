@@ -1,5 +1,28 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
+--- !u!114 &-4581183253243225579
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: event:/Knife Out
+  m_EditorClassIdentifier: 
+  Path: event:/Knife Out
+  guid: 292008539961f04eb3b0c791d2394481
+  Banks:
+  - {fileID: 3369702041603077526}
+  IsStream: 0
+  Is3D: 1
+  IsOneShot: 1
+  Parameters: []
+  MinDistance: 0.1
+  MaxDistance: 1.8
+  Length: 300
 --- !u!114 &-1856484753614589133
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -23,6 +46,29 @@ MonoBehaviour:
   MinDistance: 0
   MaxDistance: 0
   Length: 10786
+--- !u!114 &-1414644542880751703
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: event:/Knife In
+  m_EditorClassIdentifier: 
+  Path: event:/Knife In
+  guid: ef90a4053c032241a283143932f4b17c
+  Banks:
+  - {fileID: 3369702041603077526}
+  IsStream: 0
+  Is3D: 1
+  IsOneShot: 1
+  Parameters: []
+  MinDistance: 0.1
+  MaxDistance: 1.8
+  Length: 190
 --- !u!114 &11400000
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -46,13 +92,39 @@ MonoBehaviour:
   - {fileID: -1856484753614589133}
   - {fileID: 8855460696787012258}
   - {fileID: 4561178409350876853}
+  - {fileID: -4581183253243225579}
+  - {fileID: -1414644542880751703}
+  - {fileID: 306816345951212715}
   EditorParameters: []
   MasterBanks:
   - {fileID: 3369702041603077526}
   StringsBanks:
   - {fileID: 6392113596281031596}
-  stringsBankWriteTime: 637429645742673162
+  stringsBankWriteTime: 637430237797330089
   cacheVersion: 5
+--- !u!114 &306816345951212715
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: event:/Beango
+  m_EditorClassIdentifier: 
+  Path: event:/Beango
+  guid: 1d8ae793af660741ba3529e3061aaac4
+  Banks:
+  - {fileID: 3369702041603077526}
+  IsStream: 1
+  Is3D: 0
+  IsOneShot: 1
+  Parameters: []
+  MinDistance: 0
+  MaxDistance: 0
+  Length: 19052
 --- !u!114 &763731089250673967
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -70,11 +142,11 @@ MonoBehaviour:
   Banks:
   - {fileID: 3369702041603077526}
   IsStream: 0
-  Is3D: 0
+  Is3D: 1
   IsOneShot: 1
   Parameters: []
-  MinDistance: 0
-  MaxDistance: 0
+  MinDistance: 0.1
+  MaxDistance: 1.8
   Length: 3872
 --- !u!114 &3369702041603077526
 MonoBehaviour:
@@ -90,7 +162,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Path: ../Sound Boi/Build/Desktop/Master.bank
   Name: Master
-  lastModified: 637429645742663166
+  lastModified: 637430237797300162
   LoadResult: 0
   FileSizes: []
   Exists: 1
@@ -180,11 +252,11 @@ MonoBehaviour:
   Banks:
   - {fileID: 3369702041603077526}
   IsStream: 0
-  Is3D: 0
+  Is3D: 1
   IsOneShot: 1
   Parameters: []
-  MinDistance: 0
-  MaxDistance: 0
+  MinDistance: 0.1
+  MaxDistance: 1.8
   Length: 448
 --- !u!114 &6392113596281031596
 MonoBehaviour:
@@ -200,11 +272,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Path: ../Sound Boi/Build/Desktop/Master.strings.bank
   Name: Master.strings
-  lastModified: 637429645742673162
+  lastModified: 637430237797330089
   LoadResult: 0
   FileSizes:
   - Name: 
-    Value: 1020
+    Value: 1142
   Exists: 1
 --- !u!114 &8855460696787012258
 MonoBehaviour:

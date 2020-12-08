@@ -5,7 +5,7 @@
 			<value>Hydrant Vomit</value>
 		</property>
 		<property name="outputFormat">
-			<value>1</value>
+			<value>2</value>
 		</property>
 		<relationship name="folder">
 			<destination>{d41e6d41-c4d5-4ec9-a61e-2b816f93f9a6}</destination>
@@ -116,6 +116,7 @@
 	<object class="MixerBusEffectChain" id="{0ba9d487-38c3-4143-bf0a-f03145edf8f0}">
 		<relationship name="effects">
 			<destination>{61231608-bd61-4a6f-9e97-9eca2c75655d}</destination>
+			<destination>{b50beea1-7116-44fd-8829-b9ec1ccbc369}</destination>
 		</relationship>
 	</object>
 	<object class="MixerBusPanner" id="{8d0f980d-824f-4eb3-873e-0a1649399103}" />
@@ -127,5 +128,22 @@
 	</object>
 	<object class="MixerBusPanner" id="{23845c75-c0eb-4745-9183-291043c5e770}" />
 	<object class="MixerBusFader" id="{61231608-bd61-4a6f-9e97-9eca2c75655d}" />
+	<object class="SpatialiserEffect" id="{b50beea1-7116-44fd-8829-b9ec1ccbc369}">
+		<property name="distanceRolloffType">
+			<value>1</value>
+		</property>
+		<property name="minimumDistance">
+			<value>0.100000001</value>
+		</property>
+		<property name="maximumDistance">
+			<value>1.79999995</value>
+		</property>
+		<property name="extentMode">
+			<value>1</value>
+		</property>
+		<property name="minimumExtent">
+			<value>360</value>
+		</property>
+	</object>
 	<object class="MixerBusFader" id="{5f52697c-9732-47c8-ab75-e23fd612ceed}" />
 </objects>

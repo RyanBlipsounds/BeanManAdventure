@@ -5,7 +5,7 @@
 			<value>Hydrant Drip</value>
 		</property>
 		<property name="outputFormat">
-			<value>0</value>
+			<value>2</value>
 		</property>
 		<relationship name="folder">
 			<destination>{d41e6d41-c4d5-4ec9-a61e-2b816f93f9a6}</destination>
@@ -98,7 +98,7 @@
 	</object>
 	<object class="EventMixerGroup" id="{54b41dcd-2271-48b2-adef-e8e58b57ee69}">
 		<property name="volume">
-			<value>-35</value>
+			<value>-36</value>
 		</property>
 		<property name="name">
 			<value>Audio 1</value>
@@ -116,6 +116,7 @@
 	<object class="MixerBusEffectChain" id="{32de5d50-b6e3-42ea-a28c-413c9f71ee06}">
 		<relationship name="effects">
 			<destination>{aed99875-b2ba-4661-802c-234ca0ce0a8d}</destination>
+			<destination>{c5a26e28-95da-47b4-8924-8919c54cb9ca}</destination>
 		</relationship>
 	</object>
 	<object class="MixerBusPanner" id="{7ea491cc-cb98-4825-8296-ddc9c33405f1}" />
@@ -127,5 +128,22 @@
 	</object>
 	<object class="MixerBusPanner" id="{580a8865-6d5b-4444-9b08-5f485be4273c}" />
 	<object class="MixerBusFader" id="{aed99875-b2ba-4661-802c-234ca0ce0a8d}" />
+	<object class="SpatialiserEffect" id="{c5a26e28-95da-47b4-8924-8919c54cb9ca}">
+		<property name="distanceRolloffType">
+			<value>1</value>
+		</property>
+		<property name="minimumDistance">
+			<value>0.100000001</value>
+		</property>
+		<property name="maximumDistance">
+			<value>1.79999995</value>
+		</property>
+		<property name="extentMode">
+			<value>1</value>
+		</property>
+		<property name="minimumExtent">
+			<value>360</value>
+		</property>
+	</object>
 	<object class="MixerBusFader" id="{e8524995-6328-4b05-8379-d69c57727e77}" />
 </objects>

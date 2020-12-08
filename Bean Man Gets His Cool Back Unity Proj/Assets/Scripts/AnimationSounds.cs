@@ -17,6 +17,6 @@ public class AnimationSounds : MonoBehaviour
     }
     void Playsound(string sound)
     {
-        FMODUnity.RuntimeManager.PlayOneShot(sound);
+        FMODUnity.RuntimeManager.PlayOneShot(sound, this.transform.position);
     }
 }
