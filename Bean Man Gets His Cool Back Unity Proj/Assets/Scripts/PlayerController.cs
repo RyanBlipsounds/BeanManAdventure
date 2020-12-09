@@ -144,15 +144,13 @@ public class PlayerController : MonoBehaviour
                 // Specifically adds characters to the NPC list
                 if (!scriptNPCList.Contains(thisCharacter.GetComponent<NPC>()))
                 {
-
                     // Handle Fire Hydrant NPC Logic
-                    if (thisCharacter.gameObject.name == "Fire Hydrant" && fireHydrantTalkCount < 4 && gameState.beanState == GameState.gameState.ISCOOL)
+                    if (thisCharacter.gameObject.name == "Fire Hydrant" && fireHydrantTalkCount < 4 && gameState.beanState == GameState.gameState.ISCOOL || gameState.beanState == GameState.gameState.BEANGOHINT)
                     {
                         fireHydrantTalkCount++;
                         _dialogueBox.isActive = true;
                         gameState.Conversation(thisCharacter.gameObject.name, fireHydrantTalkCount);
                         return;
-
                     } 
                     if (thisCharacter.gameObject.name == "Fire Hydrant") {
 

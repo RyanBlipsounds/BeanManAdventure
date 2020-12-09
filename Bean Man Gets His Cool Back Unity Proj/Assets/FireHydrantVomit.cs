@@ -19,6 +19,8 @@ public class FireHydrantVomit : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+
+
         if (playerController.thisCharacter.gameObject.name == "Fire Hydrant" && gameState.beanState == GameState.gameState.ISNOTCOOL && playerController.isVommiting == true) {
             FireHydrantAnimator.Play("FireHydrantVomit");
         }
