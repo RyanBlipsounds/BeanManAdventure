@@ -34,7 +34,7 @@ public class ConversationHandler : MonoBehaviour
 
     public void OnTriggerExit2D(Collider2D other)
     {
-        if (other.gameObject.tag == "NPC" || other.gameObject.name == "Fire Hydrant" || other.gameObject.name == "ExitTown")
+        if (other.gameObject.tag == "NPC" || other.gameObject.name == "Fire Hydrant" || other.gameObject.name == "ExitTown" || other.gameObject.name == "Stick")
         {
             _playerController.characterInRange = false;
         }
