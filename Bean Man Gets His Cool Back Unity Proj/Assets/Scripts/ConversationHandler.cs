@@ -15,7 +15,7 @@ public class ConversationHandler : MonoBehaviour
 
     public void OnTriggerEnter2D(Collider2D collision)
     {
-        if (collision.gameObject.tag == "NPC" || collision.gameObject.name == "Fire Hydrant" || collision.gameObject.name == "ExitTown")
+        if (collision.gameObject.tag == "NPC" || collision.gameObject.name == "Fire Hydrant" || collision.gameObject.name == "ExitTown" || collision.gameObject.name == "Stick")
         {
             Debug.Log(collision.gameObject.name);
             //This initializes 

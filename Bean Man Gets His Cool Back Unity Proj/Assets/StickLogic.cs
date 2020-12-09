@@ -6,6 +6,9 @@ public class StickLogic : MonoBehaviour
 {
     public PlayerController _playerController;
     public Animator StickAnimator;
+    public GameState _gameState;
+
+    public UIController _canTalkBox;
 
     // Start is called before the first frame update
     void Start()
@@ -16,6 +19,8 @@ public class StickLogic : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        StickAnimator.Play("StickRunAway");
+        if (_gameState.beanState == GameState.gameState.ISNOTCOOL && Input.GetKeyDown(KeyCode.Space) && _playerController.thisCharacter.gameObject.name == "Stick") {
+            StickAnimator.Play("StickRunAway");
+        }
     }
 }
