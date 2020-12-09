@@ -141,6 +141,9 @@ public class PlayerController : MonoBehaviour
             _canTalkBox.isActive = true;
             if (Input.GetKeyDown(KeyCode.Space) && _dialogueBox.isActive == false)
             {
+                if (thisCharacter.gameObject.name == "Stick") {
+                    return;
+                }
                 // Specifically adds characters to the NPC list
                 if (!scriptNPCList.Contains(thisCharacter.GetComponent<NPC>()))
                 {

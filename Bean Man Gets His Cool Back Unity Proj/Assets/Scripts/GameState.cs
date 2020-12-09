@@ -116,11 +116,11 @@ public class GameState : MonoBehaviour
                 }
                 if (endingsManager.endingsSeenList[endingsManager.endingsSeenList.Count - 1] == _actManager.LinaBeanEnding)
                 {
-                    conversationDict["ISCOOL"] = "If I'm not careful, Lina Bean will be the new sherrif in town.";
+                    conversationDict["ISCOOL"] = "If I'm not careful, Lina Bean will be the new sheriff in town.";
                 }
                 if (endingsManager.endingsSeenList[endingsManager.endingsSeenList.Count - 1] == _actManager.ChickPeaEnding)
                 {
-                    conversationDict["ISCOOL"] = "I had it. I had so much power. it was all mine... If only those glasses fit me properly.";
+                    conversationDict["ISCOOL"] = "I had it. I had so much power. It was all mine... If only those glasses fit me properly.";
                 }
                 if (endingsManager.endingsSeenList[endingsManager.endingsSeenList.Count - 1] == _actManager.FireHydrantEnding)
                 {
@@ -170,7 +170,7 @@ public class GameState : MonoBehaviour
                 }
                 if (endingsManager.endingsSeenList[endingsManager.endingsSeenList.Count - 1] == _actManager.LinaBeanEnding)
                 {
-                    conversationDict["ISCOOL"] = "Sorry I got a little crazy there... I hope we can still go out to the movies this weekend";
+                    conversationDict["ISCOOL"] = "Sorry I got a little crazy there... I hope we can still go out to the movies this weekend.";
                 }
                 if (endingsManager.endingsSeenList[endingsManager.endingsSeenList.Count - 1] == _actManager.ChickPeaEnding)
                 {
@@ -182,7 +182,7 @@ public class GameState : MonoBehaviour
                 }
                 if (endingsManager.endingsSeenList[endingsManager.endingsSeenList.Count - 1] == _actManager.GreenBenEnding)
                 {
-                    conversationDict["ISCOOL"] = "Hey Bean! I invited Green Ben to the movies this weekend. He's a real sweet bean!";
+                    conversationDict["ISCOOL"] = "Hey Bean! I invited GreenBen to the movies this weekend. He's a real sweet bean!";
                 }
                 if (endingsManager.endingsSeenList[endingsManager.endingsSeenList.Count - 1] == _actManager.BirthdayCakeEnding)
                 {
@@ -238,7 +238,7 @@ public class GameState : MonoBehaviour
                 }
                 if (endingsManager.endingsSeenList[endingsManager.endingsSeenList.Count - 1] == _actManager.GreenBenEnding)
                 {
-                    conversationDict["ISCOOL"] = "Green Ben is such a swell guy. He joined my club!";
+                    conversationDict["ISCOOL"] = "GreenBen is such a swell guy. He joined my club!";
                 }
                 if (endingsManager.endingsSeenList[endingsManager.endingsSeenList.Count - 1] == _actManager.BirthdayCakeEnding)
                 {
@@ -465,7 +465,7 @@ public class GameState : MonoBehaviour
         winningNPC.isWinner = true;
         copyNPC.Remove(winningNPC);
 
-        foreach ( NPC character in copyNPC)
+        foreach (NPC character in copyNPC)
         {
             character.spriteRenderer.sprite = character.glassesList[Random.Range(1, character.glassesList.Count)];
         }
