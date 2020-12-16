@@ -23,6 +23,29 @@ MonoBehaviour:
   MinDistance: 0.1
   MaxDistance: 1.8
   Length: 300
+--- !u!114 &-4493146894482170253
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: event:/Footsteps Concrete
+  m_EditorClassIdentifier: 
+  Path: event:/Footsteps Concrete
+  guid: 4e9c5f1ad111804aba32d2b1cd695a5d
+  Banks:
+  - {fileID: 3369702041603077526}
+  IsStream: 0
+  Is3D: 0
+  IsOneShot: 1
+  Parameters: []
+  MinDistance: 0
+  MaxDistance: 0
+  Length: 608
 --- !u!114 &-2805366936108151662
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -115,6 +138,29 @@ MonoBehaviour:
   MinDistance: 0.1
   MaxDistance: 1.8
   Length: 190
+--- !u!114 &-868981222334255095
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: event:/Footsteps 1
+  m_EditorClassIdentifier: 
+  Path: event:/Footsteps 1
+  guid: ed26fd4f2e996e448294eb1253d31fe3
+  Banks:
+  - {fileID: 3369702041603077526}
+  IsStream: 0
+  Is3D: 0
+  IsOneShot: 1
+  Parameters: []
+  MinDistance: 0
+  MaxDistance: 0
+  Length: 350
 --- !u!114 &11400000
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -131,7 +177,6 @@ MonoBehaviour:
   - {fileID: 6392113596281031596}
   - {fileID: 3369702041603077526}
   EditorEvents:
-  - {fileID: 3503456595496860185}
   - {fileID: 3745288727486929619}
   - {fileID: 4525063142999476406}
   - {fileID: 763731089250673967}
@@ -148,12 +193,14 @@ MonoBehaviour:
   - {fileID: 4113860699462827609}
   - {fileID: -2476371867438332758}
   - {fileID: 6457935553904784496}
+  - {fileID: -4493146894482170253}
+  - {fileID: 6732129943841621135}
   EditorParameters: []
   MasterBanks:
   - {fileID: 3369702041603077526}
   StringsBanks:
   - {fileID: 6392113596281031596}
-  stringsBankWriteTime: 637432804702555860
+  stringsBankWriteTime: 637437130479095801
   cacheVersion: 5
 --- !u!114 &306816345951212715
 MonoBehaviour:
@@ -261,7 +308,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Path: ../Sound Boi/Build/Desktop/Master.bank
   Name: Master
-  lastModified: 637432804702525923
+  lastModified: 637437130479035971
   LoadResult: 0
   FileSizes: []
   Exists: 1
@@ -439,11 +486,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Path: ../Sound Boi/Build/Desktop/Master.strings.bank
   Name: Master.strings
-  lastModified: 637432804702555860
+  lastModified: 637437130479095801
   LoadResult: 0
   FileSizes:
   - Name: 
-    Value: 1460
+    Value: 1514
   Exists: 1
 --- !u!114 &6457935553904784496
 MonoBehaviour:
@@ -468,6 +515,29 @@ MonoBehaviour:
   MinDistance: 0
   MaxDistance: 0
   Length: 140
+--- !u!114 &6732129943841621135
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: event:/Footsteps Dirt
+  m_EditorClassIdentifier: 
+  Path: event:/Footsteps Dirt
+  guid: ed26fd4f2e996e448294eb1253d31fe3
+  Banks:
+  - {fileID: 3369702041603077526}
+  IsStream: 0
+  Is3D: 0
+  IsOneShot: 1
+  Parameters: []
+  MinDistance: 0
+  MaxDistance: 0
+  Length: 350
 --- !u!114 &8855460696787012258
 MonoBehaviour:
   m_ObjectHideFlags: 0
