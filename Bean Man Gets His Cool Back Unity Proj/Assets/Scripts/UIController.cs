@@ -10,10 +10,10 @@ public class UIController : MonoBehaviour
     public TextAnimatorPlayer canTalkBoxAnimator;
     public TextAnimatorPlayer narrationBoxText;
     public GameState gameState;
-
     public GameObject StartPoint;
     public GameObject EndPoint;
     public float speed = 1.0f;
+    public PlayerController _playerController;
 
     public GameObject ResponseBox;
     public GameObject DialogueBox;
@@ -29,8 +29,8 @@ public class UIController : MonoBehaviour
 
     void Start()
     {
+        
         transform.position = StartPoint.transform.position;
-
     }
 
     void Update()
@@ -54,6 +54,8 @@ public class UIController : MonoBehaviour
             }
             if (!textActivated && thisGameObject == "DialogueBox")
             {
+                //dialogueBoxAnimator.onCharacterVisible
+
                 textActivated = true;
                 dialogueBoxAnimator.ShowText(gameState.conversationDict[currentBeanState]);
             }
@@ -72,5 +74,12 @@ public class UIController : MonoBehaviour
             textActivated = false;
             this.gameObject.transform.position = Vector3.MoveTowards(transform.position, StartPoint.transform.position, Time.deltaTime * speed);
         }
+    }
+    public void PlayVoiceSound()
+    {
+        
+        Debug.Log("poopyButts" + _playerController.thisCharacter.name);
+
+        FMODUnity.RuntimeManager.PlayOneShot("event:/" + _playerController.thisCharacter.name);
     }
 }
