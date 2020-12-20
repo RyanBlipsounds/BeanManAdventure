@@ -15,6 +15,14 @@ public class GameState : MonoBehaviour
     public NPC _npc = default;
     public ActManager _actManager = default;
 
+    public ButterLogic butter;
+
+    public PeanutTwinsLogic peanutTwins;
+
+    public TrafficConeCollection _trafficConeCollection;
+
+    public List<HouseStateLogic> listHouses = new List<HouseStateLogic>();
+
     public List<GameObject> listTotalNPC = new List<GameObject>();
 
     public GameState m_gameState = null;
@@ -35,11 +43,6 @@ public class GameState : MonoBehaviour
     private bool talkedLina = false;
     private bool talkedChickpea = false;
 
-    private void Update()
-    {
-        Debug.Log(beanState);
-    }
-
     // Start is called before the first frame update
     void Start()
     {
@@ -55,7 +58,7 @@ public class GameState : MonoBehaviour
 
         // Conversation loading for Exit town
         if (gameObjectName == "ExitTown") {
-
+            conversationDict["ISCOOL"] = "Do you Want to Leave Town?";
             conversationDict["BEANGOHINT"] = "Do you Want to Leave Town?";
             conversationDict["ISNOTCOOL"] = "Do you Want to Leave Town?";
             conversationDict["ISBAGGED"] = "Do you Want to Leave Town?";
@@ -96,9 +99,19 @@ public class GameState : MonoBehaviour
         if (gameObjectName == "Granny Smith") {
 
             conversationDict["ISCOOL"] = "My main man Bean Man! Beango isn't ready yet, go mingle with other peeps";
-            conversationDict["BEANGOHINT"] = "Let's go Beango!"; // This state should push into Beango
+            conversationDict["BEANGOHINT"] = "Are you ready for Beango?";
             conversationDict["ISNOTCOOL"] = "Bean Man! Looks like you lost your glasses some how! Here, take this";
             conversationDict["ISBAGGED"] = "Long time no See!";
+            return;
+        }
+
+        if (gameObjectName == "Butter")
+        {
+
+            conversationDict["ISCOOL"] = "Those Peanut Twins are some good pals!";
+            conversationDict["BEANGOHINT"] = "I wish I was old enough to go to Beango!!"; // This state should push into Beango
+            conversationDict["ISNOTCOOL"] = "Yeah, I need to go";
+            conversationDict["ISBAGGED"] = "Okay I can deal with this.";
             return;
         }
 
@@ -436,14 +449,19 @@ public class GameState : MonoBehaviour
         while (newWinnerFound == false) {
             int count;
             count = 0;
-            foreach (GameObject endingsFound in endingsManager.endingsSeenList)
-            {
-                if (endingsFound.gameObject.GetComponent<NPC>())
+            if (endingsManager.endingsSeenList.Count > 0) {
+                foreach (GameObject endingsFound in endingsManager.endingsSeenList)
                 {
-                    count++;
+                    Debug.Log("Endings count!");
+                    if (!endingsFound.gameObject.name.Contains("Beanman"))
+                    {
+                        count++;
+                    }
                 }
             }
             Debug.Log(count + " " + endingsManager.endingsSeenList.Count);
+
+            Debug.Log("NPC LIST COUNT " + _playerController.scriptNPCList.Count);
 
             if (count == _playerController.scriptNPCList.Count)
             {
@@ -453,10 +471,25 @@ public class GameState : MonoBehaviour
                 break;
             }
             winningNPC = copyNPC[Random.Range(0, copyNPC.Count)];
-            Debug.Log("Trying this boy " + winningNPC);
-            if (!endingsManager.endingsSeenList.Contains(winningNPC.gameObject))
-            {
-                Debug.Log("This is the winner " + winningNPC);
+
+            if (endingsManager.endingsSeenList.Count == 0) {
+                Debug.Log("This is the FIRST winner " + winningNPC);
+                newWinnerFound = true;
+                break;
+            }
+            bool hasEnding = false;
+            hasEnding = false;
+
+            Debug.Log("This is the current trying winning NPC " + winningNPC.gameObject.name);
+            foreach (GameObject ending in endingsManager.endingsSeenList) {
+                if (ending.gameObject.name.Contains(winningNPC.gameObject.name)) {
+                    Debug.Log("There was a match in endings for " + winningNPC.gameObject.name);
+                    hasEnding = true;
+                    break;
+                }
+            }
+            if (hasEnding == false) {
+                Debug.Log("This is the winner " + winningNPC.gameObject.name);
                 newWinnerFound = true;
                 break;
             }
@@ -465,6 +498,10 @@ public class GameState : MonoBehaviour
         winningNPC.isWinner = true;
         copyNPC.Remove(winningNPC);
 
+        if (winningNPC.gameObject.name == "Peanut Twins") {
+            butter.KillButter();
+        }
+
         foreach (NPC character in copyNPC)
         {
             character.spriteRenderer.sprite = character.glassesList[Random.Range(1, character.glassesList.Count)];
@@ -472,11 +509,21 @@ public class GameState : MonoBehaviour
     }
 
     public void IsBeanGoHint() {
-        beanState = gameState.BEANGOHINT;
+        foreach (HouseStateLogic house in listHouses)
+        {
+            house.BeangoState();
+        }
         _actManager.EndingScreenText = _actManager.BeangoScreenText;
+
+        beanState = gameState.BEANGOHINT;
+       
     }
 
     public void IsNotCool() {
+        foreach (HouseStateLogic house in listHouses)
+        {
+            house.NotCoolState();
+        }
         beanState = gameState.ISNOTCOOL;
         RandomizeGlasses();
 
@@ -491,6 +538,9 @@ public class GameState : MonoBehaviour
     }
 
     public void IsBagged() {
+        foreach (HouseStateLogic house in listHouses) {
+            house.BaggedState();
+        }
         beanState = gameState.ISBAGGED;
     }
 
@@ -505,23 +555,44 @@ public class GameState : MonoBehaviour
     /// </summary>
     public void ResetGame()
     {
-
+        foreach (HouseStateLogic house in listHouses)
+        {
+            house.CoolState();
+        }
         if (_playerController.scriptNPCList.Count != 0) {
             foreach (NPC npc in _playerController.scriptNPCList)
             {
                 npc.ResetCoolStateNPC();
+                if (endingsManager.endingsSeenList[endingsManager.endingsSeenList.Count - 1] == _actManager.BirthdayCakeEnding)
+                {
+                    npc.ShowTrafficCone();
+                }
             }
         }
+
         _playerController.Glasses();
         //_playerController.fireHydrantTalkCount = 0;
         _playerController.Bag.transform.position = _playerController.m_BagStartPosition.transform.position;
         _playerController.finishedBagMove = false;
         _playerController.bagMoving = true;
-        _playerController.scriptNPCList.Clear();
+        //_playerController.scriptNPCList.Clear();
         _playerController.MoveToStart();
         _UILogic.MainMenu.SetActive(true);
-        
+        if (_playerController.scriptNPCList.Count != 0)
+        {
+            if (endingsManager.endingsSeenList[endingsManager.endingsSeenList.Count - 1] == _actManager.FireHydrantEnding)
+            {
+                _trafficConeCollection.FireHydrantPile();
+            }
+            else
+            {
+                _trafficConeCollection.TrafficConePile();
+            }
+        }
+        if (endingsManager.endingsSeenList.Contains(_actManager.PeanutTwinEnding))
+        {
+            peanutTwins.KillPeanutTwin();
+        }
     }
 
 }
-

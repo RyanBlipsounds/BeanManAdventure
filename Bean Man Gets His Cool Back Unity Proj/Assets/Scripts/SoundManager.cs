@@ -7,7 +7,7 @@ public class SoundManager : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        //FMODUnity.RuntimeManager.PlayOneShot("event:/Test Guy"); 
+        FMODUnity.RuntimeManager.PlayOneShot("event:/Wind Ambience"); 
     }
 
     // Update is called once per frame

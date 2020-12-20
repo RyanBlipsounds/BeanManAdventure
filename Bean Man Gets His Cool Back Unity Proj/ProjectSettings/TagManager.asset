@@ -5,6 +5,11 @@ TagManager:
   serializedVersion: 2
   tags:
   - NPC
+  - Surface
+  - Dirt
+  - Concrete
+  - SideNPC
+  - InactiveNPC
   layers:
   - Default
   - TransparentFX

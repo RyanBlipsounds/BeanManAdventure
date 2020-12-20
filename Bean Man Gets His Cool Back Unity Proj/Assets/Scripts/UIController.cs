@@ -9,11 +9,16 @@ public class UIController : MonoBehaviour
     public TextAnimatorPlayer dialogueBoxAnimator;
     public TextAnimatorPlayer canTalkBoxAnimator;
     public TextAnimatorPlayer narrationBoxText;
-    public GameState gameState;
 
+    public TextMeshProUGUI responseBoxTextYes;
+    public TextMeshProUGUI responseBoxTextNo;
+    public GameState gameState;
     public GameObject StartPoint;
     public GameObject EndPoint;
     public float speed = 1.0f;
+    public PlayerController _playerController;
+
+    public EndingsManager endingsManager;
 
     public GameObject ResponseBox;
     public GameObject DialogueBox;
@@ -29,8 +34,8 @@ public class UIController : MonoBehaviour
 
     void Start()
     {
+        
         transform.position = StartPoint.transform.position;
-
     }
 
     void Update()
@@ -54,8 +59,41 @@ public class UIController : MonoBehaviour
             }
             if (!textActivated && thisGameObject == "DialogueBox")
             {
+                //dialogueBoxAnimator.onCharacterVisible
+                bool hasNPC = false;
+                hasNPC = false;
                 textActivated = true;
-                dialogueBoxAnimator.ShowText(gameState.conversationDict[currentBeanState]);
+                foreach (GameObject ending in endingsManager.endingsSeenList) {
+                    if (!ending.gameObject.name.Contains("Beanman")) {
+                        hasNPC = true;
+                        break;
+                    }
+                }
+                if (gameState.beanState == GameState.gameState.BEANGOHINT && hasNPC && _playerController.thisCharacter.gameObject.name != "Granny Smith")
+                {
+                    dialogueBoxAnimator.ShowText(gameState.conversationDict["ISCOOL"]);
+                }
+                else
+                {
+                    dialogueBoxAnimator.ShowText(gameState.conversationDict[currentBeanState]);
+                }
+            }
+
+            if (!textActivated && thisGameObject == "ResponseBox") {
+                if (_playerController.thisCharacter.gameObject.name == "ExitTown")
+                {
+                    responseBoxTextYes.text = "Get me out of here";
+                    responseBoxTextNo.text = "I guess I'll stay";
+                }
+                else if (_playerController.thisCharacter.gameObject.name == "Granny Smith" && gameState.beanState == GameState.gameState.BEANGOHINT)
+                {
+                    responseBoxTextYes.text = "Let's Beango!";
+                    responseBoxTextNo.text = "Not yet";
+                }
+                else {
+                        responseBoxTextYes.text = "Are those my Glasses?";
+                        responseBoxTextNo.text = "Talk To You Later";
+                }
             }
 
             this.gameObject.transform.position = Vector3.MoveTowards(transform.position, EndPoint.transform.position, Time.deltaTime * speed);
@@ -72,5 +110,12 @@ public class UIController : MonoBehaviour
             textActivated = false;
             this.gameObject.transform.position = Vector3.MoveTowards(transform.position, StartPoint.transform.position, Time.deltaTime * speed);
         }
+    }
+
+
+    public void PlayVoiceSound()
+    {
+
+        FMODUnity.RuntimeManager.PlayOneShot("event:/" + _playerController.thisCharacter.name);
     }
 }

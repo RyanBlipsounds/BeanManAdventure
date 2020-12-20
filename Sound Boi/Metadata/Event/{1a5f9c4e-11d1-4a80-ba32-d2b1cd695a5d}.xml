@@ -2,7 +2,7 @@
 <objects serializationModel="Studio.02.01.00">
 	<object class="Event" id="{1a5f9c4e-11d1-4a80-ba32-d2b1cd695a5d}">
 		<property name="name">
-			<value>Footsteps 2</value>
+			<value>Footsteps Concrete</value>
 		</property>
 		<property name="outputFormat">
 			<value>0</value>
@@ -92,6 +92,9 @@
 		<property name="length">
 			<value>0.60799999999999998</value>
 		</property>
+		<relationship name="fadeOutCurve">
+			<destination>{710ef3ba-749b-405c-bfa7-d70719639a05}</destination>
+		</relationship>
 		<relationship name="sounds">
 			<destination>{dd5bce82-a66a-4e4b-bdaf-1b67a3419ed5}</destination>
 			<destination>{9e0541d5-fe58-474c-ad8a-f3f6b2d0a992}</destination>
@@ -124,6 +127,14 @@
 	</object>
 	<object class="MixerBusPanner" id="{ad074f3d-f33f-4502-93e7-88856ca5b0a2}" />
 	<object class="MixerBusFader" id="{53fd4fa2-232b-4ac9-abf3-2ffe83ace3ca}" />
+	<object class="FadeCurve" id="{710ef3ba-749b-405c-bfa7-d70719639a05}">
+		<relationship name="startPoint">
+			<destination>{35ede861-fec3-475c-82fc-14fa78cd3bb4}</destination>
+		</relationship>
+		<relationship name="endPoint">
+			<destination>{18a9ab07-7b25-4e22-a6c3-6f7fe8fda770}</destination>
+		</relationship>
+	</object>
 	<object class="SingleSound" id="{dd5bce82-a66a-4e4b-bdaf-1b67a3419ed5}">
 		<relationship name="audioFile">
 			<destination>{2b84188a-b2cf-4495-8537-d545f5ac99f4}</destination>
@@ -173,10 +184,29 @@
 	</object>
 	<object class="MixerBusPanner" id="{038cedda-a96b-41c3-8672-d771efb88a8b}" />
 	<object class="MixerBusFader" id="{624ef354-bd80-4caa-b44e-2e878038a730}" />
+	<object class="AutomationPoint" id="{35ede861-fec3-475c-82fc-14fa78cd3bb4}">
+		<property name="position">
+			<value>0.050000000000000003</value>
+		</property>
+		<property name="value">
+			<value>1</value>
+		</property>
+		<property name="curveShape">
+			<value>-0.588001907</value>
+		</property>
+	</object>
+	<object class="AutomationPoint" id="{18a9ab07-7b25-4e22-a6c3-6f7fe8fda770}">
+		<property name="position">
+			<value>0.60799999999999998</value>
+		</property>
+		<property name="value">
+			<value>0</value>
+		</property>
+	</object>
 	<object class="MixerBusFader" id="{854e6f51-7e05-4741-9ca8-228ffe644e8d}" />
 	<object class="ThreeEQEffect" id="{10d828e2-1ad4-488e-9506-53ba3b9886d3}">
 		<property name="lowGain">
-			<value>-3.5</value>
+			<value>-8</value>
 		</property>
 		<property name="highGain">
 			<value>-19</value>
