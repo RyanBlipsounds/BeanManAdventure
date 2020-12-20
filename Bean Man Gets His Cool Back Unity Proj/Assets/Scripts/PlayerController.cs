@@ -47,6 +47,8 @@ public class PlayerController : MonoBehaviour
     public bool bagMoving = false;
     public bool finishedBagMove = false;
 
+    public EndingsManager endingsManager;
+
     public GameObject thisCharacter = null;
     private int index = 0;
     private NPC thisNPCList = null;
@@ -59,6 +61,8 @@ public class PlayerController : MonoBehaviour
 
     public FireHydrantVomit fireHydrantVomit;
     public bool isVommiting = false;
+
+    public bool skippedTypewriter = false;
 
     void Start()
     {
@@ -141,6 +145,7 @@ public class PlayerController : MonoBehaviour
             _canTalkBox.isActive = true;
             if (Input.GetKeyDown(KeyCode.Space) && _dialogueBox.isActive == false)
             {
+                Debug.Log("Space has been hit");
                 if (thisCharacter.gameObject.name == "Stick") {
                     return;
                 }
@@ -148,13 +153,15 @@ public class PlayerController : MonoBehaviour
                 if (!scriptNPCList.Contains(thisCharacter.GetComponent<NPC>()))
                 {
                     // Handle Fire Hydrant NPC Logic
-                    if (thisCharacter.gameObject.name == "Fire Hydrant" && fireHydrantTalkCount < 4 && gameState.beanState == GameState.gameState.ISCOOL || gameState.beanState == GameState.gameState.BEANGOHINT)
+                    if (thisCharacter.gameObject.name == "Fire Hydrant" && fireHydrantTalkCount < 4)
                     {
-                        fireHydrantTalkCount++;
-                        _dialogueBox.isActive = true;
-                        gameState.Conversation(thisCharacter.gameObject.name, fireHydrantTalkCount);
-                        return;
-                    } 
+                        if (gameState.beanState == GameState.gameState.ISCOOL || gameState.beanState == GameState.gameState.BEANGOHINT) {
+                            fireHydrantTalkCount++;
+                            _dialogueBox.isActive = true;
+                            gameState.Conversation(thisCharacter.gameObject.name, fireHydrantTalkCount);
+                            return;
+                        }
+                    }
                     if (thisCharacter.gameObject.name == "Fire Hydrant") {
 
                         if (gameState.beanState == GameState.gameState.ISBAGGED || gameState.beanState == GameState.gameState.ISCOOL) {
@@ -171,11 +178,10 @@ public class PlayerController : MonoBehaviour
                     }
                     Debug.Log("The fire hydrant continues");
                     // Adds NPC to list
-                    if (thisCharacter.GetComponent<NPC>()) {
+                    if (thisCharacter.GetComponent<NPC>() && thisCharacter.gameObject.tag == "NPC") {
                         scriptNPCList.Add(thisCharacter.GetComponent<NPC>());
                     }
                 }
-
                 if (fireHydrantVomit.fireHydrantActivated == false && thisCharacter.gameObject.name == "Fire Hydrant")
                 {
                     if (gameState.beanState == GameState.gameState.ISBAGGED || gameState.beanState == GameState.gameState.ISNOTCOOL)
@@ -183,7 +189,7 @@ public class PlayerController : MonoBehaviour
                         return;
                     }
                 }
-
+                Debug.Log("15515151");
                 // Handles Fire Hydrant for ISNOTCOOL vomitting
                 if (thisCharacter.gameObject.name == "Fire Hydrant" && thisCharacter.gameObject.tag == "NPC")
                 {
@@ -197,36 +203,44 @@ public class PlayerController : MonoBehaviour
                 }
 
                 // Handle if Beanman is trying to leave town while bagged
-                if (gameState.beanState == GameState.gameState.ISBAGGED || thisCharacter.gameObject.name == "ExitTown"){
+                if (gameState.beanState == GameState.gameState.ISBAGGED && thisCharacter.gameObject.name == "Butter")
+                {
+                    Debug.Log("Butter");
+                }
+                if (gameState.beanState == GameState.gameState.ISBAGGED || thisCharacter.gameObject.name == "ExitTown")
+                {
+                    Debug.Log("Exit Town!");
                     _responseBox.isActive = true;
                 }
-
+                Debug.Log("Space has been hit 555");
                 // Checks if the NPC has been spoken to
                 if (!_dialogueBox.isActive)
                 {
 
-                    if (thisCharacter.gameObject.name != "ExitTown") {
+                    if (thisCharacter.gameObject.tag != "SideNPC") {
                         index = scriptNPCList.IndexOf(thisCharacter.GetComponent<NPC>());
                         thisNPCList = scriptNPCList[index];
                         thisNPCList.hasSpoken = true;
                     }
                 }
-                if (thisCharacter.gameObject.name == "Granny Smith") {
-                    if (gameState.beanState == GameState.gameState.BEANGOHINT || gameState.beanState == GameState.gameState.ISCOOL) {
+
+                if (thisCharacter.gameObject.name == "Granny Smith")
+                {
+                    if (gameState.beanState == GameState.gameState.BEANGOHINT || gameState.beanState == GameState.gameState.ISCOOL)
+                    {
                         if (scriptNPCList.Count == gameState.listTotalNPC.Count)
                         {
-                            gameState.beanState = GameState.gameState.BEANGOHINT;
-                            gameState.Conversation(thisCharacter.gameObject.name, 0);
-                            _actManager.activateGraphicTransition = true;
+                            Debug.Log("Has NPC is true and it's beango hint AND this is granny smith");
+                            _responseBox.isActive = true;
                         }
                         if (scriptNPCList.Count == gameState.listTotalNPC.Count - 1 && !gameState.listTotalNPC.Contains(GameObject.Find("Granny Smith")))
                         {
-                            gameState.beanState = GameState.gameState.BEANGOHINT;
-                            gameState.Conversation(thisCharacter.gameObject.name, 0);
-                            _actManager.activateGraphicTransition = true;
+                            Debug.Log("Has NPC is true and it's beango hint AND this is granny smith");
+                            _responseBox.isActive = true;
                         }
                     }
-                    if (gameState.beanState == GameState.gameState.ISNOTCOOL) {
+                    if (gameState.beanState == GameState.gameState.ISNOTCOOL)
+                    {
                         gameState.Conversation(thisCharacter.gameObject.name, 0);
                         gameState.IsBagged();
                     }
@@ -234,7 +248,7 @@ public class PlayerController : MonoBehaviour
 
                 _dialogueBox.isActive = true;
             }
-            else if (Input.GetKeyDown(KeyCode.Space) && _dialogueBox.isActive == true)
+            else if (Input.GetKeyDown(KeyCode.Space) && _dialogueBox.isActive == true && skippedTypewriter == false)
             {
                 if (thisCharacter.gameObject.name == "Fire Hydrant")
                 {
@@ -243,8 +257,13 @@ public class PlayerController : MonoBehaviour
                 }
                 else
                 {
+                    skippedTypewriter = true;
                     _dialogueBox.dialogueBoxAnimator.SkipTypewriter();
                 }
+            }
+            else if (Input.GetKeyDown(KeyCode.Space) && _dialogueBox.isActive == true && skippedTypewriter == true) {
+                _dialogueBox.isActive = false;
+                skippedTypewriter = false;
             }
         }
         else
@@ -254,14 +273,23 @@ public class PlayerController : MonoBehaviour
                 gameState.IsBeanGoHint();
             }
             _dialogueBox.isActive = false;
-        _responseBox.isActive = false;
-        _canTalkBox.isActive = false;
+            skippedTypewriter = false;
+            _dialogueBox.dialogueBoxAnimator.StopShowingText();
+            _responseBox.isActive = false;
+            _canTalkBox.isActive = false;
         }
 
         // Checking if the response box is true and if the "Y" Button is pressed.
         if (Input.GetKeyDown(KeyCode.Y) && _responseBox.isActive == true)
         {
-            if (thisCharacter.gameObject.name != "ExitTown")
+            if (thisCharacter.gameObject.name == "Granny Smith" && gameState.beanState == GameState.gameState.BEANGOHINT)
+            {
+                gameState.beanState = GameState.gameState.BEANGOHINT;
+                gameState.Conversation(thisCharacter.gameObject.name, 0);
+                _actManager.activateGraphicTransition = true;
+                return;
+            }
+            if (thisCharacter.gameObject.tag != "SideNPC")
             {
                 if (thisNPCList.isWinner)
                 {
@@ -350,4 +378,5 @@ public class PlayerController : MonoBehaviour
         BaggedAnimator.SetFloat("Speed", movementSpeed);
         BaggedAnimator.SetFloat("YAxisDirection", movementDirection.y);
     }
+
 }

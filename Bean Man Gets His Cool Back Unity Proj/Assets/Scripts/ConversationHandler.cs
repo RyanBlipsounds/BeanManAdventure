@@ -15,7 +15,7 @@ public class ConversationHandler : MonoBehaviour
 
     public void OnTriggerEnter2D(Collider2D collision)
     {
-        if (collision.gameObject.tag == "NPC" || collision.gameObject.name == "Fire Hydrant" || collision.gameObject.name == "ExitTown" || collision.gameObject.name == "Stick")
+        if (collision.gameObject.tag == "NPC" || collision.gameObject.tag == "SideNPC" || collision.gameObject.name == "Fire Hydrant" || collision.gameObject.name == "ExitTown" || collision.gameObject.name == "Stick")
         {
             Debug.Log(collision.gameObject.name);
             //This initializes 
@@ -34,7 +34,7 @@ public class ConversationHandler : MonoBehaviour
 
     public void OnTriggerExit2D(Collider2D other)
     {
-        if (other.gameObject.tag == "NPC" || other.gameObject.name == "Fire Hydrant" || other.gameObject.name == "ExitTown" || other.gameObject.name == "Stick")
+        if (other.gameObject.tag == "NPC" || other.gameObject.tag == "SideNPC" || other.gameObject.name == "Fire Hydrant" || other.gameObject.name == "ExitTown" || other.gameObject.name == "Stick")
         {
             _playerController.characterInRange = false;
         }

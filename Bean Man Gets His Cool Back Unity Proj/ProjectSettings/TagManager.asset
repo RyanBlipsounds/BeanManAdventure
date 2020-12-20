@@ -8,6 +8,8 @@ TagManager:
   - Surface
   - Dirt
   - Concrete
+  - SideNPC
+  - InactiveNPC
   layers:
   - Default
   - TransparentFX
