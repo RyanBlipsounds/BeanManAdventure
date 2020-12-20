@@ -164,7 +164,8 @@ public class PlayerController : MonoBehaviour
                     }
                     if (thisCharacter.gameObject.name == "Fire Hydrant") {
 
-                        if (gameState.beanState == GameState.gameState.ISBAGGED || gameState.beanState == GameState.gameState.ISCOOL) {
+                        if (gameState.beanState == GameState.gameState.ISCOOL || gameState.beanState == GameState.gameState.BEANGOHINT)
+                        {
                             thisCharacter.gameObject.tag = "NPC";
                             if (!gameState.listTotalNPC.Contains(thisCharacter))
                             {
@@ -203,15 +204,16 @@ public class PlayerController : MonoBehaviour
                 }
 
                 // Handle if Beanman is trying to leave town while bagged
-                if (gameState.beanState == GameState.gameState.ISBAGGED && thisCharacter.gameObject.name == "Butter")
+                if (gameState.beanState == GameState.gameState.ISBAGGED && thisCharacter.gameObject.tag != "SideNPC")
                 {
-                    Debug.Log("Butter");
+                    _responseBox.isActive = true;
                 }
-                if (gameState.beanState == GameState.gameState.ISBAGGED || thisCharacter.gameObject.name == "ExitTown")
+                if (thisCharacter.gameObject.name == "ExitTown")
                 {
                     Debug.Log("Exit Town!");
                     _responseBox.isActive = true;
                 }
+
                 Debug.Log("Space has been hit 555");
                 // Checks if the NPC has been spoken to
                 if (!_dialogueBox.isActive)

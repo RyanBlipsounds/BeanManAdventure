@@ -23,7 +23,7 @@ public class ActManager : MonoBehaviour
     public GameObject FireHydrantEnding;
     public GameObject SlimSausageWinning;
     public GameObject BeanManLeavesBagged;
-    public GameObject BeanManLeavesCool;
+    public GameObject BeanManLeavesTown;
     public GameObject GreenBenEnding;
     public GameObject BirthdayCakeEnding;
     public GameObject BeanManUncoolEnding;
@@ -186,16 +186,16 @@ public class ActManager : MonoBehaviour
             EndingScreenText = BeanManWinEndingText;
         }
         if (ending == "Beanman Leaves Bag Town") {
-            EndingScreen = BeanManLeavesBagged;
+            EndingScreen = BeanManLeavesTown;
             EndingScreenText = BeanManLeavesBaggedText;
         }
         if (ending == "Beanman Leaves Cool Town") {
             EndingScreenText = BeanManLeavesCoolText;
-            EndingScreen = BeanManLeavesCool;
+            EndingScreen = BeanManLeavesTown;
         }
         if (ending == "Beanman Leaves Uncool Town"){
             EndingScreenText = BeanManLeavesUncoolText;
-            EndingScreen = BeanManUncoolEnding;
+            EndingScreen = BeanManLeavesTown;
         }
         if (ending == "Lina Bean") 
         {
