@@ -9,4 +9,7 @@ public class PeanutTwinsLogic : MonoBehaviour
     public void KillPeanutTwin() {
         PeanutTwinsGlasses.Play("PTNoGlasses");
     }
+    public void PeanutTwinLives() {
+        PeanutTwinsGlasses.Play("PTGlasses");
+    }
 }

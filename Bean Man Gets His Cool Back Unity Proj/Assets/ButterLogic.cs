@@ -22,4 +22,11 @@ public class ButterLogic : MonoBehaviour
         livingButter.SetActive(false);
         deadButter.SetActive(true);
     }
+    public void ButterLives()
+    {
+        this.gameObject.tag = "SideNPC";
+        melted = false;
+        livingButter.SetActive(true);
+        deadButter.SetActive(false);
+    }
 }
