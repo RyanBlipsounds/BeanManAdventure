@@ -131,7 +131,7 @@ public class GameState : MonoBehaviour
                 }
                 if (endingsManager.endingsSeenList[endingsManager.endingsSeenList.Count - 1] == _actManager.LinaBeanEnding)
                 {
-                    conversationDict["ISCOOL"] = "I wish Lina Bean would butter me up.";
+                    conversationDict["ISCOOL"] = "";
                 }
                 if (endingsManager.endingsSeenList[endingsManager.endingsSeenList.Count - 1] == _actManager.ChickPeaEnding)
                 {
