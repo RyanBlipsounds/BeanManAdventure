@@ -75,7 +75,7 @@ public class ActManager : MonoBehaviour
     {
         if (activateGraphicTransition == true)
         {
-            if (m_gameState.beanState == GameState.gameState.ISCOOL || m_gameState.beanState == GameState.gameState.BEANGOHINT || m_gameState.beanState == GameState.gameState.ISNOTCOOL && _playerController.thisCharacter.gameObject.name == "Granny Smith") {
+            if (m_gameState.beanState == GameState.gameState.BEANGOHINT || m_gameState.beanState == GameState.gameState.ISNOTCOOL) {
                 EndingScreen = BeangoScreen;
                 EndingScreenText = BeangoScreenText;
             }
@@ -150,6 +150,7 @@ public class ActManager : MonoBehaviour
     {
 
         activateGraphicTransition = true;
+        EndingScreen = graphic;
 
         //Debug.Log("Graphic " + graphicShowTime);
         if (sceneTransitionState == sceneState.started)
