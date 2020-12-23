@@ -13,11 +13,15 @@ public class UILogic : MonoBehaviour
 
     public GameState _gamestate = default;
 
+    public Button EndingsReplay;
+    public GameObject EndingsScreen;
+
 
 
     private void Start()
     {
         MMPlayButton.onClick.AddListener(GameStartClicked);
+        EndingsReplay.onClick.AddListener(EndingsClicked);
         pc.bagMoving = true;
     }
 
@@ -26,12 +30,18 @@ public class UILogic : MonoBehaviour
     private void OnDestroy()
     {
         MMPlayButton.onClick.RemoveListener(GameStartClicked);
+        EndingsReplay.onClick.RemoveListener(EndingsClicked);
     }
     private void GameStartClicked()
     {
         MainMenu.SetActive(false);
         pc.bagMoving = false;
         // Allow Movement
+    }
+
+    private void EndingsClicked()
+    {
+        EndingsScreen.SetActive(true);
     }
 
     /// <summary>
@@ -43,5 +53,7 @@ public class UILogic : MonoBehaviour
         endingsEncountered.SetActive(true);
         endingsNumber.text = count + " / 10";
     }
+
+
 
 }
