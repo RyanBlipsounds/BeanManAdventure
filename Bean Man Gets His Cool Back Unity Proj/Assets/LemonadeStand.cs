@@ -10,6 +10,7 @@ public class LemonadeStand : MonoBehaviour
 
     // Start is called before the first frame update
     public void SetLemonadeStandSanity() {
+        return;
         if (_endingsManager.endingsSeenList.Count > 0)
         {
             LemonadeStandSanity[_endingsManager.endingsSeenList.Count].SetActive(true);
