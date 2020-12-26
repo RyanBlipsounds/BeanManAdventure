@@ -33,6 +33,7 @@ public class GameState : MonoBehaviour
     public ChickPeaLogic chickPeaLogic;
 
     public LemonadeStand _lemonadeStand;
+    public FireHydrantVomit _fireHydrantvomit;
 
     public GameState m_gameState = null;
     public enum gameState
@@ -77,6 +78,7 @@ public class GameState : MonoBehaviour
         // ISCOOL is dynamic. Fire Hydrant needs to be spoken to multiple times to be active.
         if (gameObjectName == "Fire Hydrant")
         {
+            Debug.Log(count);
             if (count < 5)
             {
                 string dialogue = "..";
@@ -684,7 +686,8 @@ public class GameState : MonoBehaviour
         _UILogic.MainMenu.SetActive(true);
         _hideyHole.NewPeeperSet();
         _lemonadeStand.SetLemonadeStandSanity();
-
+        _fireHydrantvomit.hasVommittedThisRound = false;
+        Debug.Log("SET VOMMITTED TO FALSE");
         if (_playerController.scriptNPCList.Count != 0)
         {
             if (endingsManager.endingsSeenList[endingsManager.endingsSeenList.Count - 1] == _actManager.FireHydrantEnding)
