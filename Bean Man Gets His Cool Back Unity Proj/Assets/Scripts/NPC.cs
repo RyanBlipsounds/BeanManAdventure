@@ -19,6 +19,8 @@ public class NPC : MonoBehaviour
     public GameObject player = default;
     public bool isLeft = true;
 
+    public ChickPeaLogic chickPeaLogic;
+
     public float angle = 90f;
     public float distance = 1f;
 
@@ -35,6 +37,10 @@ public class NPC : MonoBehaviour
         noGlasses.SetActive(true);
         hasSpoken = false;
         isWinner = false;
+        if (chickPeaLogic != null)
+        {
+            chickPeaLogic.ChickPeaWizardMode();
+        }
     }
 
     public void Update()
@@ -70,8 +76,13 @@ public class NPC : MonoBehaviour
 
     public void ShowGlasses()
     {
+
         trafficContainer.SetActive(false);
         glasses.SetActive(true);
         noGlasses.SetActive(false);
+        if (chickPeaLogic != null)
+        {
+            chickPeaLogic.ChickPeaWizardMode();
+        }
     }
 }

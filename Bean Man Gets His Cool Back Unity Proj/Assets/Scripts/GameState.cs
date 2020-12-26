@@ -28,6 +28,12 @@ public class GameState : MonoBehaviour
     public GameObject peanutButter;
     public GameObject trafficCone;
 
+    public HideyHole _hideyHole;
+
+    public ChickPeaLogic chickPeaLogic;
+
+    public LemonadeStand _lemonadeStand;
+
     public GameState m_gameState = null;
     public enum gameState
     {
@@ -239,7 +245,7 @@ public class GameState : MonoBehaviour
             }
             if (endingsManager.endingsSeenList.Count > 3)
             {
-                conversationDict["ISCOOL"] = "It turns out that no one wants to buy from an Orangeade stand.";
+                conversationDict["ISCOOL"] = "It turns out that no one wants to buy from an Orangeade stand. And life keeps throwing lemons.";
             }
             if (endingsManager.endingsSeenList.Count > 4)
             {
@@ -676,6 +682,9 @@ public class GameState : MonoBehaviour
         //_playerController.scriptNPCList.Clear();
         _playerController.MoveToStart();
         _UILogic.MainMenu.SetActive(true);
+        _hideyHole.NewPeeperSet();
+        _lemonadeStand.SetLemonadeStandSanity();
+
         if (_playerController.scriptNPCList.Count != 0)
         {
             if (endingsManager.endingsSeenList[endingsManager.endingsSeenList.Count - 1] == _actManager.FireHydrantEnding)
@@ -698,6 +707,7 @@ public class GameState : MonoBehaviour
             peanutTwins.PeanutTwinLives();
             butter.ButterLives();
         }
+       
     }
 
 }

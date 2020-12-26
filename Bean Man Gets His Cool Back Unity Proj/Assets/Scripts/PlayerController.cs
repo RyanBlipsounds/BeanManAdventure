@@ -64,6 +64,8 @@ public class PlayerController : MonoBehaviour
 
     public bool skippedTypewriter = false;
 
+    public bool spriteFlip = false;
+
     void Start()
     {
         Bag.transform.position = m_BagStartPosition.transform.position;
@@ -362,10 +364,12 @@ public class PlayerController : MonoBehaviour
 
     void Animate() {
         if (movementDirection.x < 0) {
+            spriteFlip = false;
             GlassesSpriteRenderer.flipX = false;
             BaggedSpriteRenderer.flipX = false;
             NoGlassesSpriteRenderer.flipX = false;
         } else if(movementDirection.x > 0) {
+            spriteFlip = true;
             GlassesSpriteRenderer.flipX = true;
             BaggedSpriteRenderer.flipX = true;
             NoGlassesSpriteRenderer.flipX = true;

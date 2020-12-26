@@ -1,0 +1,1003 @@
+fileFormatVersion: 2
+guid: a2ae0d416d7ea35419046bba686f6226
+TextureImporter:
+  internalIDToNameTable:
+  - first:
+      213: -8276611741404916342
+    second: HideyHole_0
+  - first:
+      213: 5642409023828595347
+    second: HideyHole_1
+  - first:
+      213: 547703065926531697
+    second: HideyHole_2
+  - first:
+      213: -174107845537934283
+    second: HideyHole_3
+  - first:
+      213: -4375914556955050186
+    second: HideyHole_4
+  - first:
+      213: 3415054959246435158
+    second: HideyHole_5
+  - first:
+      213: 2075189849222036039
+    second: HideyHole_6
+  - first:
+      213: 3367678084692866240
+    second: HideyHole_7
+  - first:
+      213: -9011126009139592478
+    second: HideyHole_8
+  - first:
+      213: 1927425268438893292
+    second: HideyHole_9
+  - first:
+      213: -8004259084745205882
+    second: HideyHole_10
+  - first:
+      213: -4260444197075024838
+    second: HideyHole_11
+  - first:
+      213: 3806799752349365268
+    second: HideyHole_12
+  - first:
+      213: -5150129928798826499
+    second: HideyHole_13
+  - first:
+      213: -6225038731587504171
+    second: HideyHole_14
+  - first:
+      213: -7514689472589806066
+    second: HideyHole_15
+  - first:
+      213: -7113342384922806071
+    second: HideyHole_16
+  - first:
+      213: 7848117605221224829
+    second: HideyHole_17
+  - first:
+      213: 8942628090914132609
+    second: HideyHole_18
+  - first:
+      213: -1557250595428183680
+    second: HideyHole_19
+  - first:
+      213: -2276550302069158921
+    second: HideyHole_20
+  - first:
+      213: 668557456176383662
+    second: HideyHole_21
+  - first:
+      213: 3798292980350706866
+    second: HideyHole_22
+  - first:
+      213: -5945728746714261968
+    second: HideyHole_23
+  - first:
+      213: -7716554855008169729
+    second: HideyHole_24
+  - first:
+      213: -6250400474680261677
+    second: HideyHole_25
+  - first:
+      213: 7913695218766332594
+    second: HideyHole_26
+  - first:
+      213: 41369990857513528
+    second: HideyHole_27
+  - first:
+      213: 7020581079047530696
+    second: HideyHole_28
+  - first:
+      213: -1395914175547738647
+    second: HideyHole_29
+  - first:
+      213: 1353699186931537797
+    second: HideyHole_30
+  - first:
+      213: -5656730076758362210
+    second: HideyHole_31
+  - first:
+      213: 1121328449851390829
+    second: HideyHole_32
+  - first:
+      213: -1337140348728227384
+    second: HideyHole_33
+  - first:
+      213: 3521732211284886007
+    second: HideyHole_34
+  - first:
+      213: 3990534378066674940
+    second: HideyHole_35
+  - first:
+      213: 6559548719767498781
+    second: HideyHole_36
+  externalObjects: {}
+  serializedVersion: 10
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: 0
+    aniso: -1
+    mipBias: -100
+    wrapU: 1
+    wrapV: 1
+    wrapW: -1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 100
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  platformSettings:
+  - serializedVersion: 3
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 0
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 0
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: Windows Store Apps
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 0
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: HideyHole_0
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 0
+        width: 37
+        height: 32
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a859bb9f871932d80800000000000000
+      internalID: -8276611741404916342
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: HideyHole_1
+      rect:
+        serializedVersion: 2
+        x: 37
+        y: 0
+        width: 37
+        height: 32
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 39213c6cc1ddd4e40800000000000000
+      internalID: 5642409023828595347
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: HideyHole_2
+      rect:
+        serializedVersion: 2
+        x: 74
+        y: 0
+        width: 37
+        height: 32
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 17a71fe5905d99700800000000000000
+      internalID: 547703065926531697
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: HideyHole_3
+      rect:
+        serializedVersion: 2
+        x: 111
+        y: 0
+        width: 37
+        height: 32
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 5345a1246d1759df0800000000000000
+      internalID: -174107845537934283
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: HideyHole_4
+      rect:
+        serializedVersion: 2
+        x: 148
+        y: 0
+        width: 37
+        height: 32
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 63fbb3125e0a543c0800000000000000
+      internalID: -4375914556955050186
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: HideyHole_5
+      rect:
+        serializedVersion: 2
+        x: 185
+        y: 0
+        width: 37
+        height: 32
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 653e1564466b46f20800000000000000
+      internalID: 3415054959246435158
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: HideyHole_6
+      rect:
+        serializedVersion: 2
+        x: 222
+        y: 0
+        width: 37
+        height: 32
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 74a306c4c2e8ccc10800000000000000
+      internalID: 2075189849222036039
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: HideyHole_7
+      rect:
+        serializedVersion: 2
+        x: 259
+        y: 0
+        width: 37
+        height: 32
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 0c47cf310656cbe20800000000000000
+      internalID: 3367678084692866240
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: HideyHole_8
+      rect:
+        serializedVersion: 2
+        x: 296
+        y: 0
+        width: 37
+        height: 32
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 2e283fe33ac02f280800000000000000
+      internalID: -9011126009139592478
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: HideyHole_9
+      rect:
+        serializedVersion: 2
+        x: 333
+        y: 0
+        width: 37
+        height: 32
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ce28968d1179fba10800000000000000
+      internalID: 1927425268438893292
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: HideyHole_10
+      rect:
+        serializedVersion: 2
+        x: 370
+        y: 0
+        width: 37
+        height: 32
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 687919355c82be090800000000000000
+      internalID: -8004259084745205882
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: HideyHole_11
+      rect:
+        serializedVersion: 2
+        x: 407
+        y: 0
+        width: 37
+        height: 32
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a3408f7539cdfd4c0800000000000000
+      internalID: -4260444197075024838
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: HideyHole_12
+      rect:
+        serializedVersion: 2
+        x: 444
+        y: 0
+        width: 37
+        height: 32
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 41434d9943874d430800000000000000
+      internalID: 3806799752349365268
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: HideyHole_13
+      rect:
+        serializedVersion: 2
+        x: 481
+        y: 0
+        width: 37
+        height: 32
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: dff86d6cd101788b0800000000000000
+      internalID: -5150129928798826499
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: HideyHole_14
+      rect:
+        serializedVersion: 2
+        x: 518
+        y: 0
+        width: 37
+        height: 32
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 5d7bdaa51483c99a0800000000000000
+      internalID: -6225038731587504171
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: HideyHole_15
+      rect:
+        serializedVersion: 2
+        x: 555
+        y: 0
+        width: 37
+        height: 32
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e06caec3db576b790800000000000000
+      internalID: -7514689472589806066
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: HideyHole_16
+      rect:
+        serializedVersion: 2
+        x: 592
+        y: 0
+        width: 37
+        height: 32
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 9c832fcf9c4584d90800000000000000
+      internalID: -7113342384922806071
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: HideyHole_17
+      rect:
+        serializedVersion: 2
+        x: 629
+        y: 0
+        width: 37
+        height: 32
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d7153be716d1aec60800000000000000
+      internalID: 7848117605221224829
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: HideyHole_18
+      rect:
+        serializedVersion: 2
+        x: 666
+        y: 0
+        width: 37
+        height: 32
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 182dd5d5ed89a1c70800000000000000
+      internalID: 8942628090914132609
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: HideyHole_19
+      rect:
+        serializedVersion: 2
+        x: 703
+        y: 0
+        width: 37
+        height: 32
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 081dc3985d8836ae0800000000000000
+      internalID: -1557250595428183680
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: HideyHole_20
+      rect:
+        serializedVersion: 2
+        x: 740
+        y: 0
+        width: 37
+        height: 32
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 7fb0cdbdf811860e0800000000000000
+      internalID: -2276550302069158921
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: HideyHole_21
+      rect:
+        serializedVersion: 2
+        x: 777
+        y: 0
+        width: 37
+        height: 32
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ea60557d671374900800000000000000
+      internalID: 668557456176383662
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: HideyHole_22
+      rect:
+        serializedVersion: 2
+        x: 814
+        y: 0
+        width: 37
+        height: 32
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 2b4e9a6675f36b430800000000000000
+      internalID: 3798292980350706866
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: HideyHole_23
+      rect:
+        serializedVersion: 2
+        x: 851
+        y: 0
+        width: 37
+        height: 32
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 0369449e4378c7da0800000000000000
+      internalID: -5945728746714261968
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: HideyHole_24
+      rect:
+        serializedVersion: 2
+        x: 888
+        y: 0
+        width: 37
+        height: 32
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ff01c615e3a49e490800000000000000
+      internalID: -7716554855008169729
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: HideyHole_25
+      rect:
+        serializedVersion: 2
+        x: 925
+        y: 0
+        width: 37
+        height: 32
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 3d300c262ed1249a0800000000000000
+      internalID: -6250400474680261677
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: HideyHole_26
+      rect:
+        serializedVersion: 2
+        x: 962
+        y: 0
+        width: 37
+        height: 32
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 2b246477fd713dd60800000000000000
+      internalID: 7913695218766332594
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: HideyHole_27
+      rect:
+        serializedVersion: 2
+        x: 999
+        y: 0
+        width: 37
+        height: 32
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 83a5c6999c9f29000800000000000000
+      internalID: 41369990857513528
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: HideyHole_28
+      rect:
+        serializedVersion: 2
+        x: 1036
+        y: 0
+        width: 37
+        height: 32
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 8c8e4757b4d1e6160800000000000000
+      internalID: 7020581079047530696
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: HideyHole_29
+      rect:
+        serializedVersion: 2
+        x: 1073
+        y: 0
+        width: 37
+        height: 32
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 9e57b850477b0ace0800000000000000
+      internalID: -1395914175547738647
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: HideyHole_30
+      rect:
+        serializedVersion: 2
+        x: 1110
+        y: 0
+        width: 37
+        height: 32
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 5871ac10d3e49c210800000000000000
+      internalID: 1353699186931537797
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: HideyHole_31
+      rect:
+        serializedVersion: 2
+        x: 1147
+        y: 0
+        width: 37
+        height: 32
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e97bc8047f14f71b0800000000000000
+      internalID: -5656730076758362210
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: HideyHole_32
+      rect:
+        serializedVersion: 2
+        x: 1184
+        y: 0
+        width: 37
+        height: 32
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d6b7ee9b842cf8f00800000000000000
+      internalID: 1121328449851390829
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: HideyHole_33
+      rect:
+        serializedVersion: 2
+        x: 1221
+        y: 0
+        width: 37
+        height: 32
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 8c94633ffe5817de0800000000000000
+      internalID: -1337140348728227384
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: HideyHole_34
+      rect:
+        serializedVersion: 2
+        x: 1258
+        y: 0
+        width: 37
+        height: 32
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 7f1cfa789c4bfd030800000000000000
+      internalID: 3521732211284886007
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: HideyHole_35
+      rect:
+        serializedVersion: 2
+        x: 1295
+        y: 0
+        width: 37
+        height: 32
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: cf406a4cfd9316730800000000000000
+      internalID: 3990534378066674940
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: HideyHole_36
+      rect:
+        serializedVersion: 2
+        x: 1332
+        y: 0
+        width: 37
+        height: 32
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d103c908ec2380b50800000000000000
+      internalID: 6559548719767498781
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    physicsShape: []
+    bones: []
+    spriteID: 5e97eb03825dee720800000000000000
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+  spritePackingTag: 
+  pSDRemoveMatte: 0
+  pSDShowRemoveMatteOption: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

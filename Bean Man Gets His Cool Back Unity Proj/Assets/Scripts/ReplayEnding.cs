@@ -72,60 +72,73 @@ public class ReplayEnding : MonoBehaviour
     private void ChickPeaEndingClicked()
     {
         _actManager.LoadGraphic(ChickPeaEnding);
+        _actManager.EndingScreenText = _actManager.ChickPeaEndingText;
     }
 
     private void BeanManWinEndingClicked()
     {
         _actManager.LoadGraphic(BeanManWinEnding);
+        _actManager.EndingScreenText = _actManager.BeanManWinEndingText;
     }
 
     private void LinaBeanEndingClicked()
     {
         _actManager.LoadGraphic(LinaBeanEnding);
+        _actManager.EndingScreenText = _actManager.LinaBeanEndingText;
     }
 
     private void PeanutTwinEndingClicked()
     {
         _actManager.LoadGraphic(PeanutTwinEnding);
+        _actManager.EndingScreenText = _actManager.PeanutTwinEndingText;
+
     }
 
     private void GrannySmithEndingClicked()
     {
         _actManager.LoadGraphic(GrannySmithEnding);
+        _actManager.EndingScreenText = _actManager.GrannySmithEndingText;
     }
 
     private void FireHydrantEndingClicked()
     {
         _actManager.LoadGraphic(FireHydrantEnding);
+        _actManager.EndingScreenText = _actManager.FireHydrantEndingText;
     }
 
     private void SlimSausageWinningClicked()
     {
         _actManager.LoadGraphic(SlimSausageWinning);
+        _actManager.EndingScreenText = _actManager.SlimSausageWinningText;
     }
 
     private void BeanManLeavesBaggedClicked()
     {
         _actManager.LoadGraphic(BeanManLeavesBagged);
+        _actManager.EndingScreenText = _actManager.BeanManLeavesBaggedText;
     }
 
     private void BeanManLeavesTownClicked()
     {
         _actManager.LoadGraphic(BeanManLeavesTown);
+        _actManager.EndingScreenText = _actManager.BeanManLeavesCoolText;
     }
 
     private void GreenBenEndingClicked()
     {
         _actManager.LoadGraphic(GreenBenEnding);
+        _actManager.EndingScreenText = _actManager.GreenBenEndingText;
     }
 
     private void BirthdayCakeEndingClicked()
     {
         _actManager.LoadGraphic(BirthdayCakeEnding);
+        _actManager.EndingScreenText = _actManager.BirthdayCakeEndingText;
     }
 
     private void BeanManUncoolEndingClicked()
     {
         _actManager.LoadGraphic(BeanManUncoolEnding);
+        _actManager.EndingScreenText = _actManager.BeanManLeavesUncoolText;
     }
 }
