@@ -116,6 +116,22 @@ public class UIController : MonoBehaviour
     public void PlayVoiceSound()
     {
 
+        if (_playerController.thisCharacter.name == "Chickpea Deputy")
+        {
+            if (gameState.beanState == GameState.gameState.ISNOTCOOL || gameState.beanState == GameState.gameState.ISBAGGED)
+            {
+
+                FMODUnity.RuntimeManager.PlayOneShot("event:/Chonkpea Deputy");
+                return;
+
+            }
+        }
+
         FMODUnity.RuntimeManager.PlayOneShot("event:/" + _playerController.thisCharacter.name);
+
+       
+
+
+
     }
 }

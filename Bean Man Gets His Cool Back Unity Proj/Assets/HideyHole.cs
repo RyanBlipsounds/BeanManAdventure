@@ -50,9 +50,9 @@ public class HideyHole : MonoBehaviour
     void Update()
     {
         if (_endingsManager.endingsSeenList.Count == 0) {
-            cover.SetActive(true);
-            peeper.SetActive(false);
-            return;
+           // cover.SetActive(true);
+            //peeper.SetActive(false);
+            //return;
         }
 
         if (beanInRange == true) {

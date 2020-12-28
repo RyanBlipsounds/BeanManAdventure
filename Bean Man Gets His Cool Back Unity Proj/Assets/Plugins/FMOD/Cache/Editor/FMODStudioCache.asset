@@ -1,5 +1,28 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
+--- !u!114 &-4990413977233223776
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: event:/Manhole Open
+  m_EditorClassIdentifier: 
+  Path: event:/Manhole Open
+  guid: 967e481e75943f4ab7e10b02a6554e77
+  Banks:
+  - {fileID: 3369702041603077526}
+  IsStream: 0
+  Is3D: 1
+  IsOneShot: 1
+  Parameters: []
+  MinDistance: 0.1
+  MaxDistance: 2.4
+  Length: 265
 --- !u!114 &-4581183253243225579
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -195,13 +218,41 @@ MonoBehaviour:
   - {fileID: 6457935553904784496}
   - {fileID: -4493146894482170253}
   - {fileID: 6732129943841621135}
+  - {fileID: 199333778599483351}
+  - {fileID: 1081468397761010370}
+  - {fileID: 8207375191831685177}
+  - {fileID: -4990413977233223776}
+  - {fileID: 431611140863379743}
   EditorParameters: []
   MasterBanks:
   - {fileID: 3369702041603077526}
   StringsBanks:
   - {fileID: 6392113596281031596}
-  stringsBankWriteTime: 637441832274077268
+  stringsBankWriteTime: 637447549031483378
   cacheVersion: 5
+--- !u!114 &199333778599483351
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: event:/Butter
+  m_EditorClassIdentifier: 
+  Path: event:/Butter
+  guid: 72fddba689843540a299b1bc2b488800
+  Banks:
+  - {fileID: 3369702041603077526}
+  IsStream: 0
+  Is3D: 0
+  IsOneShot: 1
+  Parameters: []
+  MinDistance: 0
+  MaxDistance: 0
+  Length: 500
 --- !u!114 &306816345951212715
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -225,6 +276,29 @@ MonoBehaviour:
   MinDistance: 0
   MaxDistance: 0
   Length: 19052
+--- !u!114 &431611140863379743
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: event:/Bag On
+  m_EditorClassIdentifier: 
+  Path: event:/Bag On
+  guid: bdc4e455405e944088a680c510c29bbe
+  Banks:
+  - {fileID: 3369702041603077526}
+  IsStream: 0
+  Is3D: 0
+  IsOneShot: 1
+  Parameters: []
+  MinDistance: 0
+  MaxDistance: 0
+  Length: 900
 --- !u!114 &472102961942499184
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -271,6 +345,29 @@ MonoBehaviour:
   MinDistance: 0.1
   MaxDistance: 1.8
   Length: 3872
+--- !u!114 &1081468397761010370
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: event:/Chonkpea Deputy
+  m_EditorClassIdentifier: 
+  Path: event:/Chonkpea Deputy
+  guid: 298402ddd3676d47b39ac6f4499d312a
+  Banks:
+  - {fileID: 3369702041603077526}
+  IsStream: 0
+  Is3D: 0
+  IsOneShot: 1
+  Parameters: []
+  MinDistance: 0
+  MaxDistance: 0
+  Length: 180
 --- !u!114 &3090358034552421109
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -308,7 +405,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Path: ../Sound Boi/Build/Desktop/Master.bank
   Name: Master
-  lastModified: 637441832274067290
+  lastModified: 637447549031393602
   LoadResult: 0
   FileSizes: []
   Exists: 1
@@ -486,11 +583,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Path: ../Sound Boi/Build/Desktop/Master.strings.bank
   Name: Master.strings
-  lastModified: 637441832274077268
+  lastModified: 637447549031483378
   LoadResult: 0
   FileSizes:
   - Name: 
-    Value: 1514
+    Value: 1744
   Exists: 1
 --- !u!114 &6457935553904784496
 MonoBehaviour:
@@ -538,6 +635,29 @@ MonoBehaviour:
   MinDistance: 0
   MaxDistance: 0
   Length: 350
+--- !u!114 &8207375191831685177
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: event:/Manhole Close
+  m_EditorClassIdentifier: 
+  Path: event:/Manhole Close
+  guid: 6ae2d2e753e66c4d87220dda02522282
+  Banks:
+  - {fileID: 3369702041603077526}
+  IsStream: 0
+  Is3D: 1
+  IsOneShot: 1
+  Parameters: []
+  MinDistance: 0
+  MaxDistance: 0
+  Length: 290
 --- !u!114 &8855460696787012258
 MonoBehaviour:
   m_ObjectHideFlags: 0
