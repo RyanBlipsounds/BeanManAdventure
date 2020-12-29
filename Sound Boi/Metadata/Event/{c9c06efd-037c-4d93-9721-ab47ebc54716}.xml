@@ -2,7 +2,7 @@
 <objects serializationModel="Studio.02.01.00">
 	<object class="Event" id="{c9c06efd-037c-4d93-9721-ab47ebc54716}">
 		<property name="name">
-			<value>UI-003</value>
+			<value>Talkbox</value>
 		</property>
 		<property name="outputFormat">
 			<value>0</value>
@@ -30,6 +30,9 @@
 		</relationship>
 		<relationship name="timeline">
 			<destination>{151e9594-9e72-4888-9c80-c6ecdf576d65}</destination>
+		</relationship>
+		<relationship name="banks">
+			<destination>{ac39d7f7-1ca3-4113-8a08-7432efa37e37}</destination>
 		</relationship>
 	</object>
 	<object class="EventMixer" id="{5d9df709-af3c-4f02-8d80-b999c7c8cdff}">
@@ -94,6 +97,9 @@
 		</relationship>
 	</object>
 	<object class="EventMixerGroup" id="{5d966b20-f4bb-4047-8e6b-f7511d6a6d3a}">
+		<property name="volume">
+			<value>-8.5</value>
+		</property>
 		<property name="name">
 			<value>Audio 1</value>
 		</property>

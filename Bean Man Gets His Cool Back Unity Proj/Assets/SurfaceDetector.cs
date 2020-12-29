@@ -9,7 +9,7 @@ public class SurfaceDetector : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        
+        surfaceName = "Concrete";
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
@@ -20,6 +20,18 @@ public class SurfaceDetector : MonoBehaviour
         }
             
     }
+
+    private void OnTriggerExit2D(Collider2D collision)
+
+    {
+        if (collision.gameObject.tag == "Dirt" || collision.gameObject.tag == "Concrete")
+        {
+            surfaceName = "Concrete";
+        }
+
+    }
+
+
 
     // Update is called once per frame
     void Update()
