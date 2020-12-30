@@ -243,7 +243,7 @@ public class GameState : MonoBehaviour
             }
             if (endingsManager.endingsSeenList.Count > 2)
             {
-                conversationDict["ISCOOL"] = "Now life won't throw lemons at me! I can just sell my orangeade in peace.";
+                conversationDict["ISCOOL"] = "They're still throwing lemons. I just want to sell my orangeade in peace.";
             }
             if (endingsManager.endingsSeenList.Count > 3)
             {

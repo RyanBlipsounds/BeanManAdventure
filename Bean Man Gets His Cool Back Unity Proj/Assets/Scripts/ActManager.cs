@@ -129,7 +129,6 @@ public class ActManager : MonoBehaviour
             {
                 if (m_gameState.beanState == GameState.gameState.ENDING) {
                     //m_gameState.Ending();
-                    Debug.Log("ENDING FADE TO MAIN");
                     m_gameState.beanState = GameState.gameState.ISCOOL;
                 }
                 _narrationBox.isActive = false;
@@ -164,7 +163,7 @@ public class ActManager : MonoBehaviour
                 sceneTransitionState = sceneState.backtoscene;
             }
             graphicShowTime += Time.deltaTime;
-            if (graphicShowTime >= 6) {
+            if (graphicShowTime >= 15) {
                 sceneTransitionState = sceneState.backtoscene;
             }
         }

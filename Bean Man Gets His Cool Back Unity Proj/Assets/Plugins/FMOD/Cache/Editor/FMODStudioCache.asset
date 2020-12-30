@@ -299,7 +299,7 @@ MonoBehaviour:
   - {fileID: 3369702041603077526}
   StringsBanks:
   - {fileID: 6392113596281031596}
-  stringsBankWriteTime: 637448394508147647
+  stringsBankWriteTime: 637449311981821374
   cacheVersion: 5
 --- !u!114 &199333778599483351
 MonoBehaviour:
@@ -476,7 +476,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Path: ../Sound Boi/Build/Desktop/Master.bank
   Name: Master
-  lastModified: 637448394508067879
+  lastModified: 637449311981806729
   LoadResult: 0
   FileSizes: []
   Exists: 1
@@ -654,7 +654,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Path: ../Sound Boi/Build/Desktop/Master.strings.bank
   Name: Master.strings
-  lastModified: 637448394508147647
+  lastModified: 637449311981821374
   LoadResult: 0
   FileSizes:
   - Name: 
