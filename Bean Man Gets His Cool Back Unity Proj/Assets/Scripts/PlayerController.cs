@@ -147,7 +147,6 @@ public class PlayerController : MonoBehaviour
             _canTalkBox.isActive = true;
             if (Input.GetKeyDown(KeyCode.Space) && _dialogueBox.isActive == false)
             {
-                Debug.Log("Space has been hit");
                 if (thisCharacter.gameObject.name == "Stick") {
                     return;
                 }
@@ -172,14 +171,12 @@ public class PlayerController : MonoBehaviour
                             if (!gameState.listTotalNPC.Contains(thisCharacter))
                             {
                                 fireHydrantVomit.fireHydrantActivated = true;
-                                Debug.Log("ADDED FIRE HYDRANT TO GAME STATE LIST");
                                 gameState.listTotalNPC.Add(thisCharacter);
                             }
                             //Triggers conversation in both ISCOOl and BAGGED
                             gameState.Conversation(thisCharacter.gameObject.name, 6);
                         }
                     }
-                    Debug.Log("The fire hydrant continues");
                     // Adds NPC to list
                     if (thisCharacter.GetComponent<NPC>() && thisCharacter.gameObject.tag == "NPC") {
                         scriptNPCList.Add(thisCharacter.GetComponent<NPC>());
@@ -192,7 +189,6 @@ public class PlayerController : MonoBehaviour
                         return;
                     }
                 }
-                Debug.Log("15515151");
                 // Handles Fire Hydrant for ISNOTCOOL vomitting
                 if (thisCharacter.gameObject.name == "Fire Hydrant" && thisCharacter.gameObject.tag == "NPC")
                 {
@@ -215,8 +211,7 @@ public class PlayerController : MonoBehaviour
                     Debug.Log("Exit Town!");
                     _responseBox.isActive = true;
                 }
-
-                Debug.Log("Space has been hit 555");
+                
                 // Checks if the NPC has been spoken to
                 if (!_dialogueBox.isActive)
                 {
@@ -374,14 +369,21 @@ public class PlayerController : MonoBehaviour
             NoGlassesSpriteRenderer.flipX = true;
         }
 
-        NoGlassesanimator.SetFloat("Speed", movementSpeed);
-        NoGlassesanimator.SetFloat("YAxisDirection", movementDirection.y);
+        if (NoGlassesanimator.isActiveAndEnabled)
+        {
+            NoGlassesanimator.SetFloat("Speed", movementSpeed);
+            NoGlassesanimator.SetFloat("YAxisDirection", movementDirection.y);
+        }
 
-        GlassesAnimator.SetFloat("Speed", movementSpeed);
-        GlassesAnimator.SetFloat("YAxisDirection", movementDirection.y);
+        if (GlassesAnimator.isActiveAndEnabled) {
+            GlassesAnimator.SetFloat("Speed", movementSpeed);
+            GlassesAnimator.SetFloat("YAxisDirection", movementDirection.y);
+        }
 
-        BaggedAnimator.SetFloat("Speed", movementSpeed);
-        BaggedAnimator.SetFloat("YAxisDirection", movementDirection.y);
+        if (BaggedAnimator.isActiveAndEnabled) {
+            BaggedAnimator.SetFloat("Speed", movementSpeed);
+            BaggedAnimator.SetFloat("YAxisDirection", movementDirection.y);
+        }
     }
 
 }

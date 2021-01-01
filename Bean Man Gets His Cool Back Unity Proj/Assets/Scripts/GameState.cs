@@ -19,6 +19,8 @@ public class GameState : MonoBehaviour
 
     public PeanutTwinsLogic peanutTwins;
 
+    public SaveLoading saveLoading;
+
     public TrafficConeCollection _trafficConeCollection;
 
     public List<HouseStateLogic> listHouses = new List<HouseStateLogic>();
@@ -34,6 +36,7 @@ public class GameState : MonoBehaviour
 
     public LemonadeStand _lemonadeStand;
     public FireHydrantVomit _fireHydrantvomit;
+    public UILogic uILogic;
 
     public GameState m_gameState = null;
     public enum gameState
@@ -53,6 +56,10 @@ public class GameState : MonoBehaviour
     private bool talkedLina = false;
     private bool talkedChickpea = false;
 
+    private void Awake()
+    {
+        saveLoading.Load();
+    }
     // Start is called before the first frame update
     void Start()
     {
@@ -61,7 +68,7 @@ public class GameState : MonoBehaviour
         conversationDict.Add("ISNOTCOOL", "ISNOTCOOL");
         conversationDict.Add("ISBAGGED", "ISBAGGED");
         conversationDict.Add("BEANGOHINT", "BEANGOHINT");
-
+        ResetGame();
     }
 
     public void Conversation(string gameObjectName, int count) {
@@ -660,6 +667,7 @@ public class GameState : MonoBehaviour
     /// </summary>
     public void ResetGame()
     {
+        uILogic.UpdateEndingsCount(endingsManager.endingsSeenList.Count);
         foreach (HouseStateLogic house in listHouses)
         {
             house.CoolState();
@@ -667,11 +675,13 @@ public class GameState : MonoBehaviour
         if (_playerController.scriptNPCList.Count != 0) {
             foreach (NPC npc in _playerController.scriptNPCList)
             {
+                Debug.Log("NPC");
                 npc.ResetCoolStateNPC();
                 if (endingsManager.endingsSeenList[endingsManager.endingsSeenList.Count - 1] == _actManager.BirthdayCakeEnding)
                 {
                     trafficCone.gameObject.tag = "SideNPC";
                     npc.ShowTrafficCone();
+                    Debug.Log("SHOWING TRAFFIC CONE FOR " + npc.gameObject.name);
                 }
             }
         }
@@ -687,7 +697,6 @@ public class GameState : MonoBehaviour
         _hideyHole.NewPeeperSet();
         _lemonadeStand.SetLemonadeStandSanity();
         _fireHydrantvomit.hasVommittedThisRound = false;
-        Debug.Log("SET VOMMITTED TO FALSE");
         if (_playerController.scriptNPCList.Count != 0)
         {
             if (endingsManager.endingsSeenList[endingsManager.endingsSeenList.Count - 1] == _actManager.FireHydrantEnding)
@@ -698,19 +707,25 @@ public class GameState : MonoBehaviour
             {
                 _trafficConeCollection.TrafficConePile();
             }
+
+            if (endingsManager.endingsSeenList.Contains(_actManager.PeanutTwinEnding))
+            {
+                peanutButter.SetActive(true);
+                peanutTwins.KillPeanutTwin();
+                butter.KillButter();
+            }
+            else
+            {
+                peanutButter.SetActive(false);
+                peanutTwins.KillPeanutTwin();
+                peanutTwins.PeanutTwinLives();
+                butter.ButterLives();
+            }
         }
-        if (endingsManager.endingsSeenList.Contains(_actManager.PeanutTwinEnding))
-        {
-            peanutButter.SetActive(true);
-            peanutTwins.KillPeanutTwin();
-        }
-        else {
-            peanutButter.SetActive(false);
-            peanutTwins.KillPeanutTwin();
-            peanutTwins.PeanutTwinLives();
-            butter.ButterLives();
-        }
-       
+
+        chickPeaLogic.ChickPeaWizardMode();
+
+        saveLoading.Save();
     }
 
 }
