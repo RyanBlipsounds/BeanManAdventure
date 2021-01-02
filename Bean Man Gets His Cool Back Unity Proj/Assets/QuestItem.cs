@@ -6,16 +6,38 @@ using TMPro;
 public class QuestItem : MonoBehaviour
 {
     public TextMeshProUGUI questItemText;
-    // Start is called before the first frame update
+    public GameObject strikeThrough;
+
+    public bool completed = false;
+    public bool activated = false;
+
     void Start()
     {
-        //questItemText.color = 
         questItemText.text = this.gameObject.name;
+        questItemText.faceColor = Color.black;
+        questItemText.enabled = false;
+        strikeThrough.SetActive(false);
+        if (activated == true) {
+            if (completed == true)
+            {
+                QuestFinished();
+            }
+            else
+            {
+                questItemText.faceColor = Color.black;
+            }
+        }
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-        
+    public void QuestFinished() {
+        completed = true;
+        strikeThrough.SetActive(true);
+        questItemText.faceColor = Color.gray;
     }
+
+    public void QuestActivated() {
+        questItemText.faceColor = Color.black;
+        questItemText.enabled = true;
+    }
+
 }

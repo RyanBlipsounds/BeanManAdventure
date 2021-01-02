@@ -66,6 +66,10 @@ public class PlayerController : MonoBehaviour
 
     public bool spriteFlip = false;
 
+    public QuestList questList;
+    public UIController journalController;
+    public QuestListLayout questListLayout;
+
     void Start()
     {
         Bag.transform.position = m_BagStartPosition.transform.position;
@@ -83,7 +87,6 @@ public class PlayerController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-
         //Movement and Animation
         if (_actManager.activateGraphicTransition == false)
         {
@@ -103,6 +106,7 @@ public class PlayerController : MonoBehaviour
             movementDirection = new Vector2(0.0f, 0.0f);
             movementDirection.Normalize();
         }
+        Journal();
         Move();
         Animate();
         
@@ -139,6 +143,21 @@ public class PlayerController : MonoBehaviour
 
     void LoadBag() {
 
+    }
+
+    void Journal()
+    {
+        if (Input.GetKeyDown(KeyCode.Q) && journalController.isActive == false)
+        {
+
+            questListLayout.UpdateQuestList();
+            questListLayout.UpdateCompletedQuestList();
+            journalController.isActive = true;
+        }
+        else if (Input.GetKeyDown(KeyCode.Q) && journalController.isActive == true)
+        {
+            journalController.isActive = false;
+        }
     }
 
     void Dialogue() {

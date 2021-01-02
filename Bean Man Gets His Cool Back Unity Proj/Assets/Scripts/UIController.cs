@@ -46,8 +46,9 @@ public class UIController : MonoBehaviour
         thisGameObject = this.gameObject.name;
         string currentBeanState = gameState.beanState.ToString();
 
+
         if (isActive)
-        {
+        { 
             if (thisGameObject == "NarrationBox")
             {
                 narrationBoxText.ShowText(_actManager.EndingScreenText);
