@@ -3,33 +3,35 @@ using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
 
-namespace QuestNotify { 
-    public class QuestNotification : MonoBehaviour
+public class QuestNotification : MonoBehaviour
+{
+    public GameObject StartPoint;
+    public GameObject EndPoint;
+    public float speed = 1.0f;
+
+    public float goAwayTimer = 5f;
+
+    public bool isActive = false;
+
+    // Start is called before the first frame update
+
+    // Update is called once per frame
+    void Update()
     {
 
-        public GameObject StartPoint;
-        public GameObject EndPoint;
-        public float speed = 1.0f;
-
-        public bool isActive = false;
-
-
-        public string thisGameObject;
-
-        // Start is called before the first frame update
-
-        // Update is called once per frame
-        void Update()
+        if (isActive)
         {
-
-            if (isActive)
-            {
-                this.gameObject.transform.position = Vector3.MoveTowards(transform.position, EndPoint.transform.position, Time.deltaTime * speed);
+            this.gameObject.transform.position = Vector3.MoveTowards(transform.position, EndPoint.transform.position, Time.deltaTime * speed);
+            goAwayTimer -= Time.deltaTime;
+            if (goAwayTimer < 0) {
+                isActive = false;
             }
-            else
-            {
-                this.gameObject.transform.position = Vector3.MoveTowards(transform.position, StartPoint.transform.position, Time.deltaTime * speed);
-            }
+        }
+        else
+        {
+            goAwayTimer = 5.0f;
+            this.gameObject.transform.position = Vector3.MoveTowards(transform.position, StartPoint.transform.position, Time.deltaTime * speed);
         }
     }
 }
+

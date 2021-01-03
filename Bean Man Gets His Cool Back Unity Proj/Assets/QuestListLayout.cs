@@ -23,7 +23,7 @@ public class QuestListLayout : MonoBehaviour
         lastQuestPosition = availableQuestsStartingPosition.gameObject.transform.position;
         foreach (QuestItem quest in questList.availableQuestList) {
             quest.gameObject.transform.position = lastQuestPosition;
-            lastQuestPosition = new Vector3(lastQuestPosition.x, lastQuestPosition.y, 0f);
+            lastQuestPosition = new Vector3(availableQuestsStartingPosition.gameObject.transform.position.x, lastQuestPosition.y, 0f);
             lastQuestPosition.y -= questListDistance;
             Debug.Log(lastQuestPosition);
         }
@@ -38,7 +38,7 @@ public class QuestListLayout : MonoBehaviour
         foreach (QuestItem quest in questList.completedQuestList)
         {
             quest.gameObject.transform.position = lastQuestPosition;
-            lastQuestPosition = new Vector3(lastQuestPosition.x, lastQuestPosition.y, 0f);
+            lastQuestPosition = new Vector3(completedQuestsStartingPosition.gameObject.transform.position.x, lastQuestPosition.y, 0f);
             lastQuestPosition.y -= questListDistance;
         }
     }

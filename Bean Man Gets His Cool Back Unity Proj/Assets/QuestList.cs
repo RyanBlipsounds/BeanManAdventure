@@ -9,33 +9,12 @@ public class QuestList : MonoBehaviour
     public List<QuestItem> availableQuestList = new List<QuestItem>();
     public List<QuestItem> completedQuestList = new List<QuestItem>();
 
+    public QuestNotification questNotification;
+
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.Q))
-        {
-            ActivateQuestItem("Queen");
-        }
-        if (Input.GetKeyDown(KeyCode.R))
-        {
-            ActivateQuestItem("Butter");
-        }
-        if (Input.GetKeyDown(KeyCode.T))
-        {
-            ActivateQuestItem("Lina Bean");
-            ActivateQuestItem("Fire Hydrant");
-            ActivateQuestItem("Glasses");
-        }
-        if (Input.GetKeyDown(KeyCode.V))
-        {
-            CompleteQuestItem("Queen");
-        }
-        if (Input.GetKeyDown(KeyCode.B))
-        {
-            CompleteQuestItem("Butter");
-        }
-        if (Input.GetKeyDown(KeyCode.C))
-        {
-            CompleteQuestItem("Lina Bean");
+        if (Input.GetKeyDown(KeyCode.R)) {
+            //CompleteQuestItem("Lina Bean");
         }
     }
 
@@ -65,6 +44,7 @@ public class QuestList : MonoBehaviour
 
         availableQuestList.Add(selectedQuest);
         selectedQuest.QuestActivated();
+        questNotification.isActive = true;
     }
 
     public void CompleteQuestItem(string characterName)
@@ -96,6 +76,7 @@ public class QuestList : MonoBehaviour
         availableQuestList.Remove(selectedQuest);
         completedQuestList.Add(selectedQuest);
         selectedQuest.QuestFinished();
+        questNotification.isActive = true;
     }
 
     public void ShowQuestCompletedPopUp() {

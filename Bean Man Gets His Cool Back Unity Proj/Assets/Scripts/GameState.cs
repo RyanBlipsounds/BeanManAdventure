@@ -38,6 +38,8 @@ public class GameState : MonoBehaviour
     public FireHydrantVomit _fireHydrantvomit;
     public UILogic uILogic;
 
+    public QuestList questList;
+
     public GameState m_gameState = null;
     public enum gameState
     {
@@ -625,6 +627,9 @@ public class GameState : MonoBehaviour
         {
             house.BeangoState();
         }
+
+        questList.CompleteQuestItem("Everyone in Town");
+        questList.ActivateQuestItem("Beango");
         _actManager.EndingScreenText = _actManager.BeangoScreenText;
 
         beanState = gameState.BEANGOHINT;
@@ -632,6 +637,7 @@ public class GameState : MonoBehaviour
     }
 
     public void IsNotCool() {
+        questList.ActivateQuestItem("TownsPeople Again");
         foreach (HouseStateLogic house in listHouses)
         {
             house.NotCoolState();
@@ -654,6 +660,8 @@ public class GameState : MonoBehaviour
             house.BaggedState();
         }
         beanState = gameState.ISBAGGED;
+        questList.CompleteQuestItem("TownsPeople Again");
+        questList.ActivateQuestItem("Get Your Cool Back");
     }
 
     public void Ending() {

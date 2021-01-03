@@ -70,6 +70,8 @@ public class PlayerController : MonoBehaviour
     public UIController journalController;
     public QuestListLayout questListLayout;
 
+    public QuestNotification questNotification;
+
     void Start()
     {
         Bag.transform.position = m_BagStartPosition.transform.position;
@@ -149,7 +151,7 @@ public class PlayerController : MonoBehaviour
     {
         if (Input.GetKeyDown(KeyCode.Q) && journalController.isActive == false)
         {
-
+            questNotification.isActive = false;
             questListLayout.UpdateQuestList();
             questListLayout.UpdateCompletedQuestList();
             journalController.isActive = true;
@@ -189,6 +191,7 @@ public class PlayerController : MonoBehaviour
                             thisCharacter.gameObject.tag = "NPC";
                             if (!gameState.listTotalNPC.Contains(thisCharacter))
                             {
+                                questList.CompleteQuestItem("Fire Hydrant to Talk");
                                 fireHydrantVomit.fireHydrantActivated = true;
                                 gameState.listTotalNPC.Add(thisCharacter);
                             }
@@ -218,6 +221,11 @@ public class PlayerController : MonoBehaviour
                         isVommiting = true;
                         return;
                     }
+                }
+
+
+                if (thisCharacter.gameObject.name == "Traffic Cone") {
+                    questList.CompleteQuestItem("Traffic Cone");
                 }
 
                 // Handle if Beanman is trying to leave town while bagged

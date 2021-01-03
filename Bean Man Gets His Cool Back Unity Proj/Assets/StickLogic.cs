@@ -19,7 +19,16 @@ public class StickLogic : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        if (_gameState.beanState != GameState.gameState.ISNOTCOOL)
+        {
+            this.gameObject.tag = "InactiveNPC";
+            return;
+        }
+        else {
+            this.gameObject.tag = "SideNPC";
+        }
         if (_gameState.beanState == GameState.gameState.ISNOTCOOL && Input.GetKeyDown(KeyCode.Space) && _playerController.thisCharacter.gameObject.name == "Stick") {
+            
             StickAnimator.Play("StickRunAway");
         }
     }

@@ -16,6 +16,8 @@ public class FireHydrantVomit : MonoBehaviour
     public bool fireHydrantActivated = false;
     public bool hasVommittedThisRound = false;
 
+    public QuestList questList;
+
 
     public void Start()
     {
@@ -46,6 +48,7 @@ public class FireHydrantVomit : MonoBehaviour
         if (playerController.thisCharacter != null) {
             if (playerController.thisCharacter.gameObject.name == "Fire Hydrant" && gameState.beanState == GameState.gameState.ISNOTCOOL && playerController.isVommiting == true)
             {
+                questList.CompleteQuestItem("Fire Hydrant Vomit");
                 FireHydrantAnimator.Play("FireHydrantVomit");
             }
         }

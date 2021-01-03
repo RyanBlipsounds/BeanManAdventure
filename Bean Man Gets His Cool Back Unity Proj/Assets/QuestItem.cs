@@ -31,7 +31,6 @@ public class QuestItem : MonoBehaviour
 
     public void QuestFinished() {
         completed = true;
-        strikeThrough.SetActive(true);
         questItemText.faceColor = Color.gray;
     }
 
