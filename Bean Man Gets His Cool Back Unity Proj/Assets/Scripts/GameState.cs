@@ -637,6 +637,7 @@ public class GameState : MonoBehaviour
     }
 
     public void IsNotCool() {
+        questList.CompleteQuestItem("Beango");
         questList.ActivateQuestItem("TownsPeople Again");
         foreach (HouseStateLogic house in listHouses)
         {
@@ -644,6 +645,8 @@ public class GameState : MonoBehaviour
         }
         beanState = gameState.ISNOTCOOL;
         RandomizeGlasses();
+
+        Debug.Log("IS NOT COOL");
 
         _playerController.MoveToStart();
 
