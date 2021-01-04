@@ -16,6 +16,8 @@ public class UILogic : MonoBehaviour
     public Button EndingsReplay;
     public GameObject EndingsScreen;
 
+    public GameObject PauseScreen;
+
     public EndingsManager endingsManager;
     public QuestList questList;
     public ActManager _actManager;
@@ -29,7 +31,20 @@ public class UILogic : MonoBehaviour
         pc.bagMoving = true;
     }
 
-    
+    private void Update()
+    {
+        if (Input.GetKeyDown(KeyCode.Escape))
+        {
+            if (PauseScreen.activeInHierarchy == true)
+            {
+                PauseScreen.SetActive(false);
+            }
+            else
+            {
+                PauseScreen.SetActive(true);
+            }
+        }
+    }
 
     private void OnDestroy()
     {
