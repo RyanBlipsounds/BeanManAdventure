@@ -1,47 +1,48 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using TMPro;
 
 public class QuestListLayout : MonoBehaviour
 {
 
     public QuestList questList;
 
+    public TextMeshPro questCompletedCount;
+
     public GameObject availableQuestsStartingPosition;
     public GameObject completedQuestsStartingPosition;
 
     public float questListDistance;
     public Vector3 lastQuestPosition;
-    // Start is called before the first frame update
-    public void Start()
-    {
-        
-    }
+    public float lastQuestPositionY;
+    public float lastQuestPositionX;
+    public Vector3 lastCompletedQuestPosition;
 
     public void UpdateQuestList()
     {
         lastQuestPosition = availableQuestsStartingPosition.gameObject.transform.position;
         foreach (QuestItem quest in questList.availableQuestList) {
+            lastQuestPosition = new Vector3(lastQuestPosition.x, lastQuestPosition.y, 0f);
             quest.gameObject.transform.position = lastQuestPosition;
-            lastQuestPosition = new Vector3(availableQuestsStartingPosition.gameObject.transform.position.x, lastQuestPosition.y, 0f);
             lastQuestPosition.y -= questListDistance;
-            Debug.Log(lastQuestPosition);
+            quest.QuestActivated();
         }
-        //questList.availableQuestList;
-        //questList.completedQuestList;
-        //questList.questItemsList;
     }
 
     public void UpdateCompletedQuestList()
     {
-        return;
-        lastQuestPosition = completedQuestsStartingPosition.gameObject.transform.position;
-        foreach (QuestItem quest in questList.completedQuestList)
-        {
-            quest.gameObject.transform.position = lastQuestPosition;
-            lastQuestPosition = new Vector3(completedQuestsStartingPosition.gameObject.transform.position.x, lastQuestPosition.y, 0f);
-            lastQuestPosition.y -= questListDistance;
+        questCompletedCount.text = "Quests Completed " + questList.completedQuestList.Count.ToString() + "/" + questList.totalQuestItemsList.Count.ToString();
+
+        lastCompletedQuestPosition = completedQuestsStartingPosition.gameObject.transform.position;
+        foreach (QuestItem quest in questList.completedQuestList) {
+            lastCompletedQuestPosition = new Vector3(completedQuestsStartingPosition.gameObject.transform.position.x, lastCompletedQuestPosition.y, 0f);
+            quest.gameObject.transform.position = lastCompletedQuestPosition;
+            lastCompletedQuestPosition.y -= questListDistance;
+            quest.QuestActivated();
+            quest.QuestFinished();
         }
+
     }
 
     private void Update()

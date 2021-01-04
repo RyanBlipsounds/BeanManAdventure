@@ -78,16 +78,4 @@ public class QuestList : MonoBehaviour
         selectedQuest.QuestFinished();
         questNotification.isActive = true;
     }
-
-    public void ShowQuestCompletedPopUp() {
-        //Shows same prompt but says "Quest Completed"
-    }
-
-    public void ShowNewQuestsAvailablePopUp()
-    {
-        //Pop up that prompts the player to open up their quest journal that says "New Quests Available"
-    }
-    public void ShowQuestList() {
-
-    }
 }

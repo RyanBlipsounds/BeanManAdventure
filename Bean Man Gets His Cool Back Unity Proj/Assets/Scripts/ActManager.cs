@@ -115,6 +115,10 @@ public class ActManager : MonoBehaviour
                 m_gameState.Ending();
                 hasPlayed = true;
             }
+            if (graphic == BeanManLeavesTown) {
+                m_gameState.Ending();
+                hasPlayed = true;
+            }
             blackScreenTimeToFade -= Time.deltaTime;
         }
 

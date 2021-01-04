@@ -35,6 +35,7 @@ public class QuestItem : MonoBehaviour
     }
 
     public void QuestActivated() {
+        Debug.Log(this.gameObject.name);
         questItemText.faceColor = Color.black;
         questItemText.enabled = true;
     }

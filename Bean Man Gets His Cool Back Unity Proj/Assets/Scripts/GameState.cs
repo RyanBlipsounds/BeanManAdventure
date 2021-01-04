@@ -87,7 +87,6 @@ public class GameState : MonoBehaviour
         // ISCOOL is dynamic. Fire Hydrant needs to be spoken to multiple times to be active.
         if (gameObjectName == "Fire Hydrant")
         {
-            Debug.Log(count);
             if (count < 5)
             {
                 string dialogue = "..";
@@ -678,6 +677,10 @@ public class GameState : MonoBehaviour
     /// </summary>
     public void ResetGame()
     {
+        _playerController._responseBox.isActive = false;
+        _playerController._dialogueBox.isActive = false;
+        _playerController._canTalkBox.isActive = false;
+        _playerController.ResetBeanSpawnPosition();
         uILogic.UpdateEndingsCount(endingsManager.endingsSeenList.Count);
         foreach (HouseStateLogic house in listHouses)
         {
@@ -686,13 +689,11 @@ public class GameState : MonoBehaviour
         if (_playerController.scriptNPCList.Count != 0) {
             foreach (NPC npc in _playerController.scriptNPCList)
             {
-                Debug.Log("NPC");
                 npc.ResetCoolStateNPC();
                 if (endingsManager.endingsSeenList[endingsManager.endingsSeenList.Count - 1] == _actManager.BirthdayCakeEnding)
                 {
                     trafficCone.gameObject.tag = "SideNPC";
                     npc.ShowTrafficCone();
-                    Debug.Log("SHOWING TRAFFIC CONE FOR " + npc.gameObject.name);
                 }
             }
         }

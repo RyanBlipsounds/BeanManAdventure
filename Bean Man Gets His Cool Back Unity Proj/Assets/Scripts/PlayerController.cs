@@ -149,9 +149,15 @@ public class PlayerController : MonoBehaviour
 
     void Journal()
     {
+        if (_narrationBox.isActive == true)
+        {
+            journalController.isActive = false;
+            return;
+        }
         if (Input.GetKeyDown(KeyCode.Q) && journalController.isActive == false)
         {
             questNotification.isActive = false;
+
             questListLayout.UpdateQuestList();
             questListLayout.UpdateCompletedQuestList();
             journalController.isActive = true;
@@ -165,6 +171,13 @@ public class PlayerController : MonoBehaviour
     void Dialogue() {
         if (characterInRange)
         {
+            if (journalController.isActive == true)
+            {
+                _dialogueBox.isActive = false;
+                _responseBox.isActive = false;
+                _canTalkBox.isActive = false;
+                return;
+            }
             _canTalkBox.isActive = true;
             if (Input.GetKeyDown(KeyCode.Space) && _dialogueBox.isActive == false)
             {
@@ -184,24 +197,32 @@ public class PlayerController : MonoBehaviour
                             return;
                         }
                     }
-                    if (thisCharacter.gameObject.name == "Fire Hydrant") {
-
-                        if (gameState.beanState == GameState.gameState.ISCOOL || gameState.beanState == GameState.gameState.BEANGOHINT)
-                        {
-                            thisCharacter.gameObject.tag = "NPC";
-                            if (!gameState.listTotalNPC.Contains(thisCharacter))
-                            {
-                                questList.CompleteQuestItem("Fire Hydrant to Talk");
-                                fireHydrantVomit.fireHydrantActivated = true;
-                                gameState.listTotalNPC.Add(thisCharacter);
-                            }
-                            //Triggers conversation in both ISCOOl and BAGGED
-                            gameState.Conversation(thisCharacter.gameObject.name, 6);
-                        }
-                    }
                     // Adds NPC to list
                     if (thisCharacter.GetComponent<NPC>() && thisCharacter.gameObject.tag == "NPC") {
                         scriptNPCList.Add(thisCharacter.GetComponent<NPC>());
+                    }
+                }
+                if (thisCharacter.gameObject.name == "Fire Hydrant")
+                {
+
+                    if (gameState.beanState == GameState.gameState.ISCOOL || gameState.beanState == GameState.gameState.BEANGOHINT)
+                    {
+                        thisCharacter.gameObject.tag = "NPC";
+                        if (thisCharacter.GetComponent<NPC>() && thisCharacter.gameObject.tag == "NPC")
+                        {
+                            scriptNPCList.Add(thisCharacter.GetComponent<NPC>());
+                        }
+                        if (!gameState.listTotalNPC.Contains(thisCharacter))
+                        {
+                            questList.CompleteQuestItem("Fire Hydrant to Talk");
+                            fireHydrantVomit.fireHydrantActivated = true;
+                            gameState.listTotalNPC.Add(thisCharacter);
+                        }
+                        //Triggers conversation in both ISCOOl and BAGGED
+                        gameState.Conversation(thisCharacter.gameObject.name, 6);
+                        _dialogueBox.isActive = true;
+
+                        return;
                     }
                 }
                 if (fireHydrantVomit.fireHydrantActivated == false && thisCharacter.gameObject.name == "Fire Hydrant")
@@ -211,6 +232,7 @@ public class PlayerController : MonoBehaviour
                         return;
                     }
                 }
+
                 // Handles Fire Hydrant for ISNOTCOOL vomitting
                 if (thisCharacter.gameObject.name == "Fire Hydrant" && thisCharacter.gameObject.tag == "NPC")
                 {
@@ -406,11 +428,33 @@ public class PlayerController : MonoBehaviour
             GlassesAnimator.SetFloat("Speed", movementSpeed);
             GlassesAnimator.SetFloat("YAxisDirection", movementDirection.y);
         }
-
         if (BaggedAnimator.isActiveAndEnabled) {
             BaggedAnimator.SetFloat("Speed", movementSpeed);
             BaggedAnimator.SetFloat("YAxisDirection", movementDirection.y);
         }
     }
+    public void ResetBeanSpawnPosition()
+    {
+        GlassesSpriteRenderer.flipX = true;
+        BaggedSpriteRenderer.flipX = true;
+        NoGlassesSpriteRenderer.flipX = true;
 
+        if (NoGlassesanimator.isActiveAndEnabled)
+        {
+            Debug.Log("Reset Y Position");
+            NoGlassesanimator.Play("BeanIdleFront");
+        }
+
+        if (GlassesAnimator.isActiveAndEnabled)
+        {
+            Debug.Log("Reset Y Position");
+            GlassesAnimator.Play("BeanIdleFront");
+        }
+
+        if (BaggedAnimator.isActiveAndEnabled)
+        {
+            Debug.Log("Reset Y Position");
+            BaggedAnimator.Play("BeanIdleFront");
+        }
+    }
 }

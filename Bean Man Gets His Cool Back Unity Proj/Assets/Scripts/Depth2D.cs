@@ -38,7 +38,6 @@ public class Depth2D : MonoBehaviour
             if (m_player.movementDirection.y < 0 && lookingDown == false)
             {
                 lookingDown = true;
-                Debug.Log("Down");
                 m_frontCensorBar.SetActive(true);
                 m_backCensorBar.SetActive(false);
                 //m_censorBar.transform.position = new Vector3(m_censorBar.transform.position.x, m_censorBar.transform.position.y, -0.00001f);
@@ -46,7 +45,6 @@ public class Depth2D : MonoBehaviour
             else if (m_player.movementDirection.y > 0 && lookingDown == true)
             {
                 lookingDown = false;
-                Debug.Log("Up");
                 m_frontCensorBar.SetActive(false);
                 m_backCensorBar.SetActive(true);
                 //m_censorBar.transform.position = new Vector3(m_censorBar.transform.position.x, m_censorBar.transform.position.y, 0.00001f);
