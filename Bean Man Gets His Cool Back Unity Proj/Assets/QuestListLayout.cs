@@ -34,6 +34,7 @@ public class QuestListLayout : MonoBehaviour
 
     public void UpdateCompletedQuestList()
     {
+        return;
         lastQuestPosition = completedQuestsStartingPosition.gameObject.transform.position;
         foreach (QuestItem quest in questList.completedQuestList)
         {
