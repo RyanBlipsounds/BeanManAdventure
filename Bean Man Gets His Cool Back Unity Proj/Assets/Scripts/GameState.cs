@@ -255,7 +255,7 @@ public class GameState : MonoBehaviour
             }
             if (endingsManager.endingsSeenList.Count > 3)
             {
-                conversationDict["ISCOOL"] = "It turns out that no one wants to buy from an Orangeade stand. And life keeps throwing lemons.";
+                conversationDict["ISCOOL"] = "It turns out that no one likes the name 'Orangeade'. And life keeps throwing lemons.";
             }
             if (endingsManager.endingsSeenList.Count > 4)
             {
@@ -263,11 +263,11 @@ public class GameState : MonoBehaviour
             }
             if (endingsManager.endingsSeenList.Count > 5)
             {
-                conversationDict["ISCOOL"] = "I really would have appreciated it if you had bought even just ONE cup from me.";
+                conversationDict["ISCOOL"] = "I really should've appreciated the lemons that life had been throwing at me this whole time.";
             }
             if (endingsManager.endingsSeenList.Count > 6)
             {
-                conversationDict["ISCOOL"] = "I've decided to just stick to selling lemonade.";
+                conversationDict["ISCOOL"] = "I've decided to open and stick to selling lemonade.";
             }
             if (endingsManager.endingsSeenList.Count > 7)
             {
