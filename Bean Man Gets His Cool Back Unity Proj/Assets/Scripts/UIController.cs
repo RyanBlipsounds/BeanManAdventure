@@ -38,6 +38,21 @@ public class UIController : MonoBehaviour
         transform.position = StartPoint.transform.position;
     }
 
+    private void OnTriggerEnter2D(Collider2D collision)
+
+    {
+        if (collision.gameObject.name == "Trigger")
+        {
+            Debug.Log("WENUS");
+        }
+    }
+
+    private void OnTriggerExit2D(Collider2D collision)
+
+    {
+        
+    }
+
     void Update()
     {
         var currentState = gameState.beanState;
