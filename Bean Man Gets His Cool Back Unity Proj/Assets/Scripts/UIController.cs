@@ -85,8 +85,9 @@ public class UIController : MonoBehaviour
                         break;
                     }
                 }
-                if (gameState.beanState == GameState.gameState.BEANGOHINT && hasNPC && _playerController.thisCharacter.gameObject.name != "Granny Smith")
-                {
+
+                if (gameState.beanState == GameState.gameState.BEANGOHINT && _playerController.scriptNPCList.Count >= 7 && endingsManager.endingsSeenList.Count > 0 && _playerController.thisCharacter.gameObject.name != "Granny Smith") {
+                    Debug.Log("Horse man big boy22");
                     dialogueBoxAnimator.ShowText(gameState.conversationDict["ISCOOL"]);
                 }
                 else

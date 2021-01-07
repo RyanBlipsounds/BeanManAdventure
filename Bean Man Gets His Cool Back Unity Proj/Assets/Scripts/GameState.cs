@@ -90,6 +90,7 @@ public class GameState : MonoBehaviour
         // ISCOOL is dynamic. Fire Hydrant needs to be spoken to multiple times to be active.
         if (gameObjectName == "Fire Hydrant")
         {
+            Debug.Log(count);
             if (count < 5)
             {
                 string dialogue = "..";
@@ -102,8 +103,8 @@ public class GameState : MonoBehaviour
                     countStart++;
                 }
                 conversationDict["ISCOOL"] = dialogue;
-                conversationDict["BEANGOHINT"] = "Why are you talking to me? I'm a fire hydrant.";
-                conversationDict["ISNOTCOOL"] = "Bean Man! Looks like you lost your glasses some how! Here, take this";
+                conversationDict["BEANGOHINT"] = dialogue;
+                conversationDict["ISNOTCOOL"] = "...";
                 conversationDict["ISBAGGED"] = "Oh thank god. You look so much better";
                 return;
             }
@@ -149,6 +150,10 @@ public class GameState : MonoBehaviour
                     conversationDict["ISCOOL"] = "I've never left town before. What's it like out there?";
                 }
                 if (endingsManager.endingsSeenList[endingsManager.endingsSeenList.Count - 1] == _actManager.LinaBeanEnding)
+                {
+                    conversationDict["ISCOOL"] = "";
+                }
+                if (endingsManager.endingsSeenList[endingsManager.endingsSeenList.Count - 1] == _actManager.BeanManWinEnding)
                 {
                     conversationDict["ISCOOL"] = "";
                 }
@@ -198,6 +203,9 @@ public class GameState : MonoBehaviour
                     endingsManager.endingsSeenList[endingsManager.endingsSeenList.Count - 1] == _actManager.BeanManLeavesBagged)
                 {
                     conversationDict["ISCOOL"] = "Oh. You're back.";
+                }
+                if (endingsManager.endingsSeenList[endingsManager.endingsSeenList.Count - 1] == _actManager.BeanManWinEnding) {
+                    conversationDict["ISCOOL"] = "Aw gee, those glasses just look so good on you Bean";
                 }
                 if (endingsManager.endingsSeenList[endingsManager.endingsSeenList.Count - 1] == _actManager.LinaBeanEnding)
                 {
@@ -297,6 +305,7 @@ public class GameState : MonoBehaviour
                 {
                     conversationDict["ISCOOL"] = "Bean man! You're back! I thought you bailed on me!";
                 }
+
                 if (endingsManager.endingsSeenList[endingsManager.endingsSeenList.Count - 1] == _actManager.LinaBeanEnding)
                 {
                     conversationDict["ISCOOL"] = "Sorry I got a little crazy there... I hope we can still go out to the movies this weekend.";

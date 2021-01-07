@@ -191,20 +191,23 @@ public class PlayerController : MonoBehaviour
                     if (thisCharacter.gameObject.name == "Fire Hydrant" && fireHydrantTalkCount < 4)
                     {
                         if (gameState.beanState == GameState.gameState.ISCOOL || gameState.beanState == GameState.gameState.BEANGOHINT) {
+                            Debug.Log("PLUS PLUS");
                             fireHydrantTalkCount++;
                             _dialogueBox.isActive = true;
                             gameState.Conversation(thisCharacter.gameObject.name, fireHydrantTalkCount);
                             return;
                         }
                     }
+                    Debug.Log("Continuing after plus");
                     // Adds NPC to list
                     if (thisCharacter.GetComponent<NPC>() && thisCharacter.gameObject.tag == "NPC") {
                         scriptNPCList.Add(thisCharacter.GetComponent<NPC>());
                     }
+                 
                 }
                 if (thisCharacter.gameObject.name == "Fire Hydrant")
                 {
-
+                    Debug.Log("Hello");
                     if (gameState.beanState == GameState.gameState.ISCOOL || gameState.beanState == GameState.gameState.BEANGOHINT)
                     {
                         thisCharacter.gameObject.tag = "NPC";
@@ -308,6 +311,7 @@ public class PlayerController : MonoBehaviour
             }
             else if (Input.GetKeyDown(KeyCode.Space) && _dialogueBox.isActive == true && skippedTypewriter == true) {
                 _dialogueBox.isActive = false;
+                _responseBox.isActive = false;
                 skippedTypewriter = false;
             }
         }
