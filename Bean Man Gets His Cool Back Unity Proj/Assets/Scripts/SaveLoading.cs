@@ -33,6 +33,13 @@ public class SaveLoading : MonoBehaviour
         if (endingsManager.endingsSeenList.Count > 0) {
             gameState.beanState = GameState.gameState.BEANGOHINT;
         }
+
+        foreach (NPC NPC in playerController.scriptNPCList) {
+            if (NPC.gameObject.name == "Fire Hydrant") {
+                NPC.gameObject.tag = "NPC";
+                break;
+            }
+        }
     }
 
     public void ClearSaveData() {
