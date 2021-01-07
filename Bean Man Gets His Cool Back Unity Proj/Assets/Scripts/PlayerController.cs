@@ -229,21 +229,18 @@ public class PlayerController : MonoBehaviour
                 {
                     if (gameState.beanState == GameState.gameState.ISBAGGED || gameState.beanState == GameState.gameState.ISNOTCOOL)
                     {
+                        if (thisCharacter.gameObject.tag == "NPC")
+                        {
+                            if (gameState.beanState == GameState.gameState.ISNOTCOOL)
+                            {
+                                isVommiting = true;
+                                return;
+                            }
+                        }
                         return;
                     }
                 }
-
-                // Handles Fire Hydrant for ISNOTCOOL vomitting
-                if (thisCharacter.gameObject.name == "Fire Hydrant" && thisCharacter.gameObject.tag == "NPC")
-                {
-                    Debug.Log(thisCharacter.gameObject.name);
-                    if (gameState.beanState == GameState.gameState.ISNOTCOOL)
-                    {
-                        Debug.Log("This");
-                        isVommiting = true;
-                        return;
-                    }
-                }
+                
 
 
                 if (thisCharacter.gameObject.name == "Traffic Cone") {
@@ -276,9 +273,9 @@ public class PlayerController : MonoBehaviour
                 {
                     if (gameState.beanState == GameState.gameState.BEANGOHINT || gameState.beanState == GameState.gameState.ISCOOL)
                     {
-                        if (scriptNPCList.Count == gameState.listTotalNPC.Count)
+                        if (scriptNPCList.Count == gameState.listTotalNPC.Count || endingsManager.endingsSeenList.Count > 0)
                         {
-                            Debug.Log("Has NPC is true and it's beango hint AND this is granny smith");
+                            Debug.Log("Granny Smith3");
                             _responseBox.isActive = true;
                         }
                         if (scriptNPCList.Count == gameState.listTotalNPC.Count - 1 && !gameState.listTotalNPC.Contains(GameObject.Find("Granny Smith")))

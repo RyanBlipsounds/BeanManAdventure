@@ -48,8 +48,9 @@ public class FireHydrantVomit : MonoBehaviour
         if (playerController.thisCharacter != null) {
             if (playerController.thisCharacter.gameObject.name == "Fire Hydrant" && gameState.beanState == GameState.gameState.ISNOTCOOL && playerController.isVommiting == true)
             {
-                questList.CompleteQuestItem("Fire Hydrant Vomit");
+                Debug.Log("Start vomit");
                 FireHydrantAnimator.Play("FireHydrantVomit");
+                questList.CompleteQuestItem("Fire Hydrant Vomit");
             }
         }
     }

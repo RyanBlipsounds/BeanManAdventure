@@ -71,6 +71,9 @@ public class GameState : MonoBehaviour
         conversationDict.Add("ISBAGGED", "ISBAGGED");
         conversationDict.Add("BEANGOHINT", "BEANGOHINT");
         ResetGame();
+        if (beanState == gameState.BEANGOHINT) {
+            IsBeanGoHint();
+        }
     }
 
     public void Conversation(string gameObjectName, int count) {
