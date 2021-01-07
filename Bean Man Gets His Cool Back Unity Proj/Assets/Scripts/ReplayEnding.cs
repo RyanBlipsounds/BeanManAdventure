@@ -127,6 +127,8 @@ public class ReplayEnding : MonoBehaviour
 
     private void OnDestroy()
     {
+        CloseButton.onClick.RemoveListener(CloseEndingsReplay);
+
         Button_ChickPeaEnding.onClick.RemoveListener(ChickPeaEndingClicked);
         Button_BeanManWinEnding.onClick.RemoveListener(BeanManWinEndingClicked);
         Button_LinaBeanEnding.onClick.RemoveListener(LinaBeanEndingClicked);
@@ -143,6 +145,7 @@ public class ReplayEnding : MonoBehaviour
 
     private void CloseEndingsReplay()
     {
+        Debug.Log("CLICKING ME");
         EndingsUI.SetActive(false);
     }
 
