@@ -18,6 +18,9 @@ public class UILogic : MonoBehaviour
 
     public GameObject PauseScreen;
 
+    public GameObject CreditsScreen;
+    public Button CreditsButton;
+
     public EndingsManager endingsManager;
     public QuestList questList;
     public ActManager _actManager;
@@ -28,6 +31,7 @@ public class UILogic : MonoBehaviour
     {
         MMPlayButton.onClick.AddListener(GameStartClicked);
         EndingsReplay.onClick.AddListener(EndingsClicked);
+        CreditsButton.onClick.AddListener(CreditsClicked);
         pc.bagMoving = true;
     }
 
@@ -50,6 +54,7 @@ public class UILogic : MonoBehaviour
     {
         MMPlayButton.onClick.RemoveListener(GameStartClicked);
         EndingsReplay.onClick.RemoveListener(EndingsClicked);
+        CreditsButton.onClick.RemoveListener(CreditsClicked);
     }
     private void GameStartClicked()
     {
@@ -122,6 +127,11 @@ public class UILogic : MonoBehaviour
     {
         endingsEncountered.SetActive(true);
         endingsNumber.text = count + " / 10";
+    }
+
+    public void CreditsClicked()
+    {
+        CreditsScreen.SetActive(true);
     }
 
 
