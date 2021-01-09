@@ -698,17 +698,22 @@ public class GameState : MonoBehaviour
         {
             house.CoolState();
         }
+
+        Debug.Log("We got here1");
+
         if (_playerController.scriptNPCList.Count != 0) {
             foreach (NPC npc in _playerController.scriptNPCList)
             {
                 npc.ResetCoolStateNPC();
                 if (endingsManager.endingsSeenList[endingsManager.endingsSeenList.Count - 1] == _actManager.BirthdayCakeEnding)
                 {
+                    Debug.Log("Traffic Cone activating");
                     trafficCone.gameObject.tag = "SideNPC";
                     npc.ShowTrafficCone();
                 }
             }
         }
+        
 
         _playerController.Glasses();
         //_playerController.fireHydrantTalkCount = 0;
@@ -718,11 +723,11 @@ public class GameState : MonoBehaviour
         //_playerController.scriptNPCList.Clear();
         _playerController.MoveToStart();
         _UILogic.MainMenu.SetActive(true);
-        _hideyHole.NewPeeperSet();
         _lemonadeStand.SetLemonadeStandSanity();
         _fireHydrantvomit.hasVommittedThisRound = false;
         if (_playerController.scriptNPCList.Count != 0)
         {
+
             if (endingsManager.endingsSeenList[endingsManager.endingsSeenList.Count - 1] == _actManager.FireHydrantEnding)
             {
                 _trafficConeCollection.FireHydrantPile();
@@ -731,7 +736,10 @@ public class GameState : MonoBehaviour
             {
                 _trafficConeCollection.TrafficConePile();
             }
-
+            if (endingsManager.endingsSeenList.Contains(_actManager.BirthdayCakeEnding))
+            {
+                trafficCone.gameObject.tag = "SideNPC";
+            }
             if (endingsManager.endingsSeenList.Contains(_actManager.PeanutTwinEnding))
             {
                 peanutButter.SetActive(true);
@@ -746,7 +754,7 @@ public class GameState : MonoBehaviour
                 butter.ButterLives();
             }
         }
-
+        Debug.Log("We got here7");
         chickPeaLogic.ChickPeaWizardMode();
 
         saveLoading.Save();

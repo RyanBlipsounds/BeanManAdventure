@@ -67,7 +67,7 @@ public class UILogic : MonoBehaviour
         }
 
         if (endingsManager.endingsSeenList.Contains(_actManager.GrannySmithEnding)) {
-            questList.ActivateQuestItem("Queen");
+            questList.CompleteQuestItem("Queen");
         }
         if (endingsManager.endingsSeenList.Contains(_actManager.BirthdayCakeEnding))
         {

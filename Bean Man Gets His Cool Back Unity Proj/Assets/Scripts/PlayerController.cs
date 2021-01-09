@@ -211,7 +211,7 @@ public class PlayerController : MonoBehaviour
                     if (gameState.beanState == GameState.gameState.ISCOOL || gameState.beanState == GameState.gameState.BEANGOHINT)
                     {
                         thisCharacter.gameObject.tag = "NPC";
-                        if (thisCharacter.GetComponent<NPC>() && thisCharacter.gameObject.tag == "NPC")
+                        if (thisCharacter.GetComponent<NPC>() && thisCharacter.gameObject.tag == "NPC" && !scriptNPCList.Contains(thisCharacter.GetComponent<NPC>()))
                         {
                             scriptNPCList.Add(thisCharacter.GetComponent<NPC>());
                         }
@@ -228,19 +228,16 @@ public class PlayerController : MonoBehaviour
                         return;
                     }
                 }
+
                 if (fireHydrantVomit.fireHydrantActivated == false && thisCharacter.gameObject.name == "Fire Hydrant")
                 {
-                    if (gameState.beanState == GameState.gameState.ISBAGGED || gameState.beanState == GameState.gameState.ISNOTCOOL)
+                    if (thisCharacter.gameObject.tag == "NPC")
                     {
-                        if (thisCharacter.gameObject.tag == "NPC")
+                        if (gameState.beanState == GameState.gameState.ISNOTCOOL)
                         {
-                            if (gameState.beanState == GameState.gameState.ISNOTCOOL)
-                            {
-                                isVommiting = true;
-                                return;
-                            }
+                            isVommiting = true;
+                            return;
                         }
-                        return;
                     }
                 }
                 
@@ -442,19 +439,16 @@ public class PlayerController : MonoBehaviour
 
         if (NoGlassesanimator.isActiveAndEnabled)
         {
-            Debug.Log("Reset Y Position");
             NoGlassesanimator.Play("BeanIdleFront");
         }
 
         if (GlassesAnimator.isActiveAndEnabled)
         {
-            Debug.Log("Reset Y Position");
             GlassesAnimator.Play("BeanIdleFront");
         }
 
         if (BaggedAnimator.isActiveAndEnabled)
         {
-            Debug.Log("Reset Y Position");
             BaggedAnimator.Play("BeanIdleFront");
         }
     }
