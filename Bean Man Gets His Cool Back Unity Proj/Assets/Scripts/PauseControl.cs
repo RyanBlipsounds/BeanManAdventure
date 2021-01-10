@@ -9,10 +9,10 @@ public class PauseControl : MonoBehaviour
     public Button Credits;
     public Button Exit;
 
+
     // Start is called before the first frame update
-    void Start()
+    private void Start()
     {
-        //Credits.onClick.AddListener(OpenCredits);
         Exit.onClick.AddListener(ExitGame);
     }
 
