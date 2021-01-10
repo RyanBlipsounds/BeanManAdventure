@@ -33,7 +33,21 @@ public class SaveLoading : MonoBehaviour
             ending.SetActive(false);
         }
 
-        if (endingsManager.endingsSeenList.Count > 0) {
+        int count;
+        count = 0;
+        if (endingsManager.endingsSeenList.Count > 0)
+        {
+            foreach (GameObject endingsFound in endingsManager.endingsSeenList)
+            {
+                Debug.Log("Endings count!");
+                if (!endingsFound.gameObject.name.Contains("Beanman"))
+                {
+                    count++;
+                }
+            }
+        }
+
+        if (count > 0) {
             gameState.beanState = GameState.gameState.BEANGOHINT;
         }
 

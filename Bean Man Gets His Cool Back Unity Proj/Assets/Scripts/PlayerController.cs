@@ -72,6 +72,8 @@ public class PlayerController : MonoBehaviour
 
     public QuestNotification questNotification;
 
+    public NPC grannySmith;
+
     void Start()
     {
         Bag.transform.position = m_BagStartPosition.transform.position;
@@ -79,6 +81,10 @@ public class PlayerController : MonoBehaviour
         GlassesBeanMan.SetActive(true);
         NoGlassesBeanMan.SetActive(false);
         BaggedBeanMan.SetActive(false);
+
+        if (!scriptNPCList.Contains(grannySmith)) {
+            scriptNPCList.Add(grannySmith);
+        }
 
         _canTalkBox = GameObject.Find("CanTalkBox").GetComponent<UIController>();
         _dialogueBox = GameObject.Find("DialogueBox").GetComponent<UIController>();
@@ -273,12 +279,22 @@ public class PlayerController : MonoBehaviour
                 {
                     if (gameState.beanState == GameState.gameState.BEANGOHINT || gameState.beanState == GameState.gameState.ISCOOL)
                     {
-                        if (scriptNPCList.Count == gameState.listTotalNPC.Count || endingsManager.endingsSeenList.Count > 0)
+                        int count = 0;
+                        if (endingsManager.endingsSeenList.Count > 0)
                         {
-                            Debug.Log("Granny Smith3");
+                            foreach (GameObject endingsFound in endingsManager.endingsSeenList)
+                            {
+                                if (!endingsFound.gameObject.name.Contains("Beanman"))
+                                {
+                                    count++;
+                                }
+                            }
+                        }
+                        if (scriptNPCList.Count == gameState.listTotalNPC.Count || count > 0)
+                        {
                             _responseBox.isActive = true;
                         }
-                        if (scriptNPCList.Count == gameState.listTotalNPC.Count - 1 && !gameState.listTotalNPC.Contains(GameObject.Find("Granny Smith")))
+                        if (scriptNPCList.Count == gameState.listTotalNPC.Count - 1)
                         {
                             Debug.Log("Has NPC is true and it's beango hint AND this is granny smith");
                             _responseBox.isActive = true;
@@ -357,7 +373,6 @@ public class PlayerController : MonoBehaviour
             {
                 if (gameState.beanState == GameState.gameState.BEANGOHINT || gameState.beanState == GameState.gameState.ISCOOL)
                 {
-                    Debug.Log("Here");
                     _actManager.LoadEnding("Beanman Leaves Cool Town");
                 }
                 if (gameState.beanState == GameState.gameState.ISNOTCOOL)
@@ -433,6 +448,8 @@ public class PlayerController : MonoBehaviour
     }
     public void ResetBeanSpawnPosition()
     {
+
+        
         GlassesSpriteRenderer.flipX = true;
         BaggedSpriteRenderer.flipX = true;
         NoGlassesSpriteRenderer.flipX = true;

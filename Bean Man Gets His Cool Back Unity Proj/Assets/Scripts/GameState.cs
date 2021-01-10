@@ -151,39 +151,39 @@ public class GameState : MonoBehaviour
                 }
                 if (endingsManager.endingsSeenList[endingsManager.endingsSeenList.Count - 1] == _actManager.LinaBeanEnding)
                 {
-                    conversationDict["ISCOOL"] = "";
+                    conversationDict["ISCOOL"] = "Did Lina get shorter?";
                 }
                 if (endingsManager.endingsSeenList[endingsManager.endingsSeenList.Count - 1] == _actManager.BeanManWinEnding)
                 {
-                    conversationDict["ISCOOL"] = "";
+                    conversationDict["ISCOOL"] = "Your glasses are back! Yay!";
                 }
                 if (endingsManager.endingsSeenList[endingsManager.endingsSeenList.Count - 1] == _actManager.ChickPeaEnding)
                 {
-                    conversationDict["ISCOOL"] = ".";
+                    conversationDict["ISCOOL"] = "I was pretending to be a deputy just like Chickpea!";
                 }
                 if (endingsManager.endingsSeenList[endingsManager.endingsSeenList.Count - 1] == _actManager.FireHydrantEnding)
                 {
-                    conversationDict["ISCOOL"] = ".";
+                    conversationDict["ISCOOL"] = "I didn't know fire hydrants can talk";
                 }
                 if (endingsManager.endingsSeenList[endingsManager.endingsSeenList.Count - 1] == _actManager.GreenBenEnding)
                 {
-                    conversationDict["ISCOOL"] = ".";
+                    conversationDict["ISCOOL"] = "I sure am glad to see Green Ben feeling better!";
                 }
                 if (endingsManager.endingsSeenList[endingsManager.endingsSeenList.Count - 1] == _actManager.BirthdayCakeEnding)
                 {
-                    conversationDict["ISCOOL"] = ".";
+                    conversationDict["ISCOOL"] = "What's this I hear about a club?";
                 }
                 if (endingsManager.endingsSeenList[endingsManager.endingsSeenList.Count - 1] == _actManager.GrannySmithEnding)
                 {
-                    conversationDict["ISCOOL"] = ".";
+                    conversationDict["ISCOOL"] = "Granny let me watch them play Beango from outside!";
                 }
                 if (endingsManager.endingsSeenList[endingsManager.endingsSeenList.Count - 1] == _actManager.SlimSausageWinning)
                 {
-                    conversationDict["ISCOOL"] = ".";
+                    conversationDict["ISCOOL"] = "Slims album really buttered me up!";
                 }
                 if (endingsManager.endingsSeenList[endingsManager.endingsSeenList.Count - 1] == _actManager.PeanutTwinEnding)
                 {
-                    conversationDict["ISCOOL"] = "Why am I still here?";
+                    conversationDict["ISCOOL"] = "I really shouldn't be here";
                 }
             }
             conversationDict["BEANGOHINT"] = "I wish I was old enough to go to Beango!!"; // This state should push into Beango
@@ -597,26 +597,37 @@ public class GameState : MonoBehaviour
             }
             winningNPC = copyNPC[Random.Range(0, copyNPC.Count)];
 
-            if (endingsManager.endingsSeenList.Count == 0) {
-                Debug.Log("This is the FIRST winner " + winningNPC);
-                newWinnerFound = true;
-                break;
+            if (winningNPC.gameObject.name == "Slim Sausage" || winningNPC.gameObject.name == "GreenBen")
+            {
+                if (count == 0)
+                {
+                    Debug.Log("This is the FIRST winner " + winningNPC);
+                    newWinnerFound = true;
+                    break;
+                }
             }
             bool hasEnding = false;
             hasEnding = false;
 
             Debug.Log("This is the current trying winning NPC " + winningNPC.gameObject.name);
-            foreach (GameObject ending in endingsManager.endingsSeenList) {
-                if (ending.gameObject.name.Contains(winningNPC.gameObject.name)) {
-                    Debug.Log("There was a match in endings for " + winningNPC.gameObject.name);
-                    hasEnding = true;
+            if (count > 0)
+            {
+                foreach (GameObject ending in endingsManager.endingsSeenList)
+                {
+
+                    if (ending.gameObject.name.Contains(winningNPC.gameObject.name))
+                    {
+                        Debug.Log("There was a match in endings for " + winningNPC.gameObject.name);
+                        hasEnding = true;
+                        break;
+                    }
+                }
+                if (hasEnding == false)
+                {
+                    Debug.Log("This is the winner " + winningNPC.gameObject.name);
+                    newWinnerFound = true;
                     break;
                 }
-            }
-            if (hasEnding == false) {
-                Debug.Log("This is the winner " + winningNPC.gameObject.name);
-                newWinnerFound = true;
-                break;
             }
         }
         winningNPC.spriteRenderer.sprite = winningNPC.glassesList[0];
@@ -699,9 +710,7 @@ public class GameState : MonoBehaviour
             house.CoolState();
         }
 
-        Debug.Log("We got here1");
-
-        if (_playerController.scriptNPCList.Count != 0) {
+        if (_playerController.scriptNPCList.Count > 1) {
             foreach (NPC npc in _playerController.scriptNPCList)
             {
                 npc.ResetCoolStateNPC();
@@ -725,7 +734,7 @@ public class GameState : MonoBehaviour
         _UILogic.MainMenu.SetActive(true);
         _lemonadeStand.SetLemonadeStandSanity();
         _fireHydrantvomit.hasVommittedThisRound = false;
-        if (_playerController.scriptNPCList.Count != 0)
+        if (_playerController.scriptNPCList.Count > 1)
         {
 
             if (endingsManager.endingsSeenList[endingsManager.endingsSeenList.Count - 1] == _actManager.FireHydrantEnding)
