@@ -235,12 +235,13 @@ public class PlayerController : MonoBehaviour
                     }
                 }
 
-                if (fireHydrantVomit.fireHydrantActivated == false && thisCharacter.gameObject.name == "Fire Hydrant")
+                if (fireHydrantVomit.fireHydrantActivated == true && thisCharacter.gameObject.name == "Fire Hydrant")
                 {
                     if (thisCharacter.gameObject.tag == "NPC")
                     {
                         if (gameState.beanState == GameState.gameState.ISNOTCOOL)
                         {
+                            Debug.Log("Vomit state active");
                             isVommiting = true;
                             return;
                         }
