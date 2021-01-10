@@ -37,17 +37,22 @@ public class UILogic : MonoBehaviour
 
     private void Update()
     {
-        if (Input.GetKeyDown(KeyCode.Escape))
+        if (PauseScreen.activeInHierarchy)
         {
-            if (PauseScreen.activeInHierarchy == true)
+            if (Input.GetKeyDown(KeyCode.Escape))
             {
                 PauseScreen.SetActive(false);
             }
-            else
+        }
+        else if (!CreditsScreen.activeInHierarchy)
+        {
+            if (Input.GetKeyDown(KeyCode.Escape))
             {
                 PauseScreen.SetActive(true);
             }
         }
+
+        
     }
 
     private void OnDestroy()
