@@ -18,6 +18,35 @@ public class QuestList : MonoBehaviour
         }
     }
 
+    public void RemoveQuestItem(string characterName)
+    {
+        QuestItem selectedQuest = totalQuestItemsList[0];
+        bool foundQuest = false;
+
+        foreach (QuestItem quest in totalQuestItemsList)
+        {
+            if (quest.gameObject.name.Contains(characterName))
+            {
+                selectedQuest = quest;
+                foundQuest = true;
+                break;
+            }
+        }
+
+        if (!foundQuest)
+        {
+            return;
+        }
+
+        if (completedQuestList.Contains(selectedQuest) || !availableQuestList.Contains(selectedQuest))
+        {
+            return;
+        }
+
+        availableQuestList.Remove(selectedQuest);
+        selectedQuest.QuestRemoved();
+    }
+
     public void ActivateQuestItem(string characterName)
     {
         QuestItem selectedQuest = totalQuestItemsList[0];

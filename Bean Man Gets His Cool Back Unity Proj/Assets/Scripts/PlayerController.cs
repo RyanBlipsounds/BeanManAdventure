@@ -74,6 +74,9 @@ public class PlayerController : MonoBehaviour
 
     public NPC grannySmith;
 
+    public Depth2D depth2D;
+    public GameObject frontCensorBar;
+
     void Start()
     {
         Bag.transform.position = m_BagStartPosition.transform.position;
@@ -117,7 +120,8 @@ public class PlayerController : MonoBehaviour
         Journal();
         Move();
         Animate();
-        
+
+
         if (Bag.transform.position.y < m_BagEndPosition.transform.position.y + 0.05 && bagMoving == true && finishedBagMove == false)
         {
             Bagged();
@@ -141,6 +145,7 @@ public class PlayerController : MonoBehaviour
     public void NoGlasses() {
         GlassesBeanMan.SetActive(false);
         NoGlassesBeanMan.SetActive(true);
+        frontCensorBar.SetActive(true);
     }
 
     public void Bagged()
@@ -190,6 +195,14 @@ public class PlayerController : MonoBehaviour
                 if (thisCharacter.gameObject.name == "Stick") {
                     return;
                 }
+                if (thisCharacter.gameObject.name == "Fire Hydrant" && gameState.beanState == GameState.gameState.ISBAGGED && !fireHydrantVomit.fireHydrantActivated)
+                {
+                    return;
+                }
+                if (thisCharacter.gameObject.name == "Fire Hydrant" && gameState.beanState == GameState.gameState.ISNOTCOOL && !fireHydrantVomit.fireHydrantActivated)
+                {
+                    return;
+                }
                 // Specifically adds characters to the NPC list
                 if (!scriptNPCList.Contains(thisCharacter.GetComponent<NPC>()))
                 {
@@ -213,7 +226,6 @@ public class PlayerController : MonoBehaviour
                 }
                 if (thisCharacter.gameObject.name == "Fire Hydrant")
                 {
-                    Debug.Log("Hello");
                     if (gameState.beanState == GameState.gameState.ISCOOL || gameState.beanState == GameState.gameState.BEANGOHINT)
                     {
                         thisCharacter.gameObject.tag = "NPC";
@@ -234,7 +246,7 @@ public class PlayerController : MonoBehaviour
                         return;
                     }
                 }
-
+                Debug.Log("Hello");
                 if (fireHydrantVomit.fireHydrantActivated == true && thisCharacter.gameObject.name == "Fire Hydrant")
                 {
                     if (thisCharacter.gameObject.tag == "NPC")
@@ -450,7 +462,7 @@ public class PlayerController : MonoBehaviour
     public void ResetBeanSpawnPosition()
     {
 
-        
+
         GlassesSpriteRenderer.flipX = true;
         BaggedSpriteRenderer.flipX = true;
         NoGlassesSpriteRenderer.flipX = true;
@@ -469,5 +481,6 @@ public class PlayerController : MonoBehaviour
         {
             BaggedAnimator.Play("BeanIdleFront");
         }
+
     }
 }

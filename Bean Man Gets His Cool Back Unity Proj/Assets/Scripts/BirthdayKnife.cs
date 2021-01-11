@@ -99,10 +99,16 @@ public class BirthdayKnife : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        beanInRange = true;
+        if (collision.gameObject.name == "ConversationTrigger")
+        {
+            beanInRange = true;
+        }
     }
     private void OnTriggerExit2D(Collider2D other)
     {
-        beanInRange = false;
+        if (other.gameObject.name == "ConversationTrigger")
+        {
+            beanInRange = false;
+        }
     }
 }

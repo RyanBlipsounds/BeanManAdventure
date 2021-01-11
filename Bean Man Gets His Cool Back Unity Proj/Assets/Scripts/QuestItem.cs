@@ -33,11 +33,16 @@ public class QuestItem : MonoBehaviour
         completed = true;
         questItemText.faceColor = Color.gray;
     }
-
-    public void QuestActivated() {
-        Debug.Log(this.gameObject.name);
+    
+    public void QuestActivated()
+    {
         questItemText.faceColor = Color.black;
         questItemText.enabled = true;
+    }
+
+    public void QuestRemoved() {
+        questItemText.faceColor = Color.black;
+        questItemText.enabled = false;
     }
 
 }

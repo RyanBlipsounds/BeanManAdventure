@@ -87,7 +87,6 @@ public class UIController : MonoBehaviour
                 }
 
                 if (gameState.beanState == GameState.gameState.BEANGOHINT && _playerController.scriptNPCList.Count >= 7 && endingsManager.endingsSeenList.Count > 0 && _playerController.thisCharacter.gameObject.name != "Granny Smith") {
-                    Debug.Log("Horse man big boy22");
                     dialogueBoxAnimator.ShowText(gameState.conversationDict["ISCOOL"]);
                 }
                 else

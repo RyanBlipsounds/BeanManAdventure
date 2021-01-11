@@ -28,15 +28,18 @@ public class ActManager : MonoBehaviour
     public GameObject BirthdayCakeEnding;
     public GameObject BeanManUncoolEnding;
 
+    public GameObject credits;
+    public GameObject spaceBar;
+
     public string EndingScreenText;
-    public string BeangoScreenText = "It was a sweaty night of Beango, but Granny and Bean Man cleaned up the house. They were an unstoppable force. It was all hazy, but it was one of the greatest nights of Bean Man and Granny's lives. Although something didn't feel quite right when Bean Man awoke in the morning. Bean had lost his glasses.";
+    public string BeangoScreenText = "It was a sweaty night of Beango, but Granny and Bean Man were an unstoppable force. It was all hazy, but it was one of the greatest nights of Bean Man and Granny's lives. Although something didn't feel quite right when Bean Man awoke in the morning. Someone had stolen his glasses. And he had to findout who took them.";
     public string ChickPeaEndingText = "In the quest to get his cool back, Bean Man ran the risk of selecting what he thought were his own glasses, but failed to recognize that Chickpea Deputy had been wearing them all along. Due to this, the glasses gave our Deputy enough confidence to unlock his wizard powers, thus ending the world, and preventing Bean Man from getting his cool back.";
-    public string BeanManWinEndingText = "There wasn't a snowballs chance in Beans hell that Bean Man was going to lose his cool today. In this journey, Bean Man thought that had lost his cool when he lost his glasses, but really the cool was inside of him all along. The whole town rejoiced as Bean Man has found his cool for good.";
-    public string BeanManLeavesCoolText = "BeanMan knew his cool was so high above Beantown's coolest bean. Even Lina Bean couldn't handle the sheer coolness of his cool. Could there be a cool person more cool than Beanman? He doesn't say so, but he must know so.";
+    public string BeanManWinEndingText = "There wasn't a snowballs chance in Beans hell that Bean Man was going to lose his cool today. In this journey, Bean Man thought that had lost his cool when he lost his glasses, but really the cool was inside of him all along. The whole town rejoiced as Bean Man has gotten his cool back.";
+    public string BeanManLeavesCoolText = "BeanMan knew his cool was so high above Beantown's coolest bean, that he decided to leave. Even Lina Bean couldn't handle the sheer coolness of his cool. Is Bean Man just too cool for the rest of the Beans? He doesn't say so, but he must know so.";
     public string LinaBeanEndingText = "Once Bean Man realized that Lina had his glasses, it was too late. Lina had grown 300 meters and made her way across the Pacific Ocean to Tokyo Japan. Tokyo faced one of it's greatest disasters in Japan's history as Lina tore down the city. The recovery still remains to be seen. Also, Lina reveals that she was edamame the whole time.";
-    public string PeanutTwinEndingText = "With great glasses comes great responsibility. After a tiring life of being referred to as the second twin, Peanut Twin number two took it upon himself to invent peanut butter with just a simple sacrifice from Peanut Twin number one and his good friend Butter. Peanut Twin number two made millions off of the idea, lost two of his best friends, and was still just Peanut Twin number two.";
-    public string GrannySmithEndingText = "As it turns out, Granny was always jealous of Bean Man. Being only the second coolest in town carries a heavy burden that Granny just couldn't bare. Bean Man could do nothing but watch as his closest homie take the throne and make the town hers. Stay tuned to find out what happens in Bean Man sequel. Coming in 2077";
-    public string FireHydrantEndingText = ".....Seriously? You let a Fire Hydrant beat you? A fire hydrant is cooler than you. Just let that sink in.";
+    public string PeanutTwinEndingText = "With great glasses comes great responsibility. After a tiring life of being referred to as the second twin, Peanut Twin number two took it upon himself to invent peanut butter with just a simple sacrifice from Peanut Twin number one and his good friend Butter. Peanut Twin number two made millions off of the idea, lost two of his best friends, and remained as Peanut Twin number two.";
+    public string GrannySmithEndingText = "As it turns out, Granny was always jealous of Bean Man. Being only the second coolest in town carries a heavy burden that she just couldn't bare. Bean Man could do nothing but watch as his closest homie take the throne and make the town hers. Stay tuned to find out what happens in the Bean Man sequel. Coming in 2077";
+    public string FireHydrantEndingText = ".....Seriously? You let a fire hydrant beat you? A fire hydrant is cooler than you. Just let that sink in.";
     public string SlimSausageWinningText = "Considering that Slim Sausage was a masterclass rapper, there was no chance that Bean Man could keep up with his cool once Sausage had his glasses. Slim Sausage went on to have an illustrious career where he would tour with Frank Sinatra to perform in front of millions, as well as performing for popular figures like Oprah Winbean and Pope Beanedict XVII.";
     public string BeanManLeavesBaggedText = "There was no point. Bean Man just didn't belong. Bean just felt that his life filled with cool had come to an end. He decided to move on to his next journey.";
     public string BeanManLeavesUncoolText = "There was no point. Bean Man just didn't belong. Bean just felt that his life filled with cool had come to an end. He decided to move on to his next journey.";
@@ -52,9 +55,12 @@ public class ActManager : MonoBehaviour
     private float graphicShowTime = 0;
 
     public bool switchFade = false;
+    public bool creditsRolling = false;
 
     public bool activateGraphicTransition = false;
     private bool hasPlayed = false;
+
+    public UIController spacebar;
 
     public enum sceneState
     {
@@ -87,7 +93,6 @@ public class ActManager : MonoBehaviour
             {
                 //LoadGraphic(EndingScreen);
             }
-            Debug.Log(BeanManLeavesCoolText);
             LoadGraphic(EndingScreen);
         }
     }
@@ -133,6 +138,7 @@ public class ActManager : MonoBehaviour
             {
                 if (m_gameState.beanState == GameState.gameState.ENDING) {
                     //m_gameState.Ending();
+                    ResetCredits();
                     m_gameState.beanState = GameState.gameState.ISCOOL;
                 }
                 _narrationBox.isActive = false;
@@ -151,42 +157,84 @@ public class ActManager : MonoBehaviour
 
     public void LoadGraphic(GameObject graphic)
     {
-
+        if (graphicShowTime > 4)
+        {
+            spacebar.isActive = true;
+        }
         activateGraphicTransition = true;
         EndingScreen = graphic;
 
-        //Debug.Log("Graphic " + graphicShowTime);
+        if (creditsRolling && sceneTransitionState != sceneState.backtoscene)
+        {
+            RollCredits();
+        }
+        
         if (sceneTransitionState == sceneState.started)
         {
             FadeToBlack(sceneState.graphic, graphic, null);
         }
         if (sceneTransitionState == sceneState.graphic)
         {
-            if (Input.GetKeyDown(KeyCode.Space))
-            {
-                sceneTransitionState = sceneState.backtoscene;
-            }
             graphicShowTime += Time.deltaTime;
-            if (graphicShowTime >= 15) {
-                sceneTransitionState = sceneState.backtoscene;
+            if (graphic != BeanManWinEnding)
+            {
+                if (Input.GetKeyDown(KeyCode.Space))
+                {
+                    sceneTransitionState = sceneState.backtoscene;
+                }
+                if (graphicShowTime >= 15)
+                {
+                    sceneTransitionState = sceneState.backtoscene;
+                }
+            }
+            else
+            {
+                if (Input.GetKeyDown(KeyCode.Space) && creditsRolling)
+                {
+                    sceneTransitionState = sceneState.backtoscene;
+                }
+                if (graphicShowTime >= 30)
+                {
+                    sceneTransitionState = sceneState.backtoscene;
+                }
+
+                if (Input.GetKeyDown(KeyCode.Space) && !creditsRolling)
+                {
+                    creditsRolling = true;
+                }
+                if (graphicShowTime >= 15 && !creditsRolling)
+                {
+                    creditsRolling = true;
+                }
             }
         }
         if (sceneTransitionState == sceneState.backtoscene)
         {
+            spacebar.isActive = false;
             FadeToBlack(sceneState.started, null, graphic);
             if (sceneTransitionState == sceneState.started)
             {
                 activateGraphicTransition = false;
                 graphicShowTime = 0;
                 hasPlayed = false;
+                creditsRolling = false;
                 return;
             }
         }
     }
 
+    public void RollCredits()
+    {
+        credits.SetActive(true);
+    }
+
+    public void ResetCredits()
+    {
+        credits.SetActive(false);
+    }
+
     public void LoadEnding(string ending)
     {
-        Debug.Log(ending);
 
         if (ending == "Beanman")
         {

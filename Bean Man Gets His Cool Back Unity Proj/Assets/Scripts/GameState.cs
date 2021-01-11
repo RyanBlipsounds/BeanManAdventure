@@ -11,7 +11,7 @@ public class GameState : MonoBehaviour
     private PlayerController _playerController;
 
     public EndingsManager endingsManager;
-
+    
     public NPC _npc = default;
     public ActManager _actManager = default;
 
@@ -286,7 +286,7 @@ public class GameState : MonoBehaviour
             }
 
             conversationDict["ISNOTCOOL"] = "Well at least I'm not you.";
-            conversationDict["ISBAGGED"] = "I was happier when you weren't like this.?";
+            conversationDict["ISBAGGED"] = "I was happier when you weren't like this.";
             conversationDict["BEANGOHINT"] = "You should probably get going to Beango";
 
             return;
@@ -634,8 +634,28 @@ public class GameState : MonoBehaviour
         winningNPC.isWinner = true;
         copyNPC.Remove(winningNPC);
 
-        if (winningNPC.gameObject.name == "Peanut Twins") {
+        NPC peanutTwinsNPC = peanutTwins.gameObject.GetComponent<NPC>();
+
+        if (winningNPC.gameObject.name == "Peanut Twins")
+        {
+            Debug.Log("PEANUT TWIN ENDING");
+            peanutTwinsNPC.glasses.SetActive(true);
             butter.KillButter();
+            peanutTwins.KillPeanutTwin();
+        }
+        else
+        {
+            if (!endingsManager.endingsSeenList.Contains(_actManager.PeanutTwinEnding))
+            {
+                peanutTwinsNPC.glasses.SetActive(true);
+                Debug.Log("PEANUT TWIN LIVES");
+                peanutTwins.PeanutTwinLives();
+            }
+            else {
+                peanutTwinsNPC.glasses.SetActive(true);
+                butter.KillButter();
+                peanutTwins.KillPeanutTwin();
+            }
         }
 
         foreach (NPC character in copyNPC)
@@ -722,16 +742,19 @@ public class GameState : MonoBehaviour
                 }
             }
         }
-        
 
         _playerController.Glasses();
-        //_playerController.fireHydrantTalkCount = 0;
         _playerController.Bag.transform.position = _playerController.m_BagStartPosition.transform.position;
         _playerController.finishedBagMove = false;
         _playerController.bagMoving = true;
-        //_playerController.scriptNPCList.Clear();
         _playerController.MoveToStart();
         _UILogic.MainMenu.SetActive(true);
+
+        if (!endingsManager.endingsSeenList.Contains(_actManager.BeanManWinEnding))
+        {
+            questList.RemoveQuestItem("Get Your Cool Back");
+        }
+
         _lemonadeStand.SetLemonadeStandSanity();
         _fireHydrantvomit.hasVommittedThisRound = false;
         if (_playerController.scriptNPCList.Count > 1)
@@ -758,12 +781,10 @@ public class GameState : MonoBehaviour
             else
             {
                 peanutButter.SetActive(false);
-                peanutTwins.KillPeanutTwin();
                 peanutTwins.PeanutTwinLives();
                 butter.ButterLives();
             }
         }
-        Debug.Log("We got here7");
         chickPeaLogic.ChickPeaWizardMode();
 
         saveLoading.Save();

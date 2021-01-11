@@ -34,9 +34,10 @@ public class Depth2D : MonoBehaviour
 
         m_Character.transform.position = new Vector3(m_Character.transform.position.x, m_Character.transform.position.y, thisPosition.z);
 
-        if (m_player != null) {
+        if (m_player != null && m_player.bagMoving == false) {
             if (m_player.movementDirection.y < 0 && lookingDown == false)
             {
+                Debug.Log("LOOKING DOWN");
                 lookingDown = true;
                 m_frontCensorBar.SetActive(true);
                 m_backCensorBar.SetActive(false);

@@ -9,6 +9,10 @@ public class FireHydrantVomit : MonoBehaviour
     public PlayerController playerController;
     public GameState gameState;
 
+    public SpriteRenderer map;
+
+    public Sprite vomitMap;
+
     public List<GameObject> vomitList = new List<GameObject>();
     public GameObject currentVomit;
     public int vomitCount = 0;
@@ -22,7 +26,14 @@ public class FireHydrantVomit : MonoBehaviour
     public void Start()
     {
         //THE VERY FIRST VOMIT (0), SHOULD HAVE NO SPRITE ATTACHED
-        currentVomit = vomitList[vomitCount];
+        if (vomitCount <= vomitList.Count)
+        {
+            currentVomit = vomitList[vomitCount];
+        }
+        else
+        {
+            currentVomit = vomitList[vomitList.Count - 1];
+        }
     }
     public void AddVomitPuddle()
     {
@@ -31,6 +42,20 @@ public class FireHydrantVomit : MonoBehaviour
             SetVomitCount();
             Debug.Log("SET VOMIT COUNT");
             hasVommittedThisRound = true;
+            VomitMap();
+        }
+    }
+
+    public void VomitMap()
+    {
+        if (map.sprite == vomitMap) {
+            return;
+        }
+
+        //DO SLIME TIME HERE
+
+        if (vomitCount >= vomitList.Count) {
+            map.sprite = vomitMap;
         }
     }
 
@@ -38,7 +63,13 @@ public class FireHydrantVomit : MonoBehaviour
     {
         vomitCount++;
         currentVomit.SetActive(false);
-        currentVomit = vomitList[vomitCount];
+        if (vomitCount < vomitList.Count)
+        {
+            currentVomit = vomitList[vomitCount];
+        }
+        else {
+            currentVomit = vomitList[vomitList.Count - 1];
+        }
         currentVomit.SetActive(true);
     }
 
