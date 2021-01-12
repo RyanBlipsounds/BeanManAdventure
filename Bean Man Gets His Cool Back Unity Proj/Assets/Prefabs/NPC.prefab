@@ -40,6 +40,7 @@ GameObject:
   m_Component:
   - component: {fileID: 8856990646258134207}
   - component: {fileID: 3567010905178471780}
+  - component: {fileID: 3882078823740003510}
   m_Layer: 0
   m_Name: Glasses
   m_TagString: Untagged
@@ -114,6 +115,24 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!114 &3882078823740003510
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 889348222434734441}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7103e5a551c323d4c8cc911a9a8abe0c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  thisNPC: {fileID: 2312038113373758862}
+  leftGlasses: {fileID: 1220874818093408338}
+  rightGlasses: {fileID: 2417638376913200079}
+  leftTrafficCone: {fileID: 6522164931528569625}
+  rightTrafficCone: {fileID: 2076895824139503733}
+  BeanMan: {fileID: 0}
 --- !u!1 &1220874818093408338
 GameObject:
   m_ObjectHideFlags: 0
@@ -288,7 +307,6 @@ GameObject:
   - component: {fileID: 2312038113373758856}
   - component: {fileID: 2312038113373758857}
   - component: {fileID: 2312038113373758862}
-  - component: {fileID: 8249564989096275865}
   m_Layer: 0
   m_Name: NPC
   m_TagString: NPC
@@ -376,26 +394,9 @@ MonoBehaviour:
   gameState: {fileID: 0}
   player: {fileID: 0}
   isLeft: 1
+  chickPeaLogic: {fileID: 0}
   angle: 90
   distance: 1
---- !u!114 &8249564989096275865
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2312038113373758853}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 7103e5a551c323d4c8cc911a9a8abe0c, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  thisNPC: {fileID: 0}
-  leftGlasses: {fileID: 1220874818093408338}
-  rightGlasses: {fileID: 2417638376913200079}
-  leftTrafficCone: {fileID: 6522164931528569625}
-  rightTrafficCone: {fileID: 2076895824139503733}
-  BeanMan: {fileID: 0}
 --- !u!1 &2417638376913200079
 GameObject:
   m_ObjectHideFlags: 0

@@ -53,6 +53,11 @@ public class NPC : MonoBehaviour
             return;
         }
 
+        if (gameObject.name == "Poparazzi Corn")
+        {
+            return;
+        }
+
         if (player.transform.position.x < transform.position.x)
         {
             isLeft = true;
