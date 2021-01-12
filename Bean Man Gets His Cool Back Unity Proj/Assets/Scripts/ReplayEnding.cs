@@ -151,74 +151,74 @@ public class ReplayEnding : MonoBehaviour
 
     private void ChickPeaEndingClicked()
     {
-        _actManager.LoadGraphic(ChickPeaEnding);
+        _actManager.LoadGraphic(ChickPeaEnding, "event:/Good Ending");
         _actManager.EndingScreenText = _actManager.ChickPeaEndingText;
     }
 
     private void BeanManWinEndingClicked()
     {
-        _actManager.LoadGraphic(BeanManWinEnding);
+        _actManager.LoadGraphic(BeanManWinEnding, "event:/Good Ending");
         _actManager.EndingScreenText = _actManager.BeanManWinEndingText;
     }
 
     private void LinaBeanEndingClicked()
     {
-        _actManager.LoadGraphic(LinaBeanEnding);
+        _actManager.LoadGraphic(LinaBeanEnding, "event:/Good Ending");
         _actManager.EndingScreenText = _actManager.LinaBeanEndingText;
     }
 
     private void PeanutTwinEndingClicked()
     {
-        _actManager.LoadGraphic(PeanutTwinEnding);
+        _actManager.LoadGraphic(PeanutTwinEnding, "event:/Good Ending");
         _actManager.EndingScreenText = _actManager.PeanutTwinEndingText;
 
     }
 
     private void GrannySmithEndingClicked()
     {
-        _actManager.LoadGraphic(GrannySmithEnding);
+        _actManager.LoadGraphic(GrannySmithEnding, "event:/Good Ending");
         _actManager.EndingScreenText = _actManager.GrannySmithEndingText;
     }
 
     private void FireHydrantEndingClicked()
     {
-        _actManager.LoadGraphic(FireHydrantEnding);
+        _actManager.LoadGraphic(FireHydrantEnding, "event:/Good Ending");
         _actManager.EndingScreenText = _actManager.FireHydrantEndingText;
     }
 
     private void SlimSausageWinningClicked()
     {
-        _actManager.LoadGraphic(SlimSausageWinning);
+        _actManager.LoadGraphic(SlimSausageWinning, "event:/Good Ending");
         _actManager.EndingScreenText = _actManager.SlimSausageWinningText;
     }
 
     private void BeanManLeavesBaggedClicked()
     {
-        _actManager.LoadGraphic(BeanManLeavesBagged);
+        _actManager.LoadGraphic(BeanManLeavesBagged, "event:/Good Ending");
         _actManager.EndingScreenText = _actManager.BeanManLeavesBaggedText;
     }
 
     private void BeanManLeavesTownClicked()
     {
-        _actManager.LoadGraphic(BeanManLeavesTown);
+        _actManager.LoadGraphic(BeanManLeavesTown, "event:/Good Ending");
         _actManager.EndingScreenText = _actManager.BeanManLeavesCoolText;
     }
 
     private void GreenBenEndingClicked()
     {
-        _actManager.LoadGraphic(GreenBenEnding);
+        _actManager.LoadGraphic(GreenBenEnding, "event:/Good Ending");
         _actManager.EndingScreenText = _actManager.GreenBenEndingText;
     }
 
     private void BirthdayCakeEndingClicked()
     {
-        _actManager.LoadGraphic(BirthdayCakeEnding);
+        _actManager.LoadGraphic(BirthdayCakeEnding, "event:/Good Ending");
         _actManager.EndingScreenText = _actManager.BirthdayCakeEndingText;
     }
 
     private void BeanManUncoolEndingClicked()
     {
-        _actManager.LoadGraphic(BeanManUncoolEnding);
+        _actManager.LoadGraphic(BeanManUncoolEnding, "event:/Good Ending");
         _actManager.EndingScreenText = _actManager.BeanManLeavesUncoolText;
     }
 }

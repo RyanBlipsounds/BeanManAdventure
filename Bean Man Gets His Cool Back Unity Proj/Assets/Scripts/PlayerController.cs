@@ -461,7 +461,7 @@ public class PlayerController : MonoBehaviour
     }
     public void ResetBeanSpawnPosition()
     {
-
+        
 
         GlassesSpriteRenderer.flipX = true;
         BaggedSpriteRenderer.flipX = true;

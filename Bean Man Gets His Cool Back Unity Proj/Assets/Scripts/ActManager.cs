@@ -27,6 +27,7 @@ public class ActManager : MonoBehaviour
     public GameObject GreenBenEnding;
     public GameObject BirthdayCakeEnding;
     public GameObject BeanManUncoolEnding;
+    public FMOD.Studio.EventInstance EndingMusicEvent;
 
     public GameObject credits;
     public GameObject spaceBar;
@@ -62,6 +63,8 @@ public class ActManager : MonoBehaviour
 
     public UIController spacebar;
 
+    string FMODString = "event:/Good Ending";
+
     public enum sceneState
     {
         started,
@@ -93,11 +96,11 @@ public class ActManager : MonoBehaviour
             {
                 //LoadGraphic(EndingScreen);
             }
-            LoadGraphic(EndingScreen);
+            LoadGraphic(EndingScreen, FMODString);
         }
     }
 
-    private void FadeToBlack(sceneState state, GameObject graphic, GameObject oldGraphic)
+    private void FadeToBlack(sceneState state, GameObject graphic, GameObject oldGraphic, string FMODString)
     {
         float blackScreenTmp;
 
@@ -111,12 +114,16 @@ public class ActManager : MonoBehaviour
         }
         else {
             if (m_gameState.beanState == GameState.gameState.BEANGOHINT && hasPlayed == false)
+                
+            
             {
                 m_gameState.IsNotCool();
                 hasPlayed = true;
             }
             if (m_gameState.beanState == GameState.gameState.ISBAGGED && hasPlayed == false)
             {
+                EndingMusicEvent = FMODUnity.RuntimeManager.CreateInstance(FMODString);
+                EndingMusicEvent.start();
                 m_gameState.Ending();
                 hasPlayed = true;
             }
@@ -152,10 +159,13 @@ public class ActManager : MonoBehaviour
             sceneTransitionState = state;
             blackScreenTmp = 0;
             blackScreenTimeToFade = 0;
+
+            
+
         }
     }
 
-    public void LoadGraphic(GameObject graphic)
+    public void LoadGraphic(GameObject graphic, string FMODString)
     {
         if (graphicShowTime > 4)
         {
@@ -171,7 +181,7 @@ public class ActManager : MonoBehaviour
         
         if (sceneTransitionState == sceneState.started)
         {
-            FadeToBlack(sceneState.graphic, graphic, null);
+            FadeToBlack(sceneState.graphic, graphic, null, FMODString);
         }
         if (sceneTransitionState == sceneState.graphic)
         {
@@ -210,8 +220,12 @@ public class ActManager : MonoBehaviour
         }
         if (sceneTransitionState == sceneState.backtoscene)
         {
+
+            EndingMusicEvent.stop(FMOD.Studio.STOP_MODE.ALLOWFADEOUT);
+            Debug.Log("STOP TEST");
+
             spacebar.isActive = false;
-            FadeToBlack(sceneState.started, null, graphic);
+            FadeToBlack(sceneState.started, null, graphic, FMODString);
             if (sceneTransitionState == sceneState.started)
             {
                 activateGraphicTransition = false;
@@ -231,25 +245,32 @@ public class ActManager : MonoBehaviour
     public void ResetCredits()
     {
         credits.SetActive(false);
+
     }
 
     public void LoadEnding(string ending)
     {
 
+        
+
         if (ending == "Beanman")
         {
+            FMODString = "event:/Good Ending";
             EndingScreen = BeanManWinEnding;
             EndingScreenText = BeanManWinEndingText;
         }
         if (ending == "Beanman Leaves Bag Town") {
+            FMODString = "event:/Good Ending";
             EndingScreen = BeanManLeavesTown;
             EndingScreenText = BeanManLeavesBaggedText;
         }
         if (ending == "Beanman Leaves Cool Town") {
+            FMODString = "event:/Good Ending";
             EndingScreenText = BeanManLeavesCoolText;
             EndingScreen = BeanManLeavesTown;
         }
         if (ending == "Beanman Leaves Uncool Town"){
+            FMODString = "event:/Good Ending";
             EndingScreenText = BeanManLeavesUncoolText;
             EndingScreen = BeanManLeavesTown;
         }
@@ -275,6 +296,7 @@ public class ActManager : MonoBehaviour
         }
         if (ending == "Slim Sausage")
         {
+            FMODString = "event:/Enter Beanman";
             EndingScreenText = SlimSausageWinningText;
             EndingScreen = SlimSausageWinning;
         }
@@ -285,6 +307,7 @@ public class ActManager : MonoBehaviour
         }
         if (ending == "GreenBen")
         {
+            FMODString = "event:/Enter Beanman";
             EndingScreenText = GreenBenEndingText;
             EndingScreen = GreenBenEnding;
         }
@@ -302,7 +325,7 @@ public class ActManager : MonoBehaviour
 
         activateGraphicTransition = true;
 
-        LoadGraphic(EndingScreen);
+        LoadGraphic(EndingScreen, FMODString);
 
     }
 

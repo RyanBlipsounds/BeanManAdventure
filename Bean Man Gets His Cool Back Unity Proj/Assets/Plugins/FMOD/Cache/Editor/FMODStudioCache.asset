@@ -253,6 +253,29 @@ MonoBehaviour:
   MinDistance: 0
   MaxDistance: 0
   Length: 350
+--- !u!114 &-304189684827695506
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: event:/Enter Beanman
+  m_EditorClassIdentifier: 
+  Path: event:/Enter Beanman
+  guid: 58a5a6bd70060c448671723679f37eec
+  Banks:
+  - {fileID: 3369702041603077526}
+  IsStream: 1
+  Is3D: 0
+  IsOneShot: 1
+  Parameters: []
+  MinDistance: 0
+  MaxDistance: 0
+  Length: 71363
 --- !u!114 &11400000
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -294,12 +317,14 @@ MonoBehaviour:
   - {fileID: -6939138602943414078}
   - {fileID: -2947001196425967048}
   - {fileID: -5127120184790990634}
+  - {fileID: 3985829024633971011}
+  - {fileID: -304189684827695506}
   EditorParameters: []
   MasterBanks:
   - {fileID: 3369702041603077526}
   StringsBanks:
   - {fileID: 6392113596281031596}
-  stringsBankWriteTime: 637451936113462796
+  stringsBankWriteTime: 637460460427330723
   cacheVersion: 5
 --- !u!114 &199333778599483351
 MonoBehaviour:
@@ -476,7 +501,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Path: ../Sound Boi/Build/Desktop/Master.bank
   Name: Master
-  lastModified: 637451936113452840
+  lastModified: 637460460427271208
   LoadResult: 0
   FileSizes: []
   Exists: 1
@@ -526,6 +551,29 @@ MonoBehaviour:
   MinDistance: 0
   MaxDistance: 0
   Length: 1312
+--- !u!114 &3985829024633971011
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: event:/Good Ending
+  m_EditorClassIdentifier: 
+  Path: event:/Good Ending
+  guid: e4b3a38c0f80714a976054cbe7a8f926
+  Banks:
+  - {fileID: 3369702041603077526}
+  IsStream: 1
+  Is3D: 0
+  IsOneShot: 1
+  Parameters: []
+  MinDistance: 0
+  MaxDistance: 0
+  Length: 141680
 --- !u!114 &4113860699462827609
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -654,11 +702,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Path: ../Sound Boi/Build/Desktop/Master.strings.bank
   Name: Master.strings
-  lastModified: 637451936113462796
+  lastModified: 637460460427330723
   LoadResult: 0
   FileSizes:
   - Name: 
-    Value: 1822
+    Value: 1920
   Exists: 1
 --- !u!114 &6457935553904784496
 MonoBehaviour:

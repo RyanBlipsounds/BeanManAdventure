@@ -775,6 +775,9 @@ public class GameState : MonoBehaviour
     /// </summary>
     public void ResetGame()
     {
+
+        
+
         _playerController._responseBox.isActive = false;
         _playerController._dialogueBox.isActive = false;
         _playerController._canTalkBox.isActive = false;
