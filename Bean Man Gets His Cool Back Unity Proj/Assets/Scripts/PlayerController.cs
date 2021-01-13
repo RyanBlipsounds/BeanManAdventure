@@ -189,7 +189,14 @@ public class PlayerController : MonoBehaviour
                 _canTalkBox.isActive = false;
                 return;
             }
+
+            if (thisCharacter.gameObject.name == "Corn Lady" && gameState.beanState == GameState.gameState.ISNOTCOOL)
+            {
+                return;
+            }
+
             _canTalkBox.isActive = true;
+
             if (Input.GetKeyDown(KeyCode.Space) && _dialogueBox.isActive == false)
             {
                 if (thisCharacter.gameObject.name == "Stick") {

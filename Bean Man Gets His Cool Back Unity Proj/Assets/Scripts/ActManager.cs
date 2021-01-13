@@ -167,10 +167,6 @@ public class ActManager : MonoBehaviour
 
     public void LoadGraphic(GameObject graphic, string FMODString)
     {
-        if (graphicShowTime > 4)
-        {
-            spacebar.isActive = true;
-        }
         activateGraphicTransition = true;
         EndingScreen = graphic;
 
@@ -186,35 +182,45 @@ public class ActManager : MonoBehaviour
         if (sceneTransitionState == sceneState.graphic)
         {
             graphicShowTime += Time.deltaTime;
-            if (graphic != BeanManWinEnding)
+            if (_endingsManager.endingsSeenList.Count > 1)
             {
+                if (graphicShowTime > 3)
+                {
+                    spacebar.isActive = true;
+                }
                 if (Input.GetKeyDown(KeyCode.Space))
                 {
                     sceneTransitionState = sceneState.backtoscene;
+                }
+                if (graphicShowTime >= 10)
+                {
+                    sceneTransitionState = sceneState.backtoscene;
+                }
+            }
+            else if (graphic != BeangoScreen)
+            {
+                if (graphicShowTime >= 45)
+                {
+                    sceneTransitionState = sceneState.backtoscene;
+                }
+
+                if (graphicShowTime >= 12 && !creditsRolling)
+                {
+                    creditsRolling = true;
+                }
+            }
+            else if (graphic == BeangoScreen && _endingsManager.endingsSeenList.Count != 0) {
+                if (graphicShowTime > 3)
+                {
+                    spacebar.isActive = true;
                 }
                 if (graphicShowTime >= 15)
                 {
                     sceneTransitionState = sceneState.backtoscene;
                 }
-            }
-            else
-            {
-                if (Input.GetKeyDown(KeyCode.Space) && creditsRolling)
+                if (Input.GetKeyDown(KeyCode.Space))
                 {
                     sceneTransitionState = sceneState.backtoscene;
-                }
-                if (graphicShowTime >= 30)
-                {
-                    sceneTransitionState = sceneState.backtoscene;
-                }
-
-                if (Input.GetKeyDown(KeyCode.Space) && !creditsRolling)
-                {
-                    creditsRolling = true;
-                }
-                if (graphicShowTime >= 15 && !creditsRolling)
-                {
-                    creditsRolling = true;
                 }
             }
         }
@@ -250,9 +256,6 @@ public class ActManager : MonoBehaviour
 
     public void LoadEnding(string ending)
     {
-
-        
-
         if (ending == "Beanman")
         {
             FMODString = "event:/Good Ending";

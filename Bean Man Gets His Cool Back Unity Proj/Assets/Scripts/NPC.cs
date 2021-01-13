@@ -19,6 +19,8 @@ public class NPC : MonoBehaviour
     public GameObject player = default;
     public bool isLeft = true;
 
+    public EndingsManager endingsManager;
+
     public ChickPeaLogic chickPeaLogic;
 
     public float angle = 90f;
@@ -28,6 +30,9 @@ public class NPC : MonoBehaviour
     {
         //spriteRenderer = gameObject.GetComponent<SpriteRenderer>();
         Debug.Log(this.name);
+        if (this.gameObject.name == "Corn Lady" && endingsManager.endingsSeenList.Count > 0) {
+            return;
+        }
         glasses.SetActive(false);
         noGlasses.SetActive(true);
     }
@@ -48,6 +53,7 @@ public class NPC : MonoBehaviour
         var noglassesSpriteRenderer = noGlasses.GetComponent<SpriteRenderer>();
         var glassesSpriteRenderer = glasses.GetComponent<SpriteRenderer>();
         var actualGlassesSpriteRenderer = glasses.GetComponent<SpriteRenderer>();
+        
 
         if (gameObject.name == "Fire Hydrant") {
             return;
@@ -60,12 +66,28 @@ public class NPC : MonoBehaviour
 
         if (player.transform.position.x < transform.position.x)
         {
+
+            if (this.gameObject.name == "Corn Lady" && gameState.beanState == GameState.gameState.ISNOTCOOL)
+            {
+                noglassesSpriteRenderer.flipX = true;
+                glassesSpriteRenderer.flipX = true;
+                actualGlassesSpriteRenderer.flipX = true;
+                return;
+            }
             isLeft = true;
             noglassesSpriteRenderer.flipX = false;
             glassesSpriteRenderer.flipX = false;
             actualGlassesSpriteRenderer.flipX = false;
+
         } else
         {
+            if (this.gameObject.name == "Corn Lady" && gameState.beanState == GameState.gameState.ISNOTCOOL)
+            {
+                noglassesSpriteRenderer.flipX = false;
+                glassesSpriteRenderer.flipX = false;
+                actualGlassesSpriteRenderer.flipX = false;
+                return;
+            }
             isLeft = false;
             noglassesSpriteRenderer.flipX = true;
             glassesSpriteRenderer.flipX = true;
@@ -79,10 +101,14 @@ public class NPC : MonoBehaviour
         trafficContainer.SetActive(true);
     }
 
+    public void RemoveTrafficCone()
+    {
+        trafficContainer.SetActive(false);
+    }
+    
     public void ShowGlasses()
     {
-
-        trafficContainer.SetActive(false);
+        RemoveTrafficCone();
         glasses.SetActive(true);
         noGlasses.SetActive(false);
         if (chickPeaLogic != null)
