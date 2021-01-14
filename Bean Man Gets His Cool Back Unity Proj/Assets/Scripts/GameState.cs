@@ -36,6 +36,8 @@ public class GameState : MonoBehaviour
 
     public ChickPeaLogic chickPeaLogic;
 
+    public PoparazziLogic poparazziCorn;
+
     public LemonadeStand _lemonadeStand;
     public FireHydrantVomit _fireHydrantvomit;
     public UILogic uILogic;
@@ -256,15 +258,13 @@ public class GameState : MonoBehaviour
         if (gameObjectName == "Corn Lady")
         {
             conversationDict["ISCOOL"] = "For some stupid reason, the writers seem to think that ears of corn hibernate";
-
             
-            conversationDict["BEANGOHINT"] = "Yes, I will be awake for Beango."; // This state should push into Beango
+            conversationDict["BEANGOHINT"] = "Yes, I will be awake for Beango.";
             conversationDict["ISNOTCOOL"] = "";
             conversationDict["ISBAGGED"] = "I'm all ears";
             return;
         }
-
-
+        
         if (gameObjectName == "Black Eyed Pea")
         {
             conversationDict["ISCOOL"] = "Whatsup Beanman! What kind of adventures are you getting into this time?";
@@ -1084,6 +1084,7 @@ public class GameState : MonoBehaviour
                 butter.ButterLives();
             }
         }
+        poparazziCorn.ChangeLocation();
         chickPeaLogic.ChickPeaWizardMode();
         cornLady.CornLadyHibernate();
 
