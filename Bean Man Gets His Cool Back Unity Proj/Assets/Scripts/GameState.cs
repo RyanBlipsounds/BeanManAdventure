@@ -63,6 +63,7 @@ public class GameState : MonoBehaviour
     private bool talkedGranny = false;
     private bool talkedLina = false;
     private bool talkedChickpea = false;
+    public FMOD.Studio.EventInstance StartMusic;
 
     private void Awake()
     {
@@ -71,6 +72,8 @@ public class GameState : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+
+
         listTotalNPC.AddRange(GameObject.FindGameObjectsWithTag("NPC"));
         conversationDict.Add("ISCOOL", "ISCOOL");
         conversationDict.Add("ISNOTCOOL", "ISNOTCOOL");
@@ -80,6 +83,10 @@ public class GameState : MonoBehaviour
         if (beanState == gameState.BEANGOHINT) {
             IsBeanGoHint();
         }
+
+        StartMusic = FMODUnity.RuntimeManager.CreateInstance("event:/Enter Beanman");
+        StartMusic.start();
+
     }
 
     public void Conversation(string gameObjectName, int count) {
@@ -983,7 +990,7 @@ public class GameState : MonoBehaviour
         beanState = gameState.ISNOTCOOL;
         RandomizeGlasses();
 
-        Debug.Log("IS NOT COOL");
+        Debug.Log("CHEESE PIZZA IS NOT COOL");
 
         _playerController.MoveToStart();
 
@@ -999,7 +1006,9 @@ public class GameState : MonoBehaviour
         //BEAN MAN SPRITE CHANGE
     }
 
-    public void IsBagged() {
+    public void IsBagged()
+    {
+        Debug.Log("CHEESE PIZZA IS BAGGED");
         foreach (HouseStateLogic house in listHouses) {
             house.BaggedState();
         }

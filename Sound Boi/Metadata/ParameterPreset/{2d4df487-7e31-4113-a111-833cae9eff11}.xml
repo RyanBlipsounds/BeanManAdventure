@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<objects serializationModel="Studio.02.01.00">
+	<object class="ParameterPreset" id="{2d4df487-7e31-4113-a111-833cae9eff11}">
+		<property name="name">
+			<value>Sax Transition</value>
+		</property>
+		<relationship name="folder">
+			<destination>{645eaf01-54c1-4efd-9467-c8f218d87dbd}</destination>
+		</relationship>
+		<relationship name="parameter">
+			<destination>{652d140f-360f-4095-9e5c-5f7e63d8c66b}</destination>
+		</relationship>
+	</object>
+	<object class="GameParameter" id="{652d140f-360f-4095-9e5c-5f7e63d8c66b}">
+		<property name="initialValue">
+			<value>0</value>
+		</property>
+	</object>
+</objects>

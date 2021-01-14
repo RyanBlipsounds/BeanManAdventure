@@ -209,7 +209,7 @@ public class ActManager : MonoBehaviour
                     creditsRolling = true;
                 }
             }
-            else if (graphic == BeangoScreen && _endingsManager.endingsSeenList.Count != 0) {
+            else if (graphic == BeangoScreen && _endingsManager.endingsSeenList.Count == 0) {
                 if (graphicShowTime > 3)
                 {
                     spacebar.isActive = true;
@@ -250,6 +250,7 @@ public class ActManager : MonoBehaviour
 
     public void ResetCredits()
     {
+        Debug.Log("CHEESE PIZZA IS CREDITS");
         credits.SetActive(false);
 
     }

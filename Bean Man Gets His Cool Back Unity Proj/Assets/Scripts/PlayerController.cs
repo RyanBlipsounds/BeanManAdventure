@@ -369,6 +369,9 @@ public class PlayerController : MonoBehaviour
                 gameState.beanState = GameState.gameState.BEANGOHINT;
                 gameState.Conversation(thisCharacter.gameObject.name, 0);
                 _actManager.activateGraphicTransition = true;
+
+                gameState.StartMusic.stop(FMOD.Studio.STOP_MODE.ALLOWFADEOUT);
+
                 return;
             }
             if (thisCharacter.gameObject.tag != "SideNPC")

@@ -24,6 +24,7 @@ public class UILogic : MonoBehaviour
     public EndingsManager endingsManager;
     public QuestList questList;
     public ActManager _actManager;
+   
 
     public bool firstPlayClick = false;
 
@@ -63,6 +64,7 @@ public class UILogic : MonoBehaviour
     }
     private void GameStartClicked()
     {
+        _gamestate.StartMusic.setParameterByName("Sax Transition", 1);
         MainMenu.SetActive(false);
         pc.bagMoving = false;
         // Allow Movement
