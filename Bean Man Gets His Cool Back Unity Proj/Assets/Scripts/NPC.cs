@@ -13,6 +13,9 @@ public class NPC : MonoBehaviour
 
     public GameObject trafficContainer;
 
+    public GameObject ExclamationPoint;
+    public ExclamationPoint exclamationUI;
+
     public bool isWinner = false;
 
     public GameState gameState = default;
@@ -28,6 +31,7 @@ public class NPC : MonoBehaviour
 
     public void Start()
     {
+        SetExclamation();
         //spriteRenderer = gameObject.GetComponent<SpriteRenderer>();
         Debug.Log(this.name);
         if (this.gameObject.name == "Corn Lady" && endingsManager.endingsSeenList.Count > 0) {
@@ -40,7 +44,6 @@ public class NPC : MonoBehaviour
     public void ResetCoolStateNPC() {
         glasses.SetActive(false);
         noGlasses.SetActive(true);
-        hasSpoken = false;
         isWinner = false;
         if (chickPeaLogic != null)
         {
@@ -114,6 +117,52 @@ public class NPC : MonoBehaviour
         if (chickPeaLogic != null)
         {
             chickPeaLogic.ChickPeaWizardMode();
+        }
+    }
+
+    public void AddExclamation()
+    {
+        Debug.Log(this.gameObject.name + " ADD EXCLAMATION");
+        hasSpoken = true;
+        ExclamationPoint.SetActive(true);
+    }
+
+    public void RemoveExclamation()
+    {
+        exclamationUI.hideUI = true;
+        Debug.Log(this.gameObject.name);
+        hasSpoken = true;
+    }
+    //SET THIS AT THE START OF THE GAME
+    public void SetExclamation()
+    {
+        if (gameState.beanState == GameState.gameState.BEANGOHINT || gameState.beanState == GameState.gameState.ISBAGGED || gameState.beanState == GameState.gameState.ISNOTCOOL)
+        {
+    
+            if (this.gameObject.name != "Granny Smith")
+            {
+                ExclamationPoint.SetActive(false);
+            }
+            else
+            {
+                ExclamationPoint.SetActive(true);
+            }
+        }
+        else if (gameState.beanState == GameState.gameState.ISCOOL)
+        {
+            if (this.gameObject.name != "Granny Smith") { 
+
+                ExclamationPoint.SetActive(true);
+            }
+            else
+            {
+                ExclamationPoint.SetActive(false);
+            }
+        }
+        if (this.gameObject.name == "Fire Hydrant")
+        {
+            ExclamationPoint.SetActive(false);
+            return;
         }
     }
 }

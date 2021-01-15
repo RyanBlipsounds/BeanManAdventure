@@ -29,6 +29,8 @@ public class GameState : MonoBehaviour
 
     public List<GameObject> listTotalNPC = new List<GameObject>();
 
+    public List<NPC> everyNPCList = new List<NPC>();
+
     public GameObject peanutButter;
     public GameObject trafficCone;
 
@@ -977,7 +979,11 @@ public class GameState : MonoBehaviour
         _actManager.EndingScreenText = _actManager.BeangoScreenText;
 
         beanState = gameState.BEANGOHINT;
-       
+
+        foreach (NPC NPC in everyNPCList)
+        {
+            NPC.SetExclamation();
+        }
     }
 
     public void IsNotCool() {
@@ -996,6 +1002,10 @@ public class GameState : MonoBehaviour
 
         foreach (NPC character in _playerController.scriptNPCList)
         {
+            if (character.gameObject.name == "Granny Smith")
+            {
+                character.AddExclamation();
+            }
             character.ShowGlasses();
         }
         foreach (NPC character in trafficConeNPCs)
@@ -1003,6 +1013,7 @@ public class GameState : MonoBehaviour
             character.RemoveTrafficCone();
         }
         _playerController.NoGlasses();
+
         //BEAN MAN SPRITE CHANGE
     }
 

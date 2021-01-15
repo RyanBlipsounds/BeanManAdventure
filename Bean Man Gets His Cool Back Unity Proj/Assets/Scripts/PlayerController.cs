@@ -283,17 +283,16 @@ public class PlayerController : MonoBehaviour
                     Debug.Log("Exit Town!");
                     _responseBox.isActive = true;
                 }
-                
-                // Checks if the NPC has been spoken to
+
                 if (!_dialogueBox.isActive)
                 {
-
-                    if (thisCharacter.gameObject.tag != "SideNPC") {
-                        index = scriptNPCList.IndexOf(thisCharacter.GetComponent<NPC>());
-                        thisNPCList = scriptNPCList[index];
-                        thisNPCList.hasSpoken = true;
+                    if (thisCharacter.gameObject.GetComponent<NPC>()) {
+                        NPC thisNPC = thisCharacter.gameObject.GetComponent<NPC>();
+                        thisNPC.hasSpoken = true;
+                        thisNPC.RemoveExclamation();
                     }
                 }
+
 
                 if (thisCharacter.gameObject.name == "Granny Smith")
                 {
@@ -350,9 +349,24 @@ public class PlayerController : MonoBehaviour
         }
         else
         {
-            if (gameState.listTotalNPC.Count == scriptNPCList.Count && gameState.beanState == GameState.gameState.ISCOOL)
+            int count = 0;
+            foreach (NPC npc in gameState.everyNPCList)
+            {
+                if (npc.gameObject.name == "Fire Hydrant" || npc.gameObject.name == "Granny Smith")
+                {
+                    count++;
+                }else if (npc.hasSpoken == true)
+                {
+                    count++;
+                }
+            }
+            if (count >= gameState.everyNPCList.Count && gameState.beanState == GameState.gameState.ISCOOL)
             {
                 gameState.IsBeanGoHint();
+            }
+            if (gameState.listTotalNPC.Count == scriptNPCList.Count && gameState.beanState == GameState.gameState.ISCOOL)
+            {
+                //gameState.IsBeanGoHint();
             }
             _dialogueBox.isActive = false;
             skippedTypewriter = false;
@@ -376,18 +390,24 @@ public class PlayerController : MonoBehaviour
             }
             if (thisCharacter.gameObject.tag != "SideNPC")
             {
-                if (thisNPCList.isWinner)
+                if (thisCharacter.gameObject.GetComponent<NPC>())
                 {
-                    _actManager.LoadEnding("Beanman");
-                }
-                else
-                {
-                    foreach (NPC character in scriptNPCList)
+                    NPC thisNPC = thisCharacter.gameObject.GetComponent<NPC>();
+                    if (thisNPC.isWinner)
                     {
-                        if (character.isWinner == true)
+                        _actManager.LoadEnding("Beanman");
+                    }
+                    else
+                    {
+                        Debug.Log("THIS IS NOT THE WINNER");
+                        foreach (NPC character in scriptNPCList)
                         {
-                            _actManager.LoadEnding(character.gameObject.name);
-                            break;
+                            if (character.isWinner == true)
+                            {
+                                Debug.Log("THIS IS NOT THE WINNER, selecting " + character.gameObject.name);
+                                _actManager.LoadEnding(character.gameObject.name);
+                                break;
+                            }
                         }
                     }
                 }
@@ -471,7 +491,6 @@ public class PlayerController : MonoBehaviour
     }
     public void ResetBeanSpawnPosition()
     {
-        
 
         GlassesSpriteRenderer.flipX = true;
         BaggedSpriteRenderer.flipX = true;
@@ -492,5 +511,13 @@ public class PlayerController : MonoBehaviour
             BaggedAnimator.Play("BeanIdleFront");
         }
 
+        foreach (NPC NPC in gameState.everyNPCList)
+        {
+            NPC.SetExclamation();
+        }
+        if (gameState.beanState != GameState.gameState.ISCOOL)
+        {
+            grannySmith.AddExclamation();
+        }
     }
 }

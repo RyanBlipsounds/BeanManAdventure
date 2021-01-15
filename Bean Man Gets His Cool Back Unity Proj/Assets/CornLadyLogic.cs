@@ -25,10 +25,10 @@ public class CornLadyLogic : MonoBehaviour
     {
         if (endingsManager.endingsSeenList.Count > 0)
         {
-            trafficCone.SetActive(false);
             CornLadyAwake.SetActive(false);
             CornLadyAsleep.SetActive(true);
             this.gameObject.tag = "InactiveNPC";
+            trafficCone.SetActive(false);
         }
     }
 }

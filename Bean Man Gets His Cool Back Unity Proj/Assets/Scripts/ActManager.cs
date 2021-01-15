@@ -197,7 +197,7 @@ public class ActManager : MonoBehaviour
                     sceneTransitionState = sceneState.backtoscene;
                 }
             }
-            else if (graphic != BeangoScreen)
+            else if (graphic != BeangoScreen && _endingsManager.endingsSeenList.Count <= 1)
             {
                 if (graphicShowTime >= 45)
                 {
@@ -209,16 +209,15 @@ public class ActManager : MonoBehaviour
                     creditsRolling = true;
                 }
             }
-            else if (graphic == BeangoScreen && _endingsManager.endingsSeenList.Count == 0) {
-                if (graphicShowTime > 3)
+            else if (graphic == BeangoScreen) {
+                if (_endingsManager.endingsSeenList.Count <= 1)
                 {
-                    spacebar.isActive = true;
+                    if (graphicShowTime > 3)
+                    {
+                        spacebar.isActive = true;
+                    }
                 }
                 if (graphicShowTime >= 15)
-                {
-                    sceneTransitionState = sceneState.backtoscene;
-                }
-                if (Input.GetKeyDown(KeyCode.Space))
                 {
                     sceneTransitionState = sceneState.backtoscene;
                 }

@@ -135,6 +135,26 @@ MonoBehaviour:
   MinDistance: 0
   MaxDistance: 0
   Length: 608
+--- !u!114 &-3428070000750181719
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fecb8ef7f94ca804a8ab72049b86782e, type: 3}
+  m_Name: parameter:/Enter S A D M A N/Sax Transition
+  m_EditorClassIdentifier: 
+  Name: Sax Transition
+  Min: 0
+  Max: 1
+  Default: 0
+  ID:
+    data1: 0
+    data2: 0
+  Exists: 1
 --- !u!114 &-2947001196425967048
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -293,6 +313,26 @@ MonoBehaviour:
   MinDistance: 0
   MaxDistance: 0
   Length: 350
+--- !u!114 &-827743030572522178
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fecb8ef7f94ca804a8ab72049b86782e, type: 3}
+  m_Name: parameter:/Enter Beanman/Sax Transition
+  m_EditorClassIdentifier: 
+  Name: Sax Transition
+  Min: 0
+  Max: 1
+  Default: 0
+  ID:
+    data1: 0
+    data2: 0
+  Exists: 1
 --- !u!114 &-304189684827695506
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -313,7 +353,7 @@ MonoBehaviour:
   Is3D: 0
   IsOneShot: 0
   Parameters:
-  - {fileID: 966142046932819638}
+  - {fileID: -827743030572522178}
   MinDistance: 0
   MaxDistance: 0
   Length: 114313
@@ -366,7 +406,7 @@ MonoBehaviour:
   - {fileID: 3369702041603077526}
   StringsBanks:
   - {fileID: 6392113596281031596}
-  stringsBankWriteTime: 637462197222810542
+  stringsBankWriteTime: 637462438550984655
   cacheVersion: 5
 --- !u!114 &199333778599483351
 MonoBehaviour:
@@ -583,7 +623,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Path: ../Sound Boi/Build/Desktop/Master.bank
   Name: Master
-  lastModified: 637462197222746046
+  lastModified: 637462438550954737
   LoadResult: 0
   FileSizes: []
   Exists: 1
@@ -630,7 +670,7 @@ MonoBehaviour:
   Is3D: 0
   IsOneShot: 0
   Parameters:
-  - {fileID: 8223097419182064363}
+  - {fileID: -3428070000750181719}
   MinDistance: 0
   MaxDistance: 0
   Length: 114181
@@ -852,7 +892,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Path: ../Sound Boi/Build/Desktop/Master.strings.bank
   Name: Master.strings
-  lastModified: 637462197222810542
+  lastModified: 637462438550984655
   LoadResult: 0
   FileSizes:
   - Name: 
