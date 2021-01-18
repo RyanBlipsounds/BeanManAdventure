@@ -21,7 +21,7 @@ public class FireHydrantVomit : MonoBehaviour
     public bool hasVommittedThisRound = false;
 
     public QuestList questList;
-
+    public VomitScreen vomitScreen;
 
     public void Start()
     {
@@ -55,6 +55,7 @@ public class FireHydrantVomit : MonoBehaviour
         //DO SLIME TIME HERE
 
         if (vomitCount >= vomitList.Count) {
+            vomitScreen.gameObject.SetActive(true);
             map.sprite = vomitMap;
         }
     }

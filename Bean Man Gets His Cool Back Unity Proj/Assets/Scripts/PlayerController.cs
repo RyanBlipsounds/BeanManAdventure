@@ -98,7 +98,7 @@ public class PlayerController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        //Movement and Animation
+            //Movement and Animation
         if (_actManager.activateGraphicTransition == false)
         {
             if (bagMoving == false)

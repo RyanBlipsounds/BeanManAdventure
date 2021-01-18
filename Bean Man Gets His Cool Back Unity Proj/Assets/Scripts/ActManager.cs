@@ -33,7 +33,7 @@ public class ActManager : MonoBehaviour
     public GameObject spaceBar;
 
     public string EndingScreenText;
-    public string BeangoScreenText = "It was a sweaty night of Beango, but Granny and Bean Man were an unstoppable force. It was all hazy, but it was one of the greatest nights of Bean Man and Granny's lives. Although something didn't feel quite right when Bean Man awoke in the morning. Someone had stolen his glasses. And he had to findout who took them.";
+    public string BeangoScreenText = "It was an intense night of Beango, but Granny and Bean Man were an unstoppable force. It was all hazy, but it was one of the greatest nights of Bean Man and Granny's lives. Although something didn't feel quite right when Bean Man awoke in the morning. Someone had stolen his glasses. And he had to findout who took them.";
     public string ChickPeaEndingText = "In the quest to get his cool back, Bean Man ran the risk of selecting what he thought were his own glasses, but failed to recognize that Chickpea Deputy had been wearing them all along. Due to this, the glasses gave our Deputy enough confidence to unlock his wizard powers, thus ending the world, and preventing Bean Man from getting his cool back.";
     public string BeanManWinEndingText = "There wasn't a snowballs chance in Beans hell that Bean Man was going to lose his cool today. In this journey, Bean Man thought that had lost his cool when he lost his glasses, but really the cool was inside of him all along. The whole town rejoiced as Bean Man has gotten his cool back.";
     public string BeanManLeavesCoolText = "BeanMan knew his cool was so high above Beantown's coolest bean, that he decided to leave. Even Lina Bean couldn't handle the sheer coolness of his cool. Is Bean Man just too cool for the rest of the Beans? He doesn't say so, but he must know so.";
@@ -199,25 +199,30 @@ public class ActManager : MonoBehaviour
             }
             else if (graphic != BeangoScreen && _endingsManager.endingsSeenList.Count <= 1)
             {
-                if (graphicShowTime >= 45)
+                if (graphicShowTime >= 35)
                 {
                     sceneTransitionState = sceneState.backtoscene;
                 }
 
                 if (graphicShowTime >= 12 && !creditsRolling)
                 {
+                    Debug.Log("Credits Rolling");
                     creditsRolling = true;
                 }
             }
             else if (graphic == BeangoScreen) {
-                if (_endingsManager.endingsSeenList.Count <= 1)
+                if (_endingsManager.endingsSeenList.Count >= 1)
                 {
                     if (graphicShowTime > 3)
                     {
                         spacebar.isActive = true;
                     }
+                    if (Input.GetKeyDown(KeyCode.Space))
+                    {
+                        sceneTransitionState = sceneState.backtoscene;
+                    }
                 }
-                if (graphicShowTime >= 15)
+                if (graphicShowTime >= 7)
                 {
                     sceneTransitionState = sceneState.backtoscene;
                 }
@@ -299,7 +304,7 @@ public class ActManager : MonoBehaviour
         }
         if (ending == "Slim Sausage")
         {
-            FMODString = "event:/Enter Beanman";
+            FMODString = "event:/Good Ending";
             EndingScreenText = SlimSausageWinningText;
             EndingScreen = SlimSausageWinning;
         }
@@ -310,7 +315,7 @@ public class ActManager : MonoBehaviour
         }
         if (ending == "GreenBen")
         {
-            FMODString = "event:/Enter Beanman";
+            FMODString = "event:/Good Ending";
             EndingScreenText = GreenBenEndingText;
             EndingScreen = GreenBenEnding;
         }

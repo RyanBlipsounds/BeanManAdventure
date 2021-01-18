@@ -21,6 +21,9 @@ public class UILogic : MonoBehaviour
     public GameObject CreditsScreen;
     public Button CreditsButton;
 
+    public Button ResetButton;
+    public GameObject ResetPromptScreen;
+
     public EndingsManager endingsManager;
     public QuestList questList;
     public ActManager _actManager;
@@ -30,6 +33,7 @@ public class UILogic : MonoBehaviour
 
     private void Start()
     {
+        ResetButton.onClick.AddListener(ResetGameClicked);
         MMPlayButton.onClick.AddListener(GameStartClicked);
         EndingsReplay.onClick.AddListener(EndingsClicked);
         CreditsButton.onClick.AddListener(CreditsClicked);
@@ -61,7 +65,14 @@ public class UILogic : MonoBehaviour
         MMPlayButton.onClick.RemoveListener(GameStartClicked);
         EndingsReplay.onClick.RemoveListener(EndingsClicked);
         CreditsButton.onClick.RemoveListener(CreditsClicked);
+        ResetButton.onClick.RemoveListener(ResetGameClicked);
     }
+
+    private void ResetGameClicked()
+    {
+        ResetPromptScreen.SetActive(true);
+    }
+
     private void GameStartClicked()
     {
         _gamestate.StartMusic.setParameterByName("Sax Transition", 1);

@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class SaveLoading : MonoBehaviour
 {
@@ -75,12 +76,9 @@ public class SaveLoading : MonoBehaviour
         ES3.DeleteKey("Endings");
         ES3.DeleteKey("VomitCount");
         ES3.DeleteKey("VomitList");
+        gameState.StartMusic.stop(FMOD.Studio.STOP_MODE.ALLOWFADEOUT);
+        Scene scene = SceneManager.GetActiveScene();
+        SceneManager.LoadScene(scene.name);
     }
-
-    public void Update()
-    {
-        if (Input.GetKeyDown(KeyCode.P)) {
-            ClearSaveData();
-        }
-    }
+    
 }
