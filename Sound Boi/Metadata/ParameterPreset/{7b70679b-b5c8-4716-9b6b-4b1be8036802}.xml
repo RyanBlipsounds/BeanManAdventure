@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<objects serializationModel="Studio.02.01.00">
+	<object class="ParameterPreset" id="{7b70679b-b5c8-4716-9b6b-4b1be8036802}">
+		<property name="name">
+			<value>Bagged Transition</value>
+		</property>
+		<relationship name="folder">
+			<destination>{645eaf01-54c1-4efd-9467-c8f218d87dbd}</destination>
+		</relationship>
+		<relationship name="parameter">
+			<destination>{da9722c9-50d8-47a3-b0de-25304c453b88}</destination>
+		</relationship>
+	</object>
+	<object class="GameParameter" id="{da9722c9-50d8-47a3-b0de-25304c453b88}">
+		<property name="initialValue">
+			<value>0</value>
+		</property>
+	</object>
+</objects>

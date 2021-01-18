@@ -28,7 +28,7 @@ public class ActManager : MonoBehaviour
     public GameObject BirthdayCakeEnding;
     public GameObject BeanManUncoolEnding;
     public FMOD.Studio.EventInstance EndingMusicEvent;
-
+    public FMOD.Studio.EventInstance IsNotCoolMusicEvent;
     public GameObject credits;
     public GameObject spaceBar;
 
@@ -87,6 +87,7 @@ public class ActManager : MonoBehaviour
             if (m_gameState.beanState == GameState.gameState.BEANGOHINT || m_gameState.beanState == GameState.gameState.ISNOTCOOL) {
                 EndingScreen = BeangoScreen;
                 EndingScreenText = BeangoScreenText;
+                FMODString = "event:/Beango Music";
             }
             if (m_gameState.beanState == GameState.gameState.ISCOOL)
             {
@@ -114,14 +115,18 @@ public class ActManager : MonoBehaviour
         }
         else {
             if (m_gameState.beanState == GameState.gameState.BEANGOHINT && hasPlayed == false)
-                
-            
+               
             {
+
+                EndingMusicEvent = FMODUnity.RuntimeManager.CreateInstance(FMODString);
+                EndingMusicEvent.start();
+
                 m_gameState.IsNotCool();
                 hasPlayed = true;
             }
             if (m_gameState.beanState == GameState.gameState.ISBAGGED && hasPlayed == false)
             {
+                IsNotCoolMusicEvent.stop(FMOD.Studio.STOP_MODE.ALLOWFADEOUT);
                 EndingMusicEvent = FMODUnity.RuntimeManager.CreateInstance(FMODString);
                 EndingMusicEvent.start();
                 m_gameState.Ending();
@@ -148,6 +153,14 @@ public class ActManager : MonoBehaviour
                     ResetCredits();
                     m_gameState.beanState = GameState.gameState.ISCOOL;
                 }
+
+                if (m_gameState.beanState == GameState.gameState.ISNOTCOOL)
+                {
+                    Debug.Log("CHEESE PIZZA COOL MUSIC");
+                    IsNotCoolMusicEvent = FMODUnity.RuntimeManager.CreateInstance("event:/NotCoolMusic");
+                    IsNotCoolMusicEvent.start();
+                }
+
                 _narrationBox.isActive = false;
                 oldGraphic.SetActive(false);
             }
@@ -236,8 +249,10 @@ public class ActManager : MonoBehaviour
 
             spacebar.isActive = false;
             FadeToBlack(sceneState.started, null, graphic, FMODString);
-            if (sceneTransitionState == sceneState.started)
+            if (sceneTransitionState == sceneState.started)    
             {
+                Debug.Log("CHEESE PIZZA IS STILL NOT COOL");
+
                 activateGraphicTransition = false;
                 graphicShowTime = 0;
                 hasPlayed = false;

@@ -85,8 +85,7 @@ public class GameState : MonoBehaviour
         if (beanState == gameState.BEANGOHINT) {
             IsBeanGoHint();
         }
-        StartMusic = FMODUnity.RuntimeManager.CreateInstance("event:/Enter Beanman");
-        StartMusic.start();
+        
 
     }
 
@@ -1028,6 +1027,7 @@ public class GameState : MonoBehaviour
             house.BaggedState();
         }
         beanState = gameState.ISBAGGED;
+        _actManager.IsNotCoolMusicEvent.setParameterByName("Bagged Transition", 1);
         questList.CompleteQuestItem("TownsPeople Again");
         questList.ActivateQuestItem("Get Your Cool Back");
     }
@@ -1043,6 +1043,10 @@ public class GameState : MonoBehaviour
     /// </summary>
     public void ResetGame()
     {
+
+        StartMusic = FMODUnity.RuntimeManager.CreateInstance("event:/Enter Beanman");
+        StartMusic.start();
+
         _playerController._responseBox.isActive = false;
         _playerController._dialogueBox.isActive = false;
         _playerController._canTalkBox.isActive = false;
