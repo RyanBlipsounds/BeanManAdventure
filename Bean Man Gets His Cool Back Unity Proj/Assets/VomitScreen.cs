@@ -10,6 +10,8 @@ public class VomitScreen : MonoBehaviour
     public SpriteRenderer VomitSprite;
     public SpriteRenderer BlackScreenSprite;
 
+    public FireHydrantVomit vomitMap;
+
     public float timePassed = 0;
 
     public float timeToFade = 0;
@@ -27,19 +29,21 @@ public class VomitScreen : MonoBehaviour
 
         timePassed += Time.deltaTime;
 
-        rb.velocity = transform.up * m_Speed * -1;
+        rb.velocity = transform.up * m_Speed * -2;
 
-        blackScreenTmp = Mathf.Lerp(0, 1, timeToFade / 3);
+        blackScreenTmp = Mathf.Lerp(0, 1, timeToFade / 1.5f);
 
         BlackScreenSprite.color = new Color(255, 255, 255, blackScreenTmp);
 
         if (timePassed > 5)
         {
+
             StopVomitTime();
         }
 
         if (deactivating)
         {
+            vomitMap.VomitMap();
             playerController.bagMoving = false;
             timeToFade -= Time.deltaTime;
             if (timeToFade <= 0)

@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<objects serializationModel="Studio.02.01.00">
+	<object class="ParameterPreset" id="{93727611-ee8a-4e76-adf2-d5c0f6a39b78}">
+		<property name="name">
+			<value>BirthdayCakeProx</value>
+		</property>
+		<relationship name="folder">
+			<destination>{645eaf01-54c1-4efd-9467-c8f218d87dbd}</destination>
+		</relationship>
+		<relationship name="parameter">
+			<destination>{9a27e566-e80c-469c-ad7d-64fef0cd5c76}</destination>
+		</relationship>
+	</object>
+	<object class="GameParameter" id="{9a27e566-e80c-469c-ad7d-64fef0cd5c76}">
+		<property name="maximum">
+			<value>3</value>
+		</property>
+		<property name="initialValue">
+			<value>0</value>
+		</property>
+	</object>
+</objects>

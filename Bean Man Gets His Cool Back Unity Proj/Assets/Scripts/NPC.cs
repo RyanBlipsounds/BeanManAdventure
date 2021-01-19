@@ -136,7 +136,19 @@ public class NPC : MonoBehaviour
     //SET THIS AT THE START OF THE GAME
     public void SetExclamation()
     {
-        if (gameState.beanState == GameState.gameState.BEANGOHINT || gameState.beanState == GameState.gameState.ISBAGGED || gameState.beanState == GameState.gameState.ISNOTCOOL)
+        if (gameState.beanState == GameState.gameState.ISCOOL && endingsManager.endingsSeenList.Count == 0)
+        {
+
+            if (this.gameObject.name != "Granny Smith")
+            {
+
+                ExclamationPoint.SetActive(true);
+            }
+            else
+            {
+                ExclamationPoint.SetActive(false);
+            }
+        }else
         {
     
             if (this.gameObject.name != "Granny Smith")
@@ -146,17 +158,6 @@ public class NPC : MonoBehaviour
             else
             {
                 ExclamationPoint.SetActive(true);
-            }
-        }
-        else if (gameState.beanState == GameState.gameState.ISCOOL)
-        {
-            if (this.gameObject.name != "Granny Smith") { 
-
-                ExclamationPoint.SetActive(true);
-            }
-            else
-            {
-                ExclamationPoint.SetActive(false);
             }
         }
         if (this.gameObject.name == "Fire Hydrant")

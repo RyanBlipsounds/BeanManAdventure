@@ -123,16 +123,15 @@ public class ActManager : MonoBehaviour
 
                 m_gameState.IsNotCool();
                 hasPlayed = true;
-            }
-            if (m_gameState.beanState == GameState.gameState.ISBAGGED && hasPlayed == false)
+            }else if (m_gameState.beanState == GameState.gameState.ISBAGGED && hasPlayed == false)
             {
                 IsNotCoolMusicEvent.stop(FMOD.Studio.STOP_MODE.ALLOWFADEOUT);
                 EndingMusicEvent = FMODUnity.RuntimeManager.CreateInstance(FMODString);
                 EndingMusicEvent.start();
                 m_gameState.Ending();
+
                 hasPlayed = true;
-            }
-            if (graphic == BeanManLeavesTown) {
+            }else if (graphic == BeanManLeavesTown && hasPlayed == false) {
                 m_gameState.Ending();
                 hasPlayed = true;
             }
@@ -299,21 +298,25 @@ public class ActManager : MonoBehaviour
         }
         if (ending == "Lina Bean") 
         {
+            FMODString = "event:/Less Bad Ending";
             EndingScreenText = LinaBeanEndingText;
             EndingScreen = LinaBeanEnding;
         }
         if (ending == "Chickpea Deputy")
         {
+            FMODString = "event:/Bad Ending";
             EndingScreenText = ChickPeaEndingText;
             EndingScreen = ChickPeaEnding;
         }
         if (ending == "Granny Smith")
         {
+            FMODString = "event:/Bad Ending";
             EndingScreenText = GrannySmithEndingText;
             EndingScreen = GrannySmithEnding;
         }
         if (ending == "Peanut Twins")
         {
+            FMODString = "event:/Bad Ending";
             EndingScreenText = PeanutTwinEndingText;
             EndingScreen = PeanutTwinEnding;
         }
@@ -325,6 +328,7 @@ public class ActManager : MonoBehaviour
         }
         if (ending == "Birthday Cake")
         {
+            FMODString = "event:/Less Bad Ending";
             EndingScreenText = BirthdayCakeEndingText;
             EndingScreen = BirthdayCakeEnding;
         }
@@ -336,6 +340,7 @@ public class ActManager : MonoBehaviour
         }
         if (ending == "Fire Hydrant")
         {
+            FMODString = "event:/Less Bad Ending";
             EndingScreenText = FireHydrantEndingText;
             EndingScreen = FireHydrantEnding;
         }

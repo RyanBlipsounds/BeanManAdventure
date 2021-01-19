@@ -66,6 +66,7 @@ public class GameState : MonoBehaviour
     private bool talkedLina = false;
     private bool talkedChickpea = false;
     public FMOD.Studio.EventInstance StartMusic;
+    public bool recentEndingPlayed = false;
 
     private void Awake()
     {
@@ -74,8 +75,7 @@ public class GameState : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-
-
+        CoolMusic();
         listTotalNPC.AddRange(GameObject.FindGameObjectsWithTag("NPC"));
         conversationDict.Add("ISCOOL", "ISCOOL");
         conversationDict.Add("ISNOTCOOL", "ISNOTCOOL");
@@ -87,6 +87,61 @@ public class GameState : MonoBehaviour
         }
         
 
+    }
+
+    public void CoolMusic()
+    {
+        if (_playerController.scriptNPCList.Count > 1)
+        {
+            if (endingsManager.endingsSeenList[endingsManager.endingsSeenList.Count - 1] == _actManager.BirthdayCakeEnding ||
+                endingsManager.endingsSeenList[endingsManager.endingsSeenList.Count - 1] == _actManager.LinaBeanEnding ||
+                    endingsManager.endingsSeenList[endingsManager.endingsSeenList.Count - 1] == _actManager.FireHydrantEnding)
+            {
+                StartMusic = FMODUnity.RuntimeManager.CreateInstance("event:/Enter Beanman");
+                StartMusic.start();
+            }
+            else if(endingsManager.endingsSeenList[endingsManager.endingsSeenList.Count - 1] == _actManager.ChickPeaEnding || 
+                endingsManager.endingsSeenList[endingsManager.endingsSeenList.Count - 1] == _actManager.GrannySmithEnding ||
+                endingsManager.endingsSeenList[endingsManager.endingsSeenList.Count - 1] == _actManager.PeanutTwinEnding)
+            {
+                StartMusic = FMODUnity.RuntimeManager.CreateInstance("event:/After Bad Ending");
+                StartMusic.start();
+            }
+            else
+            {
+                StartMusic = FMODUnity.RuntimeManager.CreateInstance("event:/Enter Beanman");
+                StartMusic.start();
+                return;
+            }
+        }
+        else
+        {
+            StartMusic = FMODUnity.RuntimeManager.CreateInstance("event:/Enter Beanman");
+            StartMusic.start();
+            return;
+        }
+    }
+    
+    private void Update()
+    {
+        int count = 0;
+
+        if (endingsManager.endingsSeenList.Count > 0 && recentEndingPlayed == true && beanState == gameState.ISCOOL)
+        {
+            foreach (GameObject endingsFound in endingsManager.endingsSeenList)
+            {
+                if (!endingsFound.gameObject.name.Contains("Leaves"))
+                {
+                    count++;
+                }
+            }
+            if (count > 0)
+            {
+                IsBeanGoHint();
+            }
+            CoolMusic();
+            recentEndingPlayed = false;
+        }
     }
 
     public void Conversation(string gameObjectName, int count) {
@@ -982,7 +1037,11 @@ public class GameState : MonoBehaviour
         _actManager.EndingScreenText = _actManager.BeangoScreenText;
 
         beanState = gameState.BEANGOHINT;
+        ExclamationPointSet();
+    }
 
+    public void ExclamationPointSet()
+    {
         foreach (NPC NPC in everyNPCList)
         {
             NPC.SetExclamation();
@@ -1044,9 +1103,6 @@ public class GameState : MonoBehaviour
     public void ResetGame()
     {
 
-        StartMusic = FMODUnity.RuntimeManager.CreateInstance("event:/Enter Beanman");
-        StartMusic.start();
-
         _playerController._responseBox.isActive = false;
         _playerController._dialogueBox.isActive = false;
         _playerController._canTalkBox.isActive = false;
@@ -1057,15 +1113,26 @@ public class GameState : MonoBehaviour
             house.CoolState();
         }
 
+        if (_playerController.scriptNPCList.Count > 1)
+        {
+            foreach (NPC npc in _playerController.scriptNPCList)
+            {
+                npc.ResetCoolStateNPC();
+            }
+        }
+
         if (_playerController.scriptNPCList.Count > 1) {
             foreach (NPC npc in trafficConeNPCs)
             {
                 npc.ResetCoolStateNPC();
                 if (endingsManager.endingsSeenList[endingsManager.endingsSeenList.Count - 1] == _actManager.BirthdayCakeEnding)
                 {
-                    Debug.Log("Traffic Cone activating");
-                    trafficCone.gameObject.tag = "SideNPC";
-                    npc.ShowTrafficCone();
+                    if (npc.gameObject.tag != "InactiveNPC" && npc.gameObject.name != "Traffic Cone")
+                    {
+                        Debug.Log("Traffic Cone activating");
+                        trafficCone.gameObject.tag = "SideNPC";
+                        npc.ShowTrafficCone();
+                    }
                 }
             }
         }
@@ -1075,7 +1142,6 @@ public class GameState : MonoBehaviour
         _playerController.finishedBagMove = false;
         _playerController.bagMoving = true;
         _playerController.MoveToStart();
-        _UILogic.MainMenu.SetActive(true);
 
         if (!endingsManager.endingsSeenList.Contains(_actManager.BeanManWinEnding))
         {
@@ -1115,6 +1181,10 @@ public class GameState : MonoBehaviour
         poparazziCorn.ChangeLocation();
         chickPeaLogic.ChickPeaWizardMode();
         cornLady.CornLadyHibernate();
+
+        recentEndingPlayed = true;
+
+        _UILogic.MainMenu.SetActive(true);
 
         saveLoading.Save();
     }

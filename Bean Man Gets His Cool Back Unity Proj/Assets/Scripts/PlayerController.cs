@@ -243,6 +243,7 @@ public class PlayerController : MonoBehaviour
                         if (!gameState.listTotalNPC.Contains(thisCharacter))
                         {
                             questList.CompleteQuestItem("Fire Hydrant to Talk");
+                            questList.ActivateQuestItem("Fire Hydrant Vomit");
                             fireHydrantVomit.fireHydrantActivated = true;
                             gameState.listTotalNPC.Add(thisCharacter);
                         }
@@ -416,6 +417,7 @@ public class PlayerController : MonoBehaviour
             {
                 if (gameState.beanState == GameState.gameState.BEANGOHINT || gameState.beanState == GameState.gameState.ISCOOL)
                 {
+                    Debug.Log("Leaves town bean");
                     _actManager.LoadEnding("Beanman Leaves Cool Town");
                 }
                 if (gameState.beanState == GameState.gameState.ISNOTCOOL)
@@ -426,6 +428,7 @@ public class PlayerController : MonoBehaviour
                 {
                     _actManager.LoadEnding("Beanman Leaves Bag Town");
                 }
+                gameState.StartMusic.stop(FMOD.Studio.STOP_MODE.ALLOWFADEOUT);
                 gameState.beanState = GameState.gameState.ENDING;
             }
         }

@@ -60,7 +60,7 @@ public class PoparazziLogic : MonoBehaviour
             }
             if (endingsManager.endingsSeenList[endingsManager.endingsSeenList.Count - 1] == _actManager.ChickPeaEnding)
             {
-                TurnPopCorn(false);
+                TurnPopCorn(true);
                 this.transform.position = ChickpeaPosition.transform.position;
             }
             if (endingsManager.endingsSeenList[endingsManager.endingsSeenList.Count - 1] == _actManager.FireHydrantEnding)
@@ -70,7 +70,7 @@ public class PoparazziLogic : MonoBehaviour
             }
             if (endingsManager.endingsSeenList[endingsManager.endingsSeenList.Count - 1] == _actManager.GreenBenEnding)
             {
-                TurnPopCorn(false);
+                TurnPopCorn(true);
                 this.transform.position = GreenBenPosition.transform.position;
             }
             if (endingsManager.endingsSeenList[endingsManager.endingsSeenList.Count - 1] == _actManager.BirthdayCakeEnding)

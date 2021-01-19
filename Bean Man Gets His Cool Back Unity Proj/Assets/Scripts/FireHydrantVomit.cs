@@ -40,9 +40,8 @@ public class FireHydrantVomit : MonoBehaviour
         if (hasVommittedThisRound == false)
         {
             SetVomitCount();
-            Debug.Log("SET VOMIT COUNT");
             hasVommittedThisRound = true;
-            VomitMap();
+            //VomitMap();
         }
     }
 
@@ -52,9 +51,8 @@ public class FireHydrantVomit : MonoBehaviour
             return;
         }
 
-        //DO SLIME TIME HERE
-
         if (vomitCount >= vomitList.Count) {
+            questList.CompleteQuestItem("Soak the Town in Vomit");
             vomitScreen.gameObject.SetActive(true);
             map.sprite = vomitMap;
         }
@@ -83,6 +81,8 @@ public class FireHydrantVomit : MonoBehaviour
                 Debug.Log("Start vomit");
                 FireHydrantAnimator.Play("FireHydrantVomit");
                 questList.CompleteQuestItem("Fire Hydrant Vomit");
+                questList.ActivateQuestItem("Soak the Town in Vomit");
+
             }
         }
     }

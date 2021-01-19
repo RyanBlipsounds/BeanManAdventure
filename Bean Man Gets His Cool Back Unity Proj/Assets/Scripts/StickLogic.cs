@@ -8,6 +8,8 @@ public class StickLogic : MonoBehaviour
     public Animator StickAnimator;
     public GameState _gameState;
 
+    public QuestList questList;
+
     public UIController _canTalkBox;
 
     // Start is called before the first frame update
@@ -28,7 +30,7 @@ public class StickLogic : MonoBehaviour
             this.gameObject.tag = "SideNPC";
         }
         if (_gameState.beanState == GameState.gameState.ISNOTCOOL && Input.GetKeyDown(KeyCode.Space) && _playerController.thisCharacter.gameObject.name == "Stick") {
-            
+            questList.CompleteQuestItem("Scare Stick Away");
             StickAnimator.Play("StickRunAway");
         }
     }
