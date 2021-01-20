@@ -10,12 +10,14 @@ public class SaveLoading : MonoBehaviour
     public QuestList questList;
     public GameState gameState;
     public FireHydrantVomit fireHydrantVomit;
+    public HideyHole hideyHole;
     public SpriteRenderer Map;
     //public HideyHole hideyHole;
 
     public void Save()
     {
         ES3.Save<List<QuestItem>>("AvailableQuestList", questList.availableQuestList);
+        ES3.Save<List<GameObject>>("PeeperList", hideyHole.PeeperList);
         ES3.Save<List<QuestItem>>("CompletedQuestList", questList.completedQuestList);
         ES3.Save<List<GameObject>>("Endings", endingsManager.endingsSeenList);
         ES3.Save<SpriteRenderer>("Map", Map);
@@ -29,6 +31,7 @@ public class SaveLoading : MonoBehaviour
     {
         questList.availableQuestList = ES3.Load("AvailableQuestList", questList.availableQuestList);
         questList.completedQuestList = ES3.Load("CompletedQuestList", questList.completedQuestList);
+        hideyHole.PeeperList = ES3.Load("PeeperList", hideyHole.PeeperList);
         Map = ES3.Load("Map", Map);
         playerController.scriptNPCList = ES3.Load("NPCs", playerController.scriptNPCList);
         endingsManager.endingsSeenList = ES3.Load("Endings", endingsManager.endingsSeenList);
@@ -71,6 +74,7 @@ public class SaveLoading : MonoBehaviour
         //ES3.DeleteKey("HideyHole");
         ES3.DeleteKey("AvailableQuestList");
         ES3.DeleteKey("CompletedQuestList");
+        ES3.DeleteKey("PeeperList");
         ES3.DeleteKey("NPCs");
         ES3.DeleteKey("Map");
         ES3.DeleteKey("Endings");

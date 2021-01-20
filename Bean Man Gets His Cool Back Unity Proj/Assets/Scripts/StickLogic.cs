@@ -30,7 +30,7 @@ public class StickLogic : MonoBehaviour
             this.gameObject.tag = "SideNPC";
         }
         if (_gameState.beanState == GameState.gameState.ISNOTCOOL && Input.GetKeyDown(KeyCode.Space) && _playerController.thisCharacter.gameObject.name == "Stick") {
-            questList.CompleteQuestItem("Scare Stick Away");
+            questList.CompleteQuestItem("Scare the Stick Away");
             StickAnimator.Play("StickRunAway");
         }
     }

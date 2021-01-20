@@ -71,7 +71,7 @@ public class QuestList : MonoBehaviour
             return;
         }
 
-        availableQuestList.Add(selectedQuest);
+        availableQuestList.Insert(0, selectedQuest);
         selectedQuest.QuestActivated();
         questNotification.isActive = true;
     }
@@ -103,7 +103,7 @@ public class QuestList : MonoBehaviour
         }
 
         availableQuestList.Remove(selectedQuest);
-        completedQuestList.Add(selectedQuest);
+        completedQuestList.Insert(0, selectedQuest);
         selectedQuest.QuestFinished();
         questNotification.isActive = true;
     }

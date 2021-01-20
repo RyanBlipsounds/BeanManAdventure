@@ -26,7 +26,7 @@ public class FireHydrantVomit : MonoBehaviour
     public void Start()
     {
         //THE VERY FIRST VOMIT (0), SHOULD HAVE NO SPRITE ATTACHED
-        if (vomitCount <= vomitList.Count)
+        if (vomitCount < vomitList.Count)
         {
             currentVomit = vomitList[vomitCount];
         }
@@ -42,6 +42,10 @@ public class FireHydrantVomit : MonoBehaviour
             SetVomitCount();
             hasVommittedThisRound = true;
             //VomitMap();
+            if (vomitCount >= vomitList.Count)
+            {
+                vomitScreen.gameObject.SetActive(true);
+            }
         }
     }
 
@@ -53,7 +57,6 @@ public class FireHydrantVomit : MonoBehaviour
 
         if (vomitCount >= vomitList.Count) {
             questList.CompleteQuestItem("Soak the Town in Vomit");
-            vomitScreen.gameObject.SetActive(true);
             map.sprite = vomitMap;
         }
     }

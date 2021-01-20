@@ -25,7 +25,13 @@ public class HideyHole : MonoBehaviour
             return;
         }
 
-        if (_endingsManager.endingsSeenList.Count > 1 && PeeperList.Count != CompletePeeperList.Count)
+        if (_endingsManager.endingsSeenList.Count <= PeeperList.Count)
+        {
+            peeper = PeeperList[PeeperList.Count - 1];
+            return;
+        }
+
+        if (_endingsManager.endingsSeenList.Count > 0 && PeeperList.Count != CompletePeeperList.Count)
         {
             peeper.SetActive(false);
             bool findingPeeper = true;

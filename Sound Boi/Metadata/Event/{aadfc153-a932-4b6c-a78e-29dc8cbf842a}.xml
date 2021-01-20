@@ -111,7 +111,7 @@
 	</object>
 	<object class="EventMixerGroup" id="{04100710-9c6b-451d-9631-d028e2a3deaa}">
 		<property name="volume">
-			<value>-19.5</value>
+			<value>-18.5</value>
 		</property>
 		<property name="name">
 			<value>Audio 1</value>
@@ -131,6 +131,7 @@
 			<destination>{d3e75ca9-f25c-4ad3-803f-add97378e9e7}</destination>
 			<destination>{1535b7a3-49ed-4c04-a225-7c35c62d884f}</destination>
 			<destination>{5b5b9c22-db9f-40a5-a9e2-15dffe1581d0}</destination>
+			<destination>{3b107c28-04a8-4e60-9faa-44fb753db3f6}</destination>
 		</relationship>
 	</object>
 	<object class="MixerBusPanner" id="{53b3bacf-7e35-4c5b-a116-b25fefa9d8f3}" />
@@ -215,6 +216,17 @@
 		</property>
 		<property name="highGain">
 			<value>-34</value>
+		</property>
+	</object>
+	<object class="MultibandEqEffect" id="{3b107c28-04a8-4e60-9faa-44fb753db3f6}">
+		<property name="filterTypeA">
+			<value>8</value>
+		</property>
+		<property name="frequencyA">
+			<value>2116.53564</value>
+		</property>
+		<property name="gainA">
+			<value>6.72413731</value>
 		</property>
 	</object>
 	<object class="AutomationPoint" id="{4046985d-4c54-47bf-832b-43e9fa9a8890}">

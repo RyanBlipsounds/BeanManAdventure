@@ -45,4 +45,9 @@ public class QuestItem : MonoBehaviour
         questItemText.enabled = false;
     }
 
+    public void QuestHide()
+    {
+        questItemText.faceColor = new Color(255, 255, 255, 0);
+    }
+
 }
