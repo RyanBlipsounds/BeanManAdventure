@@ -73,7 +73,7 @@
 	</object>
 	<object class="EventMixerMaster" id="{170bfbf4-bc3d-418f-aa31-901ee357deb6}">
 		<property name="volume">
-			<value>-12</value>
+			<value>-13.5</value>
 		</property>
 		<relationship name="modulators">
 			<destination>{0e013020-feea-4e64-a089-e255e54ebf4a}</destination>
@@ -106,6 +106,9 @@
 		</relationship>
 	</object>
 	<object class="EventMixerGroup" id="{34e0fcfe-9537-4ec9-87e2-3a1b9ba0f610}">
+		<property name="volume">
+			<value>-5</value>
+		</property>
 		<property name="name">
 			<value>Audio 1</value>
 		</property>
@@ -139,6 +142,7 @@
 	<object class="MixerBusEffectChain" id="{f30a05c2-b88f-4b69-a136-46019f6274e9}">
 		<relationship name="effects">
 			<destination>{844bf311-c535-40ea-93cc-890a08f998db}</destination>
+			<destination>{132d1de1-2320-4233-a1a7-4fdf59d7854f}</destination>
 		</relationship>
 	</object>
 	<object class="MixerBusPanner" id="{345f0c6f-6aba-40d1-8ba5-1ffa7217ed60}" />
@@ -158,6 +162,20 @@
 	</object>
 	<object class="MixerBusPanner" id="{4a6520e5-93fc-4b05-b63a-5203dda41d63}" />
 	<object class="MixerBusFader" id="{844bf311-c535-40ea-93cc-890a08f998db}" />
+	<object class="MultibandEqEffect" id="{132d1de1-2320-4233-a1a7-4fdf59d7854f}">
+		<property name="filterTypeA">
+			<value>8</value>
+		</property>
+		<property name="frequencyA">
+			<value>2396.7063</value>
+		</property>
+		<property name="qualityA">
+			<value>0.665137947</value>
+		</property>
+		<property name="gainA">
+			<value>-3.62068939</value>
+		</property>
+	</object>
 	<object class="AutomationPoint" id="{32fb4456-b271-431d-9c8a-e0c5312c6a18}">
 		<property name="position">
 			<value>138</value>

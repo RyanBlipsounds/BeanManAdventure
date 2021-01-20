@@ -7,6 +7,7 @@ public class ConversationHandler : MonoBehaviour
 
     public PlayerController _playerController;
     public GameState _gamestate;
+    public QuestList questList;
     // Start is called before the first frame update
     void Start()
     {
@@ -15,6 +16,11 @@ public class ConversationHandler : MonoBehaviour
 
     public void OnTriggerEnter2D(Collider2D collision)
     {
+        if (collision.gameObject.name == "StickHeart")
+        {
+            Debug.Log("Stick Heart");
+            questList.CompleteQuestItem("Find the Hidden Stick");
+        }
         if (collision.gameObject.tag == "NPC" || collision.gameObject.tag == "SideNPC" || collision.gameObject.name == "Fire Hydrant" || collision.gameObject.name == "ExitTown")
         {
             Debug.Log(collision.gameObject.name);

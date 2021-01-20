@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<objects serializationModel="Studio.02.01.00">
+	<object class="AudioFile" id="{f7933435-0ee6-474d-b3fa-a1a562375fa7}">
+		<property name="assetPath">
+			<value>VO/VO_FireHydrant.wav</value>
+		</property>
+		<property name="isStreaming">
+			<value>true</value>
+		</property>
+		<property name="frequencyInKHz">
+			<value>44.0999985</value>
+		</property>
+		<property name="channelCount">
+			<value>2</value>
+		</property>
+		<property name="length">
+			<value>10.741768707482994</value>
+		</property>
+		<relationship name="masterAssetFolder">
+			<destination>{79485d36-ec74-4e57-9401-e74df5e4eccf}</destination>
+		</relationship>
+	</object>
+</objects>

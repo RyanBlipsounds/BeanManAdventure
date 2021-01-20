@@ -27,24 +27,22 @@ public class ActManager : MonoBehaviour
     public GameObject GreenBenEnding;
     public GameObject BirthdayCakeEnding;
     public GameObject BeanManUncoolEnding;
-    public FMOD.Studio.EventInstance EndingMusicEvent;
-    public FMOD.Studio.EventInstance IsNotCoolMusicEvent;
     public GameObject credits;
     public GameObject spaceBar;
 
     public string EndingScreenText;
     public string BeangoScreenText = "It was an intense night of Beango, but Granny and Bean Man were an unstoppable force. It was all hazy, but it was one of the greatest nights of Bean Man and Granny's lives. Although something didn't feel quite right when Bean Man awoke in the morning. Someone had stolen his glasses. And he had to findout who took them.";
     public string ChickPeaEndingText = "In the quest to get his cool back, Bean Man ran the risk of selecting what he thought were his own glasses, but failed to recognize that Chickpea Deputy had been wearing them all along. Due to this, the glasses gave our Deputy enough confidence to unlock his wizard powers, thus ending the world, and preventing Bean Man from getting his cool back.";
-    public string BeanManWinEndingText = "There wasn't a snowballs chance in Beans hell that Bean Man was going to lose his cool today. In this journey, Bean Man thought that had lost his cool when he lost his glasses, but really the cool was inside of him all along. The whole town rejoiced as Bean Man has gotten his cool back.";
+    public string BeanManWinEndingText = "There wasn't a snowballs chance in Beans hell that Bean Man was going to lose his cool today. In this journey, Bean Man thought that he had lost his cool when he lost his glasses, but really the cool was inside of him all along. The whole town rejoiced as Bean Man has gotten his cool back.";
     public string BeanManLeavesCoolText = "BeanMan knew his cool was so high above Beantown's coolest bean, that he decided to leave. Even Lina Bean couldn't handle the sheer coolness of his cool. Is Bean Man just too cool for the rest of the Beans? He doesn't say so, but he must know so.";
     public string LinaBeanEndingText = "Once Bean Man realized that Lina had his glasses, it was too late. Lina had grown 300 meters and made her way across the Pacific Ocean to Tokyo Japan. Tokyo faced one of it's greatest disasters in Japan's history as Lina tore down the city. The recovery still remains to be seen. Also, Lina reveals that she was edamame the whole time.";
     public string PeanutTwinEndingText = "With great glasses comes great responsibility. After a tiring life of being referred to as the second twin, Peanut Twin number two took it upon himself to invent peanut butter with just a simple sacrifice from Peanut Twin number one and his good friend Butter. Peanut Twin number two made millions off of the idea, lost two of his best friends, and remained as Peanut Twin number two.";
-    public string GrannySmithEndingText = "As it turns out, Granny was always jealous of Bean Man. Being only the second coolest in town carries a heavy burden that she just couldn't bare. Bean Man could do nothing but watch as his closest homie take the throne and make the town hers. Stay tuned to find out what happens in the Bean Man sequel. Coming in 2077";
+    public string GrannySmithEndingText = "As it turns out, Granny was always jealous of Bean Man. Being only the second coolest in town carries a heavy burden that she just couldn't bare. Bean Man could do nothing but watch as his closest homie took the throne and made the town hers. Stay tuned to find out what happens in the Bean Man sequel. Coming in 2077";
     public string FireHydrantEndingText = ".....Seriously? You let a fire hydrant beat you? A fire hydrant is cooler than you. Just let that sink in.";
     public string SlimSausageWinningText = "Considering that Slim Sausage was a masterclass rapper, there was no chance that Bean Man could keep up with his cool once Sausage had his glasses. Slim Sausage went on to have an illustrious career where he would tour with Frank Sinatra to perform in front of millions, as well as performing for popular figures like Oprah Winbean and Pope Beanedict XVII.";
     public string BeanManLeavesBaggedText = "There was no point. Bean Man just didn't belong. Bean just felt that his life filled with cool had come to an end. He decided to move on to his next journey.";
     public string BeanManLeavesUncoolText = "There was no point. Bean Man just didn't belong. Bean just felt that his life filled with cool had come to an end. He decided to move on to his next journey.";
-    public string GreenBenEndingText = "With his cool shiny new glasses, Green Ben was looking and feeling better than ever. But because Green Ben is so selfless, he decided to give Bean Man his glasses back. And even though Bean Man had his glasses back, Green Ben was now the new king in town.";
+    public string GreenBenEndingText = "With his cool shiny new glasses, Green Ben was looking and feeling better than ever. But because Green Ben is so selfless, he decided to give Bean Man his glasses back. And even though Bean Man had his glasses back, GreenBen was now the new king in town.";
     public string BirthdayCakeEndingText = "Once the glasses belonged to Birthday Cake, they had the confidence to finally take the full measure they had been wanting to commit to this whole time... to become a delicious treat for their friends. After their friends enjoyed a delicious birthday treat, Birthday Cakes spirit was no longer trapped on earth, and could now live a long and prosperous afterlife.";
 
     public GameObject BeanManSpawnPosition;
@@ -63,7 +61,13 @@ public class ActManager : MonoBehaviour
 
     public UIController spacebar;
 
-    string FMODString = "event:/Good Ending";
+    public FMOD.Studio.EventInstance EndingMusicEvent;
+    public FMOD.Studio.EventInstance IsNotCoolMusicEvent;
+    public FMOD.Studio.EventInstance NarrationVOEvent;
+
+    string FMODMusic = "event:/Good Ending";
+    string FMODVO = "event:/VO_Beango";
+    float graphicTime = 20f;
 
     public enum sceneState
     {
@@ -87,7 +91,9 @@ public class ActManager : MonoBehaviour
             if (m_gameState.beanState == GameState.gameState.BEANGOHINT || m_gameState.beanState == GameState.gameState.ISNOTCOOL) {
                 EndingScreen = BeangoScreen;
                 EndingScreenText = BeangoScreenText;
-                FMODString = "event:/Beango Music";
+                graphicTime = 20f;
+                FMODMusic = "event:/Beango Music";
+                FMODVO = "event:/VO_Beango";
             }
             if (m_gameState.beanState == GameState.gameState.ISCOOL)
             {
@@ -97,11 +103,11 @@ public class ActManager : MonoBehaviour
             {
                 //LoadGraphic(EndingScreen);
             }
-            LoadGraphic(EndingScreen, FMODString);
+            LoadGraphic(EndingScreen, FMODMusic, FMODVO, graphicTime);
         }
     }
 
-    private void FadeToBlack(sceneState state, GameObject graphic, GameObject oldGraphic, string FMODString)
+    private void FadeToBlack(sceneState state, GameObject graphic, GameObject oldGraphic, string FMODMusic, string FMODVO)
     {
         float blackScreenTmp;
 
@@ -117,17 +123,20 @@ public class ActManager : MonoBehaviour
             if (m_gameState.beanState == GameState.gameState.BEANGOHINT && hasPlayed == false)
                
             {
-
-                EndingMusicEvent = FMODUnity.RuntimeManager.CreateInstance(FMODString);
+                NarrationVOEvent = FMODUnity.RuntimeManager.CreateInstance(FMODVO);
+                EndingMusicEvent = FMODUnity.RuntimeManager.CreateInstance(FMODMusic);
                 EndingMusicEvent.start();
+                NarrationVOEvent.start();
 
                 m_gameState.IsNotCool();
                 hasPlayed = true;
             }else if (m_gameState.beanState == GameState.gameState.ISBAGGED && hasPlayed == false)
             {
                 IsNotCoolMusicEvent.stop(FMOD.Studio.STOP_MODE.ALLOWFADEOUT);
-                EndingMusicEvent = FMODUnity.RuntimeManager.CreateInstance(FMODString);
+                NarrationVOEvent = FMODUnity.RuntimeManager.CreateInstance(FMODVO);
+                EndingMusicEvent = FMODUnity.RuntimeManager.CreateInstance(FMODMusic);
                 EndingMusicEvent.start();
+                NarrationVOEvent.start();
                 m_gameState.Ending();
 
                 hasPlayed = true;
@@ -177,7 +186,7 @@ public class ActManager : MonoBehaviour
         }
     }
 
-    public void LoadGraphic(GameObject graphic, string FMODString)
+    public void LoadGraphic(GameObject graphic, string FMODMusic, string FMODVO, float graphicTime)
     {
         activateGraphicTransition = true;
         EndingScreen = graphic;
@@ -189,7 +198,7 @@ public class ActManager : MonoBehaviour
         
         if (sceneTransitionState == sceneState.started)
         {
-            FadeToBlack(sceneState.graphic, graphic, null, FMODString);
+            FadeToBlack(sceneState.graphic, graphic, null, FMODMusic, FMODVO);
         }
         if (sceneTransitionState == sceneState.graphic)
         {
@@ -204,19 +213,19 @@ public class ActManager : MonoBehaviour
                 {
                     sceneTransitionState = sceneState.backtoscene;
                 }
-                if (graphicShowTime >= 10)
+                if (graphicShowTime >= graphicTime)
                 {
                     sceneTransitionState = sceneState.backtoscene;
                 }
             }
             else if (graphic != BeangoScreen && _endingsManager.endingsSeenList.Count <= 1)
             {
-                if (graphicShowTime >= 35)
+                if (graphicShowTime >= 40)
                 {
                     sceneTransitionState = sceneState.backtoscene;
                 }
 
-                if (graphicShowTime >= 12 && !creditsRolling)
+                if (graphicShowTime >= graphicTime && !creditsRolling)
                 {
                     Debug.Log("Credits Rolling");
                     creditsRolling = true;
@@ -234,7 +243,7 @@ public class ActManager : MonoBehaviour
                         sceneTransitionState = sceneState.backtoscene;
                     }
                 }
-                if (graphicShowTime >= 7)
+                if (graphicShowTime >= graphicTime)
                 {
                     sceneTransitionState = sceneState.backtoscene;
                 }
@@ -242,12 +251,12 @@ public class ActManager : MonoBehaviour
         }
         if (sceneTransitionState == sceneState.backtoscene)
         {
-
+            NarrationVOEvent.stop(FMOD.Studio.STOP_MODE.ALLOWFADEOUT);
             EndingMusicEvent.stop(FMOD.Studio.STOP_MODE.ALLOWFADEOUT);
             Debug.Log("STOP TEST");
 
             spacebar.isActive = false;
-            FadeToBlack(sceneState.started, null, graphic, FMODString);
+            FadeToBlack(sceneState.started, null, graphic, FMODMusic, FMODVO);
             if (sceneTransitionState == sceneState.started)    
             {
                 Debug.Log("CHEESE PIZZA IS STILL NOT COOL");
@@ -277,70 +286,94 @@ public class ActManager : MonoBehaviour
     {
         if (ending == "Beanman")
         {
-            FMODString = "event:/Good Ending";
+            graphicTime = 12.5f;
+            FMODVO = "event:/VO_BeanmanWin";
+            FMODMusic = "event:/Good Ending";
             EndingScreen = BeanManWinEnding;
             EndingScreenText = BeanManWinEndingText;
         }
         if (ending == "Beanman Leaves Bag Town") {
-            FMODString = "event:/Good Ending";
+            graphicTime = 10f;
+            FMODVO = "event:/VO_BeanLeavesTownUncool";
+            FMODMusic = "event:/Good Ending";
             EndingScreen = BeanManLeavesTown;
             EndingScreenText = BeanManLeavesBaggedText;
         }
         if (ending == "Beanman Leaves Cool Town") {
-            FMODString = "event:/Good Ending";
+            graphicTime = 14f;
+            FMODVO = "VO_BeanmanLeaveCool";
+            FMODMusic = "event:/Good Ending";
             EndingScreenText = BeanManLeavesCoolText;
             EndingScreen = BeanManLeavesTown;
         }
         if (ending == "Beanman Leaves Uncool Town"){
-            FMODString = "event:/Good Ending";
+            graphicTime = 10f;
+            FMODVO = "event:/VO_BeanLeavesTownUncool";
+            FMODMusic = "event:/Good Ending";
             EndingScreenText = BeanManLeavesUncoolText;
             EndingScreen = BeanManLeavesTown;
         }
-        if (ending == "Lina Bean") 
+        if (ending == "Lina Bean")
         {
-            FMODString = "event:/Less Bad Ending";
+            graphicTime = 19f;
+            FMODVO = "event:/VO_LinaBean";
+            FMODMusic = "event:/Less Bad Ending";
             EndingScreenText = LinaBeanEndingText;
             EndingScreen = LinaBeanEnding;
         }
         if (ending == "Chickpea Deputy")
         {
-            FMODString = "event:/Bad Ending";
+            graphicTime = 19f;
+            FMODVO = "event:/VO_Chickpea";
+            FMODMusic = "event:/Bad Ending";
             EndingScreenText = ChickPeaEndingText;
             EndingScreen = ChickPeaEnding;
         }
         if (ending == "Granny Smith")
         {
-            FMODString = "event:/Bad Ending";
+            graphicTime = 18f;
+            FMODVO = "event:/VO_GrannySmith";
+            FMODMusic = "event:/Bad Ending";
             EndingScreenText = GrannySmithEndingText;
             EndingScreen = GrannySmithEnding;
         }
         if (ending == "Peanut Twins")
         {
-            FMODString = "event:/Bad Ending";
+            graphicTime = 18f;
+            FMODVO = "event:/VO_PeanutTwin";
+            FMODMusic = "event:/Bad Ending";
             EndingScreenText = PeanutTwinEndingText;
             EndingScreen = PeanutTwinEnding;
         }
         if (ending == "Slim Sausage")
         {
-            FMODString = "event:/Good Ending";
+            graphicTime = 18f;
+            FMODVO = "event:/VO_SlimSausage";
+            FMODMusic = "event:/Good Ending";
             EndingScreenText = SlimSausageWinningText;
             EndingScreen = SlimSausageWinning;
         }
         if (ending == "Birthday Cake")
         {
-            FMODString = "event:/Less Bad Ending";
+            graphicTime = 16f;
+            FMODVO = "event:/VO_BirthdayCake";
+            FMODMusic = "event:/Less Bad Ending";
             EndingScreenText = BirthdayCakeEndingText;
             EndingScreen = BirthdayCakeEnding;
         }
         if (ending == "GreenBen")
         {
-            FMODString = "event:/Good Ending";
+            graphicTime = 15f;
+            FMODVO = "event:/VO_GreenBen";
+            FMODMusic = "event:/Good Ending";
             EndingScreenText = GreenBenEndingText;
             EndingScreen = GreenBenEnding;
         }
         if (ending == "Fire Hydrant")
         {
-            FMODString = "event:/Less Bad Ending";
+            graphicTime = 13f;
+            FMODVO = "event:/VO_FireHydrant";
+            FMODMusic = "event:/Less Bad Ending";
             EndingScreenText = FireHydrantEndingText;
             EndingScreen = FireHydrantEnding;
         }
@@ -353,8 +386,7 @@ public class ActManager : MonoBehaviour
 
         activateGraphicTransition = true;
 
-        LoadGraphic(EndingScreen, FMODString);
+        LoadGraphic(EndingScreen, FMODMusic, FMODVO, graphicTime);
 
     }
-
 }

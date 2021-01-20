@@ -93,14 +93,14 @@ public class GameState : MonoBehaviour
     {
         if (_playerController.scriptNPCList.Count > 1)
         {
-            if (endingsManager.endingsSeenList[endingsManager.endingsSeenList.Count - 1] == _actManager.BirthdayCakeEnding ||
-                endingsManager.endingsSeenList[endingsManager.endingsSeenList.Count - 1] == _actManager.LinaBeanEnding ||
+            if (endingsManager.endingsSeenList[endingsManager.endingsSeenList.Count - 1] == _actManager.LinaBeanEnding ||
                     endingsManager.endingsSeenList[endingsManager.endingsSeenList.Count - 1] == _actManager.FireHydrantEnding)
             {
                 StartMusic = FMODUnity.RuntimeManager.CreateInstance("event:/Enter Beanman");
                 StartMusic.start();
             }
             else if(endingsManager.endingsSeenList[endingsManager.endingsSeenList.Count - 1] == _actManager.ChickPeaEnding || 
+                endingsManager.endingsSeenList[endingsManager.endingsSeenList.Count - 1] == _actManager.BirthdayCakeEnding || 
                 endingsManager.endingsSeenList[endingsManager.endingsSeenList.Count - 1] == _actManager.GrannySmithEnding ||
                 endingsManager.endingsSeenList[endingsManager.endingsSeenList.Count - 1] == _actManager.PeanutTwinEnding)
             {
@@ -329,7 +329,7 @@ public class GameState : MonoBehaviour
         
         if (gameObjectName == "Black Eyed Pea")
         {
-            conversationDict["ISCOOL"] = "Whatsup Beanman! What kind of adventures are you getting into this time?";
+            conversationDict["ISCOOL"] = "Whatsup Beanman! Remember to hit 'Q' to check out your quests!";
 
             if (endingsManager.endingsSeenList.Count > 0)
             {
@@ -791,7 +791,7 @@ public class GameState : MonoBehaviour
                 }
                 if (endingsManager.endingsSeenList[endingsManager.endingsSeenList.Count - 1] == _actManager.GreenBenEnding)
                 {
-                    conversationDict["ISCOOL"] = "Green Ben gave us a picky back ride today!";
+                    conversationDict["ISCOOL"] = "Green Ben gave us a piggy back ride today!";
                 }
                 if (endingsManager.endingsSeenList[endingsManager.endingsSeenList.Count - 1] == _actManager.BirthdayCakeEnding)
                 {
@@ -820,7 +820,7 @@ public class GameState : MonoBehaviour
         // Conversation laoding for Greenben
         if (gameObjectName == "GreenBen")
         {
-            conversationDict["ISCOOL"] = "Is that you Bean Man?. I really hope I can feel better soon.";
+            conversationDict["ISCOOL"] = "Is that you Bean Man? I really hope I can feel better soon.";
             if (endingsManager.endingsSeenList.Count > 0)
             {
                 if (endingsManager.endingsSeenList[endingsManager.endingsSeenList.Count - 1] == _actManager.BeanManUncoolEnding ||
@@ -1178,6 +1178,7 @@ public class GameState : MonoBehaviour
                 butter.ButterLives();
             }
         }
+        _hideyHole.NewPeeperSet();
         poparazziCorn.ChangeLocation();
         chickPeaLogic.ChickPeaWizardMode();
         cornLady.CornLadyHibernate();

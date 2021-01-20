@@ -151,74 +151,74 @@ public class ReplayEnding : MonoBehaviour
 
     private void ChickPeaEndingClicked()
     {
-        _actManager.LoadGraphic(ChickPeaEnding, "event:/Good Ending");
+        _actManager.LoadGraphic(ChickPeaEnding, "event:/Good Ending", "event:/VO_Chickpea", 19f);
         _actManager.EndingScreenText = _actManager.ChickPeaEndingText;
     }
 
     private void BeanManWinEndingClicked()
     {
-        _actManager.LoadGraphic(BeanManWinEnding, "event:/Good Ending");
+        _actManager.LoadGraphic(BeanManWinEnding, "event:/Good Ending", "event:/VO_BeanmanWin", 12.5f);
         _actManager.EndingScreenText = _actManager.BeanManWinEndingText;
     }
 
     private void LinaBeanEndingClicked()
     {
-        _actManager.LoadGraphic(LinaBeanEnding, "event:/Good Ending");
+        _actManager.LoadGraphic(LinaBeanEnding, "event:/Good Ending", "event:/VO_LinaBean", 19f);
         _actManager.EndingScreenText = _actManager.LinaBeanEndingText;
     }
 
     private void PeanutTwinEndingClicked()
     {
-        _actManager.LoadGraphic(PeanutTwinEnding, "event:/Good Ending");
+        _actManager.LoadGraphic(PeanutTwinEnding, "event:/Good Ending", "event:/VO_PeanutTwin", 18f);
         _actManager.EndingScreenText = _actManager.PeanutTwinEndingText;
 
     }
 
     private void GrannySmithEndingClicked()
     {
-        _actManager.LoadGraphic(GrannySmithEnding, "event:/Good Ending");
+        _actManager.LoadGraphic(GrannySmithEnding, "event:/Good Ending", "event:/VO_GrannySmith", 18f);
         _actManager.EndingScreenText = _actManager.GrannySmithEndingText;
     }
 
     private void FireHydrantEndingClicked()
     {
-        _actManager.LoadGraphic(FireHydrantEnding, "event:/Good Ending");
+        _actManager.LoadGraphic(FireHydrantEnding, "event:/Good Ending", "event:/VO_FireHydrant", 9.5f);
         _actManager.EndingScreenText = _actManager.FireHydrantEndingText;
     }
 
     private void SlimSausageWinningClicked()
     {
-        _actManager.LoadGraphic(SlimSausageWinning, "event:/Good Ending");
+        _actManager.LoadGraphic(SlimSausageWinning, "event:/Good Ending", "event:/VO_SlimSausage", 18f);
         _actManager.EndingScreenText = _actManager.SlimSausageWinningText;
     }
 
     private void BeanManLeavesBaggedClicked()
     {
-        _actManager.LoadGraphic(BeanManLeavesBagged, "event:/Good Ending");
+        _actManager.LoadGraphic(BeanManLeavesBagged, "event:/Good Ending", "event:/VO_BeanLeavesTownUncool", 10f);
         _actManager.EndingScreenText = _actManager.BeanManLeavesBaggedText;
     }
 
     private void BeanManLeavesTownClicked()
     {
-        _actManager.LoadGraphic(BeanManLeavesTown, "event:/Good Ending");
+        _actManager.LoadGraphic(BeanManLeavesTown, "event:/Good Ending", "event:/VO_BeanmanLeaveCool", 14f);
         _actManager.EndingScreenText = _actManager.BeanManLeavesCoolText;
     }
 
     private void GreenBenEndingClicked()
     {
-        _actManager.LoadGraphic(GreenBenEnding, "event:/Good Ending");
+        _actManager.LoadGraphic(GreenBenEnding, "event:/Good Ending", "event:/VO_GreenBen", 15f);
         _actManager.EndingScreenText = _actManager.GreenBenEndingText;
     }
 
     private void BirthdayCakeEndingClicked()
     {
-        _actManager.LoadGraphic(BirthdayCakeEnding, "event:/Good Ending");
+        _actManager.LoadGraphic(BirthdayCakeEnding, "event:/Good Ending", "event:/VO_BirthdayCake", 16f);
         _actManager.EndingScreenText = _actManager.BirthdayCakeEndingText;
     }
 
     private void BeanManUncoolEndingClicked()
     {
-        _actManager.LoadGraphic(BeanManUncoolEnding, "event:/Good Ending");
+        _actManager.LoadGraphic(BeanManUncoolEnding, "event:/Good Ending", "event:/VO_BeanLeavesTownUncool", 10f);
         _actManager.EndingScreenText = _actManager.BeanManLeavesUncoolText;
     }
 }

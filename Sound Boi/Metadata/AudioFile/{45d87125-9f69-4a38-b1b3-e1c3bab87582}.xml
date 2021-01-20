@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<objects serializationModel="Studio.02.01.00">
+	<object class="AudioFile" id="{45d87125-9f69-4a38-b1b3-e1c3bab87582}">
+		<property name="assetPath">
+			<value>VO/VO_BirthdayCake.wav</value>
+		</property>
+		<property name="isStreaming">
+			<value>true</value>
+		</property>
+		<property name="frequencyInKHz">
+			<value>44.0999985</value>
+		</property>
+		<property name="channelCount">
+			<value>2</value>
+		</property>
+		<property name="length">
+			<value>17.137414965986395</value>
+		</property>
+		<relationship name="masterAssetFolder">
+			<destination>{79485d36-ec74-4e57-9401-e74df5e4eccf}</destination>
+		</relationship>
+	</object>
+</objects>

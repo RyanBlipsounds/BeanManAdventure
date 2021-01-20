@@ -127,7 +127,19 @@ public class UILogic : MonoBehaviour
             }
             if (endingsManager.endingsSeenList.Count > 3)
             {
-                questList.ActivateQuestItem("Scare Stick Away");
+                questList.ActivateQuestItem("Scare the Stick Away");
+            }
+            if (endingsManager.endingsSeenList.Count > 8)
+            {
+                questList.ActivateQuestItem("Get Lemonade Stand");
+            }
+            if (endingsManager.endingsSeenList.Count == 5)
+            {
+                questList.ActivateQuestItem("Find the Hidden Stick");
+            }
+            if (endingsManager.endingsSeenList.Count == 10)
+            {
+                questList.ActivateQuestItem("Find Every Ending");
             }
             if (endingsManager.endingsSeenList.Contains(_actManager.BeanManWinEnding))
             {

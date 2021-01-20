@@ -17,6 +17,7 @@ public class UIController : MonoBehaviour
     public GameObject EndPoint;
     public float speed = 1.0f;
     public PlayerController _playerController;
+    public QuestList questList;
 
     public EndingsManager endingsManager;
 
@@ -41,10 +42,7 @@ public class UIController : MonoBehaviour
     private void OnTriggerEnter2D(Collider2D collision)
 
     {
-        if (collision.gameObject.name == "Trigger")
-        {
-            Debug.Log("WENUS");
-        }
+
     }
 
     private void OnTriggerExit2D(Collider2D collision)
@@ -63,9 +61,17 @@ public class UIController : MonoBehaviour
 
 
         if (isActive)
-        { 
+        {
+
+            if (thisGameObject == "DialogueBox")
+            {
+                gameState.StartMusic.setParameterByName("CharacterProx", 1);
+                _actManager.IsNotCoolMusicEvent.setParameterByName("CharacterProx", 1);
+            }
+
             if (thisGameObject == "NarrationBox")
             {
+                speed = 4.0f;
                 narrationBoxText.ShowText(_actManager.EndingScreenText);
             }
             Debug.Log(gameState.beanState);
@@ -75,6 +81,10 @@ public class UIController : MonoBehaviour
             }
             if (!textActivated && thisGameObject == "DialogueBox")
             {
+                if (_playerController.thisCharacter.gameObject.name == "Lemonade Stand" && endingsManager.endingsSeenList.Count > 7)
+                {
+                    questList.CompleteQuestItem("Get Lemonade Stand");
+                }
                 //dialogueBoxAnimator.onCharacterVisible
                 bool hasNPC = false;
                 hasNPC = false;
@@ -116,6 +126,11 @@ public class UIController : MonoBehaviour
         }
         else
         {
+            if (thisGameObject == "DialogueBox")
+            {
+                gameState.StartMusic.setParameterByName("CharacterProx", 0);
+                _actManager.IsNotCoolMusicEvent.setParameterByName("CharacterProx", 0);
+            }
             if (thisGameObject == "NarrationBox")
             {
                 narrationBoxText.StopShowingText();

@@ -10811,10 +10811,11 @@ MonoBehaviour:
   credits: {fileID: 0}
   spaceBar: {fileID: 0}
   EndingScreenText: 
-  BeangoScreenText: It was a sweaty night of Beango, but Granny and Bean Man cleaned
-    up the house. They were an unstoppable force. It was all hazy, but it was one
-    of the greatest nights of Bean Man and Granny's lives. Although something didn't
-    feel quite right when Bean Man awoke in the morning. Bean had lost his glasses.
+  BeangoScreenText: It was an intense night of Beango, but Granny and Bean Man were
+    an unstoppable force. It was all hazy, but it was one of the greatest nights
+    of Bean Man and Granny's lives. Although something didn't feel quite right when
+    Bean Man awoke in the morning. Someone had stolen his glasses. And he had to
+    findout who took them.
   ChickPeaEndingText: In the quest to get his cool back, Bean Man ran the risk of
     selecting what he thought were his own glasses, but failed to recognize that
     Chickpea Deputy had been wearing them all along. Due to this, the glasses gave

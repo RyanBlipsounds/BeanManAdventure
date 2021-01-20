@@ -42,7 +42,22 @@ public class QuestListLayout : MonoBehaviour
             quest.QuestActivated();
             quest.QuestFinished();
         }
-
+        if (questList.completedQuestList.Count >= 18)
+        {
+            questList.completedQuestList[17].QuestHide();
+        }
+        if (questList.completedQuestList.Count >= 19)
+        {
+            questList.completedQuestList[18].QuestHide();
+        }
+        if (questList.completedQuestList.Count >= 20)
+        {
+            questList.completedQuestList[19].QuestHide();
+        }
+        if (questList.completedQuestList.Count >= 21)
+        {
+            questList.completedQuestList[20].QuestHide();
+        }
     }
 
     private void Update()
