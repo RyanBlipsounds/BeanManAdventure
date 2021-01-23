@@ -33,6 +33,7 @@ public class GlassesMove : MonoBehaviour
 
     public void MoveGlasses()
     {
+        return;
         if (characterName.gameObject.name == gameState.winningNPCGameObject.gameObject.name)
         {
             return;

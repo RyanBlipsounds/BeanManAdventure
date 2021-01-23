@@ -1087,8 +1087,8 @@ MonoBehaviour:
   Is3D: 0
   IsOneShot: 0
   Parameters:
-  - {fileID: -3588123590210671473}
-  - {fileID: 413533982633543937}
+  - {fileID: 496631892776562192}
+  - {fileID: 1879174967100104022}
   MinDistance: 0
   MaxDistance: 0
   Length: 114181
@@ -1507,6 +1507,26 @@ MonoBehaviour:
     data1: 0
     data2: 0
   Exists: 0
+--- !u!114 &-3613093479033376793
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fecb8ef7f94ca804a8ab72049b86782e, type: 3}
+  m_Name: parameter:/Enter Beanman/CharacterProx
+  m_EditorClassIdentifier: 
+  Name: CharacterProx
+  Min: 0
+  Max: 1
+  Default: 0
+  ID:
+    data1: 0
+    data2: 0
+  Exists: 1
 --- !u!114 &-3588123590210671473
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2085,6 +2105,26 @@ MonoBehaviour:
     data1: 0
     data2: 0
   Exists: 0
+--- !u!114 &-1457909237932446487
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fecb8ef7f94ca804a8ab72049b86782e, type: 3}
+  m_Name: parameter:/WrongBeat/BirthdayCakeProx
+  m_EditorClassIdentifier: 
+  Name: BirthdayCakeProx
+  Min: 0
+  Max: 1
+  Default: 1
+  ID:
+    data1: 0
+    data2: 0
+  Exists: 1
 --- !u!114 &-1414644542880751703
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2423,9 +2463,9 @@ MonoBehaviour:
   Is3D: 0
   IsOneShot: 0
   Parameters:
-  - {fileID: -6962768443264555080}
-  - {fileID: -729600020863771938}
-  - {fileID: 956095906821326010}
+  - {fileID: 2986339713998801435}
+  - {fileID: 103036080575369661}
+  - {fileID: -3613093479033376793}
   MinDistance: 0
   MaxDistance: 0
   Length: 114313
@@ -2622,12 +2662,14 @@ MonoBehaviour:
   - {fileID: -5393231353344176953}
   - {fileID: -2699213421995789912}
   - {fileID: -8958213956161222618}
+  - {fileID: 9193794853794691008}
+  - {fileID: 4353777349539453404}
   EditorParameters: []
   MasterBanks:
   - {fileID: 3369702041603077526}
   StringsBanks:
   - {fileID: 6392113596281031596}
-  stringsBankWriteTime: 637469117559280274
+  stringsBankWriteTime: 637469476693117125
   cacheVersion: 5
 --- !u!114 &33341630823138326
 MonoBehaviour:
@@ -2689,6 +2731,26 @@ MonoBehaviour:
     data1: 0
     data2: 0
   Exists: 0
+--- !u!114 &103036080575369661
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fecb8ef7f94ca804a8ab72049b86782e, type: 3}
+  m_Name: parameter:/Enter Beanman/Sax Transition
+  m_EditorClassIdentifier: 
+  Name: Sax Transition
+  Min: 0
+  Max: 1
+  Default: 0
+  ID:
+    data1: 0
+    data2: 0
+  Exists: 1
 --- !u!114 &114108606017116470
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2924,6 +2986,26 @@ MonoBehaviour:
   MinDistance: 0
   MaxDistance: 0
   Length: 120
+--- !u!114 &496631892776562192
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fecb8ef7f94ca804a8ab72049b86782e, type: 3}
+  m_Name: parameter:/NotCoolMusic/Bagged Transition
+  m_EditorClassIdentifier: 
+  Name: Bagged Transition
+  Min: 0
+  Max: 1
+  Default: 0
+  ID:
+    data1: 0
+    data2: 0
+  Exists: 1
 --- !u!114 &660735896007747007
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3402,6 +3484,26 @@ MonoBehaviour:
     data1: 0
     data2: 0
   Exists: 0
+--- !u!114 &1879174967100104022
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fecb8ef7f94ca804a8ab72049b86782e, type: 3}
+  m_Name: parameter:/NotCoolMusic/CharacterProx
+  m_EditorClassIdentifier: 
+  Name: CharacterProx
+  Min: 0
+  Max: 1
+  Default: 0
+  ID:
+    data1: 0
+    data2: 0
+  Exists: 1
 --- !u!114 &1954605045183859581
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3545,6 +3647,26 @@ MonoBehaviour:
   MinDistance: 0
   MaxDistance: 0
   Length: 35963
+--- !u!114 &2986339713998801435
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fecb8ef7f94ca804a8ab72049b86782e, type: 3}
+  m_Name: parameter:/Enter Beanman/BirthdayCakeProx
+  m_EditorClassIdentifier: 
+  Name: BirthdayCakeProx
+  Min: 0
+  Max: 1
+  Default: 1
+  ID:
+    data1: 0
+    data2: 0
+  Exists: 1
 --- !u!114 &2994711384550242061
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3642,7 +3764,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Path: ../Sound Boi/Build/Desktop/Master.bank
   Name: Master
-  lastModified: 637469117559110777
+  lastModified: 637469476692967479
   LoadResult: 0
   FileSizes: []
   Exists: 1
@@ -4087,6 +4209,30 @@ MonoBehaviour:
     data1: 0
     data2: 0
   Exists: 0
+--- !u!114 &4353777349539453404
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: event:/WrongBagged
+  m_EditorClassIdentifier: 
+  Path: event:/WrongBagged
+  guid: 9a9085b8d75a5240b3ba02bc97d1ea53
+  Banks:
+  - {fileID: 3369702041603077526}
+  IsStream: 1
+  Is3D: 0
+  IsOneShot: 0
+  Parameters:
+  - {fileID: 8948061498643831681}
+  MinDistance: 0
+  MaxDistance: 0
+  Length: 35909
 --- !u!114 &4525063142999476406
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4765,11 +4911,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Path: ../Sound Boi/Build/Desktop/Master.strings.bank
   Name: Master.strings
-  lastModified: 637469117559280274
+  lastModified: 637469476693117125
   LoadResult: 0
   FileSizes:
   - Name: 
-    Value: 3628
+    Value: 3728
   Exists: 1
 --- !u!114 &6425081137840762480
 MonoBehaviour:
@@ -5157,7 +5303,7 @@ MonoBehaviour:
   Is3D: 0
   IsOneShot: 0
   Parameters:
-  - {fileID: -178435243007754396}
+  - {fileID: 7456033096231814210}
   MinDistance: 0
   MaxDistance: 0
   Length: 35909
@@ -5181,6 +5327,26 @@ MonoBehaviour:
     data1: 0
     data2: 0
   Exists: 0
+--- !u!114 &7456033096231814210
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fecb8ef7f94ca804a8ab72049b86782e, type: 3}
+  m_Name: parameter:/After Bad Ending/BirthdayCakeProx
+  m_EditorClassIdentifier: 
+  Name: BirthdayCakeProx
+  Min: 0
+  Max: 1
+  Default: 1
+  ID:
+    data1: 0
+    data2: 0
+  Exists: 1
 --- !u!114 &7550461691168696841
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5753,3 +5919,47 @@ MonoBehaviour:
   MinDistance: 0
   MaxDistance: 0
   Length: 78302
+--- !u!114 &8948061498643831681
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fecb8ef7f94ca804a8ab72049b86782e, type: 3}
+  m_Name: parameter:/WrongBagged/BirthdayCakeProx
+  m_EditorClassIdentifier: 
+  Name: BirthdayCakeProx
+  Min: 0
+  Max: 1
+  Default: 1
+  ID:
+    data1: 0
+    data2: 0
+  Exists: 1
+--- !u!114 &9193794853794691008
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: event:/WrongBeat
+  m_EditorClassIdentifier: 
+  Path: event:/WrongBeat
+  guid: 9253f27a3f9f034c8f4b03a704b17270
+  Banks:
+  - {fileID: 3369702041603077526}
+  IsStream: 1
+  Is3D: 0
+  IsOneShot: 0
+  Parameters:
+  - {fileID: -1457909237932446487}
+  MinDistance: 0
+  MaxDistance: 0
+  Length: 36612

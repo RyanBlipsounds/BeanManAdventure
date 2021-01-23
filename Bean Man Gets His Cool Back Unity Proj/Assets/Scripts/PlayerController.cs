@@ -458,6 +458,10 @@ public class PlayerController : MonoBehaviour
 
     public void MoveToStart()
     {
+        foreach (NPC NPC in gameState.everyNPCList)
+        {
+            NPC.SetExclamation();
+        }
         transform.position = startTransform.transform.position;
     }
 
