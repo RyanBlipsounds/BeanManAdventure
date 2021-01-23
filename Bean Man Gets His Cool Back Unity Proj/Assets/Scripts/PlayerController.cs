@@ -220,6 +220,10 @@ public class PlayerController : MonoBehaviour
                 if (thisCharacter.gameObject.name == "Stick") {
                     return;
                 }
+                if (thisCharacter.gameObject.name == "Fire Hydrant" && gameState.beanState == GameState.gameState.WRONGBAGGED && !fireHydrantVomit.fireHydrantActivated)
+                {
+                    return;
+                }
                 if (thisCharacter.gameObject.name == "Fire Hydrant" && gameState.beanState == GameState.gameState.ISBAGGED && !fireHydrantVomit.fireHydrantActivated)
                 {
                     return;
@@ -413,6 +417,7 @@ public class PlayerController : MonoBehaviour
                     }
                     else
                     {
+                        gameState.wrongNPCGameObject = thisCharacter.gameObject;
                         _dialogueBox.dialogueBoxAnimator.ShowText(gameState.conversationDict["WRONGBAGGED"]);
                         gameState.beanState = GameState.gameState.WRONGBAGGED;
                         _actManager.IsNotCoolMusicEvent.stop(FMOD.Studio.STOP_MODE.IMMEDIATE);

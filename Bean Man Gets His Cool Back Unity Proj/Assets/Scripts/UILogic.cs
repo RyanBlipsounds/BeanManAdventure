@@ -170,7 +170,7 @@ public class UILogic : MonoBehaviour
     public void UpdateEndingsCount(int count)
     {
         endingsEncountered.SetActive(true);
-        endingsNumber.text = count + " / 9";
+        endingsNumber.text = count + " / 8";
     }
 
     public void CreditsClicked()

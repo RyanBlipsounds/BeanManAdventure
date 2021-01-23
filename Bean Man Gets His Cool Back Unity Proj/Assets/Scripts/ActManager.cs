@@ -68,6 +68,7 @@ public class ActManager : MonoBehaviour
     string FMODMusic = "event:/Good Ending";
     string FMODVO = "event:/VO_Beango";
     float graphicTime = 20f;
+    public float fadeTime = 2f;
 
     public enum sceneState
     {
@@ -111,7 +112,7 @@ public class ActManager : MonoBehaviour
     {
         float blackScreenTmp;
 
-        blackScreenTmp = Mathf.Lerp(0, 1, blackScreenTimeToFade / 2);
+        blackScreenTmp = Mathf.Lerp(0, 1, blackScreenTimeToFade / fadeTime);
 
         BlackScreen.color = new Color(0, 0, 0, blackScreenTmp);
 
@@ -123,16 +124,17 @@ public class ActManager : MonoBehaviour
             if (m_gameState.beanState == GameState.gameState.BEANGOHINT && hasPlayed == false)
                
             {
+                fadeTime = 2f;
                 NarrationVOEvent = FMODUnity.RuntimeManager.CreateInstance(FMODVO);
                 EndingMusicEvent = FMODUnity.RuntimeManager.CreateInstance(FMODMusic);
                 EndingMusicEvent.start();
                 NarrationVOEvent.start();
-
                 m_gameState.IsNotCool();
                 hasPlayed = true;
             }else if (m_gameState.beanState == GameState.gameState.ISBAGGED || m_gameState.beanState == GameState.gameState.WRONGBAGGED)
             {
                 if (hasPlayed == false) {
+                    fadeTime = 2f;
                     IsNotCoolMusicEvent.stop(FMOD.Studio.STOP_MODE.ALLOWFADEOUT);
                     _playerController.WrongMusicEvent.stop(FMOD.Studio.STOP_MODE.ALLOWFADEOUT);
                     _playerController.WrongBeatEvent.stop(FMOD.Studio.STOP_MODE.ALLOWFADEOUT);
@@ -141,12 +143,8 @@ public class ActManager : MonoBehaviour
                     EndingMusicEvent.start();
                     NarrationVOEvent.start();
                     m_gameState.Ending();
-
                     hasPlayed = true;
                 }
-            }else if (graphic == BeanManLeavesTown && hasPlayed == false) {
-                m_gameState.Ending();
-                hasPlayed = true;
             }
             blackScreenTimeToFade -= Time.deltaTime;
         }
@@ -168,7 +166,6 @@ public class ActManager : MonoBehaviour
 
                 if (m_gameState.beanState == GameState.gameState.ISNOTCOOL)
                 {
-                    Debug.Log("CHEESE PIZZA COOL MUSIC");
                     IsNotCoolMusicEvent = FMODUnity.RuntimeManager.CreateInstance("event:/NotCoolMusic");
                     IsNotCoolMusicEvent.start();
                 }
@@ -184,9 +181,6 @@ public class ActManager : MonoBehaviour
             sceneTransitionState = state;
             blackScreenTmp = 0;
             blackScreenTimeToFade = 0;
-
-            
-
         }
     }
 
@@ -194,6 +188,14 @@ public class ActManager : MonoBehaviour
     {
         activateGraphicTransition = true;
         EndingScreen = graphic;
+
+        if (m_gameState.beanState == GameState.gameState.WRONGBAGGED)
+        {
+            fadeTime = 3.5f;
+        }
+        else {
+            fadeTime = 2f;
+        }
 
         if (creditsRolling && sceneTransitionState != sceneState.backtoscene)
         {
