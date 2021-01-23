@@ -211,7 +211,7 @@ public class ActManager : MonoBehaviour
             graphicShowTime += Time.deltaTime;
             if (_endingsManager.endingsSeenList.Count > 1)
             {
-                if (graphicShowTime > 3)
+                if (graphicShowTime > 1)
                 {
                     spacebar.isActive = true;
                 }
@@ -240,7 +240,7 @@ public class ActManager : MonoBehaviour
             else if (graphic == BeangoScreen) {
                 if (_endingsManager.endingsSeenList.Count >= 1)
                 {
-                    if (graphicShowTime > 3)
+                    if (graphicShowTime > 1)
                     {
                         spacebar.isActive = true;
                     }

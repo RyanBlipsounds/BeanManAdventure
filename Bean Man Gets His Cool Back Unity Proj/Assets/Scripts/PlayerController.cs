@@ -418,8 +418,8 @@ public class PlayerController : MonoBehaviour
                     else
                     {
                         gameState.wrongNPCGameObject = thisCharacter.gameObject;
-                        _dialogueBox.dialogueBoxAnimator.ShowText(gameState.conversationDict["WRONGBAGGED"]);
                         gameState.beanState = GameState.gameState.WRONGBAGGED;
+                        _dialogueBox.dialogueBoxAnimator.ShowText(gameState.conversationDict["WRONGBAGGED"]);
                         _actManager.IsNotCoolMusicEvent.stop(FMOD.Studio.STOP_MODE.IMMEDIATE);
                         _responseBox.isActive = false;
                         foreach (NPC npc in scriptNPCList) {

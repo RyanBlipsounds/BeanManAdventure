@@ -843,12 +843,19 @@ public class GameState : MonoBehaviour
             conversationDict["BEANGOHINT"] = "Oh boy Beango? Gosh, I wish I was cool enough to join in!";
             conversationDict["WRONGBAGGED"] = "Seriously? Do you want me to lock you up? I bought these at the Bean Topic outlet.";
 
-
             if (beanState == gameState.WRONGBAGGED)
             {
                 if (winningNPCGameObject.gameObject.name == gameObjectName)
                 {
                     conversationDict["WRONGBAGGED"] = "YOU FOOL!";
+                }
+                else if (wrongNPCGameObject.name == gameObjectName)
+                {
+                    conversationDict["WRONGBAGGED"] = "Seriously? Do you want me to lock you up? I bought these at the Bean Topic outlet.";
+                }
+                else
+                {
+                    conversationDict["WRONGBAGGED"] = "Did I hear a rumor that you were casting slander across the great people of Beantown?";
                 }
             }
             return;
@@ -957,13 +964,19 @@ public class GameState : MonoBehaviour
             
             conversationDict["ISNOTCOOL"] = "*Swipes Left*";
             conversationDict["ISBAGGED"] = "Working out WON'T get my attention. *Wink*";
-            conversationDict["WRONGBAGGED"] = "How DARE you accuse me. We're through Beanman. I never want to see you again.";
 
             if (beanState == gameState.WRONGBAGGED)
             {
                 if (winningNPCGameObject.gameObject.name == gameObjectName)
                 {
-                    conversationDict["WRONGBAGGED"] = "I just had to do it Bean.";
+                    conversationDict["WRONGBAGGED"] = "I'm so sorry Bean.";
+                }
+                else if (wrongNPCGameObject.name == gameObjectName)
+                {
+                    conversationDict["WRONGBAGGED"] = "How DARE you accuse me. We're off for the movies this weekend!";
+                }
+                else {
+                    conversationDict["WRONGBAGGED"] = "Bean, why did you think " + wrongNPCGameObject.name  + " took the glasses?";
                 }
             }
             return;
@@ -1020,13 +1033,43 @@ public class GameState : MonoBehaviour
             conversationDict["ISBAGGED"] = "Hello sir! Are you interested in learning about a fun new religion?";
             conversationDict["BEANGOHINT"] = "Maybe if I go to beango I can get new members...";
             conversationDict["WRONGBAGGED"] = "Did these glasses not convince you to join my club? I bought these yesterday.";
-
-
+            
             if (beanState == gameState.WRONGBAGGED)
             {
-                if (winningNPCGameObject.gameObject.name == gameObjectName)
+                if (wrongNPCGameObject.name == gameObjectName)
                 {
-                    conversationDict["WRONGBAGGED"] = "Interested in some punch Beanman?";
+                    conversationDict["WRONGBAGGED"] = "I WISH I had your glasses. Maybe everyone would actually join my club.";
+                }
+                else
+                {
+                    if (winningNPCGameObject.gameObject.name == "Slim Sausage")
+                    {
+                        conversationDict["WRONGBAGGED"] = "I'm going to play Slims new album at my future cul... I mean, club meetings.";
+                    }
+                    if (winningNPCGameObject.gameObject.name == "Fire Hydrant")
+                    {
+                        conversationDict["WRONGBAGGED"] = "So... Do Fire Hydrants need to eat to survive?";
+                    }
+                    if (winningNPCGameObject.gameObject.name == "Chickpea Deputy")
+                    {
+                        conversationDict["WRONGBAGGED"] = "I hear Chickpea has a big speech coming up soon!";
+                    }
+                    if (winningNPCGameObject.gameObject.name == "Peanut Twins")
+                    {
+                        conversationDict["WRONGBAGGED"] = "I don't want to brag, but I gave Peanut Twins the idea for their new product.";
+                    }
+                    if (winningNPCGameObject.gameObject.name == "Birthday Cake")
+                    {
+                        conversationDict["WRONGBAGGED"] = "Interested in some punch Beanman?";
+                    }
+                    if (winningNPCGameObject.gameObject.name == "Lina Bean")
+                    {
+                        conversationDict["WRONGBAGGED"] = "So Lina's going to Tokyo... Hmm I wonder if I could hitch a ride.";
+                    }
+                    if (winningNPCGameObject.gameObject.name == "GreenBen")
+                    {
+                        conversationDict["WRONGBAGGED"] = "Oh! Yeah GreenBen is feeling better because of my club! Yep. That's it.";
+                    }
                 }
             }
             return;
@@ -1058,7 +1101,7 @@ public class GameState : MonoBehaviour
                 }
                 if (endingsManager.endingsSeenList[endingsManager.endingsSeenList.Count - 1] == _actManager.GreenBenEnding)
                 {
-                    conversationDict["ISCOOL"] = "Green Ben gave us a piggy back ride today!";
+                    conversationDict["ISCOOL"] = "GreenBen gave us a piggy back ride today!";
                 }
                 if (endingsManager.endingsSeenList[endingsManager.endingsSeenList.Count - 1] == _actManager.BirthdayCakeEnding)
                 {
@@ -1085,9 +1128,40 @@ public class GameState : MonoBehaviour
 
             if (beanState == gameState.WRONGBAGGED)
             {
-                if (winningNPCGameObject.gameObject.name == gameObjectName)
+                if (wrongNPCGameObject.name == gameObjectName)
                 {
-                    conversationDict["WRONGBAGGED"] = "Who needs friends when you have money!";
+                    conversationDict["WRONGBAGGED"] = "Seriously? Do you want me to lock you up? I bought these at the Bean Topic outlet.";
+                }
+                else
+                {
+                    if (winningNPCGameObject.gameObject.name == "Slim Sausage")
+                    {
+                        conversationDict["WRONGBAGGED"] = "I need to try listening to Slims old music before the new album drops!";
+                    }
+                    if (winningNPCGameObject.gameObject.name == "Fire Hydrant")
+                    {
+                        conversationDict["WRONGBAGGED"] = "I just saw Fire Hydrant trying to run away from town!";
+                    }
+                    if (winningNPCGameObject.gameObject.name == "Chickpea Deputy")
+                    {
+                        conversationDict["WRONGBAGGED"] = "Chickpea seems different lately.";
+                    }
+                    if (winningNPCGameObject.gameObject.name == "Peanut Twins")
+                    {
+                        conversationDict["WRONGBAGGED"] = "Who needs friends when you have money!";
+                    }
+                    if (winningNPCGameObject.gameObject.name == "Birthday Cake")
+                    {
+                        conversationDict["WRONGBAGGED"] = "I can't get ENOUGH of this punch.";
+                    }
+                    if (winningNPCGameObject.gameObject.name == "Lina Bean")
+                    {
+                        conversationDict["WRONGBAGGED"] = "Did Lina get leg implants?";
+                    }
+                    if (winningNPCGameObject.gameObject.name == "GreenBen")
+                    {
+                        conversationDict["WRONGBAGGED"] = "I'm nervous to ask, but do you think GreenBen would give us a piggy back ride?";
+                    }
                 }
             }
             return;
@@ -1141,14 +1215,44 @@ public class GameState : MonoBehaviour
             conversationDict["ISNOTCOOL"] = "Ouch, what happened to you?";
             conversationDict["ISBAGGED"] = "Oh you look much better now!";
             conversationDict["BEANGOHINT"] = "Beango sounds great but I think I need to get some rest.";
-            conversationDict["WRONGBAGGED"] = "Really? I got these glasses so I could stay in the sun longer. What got into you?";
 
 
             if (beanState == gameState.WRONGBAGGED)
             {
-                if (winningNPCGameObject.gameObject.name == gameObjectName)
+                if (wrongNPCGameObject.name == gameObjectName)
                 {
-                    conversationDict["WRONGBAGGED"] = "Oh hey Bean!";
+                    conversationDict["WRONGBAGGED"] = "Really? I got these glasses so I could stay in the sun longer. What got into you?";
+                }
+                else
+                {
+                    if (winningNPCGameObject.gameObject.name == "Slim Sausage")
+                    {
+                        conversationDict["WRONGBAGGED"] = "I'm going to jam out to Slims new album today. I can't wait!";
+                    }
+                    if (winningNPCGameObject.gameObject.name == "Fire Hydrant")
+                    {
+                        conversationDict["WRONGBAGGED"] = "I hear that Fire Hydrant grows a pair of legs when no one is looking.";
+                    }
+                    if (winningNPCGameObject.gameObject.name == "Chickpea Deputy")
+                    {
+                        conversationDict["WRONGBAGGED"] = "Does Chickpea look... sexier to you?";
+                    }
+                    if (winningNPCGameObject.gameObject.name == "Peanut Twins")
+                    {
+                        conversationDict["WRONGBAGGED"] = "I got a sneak taste of Peanut Twins new product!";
+                    }
+                    if (winningNPCGameObject.gameObject.name == "Birthday Cake")
+                    {
+                        conversationDict["WRONGBAGGED"] = "I can just chug this punch all day long.";
+                    }
+                    if (winningNPCGameObject.gameObject.name == "Lina Bean")
+                    {
+                        conversationDict["WRONGBAGGED"] = "I liked Lina better when she was shorter.";
+                    }
+                    if (winningNPCGameObject.gameObject.name == "GreenBen")
+                    {
+                        conversationDict["WRONGBAGGED"] = "Oh hey Bean!";
+                    }
                 }
             }
             return;
@@ -1202,14 +1306,44 @@ public class GameState : MonoBehaviour
             conversationDict["ISNOTCOOL"] = "Did I say mean Bean before? What I meant to say was gross.";
             conversationDict["ISBAGGED"] = "I'm feeling REAL good lately.";
             conversationDict["BEANGOHINT"] = "I'm rooting for you at Beango tonight my main man Bean Man!";
-            conversationDict["WRONGBAGGED"] = "Not cool Bean. You know I wear these glasses sometimes.";
 
 
             if (beanState == gameState.WRONGBAGGED)
             {
-                if (winningNPCGameObject.gameObject.name == gameObjectName)
+                if (wrongNPCGameObject.name == gameObjectName)
                 {
-                    conversationDict["WRONGBAGGED"] = "Oh, these glasses?";
+                    conversationDict["WRONGBAGGED"] = "Not cool Bean.You know I wear these glasses sometimes.";
+                }
+                else
+                {
+                    if (winningNPCGameObject.gameObject.name == "Slim Sausage")
+                    {
+                        conversationDict["WRONGBAGGED"] = "Oh, these glasses?";
+                    }
+                    if (winningNPCGameObject.gameObject.name == "Fire Hydrant")
+                    {
+                        conversationDict["WRONGBAGGED"] = "I think Fire Hydrant might be allergic to Beans";
+                    }
+                    if (winningNPCGameObject.gameObject.name == "Chickpea Deputy")
+                    {
+                        conversationDict["WRONGBAGGED"] = "I wouldn't mess with the Deputy as of late. I'm not vibing with his style.";
+                    }
+                    if (winningNPCGameObject.gameObject.name == "Peanut Twins")
+                    {
+                        conversationDict["WRONGBAGGED"] = "I'm a little upset that Peanut Twins didn't ask me to help with their new product.";
+                    }
+                    if (winningNPCGameObject.gameObject.name == "Birthday Cake")
+                    {
+                        conversationDict["WRONGBAGGED"] = "What's this about Birthday Cake's club? Maybe they'll let me perform at the next meeting.";
+                    }
+                    if (winningNPCGameObject.gameObject.name == "Lina Bean")
+                    {
+                        conversationDict["WRONGBAGGED"] = "Does it bother you that Lina is taller than you Bean?";
+                    }
+                    if (winningNPCGameObject.gameObject.name == "GreenBen")
+                    {
+                        conversationDict["WRONGBAGGED"] = "I've been listening to GreenBens Sound Cloud. His voice is kind of fire.";
+                    }
                 }
             }
             return;
