@@ -71,6 +71,7 @@ public class QuestList : MonoBehaviour
             return;
         }
 
+        FMODUnity.RuntimeManager.PlayOneShot("event:/NewQuest", this.transform.position);
         availableQuestList.Insert(0, selectedQuest);
         selectedQuest.QuestActivated();
         questNotification.isActive = true;
@@ -102,6 +103,7 @@ public class QuestList : MonoBehaviour
             ActivateQuestItem(characterName);
         }
 
+        FMODUnity.RuntimeManager.PlayOneShot("event:/NewQuest", this.transform.position);
         availableQuestList.Remove(selectedQuest);
         completedQuestList.Insert(0, selectedQuest);
         selectedQuest.QuestFinished();

@@ -20,6 +20,8 @@ public class FireHydrantVomit : MonoBehaviour
     public bool fireHydrantActivated = false;
     public bool hasVommittedThisRound = false;
 
+    public GameObject VomitColliders;
+
     public QuestList questList;
     public VomitScreen vomitScreen;
 
@@ -37,15 +39,12 @@ public class FireHydrantVomit : MonoBehaviour
     }
     public void AddVomitPuddle()
     {
-        if (hasVommittedThisRound == false)
+        SetVomitCount();
+        hasVommittedThisRound = true;
+        //VomitMap();
+        if (vomitCount >= vomitList.Count)
         {
-            SetVomitCount();
-            hasVommittedThisRound = true;
-            //VomitMap();
-            if (vomitCount >= vomitList.Count)
-            {
-                vomitScreen.gameObject.SetActive(true);
-            }
+            vomitScreen.gameObject.SetActive(true);
         }
     }
 
@@ -58,6 +57,7 @@ public class FireHydrantVomit : MonoBehaviour
         if (vomitCount >= vomitList.Count) {
             questList.CompleteQuestItem("Soak the Town in Vomit");
             map.sprite = vomitMap;
+            VomitColliders.SetActive(true);
         }
     }
 

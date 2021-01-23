@@ -38,5 +38,10 @@ public class AnimationSounds : MonoBehaviour
     void PlayFootstep(string sound)
     {
         FMODUnity.RuntimeManager.PlayOneShot(sound + " " + _surfaceDetector.surfaceName, this.transform.position);
+
+        if (_surfaceDetector.isWet)
+        {
+            FMODUnity.RuntimeManager.PlayOneShot("event:/Footsteps Wet", this.transform.position);
+        }
     }
 }

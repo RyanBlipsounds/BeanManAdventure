@@ -147,8 +147,6 @@ MonoBehaviour:
   UITmp: 0
   timeToFade: 0
   hideUI: 0
-  originalPosition: {fileID: 8546105143621721682}
-  rb: {fileID: 0}
   sprite: {fileID: 8059911818271634320}
 --- !u!1 &889348222434734441
 GameObject:
@@ -179,8 +177,7 @@ Transform:
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
-  - {fileID: 353742206097845493}
-  - {fileID: 7633175454836699103}
+  - {fileID: 6489045442495273469}
   m_Father: {fileID: 2312038113373758856}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -278,10 +275,10 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1220874818093408338}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0.01, y: 0, z: -0.00001}
+  m_LocalPosition: {x: 0.01, y: -0.11263926, z: -0.00001}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
-  m_Father: {fileID: 8856990646258134207}
+  m_Father: {fileID: 6489045442495273469}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!212 &1384248629183027983
@@ -335,6 +332,82 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!1 &1761688839738291152
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 6489045442495273469}
+  - component: {fileID: 1153514869727034460}
+  - component: {fileID: 5044239571847188775}
+  m_Layer: 0
+  m_Name: Actual Glasses
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &6489045442495273469
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1761688839738291152}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children:
+  - {fileID: 353742206097845493}
+  - {fileID: 7633175454836699103}
+  m_Father: {fileID: 8856990646258134207}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1153514869727034460
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1761688839738291152}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: da99da2642c31f44b94d2c79058b99d1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  rb: {fileID: 5044239571847188775}
+  m_Speed: 1
+  UITmp: 0
+  timeToFade: 0
+  characterName: {fileID: 2312038113373758853}
+  gameState: {fileID: 0}
+  hideUI: 0
+  leftSprite: {fileID: 1384248629183027983}
+  rightSprite: {fileID: 1002672527669420592}
+--- !u!50 &5044239571847188775
+Rigidbody2D:
+  serializedVersion: 4
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1761688839738291152}
+  m_BodyType: 1
+  m_Simulated: 1
+  m_UseFullKinematicContacts: 0
+  m_UseAutoMass: 0
+  m_Mass: 1
+  m_LinearDrag: 0
+  m_AngularDrag: 0.05
+  m_GravityScale: 1
+  m_Material: {fileID: 0}
+  m_Interpolate: 0
+  m_SleepingMode: 1
+  m_CollisionDetection: 0
+  m_Constraints: 0
 --- !u!1 &2076895824139503733
 GameObject:
   m_ObjectHideFlags: 0
@@ -496,7 +569,7 @@ MonoBehaviour:
   hasSpoken: 0
   glasses: {fileID: 889348222434734441}
   noGlasses: {fileID: 9029286352457924729}
-  actualGlasses: {fileID: 0}
+  actualGlasses: {fileID: 1761688839738291152}
   spriteRenderer: {fileID: 1384248629183027983}
   glassesList:
   - {fileID: 9005065327455587475, guid: 60ed65a7f2515be4c8f137ee62dcf92f, type: 3}
@@ -511,6 +584,7 @@ MonoBehaviour:
   - {fileID: 3373242119830239354, guid: 60ed65a7f2515be4c8f137ee62dcf92f, type: 3}
   - {fileID: 7453449074192417815, guid: 60ed65a7f2515be4c8f137ee62dcf92f, type: 3}
   - {fileID: -2820679870303600787, guid: 60ed65a7f2515be4c8f137ee62dcf92f, type: 3}
+  glassesMove: {fileID: 0}
   trafficContainer: {fileID: 8555222101757665438}
   ExclamationPoint: {fileID: 470479747567952011}
   exclamationUI: {fileID: 6739119042011355524}
@@ -565,10 +639,10 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2417638376913200079}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0.01, y: 0, z: -0.00001}
+  m_LocalPosition: {x: 0.01, y: -0.11263926, z: -0.00001}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
-  m_Father: {fileID: 8856990646258134207}
+  m_Father: {fileID: 6489045442495273469}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!212 &1002672527669420592

@@ -96,7 +96,7 @@ public class UIController : MonoBehaviour
                     }
                 }
 
-                if (gameState.beanState == GameState.gameState.BEANGOHINT && _playerController.scriptNPCList.Count >= 7 && endingsManager.endingsSeenList.Count > 0 && _playerController.thisCharacter.gameObject.name != "Granny Smith") {
+                if (gameState.beanState == GameState.gameState.BEANGOHINT && endingsManager.endingsSeenList.Count > 0 && _playerController.thisCharacter.gameObject.name != "Granny Smith") {
                     dialogueBoxAnimator.ShowText(gameState.conversationDict["ISCOOL"]);
                 }
                 else
@@ -105,7 +105,8 @@ public class UIController : MonoBehaviour
                 }
             }
 
-            if (!textActivated && thisGameObject == "ResponseBox") {
+            if (!textActivated && thisGameObject == "ResponseBox")
+            { 
                 if (_playerController.thisCharacter.gameObject.name == "ExitTown")
                 {
                     responseBoxTextYes.text = "Get me out of here";

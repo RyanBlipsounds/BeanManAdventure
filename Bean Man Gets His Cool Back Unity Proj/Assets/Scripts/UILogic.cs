@@ -137,9 +137,9 @@ public class UILogic : MonoBehaviour
             {
                 questList.ActivateQuestItem("Find the Hidden Stick");
             }
-            if (endingsManager.endingsSeenList.Count == 10)
+            if (endingsManager.endingsSeenList.Count == 9)
             {
-                questList.ActivateQuestItem("Find Every Ending");
+                questList.CompleteQuestItem("Find Every Ending");
             }
             if (endingsManager.endingsSeenList.Contains(_actManager.BeanManWinEnding))
             {
@@ -170,7 +170,7 @@ public class UILogic : MonoBehaviour
     public void UpdateEndingsCount(int count)
     {
         endingsEncountered.SetActive(true);
-        endingsNumber.text = count + " / 10";
+        endingsNumber.text = count + " / 9";
     }
 
     public void CreditsClicked()

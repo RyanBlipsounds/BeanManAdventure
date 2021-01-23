@@ -11,6 +11,9 @@ public class NPC : MonoBehaviour
     public SpriteRenderer spriteRenderer;
     public List<Sprite> glassesList = new List<Sprite>();
 
+    public GlassesMove glassesMove;
+
+
     public GameObject trafficContainer;
 
     public GameObject ExclamationPoint;
@@ -39,9 +42,11 @@ public class NPC : MonoBehaviour
         }
         glasses.SetActive(false);
         noGlasses.SetActive(true);
+        actualGlasses.SetActive(true);
     }
 
     public void ResetCoolStateNPC() {
+        actualGlasses.SetActive(true);
         glasses.SetActive(false);
         noGlasses.SetActive(true);
         isWinner = false;
@@ -53,9 +58,10 @@ public class NPC : MonoBehaviour
 
     public void Update()
     {
+
         var noglassesSpriteRenderer = noGlasses.GetComponent<SpriteRenderer>();
         var glassesSpriteRenderer = glasses.GetComponent<SpriteRenderer>();
-        var actualGlassesSpriteRenderer = glasses.GetComponent<SpriteRenderer>();
+        //var actualGlassesSpriteRenderer = glasses.GetComponent<SpriteRenderer>();
         
 
         if (gameObject.name == "Fire Hydrant") {
@@ -74,13 +80,13 @@ public class NPC : MonoBehaviour
             {
                 noglassesSpriteRenderer.flipX = true;
                 glassesSpriteRenderer.flipX = true;
-                actualGlassesSpriteRenderer.flipX = true;
+                //actualGlassesSpriteRenderer.flipX = true;
                 return;
             }
             isLeft = true;
             noglassesSpriteRenderer.flipX = false;
             glassesSpriteRenderer.flipX = false;
-            actualGlassesSpriteRenderer.flipX = false;
+            //actualGlassesSpriteRenderer.flipX = false;
 
         } else
         {
@@ -88,13 +94,13 @@ public class NPC : MonoBehaviour
             {
                 noglassesSpriteRenderer.flipX = false;
                 glassesSpriteRenderer.flipX = false;
-                actualGlassesSpriteRenderer.flipX = false;
+                //actualGlassesSpriteRenderer.flipX = false;
                 return;
             }
             isLeft = false;
             noglassesSpriteRenderer.flipX = true;
             glassesSpriteRenderer.flipX = true;
-            actualGlassesSpriteRenderer.flipX = true;
+            //actualGlassesSpriteRenderer.flipX = true;
         }
         
     }
@@ -113,11 +119,19 @@ public class NPC : MonoBehaviour
     {
         RemoveTrafficCone();
         glasses.SetActive(true);
+        actualGlasses.SetActive(true);
         noGlasses.SetActive(false);
         if (chickPeaLogic != null)
         {
             chickPeaLogic.ChickPeaWizardMode();
         }
+    }
+
+    public void RemoveGlasses()
+    {
+        Debug.Log(this.gameObject.name);
+        RemoveTrafficCone();
+        actualGlasses.SetActive(false);
     }
 
     public void AddExclamation()
@@ -150,13 +164,13 @@ public class NPC : MonoBehaviour
             }
         }else
         {
-    
             if (this.gameObject.name != "Granny Smith")
             {
                 ExclamationPoint.SetActive(false);
             }
             else
             {
+                hasSpoken = false;
                 ExclamationPoint.SetActive(true);
             }
         }

@@ -77,6 +77,10 @@ public class PlayerController : MonoBehaviour
     public Depth2D depth2D;
     public GameObject frontCensorBar;
 
+    public DynamicMusic dynamicMusic;
+
+    public FMOD.Studio.EventInstance WrongMusicEvent;
+
     void Start()
     {
         Bag.transform.position = m_BagStartPosition.transform.position;
@@ -86,7 +90,7 @@ public class PlayerController : MonoBehaviour
         BaggedBeanMan.SetActive(false);
 
         if (!scriptNPCList.Contains(grannySmith)) {
-            scriptNPCList.Add(grannySmith);
+            //scriptNPCList.Add(grannySmith);
         }
 
         _canTalkBox = GameObject.Find("CanTalkBox").GetComponent<UIController>();
@@ -199,6 +203,18 @@ public class PlayerController : MonoBehaviour
 
             if (Input.GetKeyDown(KeyCode.Space) && _dialogueBox.isActive == false)
             {
+                if (gameState.beanState == GameState.gameState.WRONGBAGGED) {
+                    if (thisCharacter.gameObject.GetComponent<NPC>())
+                    {
+                        NPC thisNPC = thisCharacter.gameObject.GetComponent<NPC>();
+                        if (thisNPC.isWinner)
+                        {
+                            Debug.Log("ENDING" + thisNPC.gameObject.name);
+                            _actManager.LoadEnding(thisNPC.gameObject.name);
+                        }
+                    }
+                }
+
                 if (thisCharacter.gameObject.name == "Stick") {
                     return;
                 }
@@ -214,7 +230,7 @@ public class PlayerController : MonoBehaviour
                 if (!scriptNPCList.Contains(thisCharacter.GetComponent<NPC>()))
                 {
                     // Handle Fire Hydrant NPC Logic
-                    if (thisCharacter.gameObject.name == "Fire Hydrant" && fireHydrantTalkCount < 4)
+                    if (thisCharacter.gameObject.name == "Fire Hydrant" && fireHydrantTalkCount < 2)
                     {
                         if (gameState.beanState == GameState.gameState.ISCOOL || gameState.beanState == GameState.gameState.BEANGOHINT) {
                             Debug.Log("PLUS PLUS");
@@ -310,13 +326,8 @@ public class PlayerController : MonoBehaviour
                                 }
                             }
                         }
-                        if (scriptNPCList.Count == gameState.listTotalNPC.Count || count > 0)
+                        if (scriptNPCList.Count >= gameState.listTotalNPC.Count || count > 0)
                         {
-                            _responseBox.isActive = true;
-                        }
-                        if (scriptNPCList.Count == gameState.listTotalNPC.Count - 1)
-                        {
-                            Debug.Log("Has NPC is true and it's beango hint AND this is granny smith");
                             _responseBox.isActive = true;
                         }
                     }
@@ -389,7 +400,7 @@ public class PlayerController : MonoBehaviour
 
                 return;
             }
-            if (thisCharacter.gameObject.tag != "SideNPC")
+            if (thisCharacter.gameObject.tag != "SideNPC" && gameState.beanState == GameState.gameState.ISBAGGED)
             {
                 if (thisCharacter.gameObject.GetComponent<NPC>())
                 {
@@ -400,36 +411,22 @@ public class PlayerController : MonoBehaviour
                     }
                     else
                     {
-                        Debug.Log("THIS IS NOT THE WINNER");
-                        foreach (NPC character in scriptNPCList)
-                        {
-                            if (character.isWinner == true)
+                        _dialogueBox.dialogueBoxAnimator.ShowText(gameState.conversationDict["WRONGBAGGED"]);
+                        gameState.beanState = GameState.gameState.WRONGBAGGED;
+                        _actManager.IsNotCoolMusicEvent.stop(FMOD.Studio.STOP_MODE.IMMEDIATE);
+                        _responseBox.isActive = false;
+                        foreach (NPC npc in scriptNPCList) {
+                            if (npc.gameObject.name == gameState.winningNPCGameObject.gameObject.name)
                             {
-                                Debug.Log("THIS IS NOT THE WINNER, selecting " + character.gameObject.name);
-                                _actManager.LoadEnding(character.gameObject.name);
-                                break;
+                                dynamicMusic.ChangeWinnerMusic();
+                                WrongMusicEvent = FMODUnity.RuntimeManager.CreateInstance("event:/WrongBagged");
+                                WrongMusicEvent.start();
+                                npc.AddExclamation();
                             }
+                            
                         }
                     }
                 }
-            }
-            else
-            {
-                if (gameState.beanState == GameState.gameState.BEANGOHINT || gameState.beanState == GameState.gameState.ISCOOL)
-                {
-                    Debug.Log("Leaves town bean");
-                    _actManager.LoadEnding("Beanman Leaves Cool Town");
-                }
-                if (gameState.beanState == GameState.gameState.ISNOTCOOL)
-                {
-                    _actManager.LoadEnding("Beanman Leaves Uncool Town");
-                }
-                if (gameState.beanState == GameState.gameState.ISBAGGED)
-                {
-                    _actManager.LoadEnding("Beanman Leaves Bag Town");
-                }
-                gameState.StartMusic.stop(FMOD.Studio.STOP_MODE.ALLOWFADEOUT);
-                gameState.beanState = GameState.gameState.ENDING;
             }
         }
         if (Input.GetKeyDown(KeyCode.N) && _responseBox.isActive == true)

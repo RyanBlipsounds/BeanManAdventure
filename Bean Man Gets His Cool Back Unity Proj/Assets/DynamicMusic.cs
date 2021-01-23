@@ -5,9 +5,13 @@ using UnityEngine;
 public class DynamicMusic : MonoBehaviour
 {
     public GameObject CharacterProximity;
+    public GameObject BirthdayCake;
     public float distanceToCake;
     public GameState gameState;
     public float distanceMult = 1f;
+
+    public PlayerController playerController;
+
     
     // Start is called before the first frame update
     void Start()
@@ -17,20 +21,37 @@ public class DynamicMusic : MonoBehaviour
 
     public void ChangeWinnerMusic()
     {
-        //Maybe change the gameobject it's tied to based on the winner?
+        CharacterProximity = gameState.winningNPCGameObject;
+    }
+
+    public void ChangeWinnerBirthdayCake()
+    {
+        CharacterProximity = BirthdayCake;
     }
 
     // Update is called once per frame
     void Update()
     {
+        if (gameState.beanState == GameState.gameState.WRONGBAGGED)
+        {
+            distanceMult = 0.34f;
+        }
+        else
+        {
+            distanceMult = 0.54f;
+        }
+
         distanceToCake = Vector3.Distance(this.gameObject.transform.position, CharacterProximity.gameObject.transform.position) * distanceMult;
 
         if (distanceToCake <= 3)
         {
+            playerController.WrongMusicEvent.setParameterByName("BirthdayCakeProx", distanceToCake);
             gameState.StartMusic.setParameterByName("BirthdayCakeProx", distanceToCake);
         }
         else {
+            playerController.WrongMusicEvent.setParameterByName("BirthdayCakeProx", distanceToCake);
             gameState.StartMusic.setParameterByName("BirthdayCakeProx", 1);
         }
+
     }
 }

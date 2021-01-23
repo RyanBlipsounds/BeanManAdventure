@@ -53,7 +53,7 @@
 			<destination>{6fb043a2-bc5e-4210-874b-6cfd9f03973c}</destination>
 		</relationship>
 		<relationship name="output">
-			<destination>{a31f9c5b-3e2d-431e-8b57-83f79c418715}</destination>
+			<destination>{461ddff5-f850-4e3f-97f3-b67c67d2de6f}</destination>
 		</relationship>
 	</object>
 	<object class="EventAutomatableProperties" id="{1aa7d82c-4138-4934-90d0-433636b39266}" />
@@ -76,7 +76,7 @@
 	</object>
 	<object class="EventMixerMaster" id="{392b8ace-3890-4fd5-930c-cbd2fcfdc649}">
 		<property name="volume">
-			<value>-18.5</value>
+			<value>-14.5</value>
 		</property>
 		<relationship name="effectChain">
 			<destination>{7d0bc8a0-b54b-4fa9-84ff-f750e3e48b40}</destination>
@@ -127,6 +127,7 @@
 	<object class="MixerBusEffectChain" id="{7d0bc8a0-b54b-4fa9-84ff-f750e3e48b40}">
 		<relationship name="effects">
 			<destination>{5c854ace-4e6b-497b-8059-56ef40008072}</destination>
+			<destination>{a35360cb-0fd4-4068-ac03-0b364babe5b9}</destination>
 		</relationship>
 	</object>
 	<object class="MixerBusPanner" id="{21e4b1be-4fca-4854-8643-ed0149decdf1}" />
@@ -161,6 +162,17 @@
 	</object>
 	<object class="MixerBusPanner" id="{13ad398a-57bd-4a48-b856-584540bf3835}" />
 	<object class="MixerBusFader" id="{5c854ace-4e6b-497b-8059-56ef40008072}" />
+	<object class="MultibandEqEffect" id="{a35360cb-0fd4-4068-ac03-0b364babe5b9}">
+		<property name="filterTypeA">
+			<value>8</value>
+		</property>
+		<property name="frequencyA">
+			<value>1113.47717</value>
+		</property>
+		<property name="gainA">
+			<value>4.65517426</value>
+		</property>
+	</object>
 	<object class="Automator" id="{644f6d2d-5da2-4da7-a1f5-cbf25df28854}">
 		<property name="nameOfPropertyBeingAutomated">
 			<value>attackTime</value>

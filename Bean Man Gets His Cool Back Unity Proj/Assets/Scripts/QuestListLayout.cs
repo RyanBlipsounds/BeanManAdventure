@@ -32,6 +32,8 @@ public class QuestListLayout : MonoBehaviour
 
     public void UpdateCompletedQuestList()
     {
+        FMODUnity.RuntimeManager.PlayOneShot("event:/JournalActivate");
+
         questCompletedCount.text = "Quests Completed " + questList.completedQuestList.Count.ToString() + "/" + questList.totalQuestItemsList.Count.ToString();
 
         lastCompletedQuestPosition = completedQuestsStartingPosition.gameObject.transform.position;
@@ -60,12 +62,4 @@ public class QuestListLayout : MonoBehaviour
         }
     }
 
-    private void Update()
-    {
-        if (Input.GetKeyDown(KeyCode.K))
-        {
-            UpdateCompletedQuestList();
-            UpdateQuestList();
-        }
-    }
 }

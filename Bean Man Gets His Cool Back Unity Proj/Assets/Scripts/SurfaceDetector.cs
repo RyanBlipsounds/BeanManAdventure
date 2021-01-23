@@ -4,7 +4,8 @@ using UnityEngine;
 
 public class SurfaceDetector : MonoBehaviour
 {
-    public string surfaceName; 
+    public string surfaceName;
+    public bool isWet;
 
     // Start is called before the first frame update
     void Start()
@@ -18,7 +19,12 @@ public class SurfaceDetector : MonoBehaviour
         {
             surfaceName = collision.gameObject.tag;
         }
-            
+
+        if (collision.gameObject.tag == "Wet")
+        {
+            isWet = true;
+        }
+
     }
 
     private void OnTriggerExit2D(Collider2D collision)
@@ -28,14 +34,9 @@ public class SurfaceDetector : MonoBehaviour
         {
             surfaceName = "Concrete";
         }
-
-    }
-
-
-
-    // Update is called once per frame
-    void Update()
-    {
-        
+        if (collision.gameObject.tag == "Wet")
+        {
+            isWet = false;
+        }
     }
 }

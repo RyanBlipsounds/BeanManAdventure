@@ -12,6 +12,7 @@ TagManager:
   - InactiveNPC
   - QuestItem
   - QuestComplete
+  - Wet
   layers:
   - Default
   - TransparentFX

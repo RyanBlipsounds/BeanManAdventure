@@ -53,7 +53,7 @@ public class GameState : MonoBehaviour
         ISNOTCOOL,
         ISBAGGED,
         BEANGOHINT,
-        MYGLASSES,
+        WRONGBAGGED,
         ENDING
     }
 
@@ -68,6 +68,10 @@ public class GameState : MonoBehaviour
     public FMOD.Studio.EventInstance StartMusic;
     public bool recentEndingPlayed = false;
 
+    public DynamicMusic dynamicMusic;
+
+    public GameObject winningNPCGameObject;
+
     private void Awake()
     {
         saveLoading.Load();
@@ -81,6 +85,7 @@ public class GameState : MonoBehaviour
         conversationDict.Add("ISNOTCOOL", "ISNOTCOOL");
         conversationDict.Add("ISBAGGED", "ISBAGGED");
         conversationDict.Add("BEANGOHINT", "BEANGOHINT");
+        conversationDict.Add("WRONGBAGGED", "WRONGBAGGED");
         ResetGame();
         if (beanState == gameState.BEANGOHINT) {
             IsBeanGoHint();
@@ -145,7 +150,6 @@ public class GameState : MonoBehaviour
     }
 
     public void Conversation(string gameObjectName, int count) {
-
         // Conversation loading for Exit town
         if (gameObjectName == "ExitTown") {
             conversationDict["ISCOOL"] = "Do you Want to Leave Town?";
@@ -159,7 +163,7 @@ public class GameState : MonoBehaviour
         if (gameObjectName == "Fire Hydrant")
         {
             Debug.Log(count);
-            if (count < 5)
+            if (count < 3)
             {
                 string dialogue = "..";
                 dialogue = "..";
@@ -192,7 +196,7 @@ public class GameState : MonoBehaviour
             conversationDict["ISCOOL"] = "My main man Bean Man! Beango isn't ready yet, go mingle with other peeps";
             conversationDict["BEANGOHINT"] = "Are you ready for Beango?";
             conversationDict["ISNOTCOOL"] = "Bean Man! Looks like you lost your glasses some how! Here, take this";
-            conversationDict["ISBAGGED"] = "Long time no See!";
+            conversationDict["ISBAGGED"] = "Beanman! Someone in town has your glasses! Try to talk to who you think took your glasses!";
             return;
         }
 
@@ -257,6 +261,7 @@ public class GameState : MonoBehaviour
             conversationDict["BEANGOHINT"] = "Hey you should get on to Beango."; // This state should push into Beango
             conversationDict["ISNOTCOOL"] = "I stink, you're hideous, we make the perfect pair!";
             conversationDict["ISBAGGED"] = "We can still team up though right?";
+            conversationDict["WRONGBAGGED"] = "Wow, I'm a little hurt that you would think I stole your glasses.";
             return;
         }
 
@@ -329,7 +334,7 @@ public class GameState : MonoBehaviour
         
         if (gameObjectName == "Black Eyed Pea")
         {
-            conversationDict["ISCOOL"] = "Whatsup Beanman! Remember to hit 'Q' to check out your quests!";
+            conversationDict["ISCOOL"] = "Whatsup Beanman! If you aren't sure what to do next, hit 'Q' to check out your quests!";
 
             if (endingsManager.endingsSeenList.Count > 0)
             {
@@ -996,6 +1001,8 @@ public class GameState : MonoBehaviour
         winningNPC.isWinner = true;
         copyNPC.Remove(winningNPC);
 
+        winningNPCGameObject = winningNPC.gameObject;
+
         NPC peanutTwinsNPC = peanutTwins.gameObject.GetComponent<NPC>();
 
         if (winningNPC.gameObject.name == "Peanut Twins")
@@ -1182,6 +1189,8 @@ public class GameState : MonoBehaviour
         poparazziCorn.ChangeLocation();
         chickPeaLogic.ChickPeaWizardMode();
         cornLady.CornLadyHibernate();
+
+        dynamicMusic.ChangeWinnerBirthdayCake();
 
         recentEndingPlayed = true;
 
