@@ -34,7 +34,7 @@ public class DynamicMusic : MonoBehaviour
     {
         if (gameState.beanState == GameState.gameState.WRONGBAGGED)
         {
-            distanceMult = 0.34f;
+            distanceMult = 0.14f;
         }
         else
         {
@@ -46,10 +46,12 @@ public class DynamicMusic : MonoBehaviour
         if (distanceToCake <= 3)
         {
             playerController.WrongMusicEvent.setParameterByName("BirthdayCakeProx", distanceToCake);
+            playerController.WrongBeatEvent.setParameterByName("BirthdayCakeProx", distanceToCake);
             gameState.StartMusic.setParameterByName("BirthdayCakeProx", distanceToCake);
         }
         else {
             playerController.WrongMusicEvent.setParameterByName("BirthdayCakeProx", distanceToCake);
+            playerController.WrongBeatEvent.setParameterByName("BirthdayCakeProx", distanceToCake);
             gameState.StartMusic.setParameterByName("BirthdayCakeProx", 1);
         }
 

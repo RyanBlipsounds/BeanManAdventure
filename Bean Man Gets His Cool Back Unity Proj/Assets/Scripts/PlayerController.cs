@@ -81,6 +81,8 @@ public class PlayerController : MonoBehaviour
 
     public FMOD.Studio.EventInstance WrongMusicEvent;
 
+    public FMOD.Studio.EventInstance WrongBeatEvent;
+
     void Start()
     {
         Bag.transform.position = m_BagStartPosition.transform.position;
@@ -421,6 +423,8 @@ public class PlayerController : MonoBehaviour
                                 dynamicMusic.ChangeWinnerMusic();
                                 WrongMusicEvent = FMODUnity.RuntimeManager.CreateInstance("event:/WrongBagged");
                                 WrongMusicEvent.start();
+                                WrongBeatEvent = FMODUnity.RuntimeManager.CreateInstance("event:/WrongBeat");
+                                WrongBeatEvent.start();
                                 npc.AddExclamation();
                             }
                             

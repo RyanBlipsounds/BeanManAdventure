@@ -135,6 +135,7 @@ public class ActManager : MonoBehaviour
                 if (hasPlayed == false) {
                     IsNotCoolMusicEvent.stop(FMOD.Studio.STOP_MODE.ALLOWFADEOUT);
                     _playerController.WrongMusicEvent.stop(FMOD.Studio.STOP_MODE.ALLOWFADEOUT);
+                    _playerController.WrongBeatEvent.stop(FMOD.Studio.STOP_MODE.ALLOWFADEOUT);
                     NarrationVOEvent = FMODUnity.RuntimeManager.CreateInstance(FMODVO);
                     EndingMusicEvent = FMODUnity.RuntimeManager.CreateInstance(FMODMusic);
                     EndingMusicEvent.start();
