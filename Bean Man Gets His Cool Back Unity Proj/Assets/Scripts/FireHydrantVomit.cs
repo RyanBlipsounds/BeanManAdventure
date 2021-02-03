@@ -56,6 +56,7 @@ public class FireHydrantVomit : MonoBehaviour
 
         if (vomitCount >= vomitList.Count) {
             questList.CompleteQuestItem("Soak the Town in Vomit");
+            questList.ActivateQuestItem("Lose to Fire");
             map.sprite = vomitMap;
             VomitColliders.SetActive(true);
         }

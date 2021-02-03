@@ -57,7 +57,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 470479747567952011}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0.006, y: 0.291, z: 0}
+  m_LocalPosition: {x: 0.006, y: 0.291, z: -0.0006}
   m_LocalScale: {x: 0.5892407, y: 0.5892407, z: 0.5892407}
   m_Children: []
   m_Father: {fileID: 2312038113373758856}
@@ -147,6 +147,10 @@ MonoBehaviour:
   UITmp: 0
   timeToFade: 0
   hideUI: 0
+  thisCharacter: {fileID: 0}
+  gameState: {fileID: 0}
+  shortLina: {fileID: 0}
+  tallLina: {fileID: 0}
   sprite: {fileID: 8059911818271634320}
 --- !u!1 &889348222434734441
 GameObject:

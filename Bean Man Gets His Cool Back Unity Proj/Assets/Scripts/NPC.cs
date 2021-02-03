@@ -13,6 +13,7 @@ public class NPC : MonoBehaviour
 
     public GlassesMove glassesMove;
 
+    public bool transitionWinner;
 
     public GameObject trafficContainer;
 
@@ -152,7 +153,6 @@ public class NPC : MonoBehaviour
     {
         if (gameState.beanState == GameState.gameState.ISCOOL && endingsManager.endingsSeenList.Count == 0)
         {
-
             if (this.gameObject.name != "Granny Smith")
             {
 
@@ -162,7 +162,20 @@ public class NPC : MonoBehaviour
             {
                 ExclamationPoint.SetActive(false);
             }
-        }else
+        }
+        else if(gameState.beanState == GameState.gameState.BEANGOHINT && endingsManager.endingsSeenList.Count > 0)
+        {
+            if (!transitionWinner)
+            {
+
+                ExclamationPoint.SetActive(false);
+            }
+            else
+            {
+                ExclamationPoint.SetActive(true);
+            }
+        }
+        else
         {
             if (this.gameObject.name != "Granny Smith")
             {

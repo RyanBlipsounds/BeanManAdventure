@@ -15,9 +15,18 @@ public class GameState : MonoBehaviour
     public NPC _npc = default;
     public ActManager _actManager = default;
 
+    public GreenBenLogic greenBen;
+
+    public GameObject LinaBean;
+    public GameObject BirthdayCake;
+
     public ButterLogic butter;
+    public HouseDestroy houseDestroy;
 
     public CornLadyLogic cornLady;
+
+    public Depth2D censorBar;
+    public CoryLogic coryLogic;
 
     public PeanutTwinsLogic peanutTwins;
 
@@ -31,6 +40,11 @@ public class GameState : MonoBehaviour
 
     public List<NPC> everyNPCList = new List<NPC>();
 
+    public List<NPC> transitionsList = new List<NPC>();
+    public List<NPC> completedTransitionsList = new List<NPC>();
+
+    public GameObject ChickpeaDebris;
+
     public GameObject peanutButter;
     public GameObject trafficCone;
 
@@ -38,12 +52,15 @@ public class GameState : MonoBehaviour
 
     public ChickPeaLogic chickPeaLogic;
 
+    public BlockCheeseLogic blockCheeseLogic;
+
     public PoparazziLogic poparazziCorn;
 
     public LemonadeStand _lemonadeStand;
     public FireHydrantVomit _fireHydrantvomit;
     public UILogic uILogic;
 
+    public StickLogic stick;
     public QuestList questList;
 
     public GameState m_gameState = null;
@@ -73,6 +90,9 @@ public class GameState : MonoBehaviour
     public GameObject winningNPCGameObject;
     public GameObject wrongNPCGameObject;
 
+    public GameObject PaidActor;
+    public LastEndingManager lastEndingConesMove;
+
     private void Awake()
     {
         saveLoading.Load();
@@ -87,7 +107,7 @@ public class GameState : MonoBehaviour
         conversationDict.Add("ISBAGGED", "ISBAGGED");
         conversationDict.Add("BEANGOHINT", "BEANGOHINT");
         conversationDict.Add("WRONGBAGGED", "WRONGBAGGED");
-        //conversationDict.Add("WRONGGUESS", "WRONGGUESS");
+        conversationDict.Add("WRONGGUESS", "WRONGGUESS");
         ResetGame();
         if (beanState == gameState.BEANGOHINT) {
             IsBeanGoHint();
@@ -180,7 +200,23 @@ public class GameState : MonoBehaviour
                 conversationDict["BEANGOHINT"] = dialogue;
                 conversationDict["ISNOTCOOL"] = "...";
                 conversationDict["ISBAGGED"] = "Oh thank god. You look so much better";
+                conversationDict["WRONGGUESS"] = "Oof. No. Someone left these glasses on me earlier today.";
                 conversationDict["WRONGBAGGED"] = "Oof. No. Someone left these glasses on me earlier today.";
+                if (beanState == gameState.WRONGBAGGED || beanState == gameState.ISBAGGED)
+                {
+                    if (winningNPCGameObject.gameObject.name == gameObjectName)
+                    {
+                        conversationDict["WRONGBAGGED"] = "*vomit sounds*";
+                    }
+                    else if (wrongNPCGameObject.gameObject.name == gameObjectName)
+                    {
+                        conversationDict["WRONGBAGGED"] = "Oof. No. Someone left these glasses on me earlier today.";
+                    }
+                    else
+                    {
+                        conversationDict["WRONGBAGGED"] = "Bro, don't ask me. I'm just a Fire Hydrant.";
+                    }
+                }
                 return;
             }
             else {
@@ -188,7 +224,7 @@ public class GameState : MonoBehaviour
                 conversationDict["BEANGOHINT"] = "Why are you talking to me? I'm a fire hydrant.";
                 conversationDict["ISNOTCOOL"] = "Bean Man! Looks like you lost your glasses some how! Here, take this";
                 conversationDict["ISBAGGED"] = "Oh thank god. You look so much better";
-                conversationDict["WRONGBAGGED"] = "Oof. No. Someone left these glasses on me earlier today.";
+                conversationDict["WRONGGUESS"] = "Oof. No. Someone left these glasses on me earlier today.";
             }
         }
 
@@ -200,7 +236,7 @@ public class GameState : MonoBehaviour
             conversationDict["ISNOTCOOL"] = "Bean Man! Looks like you lost your glasses some how! Here, take this";
             conversationDict["ISBAGGED"] = "Beanman! Someone in town has your glasses! Try to talk to who you think took your glasses!";
 
-            if (beanState == gameState.WRONGBAGGED)
+            if (beanState == gameState.WRONGBAGGED || beanState == gameState.ISBAGGED)
             {
                 if (winningNPCGameObject.gameObject.name == "Slim Sausage")
                 {
@@ -244,6 +280,49 @@ public class GameState : MonoBehaviour
             return;
         }
 
+        if (gameObjectName == "Paid Actor" || gameObjectName == "Dead Guy")
+        {
+            if (endingsManager.endingsSeenList.Count == 3)
+            {
+                conversationDict["ISNOTCOOL"] = "Don't worry I'm fine. Ninja Officer Bush actually paid me to be here.";
+            }
+            if (endingsManager.endingsSeenList.Count == 4)
+            {
+                conversationDict["ISNOTCOOL"] = "I think that Baked Bush just needs this as a distraction. He's going through some stuff.";
+            }
+            if (endingsManager.endingsSeenList.Count == 5)
+            {
+                conversationDict["ISNOTCOOL"] = "He's paying me in Bean buckz.";
+            }
+            if (endingsManager.endingsSeenList.Count == 6)
+            {
+                conversationDict["ISNOTCOOL"] = "I'm going to put all of the Bean buckz I make into BeanCoin";
+            }
+            if (endingsManager.endingsSeenList.Count == 7)
+            {
+                conversationDict["ISNOTCOOL"] = "Ninja Officer Bush is good for the money right? He said he'd pay me after.";
+            }
+            if (endingsManager.endingsSeenList.Count == 7)
+            {
+                conversationDict["ISNOTCOOL"] = "At the end of this all, he's going to say he tricked you all along.";
+            }
+            if (endingsManager.endingsSeenList.Count >= 8)
+            {
+                conversationDict["ISNOTCOOL"] = "I told you.";
+            }
+            return;
+        }
+
+        if (gameObjectName == "Raccoon")
+        {
+            conversationDict["ISCOOL"] = "I'm really overstaying my welcome.";
+            conversationDict["BEANGOHINT"] = "Eh, I'm good on beango";
+            conversationDict["ISNOTCOOL"] = "I'm just here for the bit.";
+            conversationDict["ISBAGGED"] = "I got some trash here if you want some.";
+            conversationDict["WRONGBAGGED"] = "I don't get paid enough for this.";
+            return;
+        }
+
         if (gameObjectName == "Block o' Cheese")
         {
             conversationDict["ISCOOL"] = "It sure is tough to be as stinky as I am.";
@@ -270,7 +349,7 @@ public class GameState : MonoBehaviour
                 }
                 if (endingsManager.endingsSeenList[endingsManager.endingsSeenList.Count - 1] == _actManager.FireHydrantEnding)
                 {
-                    conversationDict["ISCOOL"] = "Fire hydrant could probably give me a bath! I'm sure nothing would go wrong.";
+                    conversationDict["ISCOOL"] = "Fire Hydrant gave me a bath! I'm way less stinky now for sure.";
                 }
                 if (endingsManager.endingsSeenList[endingsManager.endingsSeenList.Count - 1] == _actManager.GreenBenEnding)
                 {
@@ -295,10 +374,83 @@ public class GameState : MonoBehaviour
             }
             conversationDict["BEANGOHINT"] = "Hey you should get on to Beango."; // This state should push into Beango
             conversationDict["ISNOTCOOL"] = "I stink, you're hideous, we make the perfect pair!";
+
+            if (beanState == gameState.ISNOTCOOL)
+            {
+                if (endingsManager.endingsSeenList.Count == 0)
+                {
+                    conversationDict["ISNOTCOOL"] = "I stink, you're hideous, we make the perfect pair!";
+                }
+                if (endingsManager.endingsSeenList.Count == 1)
+                {
+                    conversationDict["ISNOTCOOL"] = "Look! I even got new gross things to keep us company!";
+                }
+                if (endingsManager.endingsSeenList.Count == 2)
+                {
+                    conversationDict["ISNOTCOOL"] = "No for real though, will you join? I think we could be a cool new club";
+                }
+                if (endingsManager.endingsSeenList.Count == 3)
+                {
+                    conversationDict["ISNOTCOOL"] = "Look! I got new smelly and gross things!";
+                }
+                if (endingsManager.endingsSeenList.Count == 4)
+                {
+                    conversationDict["ISNOTCOOL"] = "You know what! We don't even need you in this only smelly boys club!";
+                }
+                if (endingsManager.endingsSeenList.Count == 5)
+                {
+                    conversationDict["ISNOTCOOL"] = "Ah yes, I see you want to join now that I've rejected you and we have countless members!";
+                }
+                if (endingsManager.endingsSeenList.Count == 6)
+                {
+                    conversationDict["ISNOTCOOL"] = "I wanted to introduce you to the president of our club, a real Raccoon!";
+                }
+                if (endingsManager.endingsSeenList.Count == 7)
+                {
+                    conversationDict["ISNOTCOOL"] = "Okay, Raccoon left and stole my money. But the club goes on!";
+                }
+                if (endingsManager.endingsSeenList.Count >= 8)
+                {
+                    conversationDict["ISNOTCOOL"] = "What's that? All of these smelly things are detracting people?";
+                }
+            }
+
             conversationDict["ISBAGGED"] = "We can still team up though right?";
 
+            if (beanState == gameState.ISBAGGED)
+            {
+                if (winningNPCGameObject.gameObject.name == "Slim Sausage")
+                {
+                    conversationDict["ISBAGGED"] = "Your glasses? I wouldn't know, but I did hear Slim getting home late last night.";
+                }
+                if (winningNPCGameObject.gameObject.name == "Fire Hydrant")
+                {
+                    conversationDict["ISBAGGED"] = "*weasel noises*";
+                }
+                if (winningNPCGameObject.gameObject.name == "Chickpea Deputy")
+                {
+                    conversationDict["ISBAGGED"] = "I wouldn't know where your glasses are. No one will talk to me. Because I smell bad.";
+                }
+                if (winningNPCGameObject.gameObject.name == "Peanut Twins")
+                {
+                    conversationDict["ISBAGGED"] = "Where did butter go?";
+                }
+                if (winningNPCGameObject.gameObject.name == "Birthday Cake")
+                {
+                    conversationDict["ISBAGGED"] = "Being smelly isn't that bad. It has it's perks! I get plenty of alone time!";
+                }
+                if (winningNPCGameObject.gameObject.name == "Lina Bean")
+                {
+                    conversationDict["ISBAGGED"] = "I overheard Lina saying she was getting ready to go on some sort of trip.";
+                }
+                if (winningNPCGameObject.gameObject.name == "GreenBen")
+                {
+                    conversationDict["ISBAGGED"] = "Take a bath? What? Do I look like I'm made of water?";
+                }
+            }
+
             conversationDict["WRONGBAGGED"] = "Who's the smelly one now?";
-            if (beanState == gameState.WRONGBAGGED)
+            if (beanState == gameState.WRONGBAGGED || beanState == gameState.ISBAGGED)
             {
                 if (winningNPCGameObject.gameObject.name == "Slim Sausage")
                 {
@@ -306,7 +458,7 @@ public class GameState : MonoBehaviour
                 }
                 if (winningNPCGameObject.gameObject.name == "Fire Hydrant")
                 {
-                    conversationDict["WRONGBAGGED"] = "";
+                    conversationDict["WRONGBAGGED"] = "Do you think Fire Hydrant would give me a bath?";
                 }
                 if (winningNPCGameObject.gameObject.name == "Chickpea Deputy")
                 {
@@ -383,12 +535,12 @@ public class GameState : MonoBehaviour
                 }
             }
             conversationDict["BEANGOHINT"] = "Listen boys, we have to make it to Beango and watch out for celebrities"; // This state should push into Beango
-            conversationDict["ISNOTCOOL"] = "Oh, that's okay Beanman, we don't need the interview anymore.";
-            conversationDict["ISBAGGED"] = "Ugh, fine we can reschedule to next week.";
+            conversationDict["ISNOTCOOL"] = "Hey Beanman. We're busy. Could you go away?";
+            conversationDict["ISBAGGED"] = "You lost your glasses? We wouldn't know, but come talk to us when you have a better story on this!";
 
 
             conversationDict["WRONGBAGGED"] = "Wow! You really guessed the wrong glasses? What a scoop!";
-            if (beanState == gameState.WRONGBAGGED)
+            if (beanState == gameState.WRONGBAGGED || beanState == gameState.ISBAGGED)
             {
                 if (winningNPCGameObject.gameObject.name == "Slim Sausage")
                 {
@@ -485,13 +637,86 @@ public class GameState : MonoBehaviour
             }
             conversationDict["BEANGOHINT"] = "I'll see you at Beango Bean! I'll be on the drums!"; // This state should push into Beango
             conversationDict["ISNOTCOOL"] = "Sorry Bean. I just can't do this.";
+
+            if (beanState == gameState.ISNOTCOOL)
+            {
+                if (endingsManager.endingsSeenList.Count == 0)
+                {
+                    conversationDict["ISNOTCOOL"] = "Sorry Bean, I'm going to have to cancel our jam session.";
+                }
+                if (endingsManager.endingsSeenList.Count == 1)
+                {
+                    conversationDict["ISNOTCOOL"] = "Okay, maybe if... you had a different censor bar or something?";
+                }
+                if (endingsManager.endingsSeenList.Count == 2)
+                {
+                    conversationDict["ISNOTCOOL"] = "Sorry. The new bar just isn't working";
+                }
+                if (endingsManager.endingsSeenList.Count == 3)
+                {
+                    conversationDict["ISNOTCOOL"] = "I appreciate that you're trying still. But it's just not working.";
+                }
+                if (endingsManager.endingsSeenList.Count == 4)
+                {
+                    conversationDict["ISNOTCOOL"] = "Hey look. I'm glad you're back to trying the good ole original censor bar.";
+                }
+                if (endingsManager.endingsSeenList.Count == 5)
+                {
+                    conversationDict["ISNOTCOOL"] = "Oh a jam session? Yeah, I'm busy tonight, but maybe another time?";
+                }
+                if (endingsManager.endingsSeenList.Count == 6)
+                {
+                    conversationDict["ISNOTCOOL"] = "Oh no, you don't need to change your censor bar again. That's okay";
+                }
+                if (endingsManager.endingsSeenList.Count == 7)
+                {
+                    conversationDict["ISNOTCOOL"] = "You've gotta stop bugging me about this.";
+                }
+                if (endingsManager.endingsSeenList.Count >= 8)
+                {
+                    conversationDict["ISNOTCOOL"] = "I don't care if you found all of the endings. We're not jamming";
+                }
+            }
+
             conversationDict["ISBAGGED"] = "Eh, the paper bag will have to do.";
-            conversationDict["WRONGBAGGED"] = "You can't take a mans shades like that.";
-            if (beanState == gameState.WRONGBAGGED)
+
+            if (beanState == gameState.ISBAGGED)
             {
                 if (winningNPCGameObject.gameObject.name == "Slim Sausage")
                 {
-                    conversationDict["WRONGBAGGED"] = "Did you hear the news? Slim Sausage is releasing his new album!";
+                    conversationDict["ISBAGGED"] = "I got a sneak listen of Slims new album. In short, it's fire.";
+                }
+                if (winningNPCGameObject.gameObject.name == "Fire Hydrant")
+                {
+                    conversationDict["ISBAGGED"] = "Hey Bean, yeah it makes me sick that you lost your glasses.";
+                }
+                if (winningNPCGameObject.gameObject.name == "Chickpea Deputy")
+                {
+                    conversationDict["ISBAGGED"] = "Chickpea has been acting weird lately.";
+                }
+                if (winningNPCGameObject.gameObject.name == "Peanut Twins")
+                {
+                    conversationDict["ISBAGGED"] = "Shouldn't Peanut Twin #2 be more worried that his brother being gone?";
+                }
+                if (winningNPCGameObject.gameObject.name == "Birthday Cake")
+                {
+                    conversationDict["ISBAGGED"] = "Birthday Cake offered me some punch, but I just don't get a good vibe from him.";
+                }
+                if (winningNPCGameObject.gameObject.name == "Lina Bean")
+                {
+                    conversationDict["ISBAGGED"] = "The bag is... okay";
+                }
+                if (winningNPCGameObject.gameObject.name == "GreenBen")
+                {
+                    conversationDict["ISBAGGED"] = "I'd be feeling better too if I had sick glasses like GreenBen has!";
+                }
+            }
+
+            if (beanState == gameState.WRONGBAGGED || beanState == gameState.ISBAGGED)
+            {
+                if (winningNPCGameObject.gameObject.name == "Slim Sausage")
+                {
+                    conversationDict["WRONGBAGGED"] = "Slim Sausage is releasing his new album!";
                 }
                 if (winningNPCGameObject.gameObject.name == "Fire Hydrant")
                 {
@@ -531,7 +756,7 @@ public class GameState : MonoBehaviour
                     endingsManager.endingsSeenList[endingsManager.endingsSeenList.Count - 1] == _actManager.BeanManLeavesTown ||
                     endingsManager.endingsSeenList[endingsManager.endingsSeenList.Count - 1] == _actManager.BeanManLeavesBagged)
                 {
-                    conversationDict["ISCOOL"] = "Hey Bean, why'd ya leave us? The town isn't nearly as cool with you.";
+                    conversationDict["ISCOOL"] = "Wow! You must have a lot of time on your hands!";
                 }
                 if (endingsManager.endingsSeenList[endingsManager.endingsSeenList.Count - 1] == _actManager.LinaBeanEnding)
                 {
@@ -572,15 +797,82 @@ public class GameState : MonoBehaviour
             }
             conversationDict["BEANGOHINT"] = "Aren't you supposed to be at Beango?"; // This state should push into Beango
             conversationDict["ISNOTCOOL"] = "*sobs*";
-            conversationDict["ISBAGGED"] = "Try talking to someone who you think has your glasses!";
-            if (beanState == gameState.WRONGBAGGED)
+
+            if (beanState == gameState.ISNOTCOOL)
             {
-                conversationDict["WRONGBAGGED"] = "Oh wow! You thought " + wrongNPCGameObject.gameObject.name + " had your glasses?";
+                if (endingsManager.endingsSeenList.Count == 0)
+                {
+                    conversationDict["ISNOTCOOL"] = "Oh my. You're really ugly.";
+                }
+                if (endingsManager.endingsSeenList.Count == 1)
+                {
+                    conversationDict["ISNOTCOOL"] = "Please. *sniffle* I just can't look at you right now.";
+                }
+                if (endingsManager.endingsSeenList.Count == 2)
+                {
+                    conversationDict["ISNOTCOOL"] = "*sobs*";
+                }
+                if (endingsManager.endingsSeenList.Count == 3)
+                {
+                    conversationDict["ISNOTCOOL"] = "*intense crying*";
+                }
+                if (endingsManager.endingsSeenList.Count == 4)
+                {
+                    conversationDict["ISNOTCOOL"] = "*hysterical crying*";
+                }
+                if (endingsManager.endingsSeenList.Count == 5)
+                {
+                    conversationDict["ISNOTCOOL"] = "*so much crying that you forget why you were even crying in the first place*";
+                }
+                if (endingsManager.endingsSeenList.Count == 6)
+                {
+                    conversationDict["ISNOTCOOL"] = "*horse noises*";
+                }
+                if (endingsManager.endingsSeenList.Count == 7)
+                {
+                    conversationDict["ISNOTCOOL"] = "I'm supposed to be dead";
+                }
+                if (endingsManager.endingsSeenList.Count >= 8)
+                {
+                    conversationDict["ISNOTCOOL"] = "I'm supposed to be dead";
+                }
             }
-            if (endingsManager.endingsSeenList.Count == 1) {
-                conversationDict["ISCOOL"] = "Huh, I didn't know that ears of corn hibernate.";
+
+            conversationDict["ISBAGGED"] = "Try talking to someone who you think has your glasses!";
+
+            if (beanState == gameState.ISBAGGED)
+            {
+                if (winningNPCGameObject.gameObject.name == "Slim Sausage")
+                {
+                    conversationDict["ISBAGGED"] = "I've been hearing loud music coming from Slims house lately.";
+                }
+                if (winningNPCGameObject.gameObject.name == "Fire Hydrant")
+                {
+                    conversationDict["ISBAGGED"] = "*big horse noises*";
+                }
+                if (winningNPCGameObject.gameObject.name == "Chickpea Deputy")
+                {
+                    conversationDict["ISBAGGED"] = "The writers added me because they wanted 'Cory in the House' somewhere, so they just went with 'Cory is a Mouse'";
+                }
+                if (winningNPCGameObject.gameObject.name == "Peanut Twins")
+                {
+                    conversationDict["ISBAGGED"] = "You seem to have a really tough time finding your glasses Bean.";
+                }
+                if (winningNPCGameObject.gameObject.name == "Birthday Cake")
+                {
+                    conversationDict["ISBAGGED"] = "I think I just don't love milk because it's not SPICY enough. So I like to dump a bucket of hot sauce in there.";
+                }
+                if (winningNPCGameObject.gameObject.name == "Lina Bean")
+                {
+                    conversationDict["ISBAGGED"] = "Is it just me? Or does literally everybody ignore Baked Bush's existence?";
+                }
+                if (winningNPCGameObject.gameObject.name == "GreenBen")
+                {
+                    conversationDict["ISBAGGED"] = "Did I miss the memo on this glasses thing?";
+                }
             }
-            if (beanState == gameState.WRONGBAGGED)
+
+            if (beanState == gameState.WRONGBAGGED || beanState == gameState.ISBAGGED)
             {
                 if (winningNPCGameObject.gameObject.name == "Slim Sausage")
                 {
@@ -613,7 +905,7 @@ public class GameState : MonoBehaviour
             }
             return;
         }
-        if (gameObjectName == "Baked Bush")
+        if (gameObjectName == "Baked Bush" || gameObjectName == "Ninja Officer Bush")
         {
             conversationDict["ISCOOL"] = "When my pizza gets too hot, I run it through water to cool it down.";
 
@@ -655,7 +947,7 @@ public class GameState : MonoBehaviour
                 }
                 if (endingsManager.endingsSeenList[endingsManager.endingsSeenList.Count - 1] == _actManager.SlimSausageWinning)
                 {
-                    conversationDict["ISCOOL"] = "I'm beginnin' to feel like Slim is a rap God";
+                    conversationDict["ISCOOL"] = "Now my new toilet I bought is talking to me too.";
                 }
                 if (endingsManager.endingsSeenList[endingsManager.endingsSeenList.Count - 1] == _actManager.PeanutTwinEnding)
                 {
@@ -664,8 +956,84 @@ public class GameState : MonoBehaviour
             }
             conversationDict["BEANGOHINT"] = "Beango sounds fun, but so do video games."; 
             conversationDict["ISNOTCOOL"] = "Please leave me alone or I WILL call the cops.";
+
+
+            if (beanState == gameState.ISNOTCOOL)
+            {
+                if (endingsManager.endingsSeenList.Count == 0)
+                {
+                    conversationDict["ISNOTCOOL"] = "Please leave me alone or I WILL call the cops.";
+                }
+                if (endingsManager.endingsSeenList.Count == 1)
+                {
+                    conversationDict["ISNOTCOOL"] = "Okay that's it, I'm calling them.";
+                }
+                if (endingsManager.endingsSeenList.Count == 2)
+                {
+                    conversationDict["ISNOTCOOL"] = "Hi there. Ninja Officer Bush here. I'm not afraid to throw ninja stars on sight";
+                }
+                if (endingsManager.endingsSeenList.Count == 3)
+                {
+                    //Have a body on the ground next to Baked Bush, talk to the body and it's just a dude who was hired by Officer Bush
+                    conversationDict["ISNOTCOOL"] = "I'm sorry. I didn't... I didn't mean to hurt anyone.";
+                }
+                if (endingsManager.endingsSeenList.Count == 4)
+                {
+                    conversationDict["ISNOTCOOL"] = "What has my life become? All I wanted was to be a good ninja cop who protected people.";
+                }
+                if (endingsManager.endingsSeenList.Count == 5)
+                {
+                    conversationDict["ISNOTCOOL"] = "I wanted to protect... But I only damaged the ones I love around me.";
+                }
+                if (endingsManager.endingsSeenList.Count == 6)
+                {
+                    conversationDict["ISNOTCOOL"] = "I think it's time that I hangup the ole badge and headband.";
+                }
+                if (endingsManager.endingsSeenList.Count == 7)
+                {
+                    conversationDict["ISNOTCOOL"] = "I'm retired now. It was a good run. But my mistakes haunt me every day.";
+                }
+                if (endingsManager.endingsSeenList.Count >= 8)
+                {
+                    conversationDict["ISNOTCOOL"] = "Hey Bean. Faked ya! I wasn't actually a ninja cop.";
+                }
+            }
+
+
             conversationDict["ISBAGGED"] = "Okay fine, cuff me boys.";
-            if (beanState == gameState.WRONGBAGGED)
+            if (beanState == gameState.ISBAGGED)
+            {
+                if (winningNPCGameObject.gameObject.name == "Slim Sausage")
+                {
+                    conversationDict["ISBAGGED"] = "My toilet started talking to me last night and said it was hungry. So I bought a new toilet.";
+                }
+                if (winningNPCGameObject.gameObject.name == "Fire Hydrant")
+                {
+                    conversationDict["ISBAGGED"] = "Your glasses? I lost mine too! I'm pretending that I'm on an adventure where I have to get my cool back.";
+                }
+                if (winningNPCGameObject.gameObject.name == "Chickpea Deputy")
+                {
+                    conversationDict["ISBAGGED"] = "I tried to sneak into Beango the other night. It was actually pretty easy.";
+                }
+                if (winningNPCGameObject.gameObject.name == "Peanut Twins")
+                {
+                    conversationDict["ISBAGGED"] = "I have a theory that food isn't supposed to talk. If I'm correct, then this game makes no sense at all.";
+                }
+                if (winningNPCGameObject.gameObject.name == "Birthday Cake")
+                {
+                    conversationDict["ISBAGGED"] = "Birthday Cake is making punch!";
+                }
+                if (winningNPCGameObject.gameObject.name == "Lina Bean")
+                {
+                    conversationDict["ISBAGGED"] = "Did you notice how no body in this town has teeth? Well, except for Granny. But those are fake.";
+                }
+                if (winningNPCGameObject.gameObject.name == "GreenBen")
+                {
+                    conversationDict["ISBAGGED"] = "Have you ever had Bean milk? To clarify, it's milk for beans. Not milk made out of beans.";
+                }
+            }
+
+            if (beanState == gameState.WRONGBAGGED || beanState == gameState.ISBAGGED)
             {
                 if (winningNPCGameObject.gameObject.name == "Slim Sausage")
                 {
@@ -713,7 +1081,7 @@ public class GameState : MonoBehaviour
                 }
                 if (endingsManager.endingsSeenList[endingsManager.endingsSeenList.Count - 1] == _actManager.LinaBeanEnding)
                 {
-                    conversationDict["ISCOOL"] = "Did Lina get shorter?";
+                    conversationDict["ISCOOL"] = "Race car beds are underrated. You're a cool guy, do you have a race car bed too?";
                 }
                 if (endingsManager.endingsSeenList[endingsManager.endingsSeenList.Count - 1] == _actManager.BeanManWinEnding)
                 {
@@ -748,14 +1116,88 @@ public class GameState : MonoBehaviour
                     conversationDict["ISCOOL"] = "I really shouldn't be here";
                 }
             }
-            if (beanState == gameState.WRONGBAGGED)
-            {
-                conversationDict["WRONGBAGGED"] = "Why would you think " + wrongNPCGameObject.gameObject.name + " took your glasses?";
-            }
             conversationDict["BEANGOHINT"] = "I wish I was old enough to go to Beango!!"; // This state should push into Beango
             conversationDict["ISNOTCOOL"] = "Yeah, I need to go";
+
+            if (beanState == gameState.ISNOTCOOL)
+            {
+                if (endingsManager.endingsSeenList.Count == 0)
+                {
+                    conversationDict["ISNOTCOOL"] = "Yeah, I need to go";
+                }
+                if (endingsManager.endingsSeenList.Count == 1)
+                {
+                    conversationDict["ISNOTCOOL"] = "Okay, you can stop talking to me now.";
+                }
+                if (endingsManager.endingsSeenList.Count == 2)
+                {
+                    conversationDict["ISNOTCOOL"] = "I would rather melt than be here talking to you.";
+                }
+                if (endingsManager.endingsSeenList.Count == 3)
+                {
+                    conversationDict["ISNOTCOOL"] = "I would rather god grab me and use me in a delicious cake than talk to you.";
+                }
+                if (endingsManager.endingsSeenList.Count == 4)
+                {
+                    conversationDict["ISNOTCOOL"] = "I would rather be betrayed by my best friend than be here with you.";
+                }
+                if (endingsManager.endingsSeenList.Count == 5)
+                {
+                    conversationDict["ISNOTCOOL"] = "I'd rather have someone use me to make money than be here with you.";
+                }
+                if (endingsManager.endingsSeenList.Count == 6)
+                {
+                    conversationDict["ISNOTCOOL"] = "I'd rather be hanging out with Block o' Cheese than hang here with you.";
+                }
+                if (endingsManager.endingsSeenList.Count == 7)
+                {
+                    conversationDict["ISNOTCOOL"] = "Please just leave me alone.";
+                }
+                if (endingsManager.endingsSeenList.Count == 8)
+                {
+                    conversationDict["ISNOTCOOL"] = "If I'm here. Then the devs may have messed something up.";
+                }
+                if (endingsManager.endingsSeenList.Count == 9)
+                {
+                    conversationDict["ISNOTCOOL"] = "At this point, I really shouldn't be alive.";
+                }
+            }
+
+
             conversationDict["ISBAGGED"] = "Okay I can deal with this.";
-            if (beanState == gameState.WRONGBAGGED)
+            if (beanState == gameState.ISBAGGED)
+            {
+                if (winningNPCGameObject.gameObject.name == "Slim Sausage")
+                {
+                    conversationDict["ISBAGGED"] = "People don't know this, but I'm actually a slip n' slide master.";
+                }
+                if (winningNPCGameObject.gameObject.name == "Fire Hydrant")
+                {
+                    conversationDict["ISBAGGED"] = "I think that bag looks good on you Bean. The glasses seem outdated anyway.";
+                }
+                if (winningNPCGameObject.gameObject.name == "Chickpea Deputy")
+                {
+                    conversationDict["ISBAGGED"] = "The developers made it so I can only smile. You can imagine how much my face hurts right now.";
+                }
+                if (winningNPCGameObject.gameObject.name == "Peanut Twins")
+                {
+                    conversationDict["ISBAGGED"] = "If I'm talking and alive, then this is DEFINITELY a bug that the programmers missed.";
+                }
+                if (winningNPCGameObject.gameObject.name == "Birthday Cake")
+                {
+                    conversationDict["ISBAGGED"] = "Birthday cake asked me to wear a Traffic Cone hat. I'm honestly considering it!";
+                }
+                if (winningNPCGameObject.gameObject.name == "Lina Bean")
+                {
+                    conversationDict["ISBAGGED"] = "Did Lina get taller? Or did I get shorter? I think I'm having a crisis";
+                }
+                if (winningNPCGameObject.gameObject.name == "GreenBen")
+                {
+                    conversationDict["ISBAGGED"] = "It's rather sunny out today.";
+                }
+            }
+
+            if (beanState == gameState.WRONGBAGGED || beanState == gameState.ISBAGGED)
             {
                 if (winningNPCGameObject.gameObject.name == "Slim Sausage")
                 {
@@ -839,17 +1281,97 @@ public class GameState : MonoBehaviour
             }
             
             conversationDict["ISNOTCOOL"] = "Watch yourself.";
-            conversationDict["ISBAGGED"] = "What do you want?";
-            conversationDict["BEANGOHINT"] = "Oh boy Beango? Gosh, I wish I was cool enough to join in!";
-            conversationDict["WRONGBAGGED"] = "Seriously? Do you want me to lock you up? I bought these at the Bean Topic outlet.";
 
-            if (beanState == gameState.WRONGBAGGED)
+
+            if (beanState == gameState.ISNOTCOOL)
+            {
+                if (endingsManager.endingsSeenList.Count == 0)
+                {
+                    conversationDict["ISNOTCOOL"] = "I'd lock you up if I didn't just have leg day";
+                }
+                if (endingsManager.endingsSeenList.Count == 1)
+                {
+                    conversationDict["ISNOTCOOL"] = "Sorry, I can't hear you over the sound of my abs chiseling into eachother.";
+                }
+                if (endingsManager.endingsSeenList.Count == 2)
+                {
+                    conversationDict["ISNOTCOOL"] = "I'll fight you. I don't care.";
+                }
+                if (endingsManager.endingsSeenList.Count == 3)
+                {
+                    conversationDict["ISNOTCOOL"] = "I'm not overcompensating. What? That puny body I had before? That was the old me.";
+                }
+                if (endingsManager.endingsSeenList.Count == 4)
+                {
+                    conversationDict["ISNOTCOOL"] = "Don't look at my mustache like that. It's cool. My mom says she loves it.";
+                }
+                if (endingsManager.endingsSeenList.Count == 5)
+                {
+                    conversationDict["ISNOTCOOL"] = "Look, it doesn't matter if I have a race car bed and drink a warm glass of milk before bed. I'm ripped bro";
+                }
+                if (endingsManager.endingsSeenList.Count == 6)
+                {
+                    conversationDict["ISNOTCOOL"] = "";
+                }
+                if (endingsManager.endingsSeenList.Count == 7)
+                {
+                    conversationDict["ISNOTCOOL"] = "";
+                }
+                if (endingsManager.endingsSeenList.Count >= 8)
+                {
+                    conversationDict["ISNOTCOOL"] = "";
+                }
+            }
+
+            conversationDict["ISBAGGED"] = "What do you want?";
+
+            if (endingsManager.endingsSeenList.Count == 1)
+            {
+                conversationDict["ISCOOL"] = "Huh, I didn't know that ears of corn hibernate.";
+            }
+            if (beanState == gameState.ISBAGGED)
+            {
+                if (winningNPCGameObject.gameObject.name == "Slim Sausage")
+                {
+                    conversationDict["ISBAGGED"] = "I've been thinking about retiring from being the deputy so I can be a showtune writer.";
+                }
+                if (winningNPCGameObject.gameObject.name == "Fire Hydrant")
+                {
+                    conversationDict["ISBAGGED"] = "What do you want weakling?";
+                }
+                if (winningNPCGameObject.gameObject.name == "Chickpea Deputy")
+                {
+                    conversationDict["ISBAGGED"] = "*suspicious noises*";
+                }
+                if (winningNPCGameObject.gameObject.name == "Peanut Twins")
+                {
+                    conversationDict["ISBAGGED"] = "I think I should maybe arrest that sewer hole. It creeps me out.";
+                }
+                if (winningNPCGameObject.gameObject.name == "Birthday Cake")
+                {
+                    conversationDict["ISBAGGED"] = "Heh, sick bag BRO";
+                }
+                if (winningNPCGameObject.gameObject.name == "Lina Bean")
+                {
+                    conversationDict["ISBAGGED"] = "I've been hitting the gym EXTRA hard lately.";
+                }
+                if (winningNPCGameObject.gameObject.name == "GreenBen")
+                {
+                    conversationDict["ISBAGGED"] = "Birthday Cake said he has pin the tail on the donkey. I'll be honest. I don't trust it.";
+                }
+            }
+
+
+            conversationDict["BEANGOHINT"] = "Oh boy Beango? Gosh, I wish I was cool enough to join in!";
+            conversationDict["WRONGGUESS"] = "Seriously? Do you want me to lock you up? I bought these at the Bean Topic outlet.";
+
+            if (beanState == gameState.WRONGBAGGED || beanState == gameState.ISBAGGED)
             {
                 if (winningNPCGameObject.gameObject.name == gameObjectName)
                 {
                     conversationDict["WRONGBAGGED"] = "YOU FOOL!";
                 }
-                else if (wrongNPCGameObject.name == gameObjectName)
+                else if (wrongNPCGameObject.gameObject.name == gameObjectName)
                 {
                     conversationDict["WRONGBAGGED"] = "Seriously? Do you want me to lock you up? I bought these at the Bean Topic outlet.";
                 }
@@ -912,12 +1434,16 @@ public class GameState : MonoBehaviour
         }
 
         // Conversation loading for Lina Bean
-        if (gameObjectName == "Lina Bean")
+        if (gameObjectName == "Lina Bean" || gameObjectName == "Lina Edamame")
         {
             conversationDict["ISCOOL"] = "Bean Man! Are we still on for the movies this weekend?!";
 
             if (endingsManager.endingsSeenList.Count > 0)
             {
+                if (endingsManager.endingsSeenList[endingsManager.endingsSeenList.Count - 1] == _actManager.BeanManWinEnding)
+                {
+                    conversationDict["ISCOOL"] = "I'm sorry for what I said Bean. Maybe we could still go to the movies this weekend?";
+                }
                 if (endingsManager.endingsSeenList[endingsManager.endingsSeenList.Count - 1] == _actManager.BeanManUncoolEnding ||
                     endingsManager.endingsSeenList[endingsManager.endingsSeenList.Count - 1] == _actManager.BeanManLeavesTown ||
                     endingsManager.endingsSeenList[endingsManager.endingsSeenList.Count - 1] == _actManager.BeanManLeavesBagged)
@@ -963,27 +1489,102 @@ public class GameState : MonoBehaviour
             }
             
             conversationDict["ISNOTCOOL"] = "*Swipes Left*";
+
+            if (beanState == gameState.ISNOTCOOL)
+            {
+                if (endingsManager.endingsSeenList.Count == 0)
+                {
+                    conversationDict["ISNOTCOOL"] = "*Swipes Left*";
+                }
+                if (endingsManager.endingsSeenList.Count == 1)
+                {
+                    conversationDict["ISNOTCOOL"] = "";
+                }
+                if (endingsManager.endingsSeenList.Count == 2)
+                {
+                    conversationDict["ISNOTCOOL"] = "";
+                }
+                if (endingsManager.endingsSeenList.Count == 3)
+                {
+                    conversationDict["ISNOTCOOL"] = "";
+                }
+                if (endingsManager.endingsSeenList.Count == 4)
+                {
+                    conversationDict["ISNOTCOOL"] = "";
+                }
+                if (endingsManager.endingsSeenList.Count == 5)
+                {
+                    conversationDict["ISNOTCOOL"] = "";
+                }
+                if (endingsManager.endingsSeenList.Count == 6)
+                {
+                    conversationDict["ISNOTCOOL"] = "";
+                }
+                if (endingsManager.endingsSeenList.Count == 7)
+                {
+                    conversationDict["ISNOTCOOL"] = "";
+                }
+                if (endingsManager.endingsSeenList.Count >= 8)
+                {
+                    conversationDict["ISNOTCOOL"] = "";
+                }
+            }
+
             conversationDict["ISBAGGED"] = "Working out WON'T get my attention. *Wink*";
 
-            if (beanState == gameState.WRONGBAGGED)
+            if (beanState == gameState.ISBAGGED)
+            {
+                if (winningNPCGameObject.gameObject.name == "Slim Sausage")
+                {
+                    conversationDict["ISBAGGED"] = "Oh hey Bean, didn't you see you down there.";
+                }
+                if (winningNPCGameObject.gameObject.name == "Fire Hydrant")
+                {
+                    conversationDict["ISBAGGED"] = "*monkey noises*";
+                }
+                if (winningNPCGameObject.gameObject.name == "Chickpea Deputy")
+                {
+                    conversationDict["ISBAGGED"] = "Working out WON'T get my attention. *Wink*";
+                }
+                if (winningNPCGameObject.gameObject.name == "Peanut Twins")
+                {
+                    conversationDict["ISBAGGED"] = "Go run along little boy... Oh, Beanman. It's you.";
+                }
+                if (winningNPCGameObject.gameObject.name == "Birthday Cake")
+                {
+                    conversationDict["ISBAGGED"] = "I hear that traffic cones are starting to come in style!";
+                }
+                if (winningNPCGameObject.gameObject.name == "Lina Bean")
+                {
+                    conversationDict["ISBAGGED"] = "Oh Bean! I didn't recognize you with the bag on your head.";
+                }
+                if (winningNPCGameObject.gameObject.name == "GreenBen")
+                {
+                    conversationDict["ISBAGGED"] = "Birthday Cake really needs better ideas. Pin the tail on the donkey doesn't sound very fun.";
+                }
+            }
+
+            conversationDict["WRONGGUESS"] = "How DARE you accuse me. We're off for the movies this weekend!";
+
+            if (beanState == gameState.WRONGBAGGED || beanState == gameState.ISBAGGED)
             {
                 if (winningNPCGameObject.gameObject.name == gameObjectName)
                 {
                     conversationDict["WRONGBAGGED"] = "I'm so sorry Bean.";
                 }
-                else if (wrongNPCGameObject.name == gameObjectName)
+                else if (wrongNPCGameObject.gameObject.name == gameObjectName)
                 {
                     conversationDict["WRONGBAGGED"] = "How DARE you accuse me. We're off for the movies this weekend!";
                 }
                 else {
-                    conversationDict["WRONGBAGGED"] = "Bean, why did you think " + wrongNPCGameObject.name  + " took the glasses?";
+                    conversationDict["WRONGBAGGED"] = "Bean, why did you think " + wrongNPCGameObject.gameObject.name  + " took the glasses?";
                 }
             }
             return;
         }
 
         // Conversation laoding for Birthday Cake
-        if (gameObjectName == "Birthday Cake")
+        if (gameObjectName == "Birthday Cake" || gameObjectName == "Party Cake")
         {
             conversationDict["ISCOOL"] = "I'm not hoarding traffic cones! Also, would you be interested in joining my cul- I mean club?";
 
@@ -993,7 +1594,7 @@ public class GameState : MonoBehaviour
                 endingsManager.endingsSeenList[endingsManager.endingsSeenList.Count - 1] == _actManager.BeanManLeavesTown ||
                 endingsManager.endingsSeenList[endingsManager.endingsSeenList.Count - 1] == _actManager.BeanManLeavesBagged)
                 {
-                    conversationDict["ISCOOL"] = "You're lucky you aren't a traffic cone... you never would have esacped if you were.";
+                    conversationDict["ISCOOL"] = "Yeah okay, you got me. This is just a cult.";
                 }
                 if (endingsManager.endingsSeenList[endingsManager.endingsSeenList.Count - 1] == _actManager.LinaBeanEnding)
                 {
@@ -1029,14 +1630,89 @@ public class GameState : MonoBehaviour
                 }
             }
             //NEEDS TO BE LESS OBVIOUS THAT HE IS STARTING A CULT
-            conversationDict["ISNOTCOOL"] = "Oh, yeah we don't really need you to join us.";
-            conversationDict["ISBAGGED"] = "Hello sir! Are you interested in learning about a fun new religion?";
-            conversationDict["BEANGOHINT"] = "Maybe if I go to beango I can get new members...";
-            conversationDict["WRONGBAGGED"] = "Did these glasses not convince you to join my club? I bought these yesterday.";
-            
-            if (beanState == gameState.WRONGBAGGED)
+            conversationDict["ISNOTCOOL"] = "Oh, yeah we don't really need you to join us. I'm a little busy prepping over here anyway.";
+
+
+            if (beanState == gameState.ISNOTCOOL)
             {
-                if (wrongNPCGameObject.name == gameObjectName)
+                if (endingsManager.endingsSeenList.Count == 0)
+                {
+                    conversationDict["ISNOTCOOL"] = "Oh, yeah we don't really need you to join us. I'm a little busy prepping over here anyway.";
+                }
+                if (endingsManager.endingsSeenList.Count == 1)
+                {
+                    conversationDict["ISNOTCOOL"] = "I wish I had more room so I could put more decorations for my club meeting";
+                }
+                if (endingsManager.endingsSeenList.Count == 2)
+                {
+                    conversationDict["ISNOTCOOL"] = "The extra room just makes sense, because I'm going to have A LOT of people here.";
+                }
+                if (endingsManager.endingsSeenList.Count == 3)
+                {
+                    conversationDict["ISNOTCOOL"] = "Don't worry! People will definitely show up!";
+                }
+                if (endingsManager.endingsSeenList.Count == 4)
+                {
+                    conversationDict["ISNOTCOOL"] = "I have balloons! How could anyone possibly resist balloons?";
+                }
+                if (endingsManager.endingsSeenList.Count == 5)
+                {
+                    conversationDict["ISNOTCOOL"] = "I don't like how I can see your eyes judging me. You should really find those glasses.";
+                }
+                if (endingsManager.endingsSeenList.Count == 6)
+                {
+                    conversationDict["ISNOTCOOL"] = "I know. I'm a birthday cake. Not necessarily a party cake.";
+                }
+                if (endingsManager.endingsSeenList.Count == 7)
+                {
+                    conversationDict["ISNOTCOOL"] = "I've changed my name to party cake! Now it all makes sense.";
+                }
+                if (endingsManager.endingsSeenList.Count >= 8)
+                {
+                    conversationDict["ISNOTCOOL"] = "Yeah okay, you got me. This is just a cult.";
+                }
+            }
+
+            conversationDict["ISBAGGED"] = "Hello sir! Are you interested in learning about a fun new religion?";
+
+            if (beanState == gameState.ISBAGGED)
+            {
+                if (winningNPCGameObject.gameObject.name == "Slim Sausage")
+                {
+                    conversationDict["ISBAGGED"] = "Personally, I think getting your cool back is overrated.";
+                }
+                if (winningNPCGameObject.gameObject.name == "Fire Hydrant")
+                {
+                    conversationDict["ISBAGGED"] = "Okay fine. It's a cult. You caught me.";
+                }
+                if (winningNPCGameObject.gameObject.name == "Chickpea Deputy")
+                {
+                    conversationDict["ISBAGGED"] = "I'll help you get your glasses, IF you join my club :)";
+                }
+                if (winningNPCGameObject.gameObject.name == "Peanut Twins")
+                {
+                    conversationDict["ISBAGGED"] = "Beanman. Son. We need to talk. I think you should be my dad.";
+                }
+                if (winningNPCGameObject.gameObject.name == "Birthday Cake")
+                {
+                    conversationDict["ISBAGGED"] = "Hello sir! Are you interested in learning about a fun new religion?";
+                }
+                if (winningNPCGameObject.gameObject.name == "Lina Bean")
+                {
+                    conversationDict["ISBAGGED"] = "Oh hey there. I like your bag";
+                }
+                if (winningNPCGameObject.gameObject.name == "GreenBen")
+                {
+                    conversationDict["ISBAGGED"] = "Want to come hang at my club this weekend? There will be pin the tail on the Donkey";
+                }
+            }
+
+            conversationDict["BEANGOHINT"] = "Maybe if I go to beango I can get new members...";
+            conversationDict["WRONGGUESS"] = "I WISH I had your glasses. Maybe everyone would actually join my club.";
+
+            if (beanState == gameState.WRONGBAGGED || beanState == gameState.ISBAGGED)
+            {
+                if (wrongNPCGameObject.gameObject.name == gameObjectName)
                 {
                     conversationDict["WRONGBAGGED"] = "I WISH I had your glasses. Maybe everyone would actually join my club.";
                 }
@@ -1120,17 +1796,91 @@ public class GameState : MonoBehaviour
                     conversationDict["ISCOOL"] = "Oh hey Bean... Oh? My brother? Yeah not sure where he went.";
                 }
             }
-            conversationDict["ISNOTCOOL"] = "Oh hey Bean Boy, I'm pretty busy. Maybe go talk with that stick?";
-            conversationDict["ISBAGGED"] = "What is it son, I'm very busy.";
-            conversationDict["BEANGOHINT"] = "When we're older, we want to go to Beango with you!";
-            conversationDict["WRONGBAGGED"] = "These are my glasses! We bought them yesterday. You can't take these from me!";
+            conversationDict["ISNOTCOOL"] = "Oh hey Bean Boy, I'm pretty busy. Maybe go play with that stick?";
 
-
-            if (beanState == gameState.WRONGBAGGED)
+            if (beanState == gameState.ISNOTCOOL)
             {
-                if (wrongNPCGameObject.name == gameObjectName)
+                if (endingsManager.endingsSeenList.Count == 0)
                 {
-                    conversationDict["WRONGBAGGED"] = "Seriously? Do you want me to lock you up? I bought these at the Bean Topic outlet.";
+                    conversationDict["ISNOTCOOL"] = "Oh hey Bean Boy, I'm pretty busy. Maybe go play with that stick?";
+                }
+                if (endingsManager.endingsSeenList.Count == 1)
+                {
+                    conversationDict["ISNOTCOOL"] = "Oh hey Bean Boy, I'm pretty busy. Maybe go play with that carton of milk?";
+                }
+                if (endingsManager.endingsSeenList.Count == 2)
+                {
+                    conversationDict["ISNOTCOOL"] = "Oh hey Bean Boy, I'm pretty busy. Maybe go play with that carton of can of tuna?";
+                }
+                if (endingsManager.endingsSeenList.Count == 3)
+                {
+                    conversationDict["ISNOTCOOL"] = "Oh hey Bean Boy, I'm pretty busy. Maybe go play with that Krabby Patty Secret formuler?";
+                }
+                if (endingsManager.endingsSeenList.Count == 4)
+                {
+                    conversationDict["ISNOTCOOL"] = "Oh hey Bean Boy, I'm pretty busy. Maybe go talk with that horse?";
+                }
+                if (endingsManager.endingsSeenList.Count == 5)
+                {
+                    conversationDict["ISNOTCOOL"] = "Oh hey Bean Boy, I'm pretty busy. Maybe go play with that Michael Jackson?";
+                }
+                if (endingsManager.endingsSeenList.Count == 6)
+                {
+                    conversationDict["ISNOTCOOL"] = "Oh hey Bean Boy, I'm pretty busy. Maybe go play with that Screaming Hairy Armadillo?";
+                }
+                if (endingsManager.endingsSeenList.Count == 7)
+                {
+                    conversationDict["ISNOTCOOL"] = "Oh hey Bean Boy, I'm pretty busy. Maybe go talk with that really friendly guy who will 100% absolutely talk to you?";
+                }
+                if (endingsManager.endingsSeenList.Count >= 8)
+                {
+                    conversationDict["ISNOTCOOL"] = "Oh hey Bean Boy, I'm pretty busy. Maybe go play with those glasses?";
+                }
+            }
+
+
+            conversationDict["ISBAGGED"] = "What is it son, I'm very busy.";
+
+            if (beanState == gameState.ISBAGGED)
+            {
+                if (winningNPCGameObject.gameObject.name == "Slim Sausage")
+                {
+                    conversationDict["ISBAGGED"] = "I've been trying to come up with ways to make a million dollars. It's tough though.";
+                }
+                if (winningNPCGameObject.gameObject.name == "Fire Hydrant")
+                {
+                    conversationDict["ISBAGGED"] = "Who me? No it has to be Fire Hydrant who has the glasses!";
+                }
+                if (winningNPCGameObject.gameObject.name == "Chickpea Deputy")
+                {
+                    conversationDict["ISBAGGED"] = "You lost your glasses? You should report it to Chickpea";
+                }
+                if (winningNPCGameObject.gameObject.name == "Peanut Twins")
+                {
+                    conversationDict["ISBAGGED"] = "Butter? Yeah, I haven't heard from him lately either.";
+                }
+                if (winningNPCGameObject.gameObject.name == "Birthday Cake")
+                {
+                    conversationDict["ISBAGGED"] = "I've been thinking about buying a new hat.";
+                }
+                if (winningNPCGameObject.gameObject.name == "Lina Bean")
+                {
+                    conversationDict["ISBAGGED"] = "I've really been wanting to travel lately.";
+                }
+                if (winningNPCGameObject.gameObject.name == "GreenBen")
+                {
+                    conversationDict["ISBAGGED"] = "After talking to Lemonade Stand, I never realized the sacrifices it takes to make money";
+                }
+            }
+
+            conversationDict["BEANGOHINT"] = "When we're older, we want to go to Beango with you!";
+            conversationDict["WRONGGUESS"] = "These are my glasses! We bought them yesterday. You can't take these from me!";
+
+            if (beanState == gameState.WRONGBAGGED || beanState == gameState.ISBAGGED)
+            {
+                if (wrongNPCGameObject.gameObject.name == gameObjectName)
+                {
+                    conversationDict["WRONGBAGGED"] = "These are my glasses! I bought them yesterday. You can't take these from me!";
                 }
                 else
                 {
@@ -1168,7 +1918,7 @@ public class GameState : MonoBehaviour
         }
 
         // Conversation laoding for Greenben
-        if (gameObjectName == "GreenBen")
+        if (gameObjectName == "GreenBen" || gameObjectName == "Jason")
         {
             conversationDict["ISCOOL"] = "Is that you Bean Man? I really hope I can feel better soon.";
             if (endingsManager.endingsSeenList.Count > 0)
@@ -1213,13 +1963,87 @@ public class GameState : MonoBehaviour
                 }
             }
             conversationDict["ISNOTCOOL"] = "Ouch, what happened to you?";
-            conversationDict["ISBAGGED"] = "Oh you look much better now!";
-            conversationDict["BEANGOHINT"] = "Beango sounds great but I think I need to get some rest.";
 
-
-            if (beanState == gameState.WRONGBAGGED)
+            if (beanState == gameState.ISNOTCOOL)
             {
-                if (wrongNPCGameObject.name == gameObjectName)
+                if (endingsManager.endingsSeenList.Count == 0)
+                {
+                    conversationDict["ISNOTCOOL"] = "Ouch, what happened to you?";
+                }
+                if (endingsManager.endingsSeenList.Count == 1)
+                {
+                    conversationDict["ISNOTCOOL"] = "Oo ouch Ouchy, happened to you what?";
+                }
+                if (endingsManager.endingsSeenList.Count == 2)
+                {
+                    conversationDict["ISNOTCOOL"] = "Orph, to you what happened?";
+                }
+                if (endingsManager.endingsSeenList.Count == 3)
+                {
+                    conversationDict["ISNOTCOOL"] = "Happened do to you what oh?";
+                }
+                if (endingsManager.endingsSeenList.Count == 4)
+                {
+                    conversationDict["ISNOTCOOL"] = "Do to happened you what oof?";
+                }
+                if (endingsManager.endingsSeenList.Count == 5)
+                {
+                    conversationDict["ISNOTCOOL"] = "Happened what gooby goo goo";
+                }
+                if (endingsManager.endingsSeenList.Count == 6)
+                {
+                    conversationDict["ISNOTCOOL"] = "Ouchy glooby gooby goo";
+                }
+                if (endingsManager.endingsSeenList.Count == 7)
+                {
+                    conversationDict["ISNOTCOOL"] = "*chimp noises*";
+                }
+                if (endingsManager.endingsSeenList.Count >= 8)
+                {
+                    conversationDict["ISNOTCOOL"] = "I think the writers just had no idea what to write for me.";
+                }
+            }
+
+            conversationDict["ISBAGGED"] = "Oh you look much better now!";
+
+            if (beanState == gameState.ISBAGGED)
+            {
+                if (winningNPCGameObject.gameObject.name == "Slim Sausage")
+                {
+                    conversationDict["ISBAGGED"] = "It is a little weird that everyone got glasses RIGHT when you lost yours.";
+                }
+                if (winningNPCGameObject.gameObject.name == "Fire Hydrant")
+                {
+                    conversationDict["ISBAGGED"] = "I'm so glad I feel better now!";
+                }
+                if (winningNPCGameObject.gameObject.name == "Chickpea Deputy")
+                {
+                    conversationDict["ISBAGGED"] = "What would you do if you could have wizard powers?";
+                }
+                if (winningNPCGameObject.gameObject.name == "Peanut Twins")
+                {
+                    conversationDict["ISBAGGED"] = "Man, I'm hungry.";
+                }
+                if (winningNPCGameObject.gameObject.name == "Birthday Cake")
+                {
+                    conversationDict["ISBAGGED"] = "Man, I'm thirsty.";
+                }
+                if (winningNPCGameObject.gameObject.name == "Lina Bean")
+                {
+                    conversationDict["ISBAGGED"] = "Believe it or not, I'm the runt in my family.";
+                }
+                if (winningNPCGameObject.gameObject.name == "GreenBen")
+                {
+                    conversationDict["ISBAGGED"] = "Hey Bean. Yeah it sucks that you lost your glasses.";
+                }
+            }
+
+            conversationDict["BEANGOHINT"] = "Beango sounds great but I think I need to get some rest.";
+            conversationDict["WRONGGUESS"] = "Really? I got these glasses so I could stay in the sun longer. What got into you?";
+
+            if (beanState == gameState.WRONGBAGGED || beanState == gameState.ISBAGGED)
+            {
+                if (wrongNPCGameObject.gameObject.name == gameObjectName)
                 {
                     conversationDict["WRONGBAGGED"] = "Really? I got these glasses so I could stay in the sun longer. What got into you?";
                 }
@@ -1251,7 +2075,7 @@ public class GameState : MonoBehaviour
                     }
                     if (winningNPCGameObject.gameObject.name == "GreenBen")
                     {
-                        conversationDict["WRONGBAGGED"] = "Oh hey Bean!";
+                        conversationDict["WRONGBAGGED"] = "*sweats profusely*";
                     }
                 }
             }
@@ -1304,13 +2128,87 @@ public class GameState : MonoBehaviour
                 }
             }
             conversationDict["ISNOTCOOL"] = "Did I say mean Bean before? What I meant to say was gross.";
-            conversationDict["ISBAGGED"] = "I'm feeling REAL good lately.";
-            conversationDict["BEANGOHINT"] = "I'm rooting for you at Beango tonight my main man Bean Man!";
 
-
-            if (beanState == gameState.WRONGBAGGED)
+            if (beanState == gameState.ISNOTCOOL)
             {
-                if (wrongNPCGameObject.name == gameObjectName)
+                if (endingsManager.endingsSeenList.Count == 0)
+                {
+                    conversationDict["ISNOTCOOL"] = "Hey Bean, I'm sorry you're just not looking that slick anymore.";
+                }
+                if (endingsManager.endingsSeenList.Count == 1)
+                {
+                    conversationDict["ISNOTCOOL"] = "See, if you were like me, you would be nicely packaged and fit a nice mold.";
+                }
+                if (endingsManager.endingsSeenList.Count == 2)
+                {
+                    conversationDict["ISNOTCOOL"] = "All of my friends were sausage patties growing up, and they didn't do nearly as well as I have.";
+                }
+                if (endingsManager.endingsSeenList.Count == 3)
+                {
+                    conversationDict["ISNOTCOOL"] = "The pressure of being nicely packaged and cased like me just breeds success naturally.";
+                }
+                if (endingsManager.endingsSeenList.Count == 4)
+                {
+                    conversationDict["ISNOTCOOL"] = "My ";
+                }
+                if (endingsManager.endingsSeenList.Count == 5)
+                {
+                    conversationDict["ISNOTCOOL"] = "";
+                }
+                if (endingsManager.endingsSeenList.Count == 6)
+                {
+                    conversationDict["ISNOTCOOL"] = "";
+                }
+                if (endingsManager.endingsSeenList.Count == 7)
+                {
+                    conversationDict["ISNOTCOOL"] = "";
+                }
+                if (endingsManager.endingsSeenList.Count >= 8)
+                {
+                    conversationDict["ISNOTCOOL"] = "";
+                }
+            }
+
+            conversationDict["ISBAGGED"] = "I'm feeling REAL good lately.";
+
+            if (beanState == gameState.ISBAGGED)
+            {
+                if (winningNPCGameObject.gameObject.name == "Slim Sausage")
+                {
+                    conversationDict["ISBAGGED"] = "I've got some exciting news coming soon!";
+                }
+                if (winningNPCGameObject.gameObject.name == "Fire Hydrant")
+                {
+                    conversationDict["ISBAGGED"] = "It's been a slow day today. I didn't get to record at all.";
+                }
+                if (winningNPCGameObject.gameObject.name == "Chickpea Deputy")
+                {
+                    conversationDict["ISBAGGED"] = "Do these glasses make me look slimmer?";
+                }
+                if (winningNPCGameObject.gameObject.name == "Peanut Twins")
+                {
+                    conversationDict["ISBAGGED"] = "Just a little style tip, what if you wore a cardboard box instead of a bag?";
+                }
+                if (winningNPCGameObject.gameObject.name == "Birthday Cake")
+                {
+                    conversationDict["ISBAGGED"] = "I just wrote the sickest version of the happy birthday song. I think everyone is really going to dig it.";
+                }
+                if (winningNPCGameObject.gameObject.name == "Lina Bean")
+                {
+                    conversationDict["ISBAGGED"] = "You should put Lina Beans face on that bag. It would make you look more attractive AND it wouldn't be creepy at all!";
+                }
+                if (winningNPCGameObject.gameObject.name == "GreenBen")
+                {
+                    conversationDict["ISBAGGED"] = "I'm thinking of making a really sad album next. Would you be interested in being on the front cover?";
+                }
+            }
+
+            conversationDict["BEANGOHINT"] = "I'm rooting for you at Beango tonight my main man Bean Man!";
+            conversationDict["WRONGGUESS"] = "Not cool Bean. You know I wear these glasses sometimes.";
+
+            if (beanState == gameState.WRONGBAGGED || beanState == gameState.ISBAGGED)
+            {
+                if (wrongNPCGameObject.gameObject.name == gameObjectName)
                 {
                     conversationDict["WRONGBAGGED"] = "Not cool Bean.You know I wear these glasses sometimes.";
                 }
@@ -1479,18 +2377,31 @@ public class GameState : MonoBehaviour
     }
 
     public void IsNotCool() {
-        questList.CompleteQuestItem("Beango");
-        questList.ActivateQuestItem("TownsPeople Again");
+        if (endingsManager.endingsSeenList.Count >= 3)
+        {
+            PaidActor.gameObject.name = "Dead Guy";
+            if (endingsManager.endingsSeenList.Count >= 4)
+            {
+                PaidActor.gameObject.name = "Paid Actor";
+            }
+            PaidActor.SetActive(true);
+        }
+
+
         foreach (HouseStateLogic house in listHouses)
         {
             house.NotCoolState();
         }
         beanState = gameState.ISNOTCOOL;
+
         RandomizeGlasses();
+        stick.ResetStick();
+        blockCheeseLogic.UpdateTrashSequence(false);
 
         Debug.Log("CHEESE PIZZA IS NOT COOL");
 
         _playerController.MoveToStart();
+
 
         foreach (NPC character in _playerController.scriptNPCList)
         {
@@ -1506,15 +2417,29 @@ public class GameState : MonoBehaviour
         }
         _playerController.NoGlasses();
 
+        if (endingsManager.endingsSeenList.Count == 2 || endingsManager.endingsSeenList.Count >= 6)
+        {
+            censorBar.UpdateToRedCensorBar();
+        }
+        else if (endingsManager.endingsSeenList.Count == 3)
+        {
+            censorBar.UpdateToRainbowCensorBar();
+        }
+        else
+        {
+            censorBar.UpdateToBlackCensorBar();
+        }
         //BEAN MAN SPRITE CHANGE
     }
 
     public void IsBagged()
     {
+        PaidActor.SetActive(false);
         Debug.Log("CHEESE PIZZA IS BAGGED");
         foreach (HouseStateLogic house in listHouses) {
             house.BaggedState();
         }
+
         beanState = gameState.ISBAGGED;
         _actManager.IsNotCoolMusicEvent.setParameterByName("Bagged Transition", 1);
         questList.CompleteQuestItem("TownsPeople Again");
@@ -1532,7 +2457,7 @@ public class GameState : MonoBehaviour
     /// </summary>
     public void ResetGame()
     {
-
+        PaidActor.SetActive(false);
         _playerController._responseBox.isActive = false;
         _playerController._dialogueBox.isActive = false;
         _playerController._canTalkBox.isActive = false;
@@ -1555,13 +2480,25 @@ public class GameState : MonoBehaviour
             foreach (NPC npc in trafficConeNPCs)
             {
                 npc.ResetCoolStateNPC();
-                if (endingsManager.endingsSeenList[endingsManager.endingsSeenList.Count - 1] == _actManager.BirthdayCakeEnding)
+                if (endingsManager.endingsSeenList.Contains(_actManager.BirthdayCakeEnding))
                 {
                     if (npc.gameObject.tag != "InactiveNPC" && npc.gameObject.name != "Traffic Cone")
                     {
                         Debug.Log("Traffic Cone activating");
                         trafficCone.gameObject.tag = "SideNPC";
                         npc.ShowTrafficCone();
+                    }
+                    if (npc.gameObject.name == "Traffic Cone")
+                    {
+                        npc.RemoveTrafficCone();
+                    }
+                    if (endingsManager.endingsSeenList.Count > 7 && npc.gameObject.name == "Cory")
+                    {
+                        npc.RemoveTrafficCone();
+                    }
+                    if (endingsManager.endingsSeenList.Contains(_actManager.PeanutTwinEnding) && npc.gameObject.name == "Butter")
+                    {
+                        npc.RemoveTrafficCone();
                     }
                 }
             }
@@ -1572,11 +2509,6 @@ public class GameState : MonoBehaviour
         _playerController.finishedBagMove = false;
         _playerController.bagMoving = true;
         _playerController.MoveToStart();
-
-        if (!endingsManager.endingsSeenList.Contains(_actManager.BeanManWinEnding))
-        {
-            questList.RemoveQuestItem("Get Your Cool Back");
-        }
 
         _lemonadeStand.SetLemonadeStandSanity();
         _fireHydrantvomit.hasVommittedThisRound = false;
@@ -1608,18 +2540,144 @@ public class GameState : MonoBehaviour
                 butter.ButterLives();
             }
         }
+        if (endingsManager.endingsSeenList.Contains(_actManager.PeanutTwinEnding) || endingsManager.endingsSeenList.Contains(_actManager.ChickPeaEnding))
+        {
+
+            dynamicMusic.ChangeLastWinnerMusic(winningNPCGameObject);
+        }
+        else
+        {
+            dynamicMusic.ChangeLastWinnerMusic(null);
+        }
+
+        if (endingsManager.endingsSeenList.Count >= 8)
+        {
+            lastEndingConesMove.MoveTrafficConesToEnd();
+        }
+        else
+        {
+            lastEndingConesMove.MoveTrafficConesToStart();
+        }
+
+        if (endingsManager.endingsSeenList.Contains(_actManager.GreenBenEnding))
+        {
+            greenBen.GreenBenHealthy();
+        }
+        else
+        {
+            greenBen.GreenBenSick();
+        }
+
+        if (endingsManager.endingsSeenList.Count > 7)
+        {
+            coryLogic.CoryDead();
+        }
+        else
+        {
+            coryLogic.CoryLives();
+        }
+
+        if (endingsManager.endingsSeenList.Contains(_actManager.ChickPeaEnding))
+        {
+            houseDestroy.DestroyHouses();
+            ChickpeaDebris.SetActive(true);
+        }
+        else
+        {
+            houseDestroy.FixHouses();
+            ChickpeaDebris.SetActive(false);
+        }
+
+        if (endingsManager.endingsSeenList.Contains(_actManager.LinaBeanEnding))
+        {
+            LinaBean.gameObject.name = "Edamame Bean";
+        }
+
+        if (endingsManager.endingsSeenList.Count >= 7)
+        {
+            BirthdayCake.gameObject.name = "Party Cake";
+        }
+
+        stick.ResetStick();
+        blockCheeseLogic.UpdateTrashSequence(true);
         _hideyHole.NewPeeperSet();
         poparazziCorn.ChangeLocation();
         chickPeaLogic.ChickPeaWizardMode();
         cornLady.CornLadyHibernate();
 
-        dynamicMusic.ChangeWinnerBirthdayCake();
-
         recentEndingPlayed = true;
 
         _UILogic.MainMenu.SetActive(true);
 
+        NPC winningTransition = default;
+
+        foreach (NPC npc in transitionsList)
+        {
+            npc.transitionWinner = false;
+        }
+        foreach (NPC npc in completedTransitionsList)
+        {
+            npc.transitionWinner = false;
+        }
+        foreach (NPC npc in transitionsList)
+        {
+            if (endingsManager.endingsSeenList.Count == 0)
+            {
+                if (npc.gameObject.name == "Granny Smith")
+                {
+                    winningTransition = npc;
+                }
+            }
+            else if (endingsManager.endingsSeenList.Count == 8)
+            {
+                break;
+            }
+            else
+            {
+                bool foundTransition = false;
+                while (!foundTransition)
+                {
+                    NPC winningNPC;
+                    int number = Random.Range(0, completedTransitionsList.Count);
+                    winningNPC = transitionsList[Random.Range(0, transitionsList.Count)];
+                    if (!completedTransitionsList.Contains(winningNPC))
+                    {
+                        Debug.Log("Winning Transition " + npc.gameObject.name);
+                        winningTransition = npc;
+                        foundTransition = true;
+                        break;
+                    }
+                    else
+                    {
+                        winningTransition = npc;
+                        foundTransition = true;
+                        break;
+                    }
+                }
+                break;
+            }
+        }
+        if (winningTransition != null && endingsManager.endingsSeenList.Count == completedTransitionsList.Count)
+        {
+            completedTransitionsList.Add(winningTransition);
+            transitionsList.Remove(winningTransition);
+        }
+        if (transitionsList.Count == 0)
+        {
+            NPC winningNPC;
+            int number = Random.Range(0, completedTransitionsList.Count);
+            winningNPC = completedTransitionsList[number];
+            winningNPC.transitionWinner = true;
+            Debug.Log("TRANSITION COUNT 0 " + winningNPC.gameObject.name);
+        }
+        else if (endingsManager.endingsSeenList.Count == 8)
+        {
+            
+        }else
+        {
+            completedTransitionsList[completedTransitionsList.Count - 1].transitionWinner = true;
+        }
+
         saveLoading.Save();
     }
-
 }

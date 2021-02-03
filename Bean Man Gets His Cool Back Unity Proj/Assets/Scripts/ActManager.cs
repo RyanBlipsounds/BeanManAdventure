@@ -60,6 +60,8 @@ public class ActManager : MonoBehaviour
     private bool hasPlayed = false;
 
     public UIController spacebar;
+    public QuestList questList;
+    public CoryLogic coryLogic;
 
     public FMOD.Studio.EventInstance EndingMusicEvent;
     public FMOD.Studio.EventInstance IsNotCoolMusicEvent;
@@ -69,6 +71,7 @@ public class ActManager : MonoBehaviour
     string FMODVO = "event:/VO_Beango";
     float graphicTime = 20f;
     public float fadeTime = 2f;
+
 
     public enum sceneState
     {
@@ -89,21 +92,21 @@ public class ActManager : MonoBehaviour
     {
         if (activateGraphicTransition == true)
         {
-            if (m_gameState.beanState == GameState.gameState.BEANGOHINT || m_gameState.beanState == GameState.gameState.ISNOTCOOL) {
-                EndingScreen = BeangoScreen;
-                EndingScreenText = BeangoScreenText;
-                graphicTime = 20f;
-                FMODMusic = "event:/Beango Music";
-                FMODVO = "event:/VO_Beango";
-            }
-            if (m_gameState.beanState == GameState.gameState.ISCOOL)
+            if (m_gameState.beanState == GameState.gameState.BEANGOHINT || m_gameState.beanState == GameState.gameState.ISNOTCOOL)
             {
-                //LoadGraphic(EndingScreen);
+                if (_playerController.thisCharacter.GetComponent<NPC>())
+                {
+                    if (_playerController.thisCharacter.GetComponent<NPC>().transitionWinner)
+                    {
+                        EndingScreen = BeangoScreen;
+                        EndingScreenText = BeangoScreenText;
+                        graphicTime = 20f;
+                        FMODMusic = "event:/Beango Music";
+                        FMODVO = "event:/VO_Beango";
+                    }
+                }
             }
-            if (m_gameState.beanState == GameState.gameState.ISBAGGED || m_gameState.beanState == GameState.gameState.ENDING)
-            {
-                //LoadGraphic(EndingScreen);
-            }
+
             LoadGraphic(EndingScreen, FMODMusic, FMODVO, graphicTime);
         }
     }
@@ -121,8 +124,22 @@ public class ActManager : MonoBehaviour
             blackScreenTimeToFade += Time.deltaTime;
         }
         else {
-            if (m_gameState.beanState == GameState.gameState.BEANGOHINT && hasPlayed == false)
-               
+            if (graphic == BeanManLeavesTown) {
+                if (hasPlayed == false)
+                {
+                    IsNotCoolMusicEvent.stop(FMOD.Studio.STOP_MODE.ALLOWFADEOUT);
+                    m_gameState.StartMusic.stop(FMOD.Studio.STOP_MODE.ALLOWFADEOUT);
+                    _playerController.WrongMusicEvent.stop(FMOD.Studio.STOP_MODE.ALLOWFADEOUT);
+                    _playerController.WrongBeatEvent.stop(FMOD.Studio.STOP_MODE.ALLOWFADEOUT);
+                    NarrationVOEvent = FMODUnity.RuntimeManager.CreateInstance(FMODVO);
+                    EndingMusicEvent = FMODUnity.RuntimeManager.CreateInstance(FMODMusic);
+                    EndingMusicEvent.start();
+                    NarrationVOEvent.start();
+                    m_gameState.Ending();
+                    hasPlayed = true;
+                }
+            }
+            else if (m_gameState.beanState == GameState.gameState.BEANGOHINT && hasPlayed == false)
             {
                 fadeTime = 2f;
                 NarrationVOEvent = FMODUnity.RuntimeManager.CreateInstance(FMODVO);
@@ -146,6 +163,7 @@ public class ActManager : MonoBehaviour
                     hasPlayed = true;
                 }
             }
+            
             blackScreenTimeToFade -= Time.deltaTime;
         }
 
@@ -166,8 +184,18 @@ public class ActManager : MonoBehaviour
 
                 if (m_gameState.beanState == GameState.gameState.ISNOTCOOL)
                 {
+                    questList.CompleteQuestItem("Beango");
+                    questList.ActivateQuestItem("TownsPeople Again");
                     IsNotCoolMusicEvent = FMODUnity.RuntimeManager.CreateInstance("event:/NotCoolMusic");
                     IsNotCoolMusicEvent.start();
+                    if (_endingsManager.endingsSeenList.Count > 6)
+                    {
+                        coryLogic.CoryDead();
+                    }
+                    else
+                    {
+                        coryLogic.CoryLives();
+                    }
                 }
 
                 _narrationBox.isActive = false;
@@ -177,6 +205,7 @@ public class ActManager : MonoBehaviour
         }
         if (blackScreenTmp == 0 && switchFade == true)
         {
+
             switchFade = false;
             sceneTransitionState = state;
             blackScreenTmp = 0;
@@ -305,9 +334,9 @@ public class ActManager : MonoBehaviour
             EndingScreen = BeanManLeavesTown;
             EndingScreenText = BeanManLeavesBaggedText;
         }
-        if (ending == "Beanman Leaves Cool Town") {
+        if (ending == "Beanman Leaves Town") {
             graphicTime = 14f;
-            FMODVO = "VO_BeanmanLeaveCool";
+            FMODVO = "event:/VO_BeanmanLeaveCool";
             FMODMusic = "event:/Good Ending";
             EndingScreenText = BeanManLeavesCoolText;
             EndingScreen = BeanManLeavesTown;
@@ -319,7 +348,7 @@ public class ActManager : MonoBehaviour
             EndingScreenText = BeanManLeavesUncoolText;
             EndingScreen = BeanManLeavesTown;
         }
-        if (ending == "Lina Bean")
+        if (ending == "Lina Bean" || ending == "Edamame Bean")
         {
             graphicTime = 19f;
             FMODVO = "event:/VO_LinaBean";
@@ -359,7 +388,7 @@ public class ActManager : MonoBehaviour
             EndingScreenText = SlimSausageWinningText;
             EndingScreen = SlimSausageWinning;
         }
-        if (ending == "Birthday Cake")
+        if (ending == "Birthday Cake" || ending == "Party Cake")
         {
             graphicTime = 16f;
             FMODVO = "event:/VO_BirthdayCake";

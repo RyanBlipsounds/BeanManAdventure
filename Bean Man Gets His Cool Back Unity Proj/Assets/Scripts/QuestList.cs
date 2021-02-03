@@ -11,13 +11,6 @@ public class QuestList : MonoBehaviour
 
     public QuestNotification questNotification;
 
-    void Update()
-    {
-        if (Input.GetKeyDown(KeyCode.R)) {
-            //CompleteQuestItem("Lina Bean");
-        }
-    }
-
     public void RemoveQuestItem(string characterName)
     {
         QuestItem selectedQuest = totalQuestItemsList[0];
@@ -38,13 +31,13 @@ public class QuestList : MonoBehaviour
             return;
         }
 
-        if (completedQuestList.Contains(selectedQuest) || !availableQuestList.Contains(selectedQuest))
+        if (completedQuestList.Contains(selectedQuest) || availableQuestList.Contains(selectedQuest))
         {
+            completedQuestList.Remove(selectedQuest);
+            availableQuestList.Remove(selectedQuest);
+            selectedQuest.QuestRemoved();
             return;
         }
-
-        availableQuestList.Remove(selectedQuest);
-        selectedQuest.QuestRemoved();
     }
 
     public void ActivateQuestItem(string characterName)

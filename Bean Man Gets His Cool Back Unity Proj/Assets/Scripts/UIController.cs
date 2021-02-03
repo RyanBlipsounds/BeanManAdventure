@@ -58,11 +58,9 @@ public class UIController : MonoBehaviour
 
         thisGameObject = this.gameObject.name;
         string currentBeanState = gameState.beanState.ToString();
-
-
+        
         if (isActive)
         {
-
             if (thisGameObject == "DialogueBox")
             {
                 gameState.StartMusic.setParameterByName("CharacterProx", 1);
@@ -81,7 +79,7 @@ public class UIController : MonoBehaviour
             }
             if (!textActivated && thisGameObject == "DialogueBox")
             {
-                if (_playerController.thisCharacter.gameObject.name == "Lemonade Stand" && endingsManager.endingsSeenList.Count > 7)
+                if (_playerController.thisCharacter.gameObject.name == "Lemonade Stand" && endingsManager.endingsSeenList.Count > 6)
                 {
                     questList.CompleteQuestItem("Get Lemonade Stand");
                 }
@@ -157,6 +155,29 @@ public class UIController : MonoBehaviour
                 return;
 
             }
+        }
+
+        if (_playerController.thisCharacter.name == "Dead Guy" || _playerController.thisCharacter.name == "Paid Actor")
+        {
+            FMODUnity.RuntimeManager.PlayOneShot("event:/Fire Hydrant");
+            return;
+        }
+
+        if (_playerController.thisCharacter.name == "Raccoon")
+        {
+            FMODUnity.RuntimeManager.PlayOneShot("event:/Butter");
+            return;
+        }
+        if (_playerController.thisCharacter.name == "Lina Edamame")
+        {
+            FMODUnity.RuntimeManager.PlayOneShot("event:/Lina Bean");
+            return;
+        }
+
+        if (_playerController.thisCharacter.name == "Ninja Officer Bush")
+        {
+            FMODUnity.RuntimeManager.PlayOneShot("event:/Baked Bush");
+            return;
         }
 
         FMODUnity.RuntimeManager.PlayOneShot("event:/" + _playerController.thisCharacter.name);

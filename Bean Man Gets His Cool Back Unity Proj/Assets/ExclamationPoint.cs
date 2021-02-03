@@ -8,12 +8,31 @@ public class ExclamationPoint : MonoBehaviour
 
     public float timeToFade = 0;
     public bool hideUI = false;
+    public GameObject thisCharacter;
+    public GameState gameState;
+
+    public Transform shortLina;
+    public Transform tallLina;
 
     public SpriteRenderer sprite;
     // Start is called before the first frame update
 
     public void Update()
     {
+        if (thisCharacter != null)
+        {
+            if (thisCharacter.name == "Lina Bean")
+            {
+                if (gameState.beanState == GameState.gameState.ISBAGGED || gameState.beanState == GameState.gameState.ISNOTCOOL || gameState.beanState == GameState.gameState.WRONGBAGGED)
+                {
+                    this.gameObject.transform.position = tallLina.position;
+                }
+                else
+                {
+                    this.gameObject.transform.position = shortLina.position;
+                }
+            }
+        }
         if (hideUI)
         {
             UITmp = Mathf.Lerp(1, 0, timeToFade * 8);

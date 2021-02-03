@@ -14,6 +14,10 @@ public class Depth2D : MonoBehaviour
     public GameObject m_frontCensorBar;
     public GameObject m_backCensorBar;
 
+    public Sprite RedBar;
+    public Sprite BlackBar;
+    public Sprite RainbowBar;
+
     public Vector3 characterPosition;
     public Vector3 thisPosition;
     public Vector3 propPosition;
@@ -26,6 +30,27 @@ public class Depth2D : MonoBehaviour
         Vector3 thisPosition =  new Vector3(this.transform.position.x, this.transform.position.y, m_Character.transform.position.z);
         Vector3 propPosition = new Vector3(this.transform.position.x, this.transform.position.y, m_Character.transform.position.z);
         //Vector3 censorPosition = new Vector3(this.transform.position.x, this.transform.position.y, censorPosition.transform.position.z);
+    }
+
+    public void UpdateToBlackCensorBar()
+    {
+        m_frontCensorBar.GetComponent<SpriteRenderer>().sprite = BlackBar;
+        m_backCensorBar.GetComponent<SpriteRenderer>().sprite = BlackBar;
+        m_backCensorBar.GetComponent<SpriteRenderer>().color = new Color(0, 0, 0, 255);
+    }
+
+    public void UpdateToRedCensorBar()
+    {
+        m_frontCensorBar.GetComponent<SpriteRenderer>().sprite = RedBar;
+        m_backCensorBar.GetComponent<SpriteRenderer>().sprite = RedBar;
+        m_backCensorBar.GetComponent<SpriteRenderer>().color = new Color(255, 255, 255, 255);
+    }
+
+    public void UpdateToRainbowCensorBar()
+    {
+        m_frontCensorBar.GetComponent<SpriteRenderer>().sprite = RainbowBar;
+        m_backCensorBar.GetComponent<SpriteRenderer>().sprite = RainbowBar;
+        m_backCensorBar.GetComponent<SpriteRenderer>().color = new Color(255, 255, 255, 255);
     }
 
     void Update()

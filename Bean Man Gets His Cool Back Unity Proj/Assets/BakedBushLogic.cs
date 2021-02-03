@@ -5,6 +5,10 @@ using UnityEngine;
 public class BakedBushLogic : MonoBehaviour
 {
     public PlayerController playerController;
+
+    public EndingsManager endingsManager;
+    public GameState gameState;
+
     public bool beanInRange = false;
 
     public SpriteRenderer sprite;
@@ -16,7 +20,28 @@ public class BakedBushLogic : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        if (endingsManager.endingsSeenList.Count >= 2 && gameState.beanState == GameState.gameState.ISNOTCOOL)
+        {
+            this.gameObject.name = "Ninja Officer Bush";
+            OfficerBush();
+        }
+        else
+        {
+            this.gameObject.name = "Baked Bush";
+            NormalBush();
+        }
 
+        if (newAnimation != oldAnimation)
+        {
+            Debug.Log("SWITCH ANIMATION");
+            oldAnimation = newAnimation;
+            crazyBush.Play(newAnimation);
+        }
+
+    }
+
+    public void NormalBush()
+    {
         if (playerController.GlassesSpriteRenderer.flipX == true && sprite.flipX == true)
         {
             newAnimation = "BigEyeBush";
@@ -33,13 +58,25 @@ public class BakedBushLogic : MonoBehaviour
         {
             newAnimation = "SmallEyeBush";
         }
+    }
 
-        if (newAnimation != oldAnimation)
+    public void OfficerBush()
+    {
+        if (playerController.GlassesSpriteRenderer.flipX == true && sprite.flipX == true)
         {
-            Debug.Log("SWITCH ANIMATION");
-            oldAnimation = newAnimation;
-            crazyBush.Play(newAnimation);
+            newAnimation = "OfficerBigEye";
         }
-
+        if (playerController.GlassesSpriteRenderer.flipX == false && sprite.flipX == true)
+        {
+            newAnimation = "OfficerSmallEye";
+        }
+        if (playerController.GlassesSpriteRenderer.flipX == true && sprite.flipX == false)
+        {
+            newAnimation = "OfficerBigEye";
+        }
+        if (playerController.GlassesSpriteRenderer.flipX == false && sprite.flipX == false)
+        {
+            newAnimation = "OfficerSmallEye";
+        }
     }
 }

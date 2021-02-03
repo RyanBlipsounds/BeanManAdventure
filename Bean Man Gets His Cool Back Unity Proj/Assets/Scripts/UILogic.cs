@@ -40,7 +40,7 @@ public class UILogic : MonoBehaviour
         pc.bagMoving = true;
     }
 
-    private void Update()
+    public void ActivatePause()
     {
         if (PauseScreen.activeInHierarchy)
         {
@@ -56,8 +56,6 @@ public class UILogic : MonoBehaviour
                 PauseScreen.SetActive(true);
             }
         }
-
-        
     }
 
     private void OnDestroy()
@@ -87,6 +85,14 @@ public class UILogic : MonoBehaviour
             if (firstPlayClick == false) {
                 questList.ActivateQuestItem("Everyone in Town");
                 firstPlayClick = true;
+            }
+
+            if (!endingsManager.endingsSeenList.Contains(_actManager.BeanManWinEnding) && endingsManager.endingsSeenList.Count > 0)
+            {
+                questList.RemoveQuestItem("Get Your Cool Back");
+                questList.RemoveQuestItem("Beango");
+                questList.RemoveQuestItem("TownsPeople");
+                questList.ActivateQuestItem("Beango");
             }
 
             if (endingsManager.endingsSeenList.Contains(_actManager.GrannySmithEnding)) {
@@ -129,16 +135,21 @@ public class UILogic : MonoBehaviour
             {
                 questList.ActivateQuestItem("Scare the Stick Away");
             }
-            if (endingsManager.endingsSeenList.Count > 8)
+            if (endingsManager.endingsSeenList.Count > 4)
             {
-                questList.ActivateQuestItem("Get Lemonade Stand");
+                questList.ActivateQuestItem("Get Lemonade Stand Back in Business");
             }
             if (endingsManager.endingsSeenList.Count == 5)
             {
                 questList.ActivateQuestItem("Find the Hidden Stick");
             }
+            if (endingsManager.endingsSeenList.Count >= 8)
+            {
+                questList.ActivateQuestItem("Leave Town");
+            }
             if (endingsManager.endingsSeenList.Count == 9)
             {
+                questList.CompleteQuestItem("Leave Town");
                 questList.CompleteQuestItem("Find Every Ending");
             }
             if (endingsManager.endingsSeenList.Contains(_actManager.BeanManWinEnding))
@@ -170,7 +181,7 @@ public class UILogic : MonoBehaviour
     public void UpdateEndingsCount(int count)
     {
         endingsEncountered.SetActive(true);
-        endingsNumber.text = count + " / 8";
+        endingsNumber.text = count + "/8";
     }
 
     public void CreditsClicked()

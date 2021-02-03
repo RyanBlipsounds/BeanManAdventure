@@ -8,11 +8,8 @@ public class ConversationHandler : MonoBehaviour
     public PlayerController _playerController;
     public GameState _gamestate;
     public QuestList questList;
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
+    public ActManager actManager;
+
 
     public void OnTriggerEnter2D(Collider2D collision)
     {
@@ -21,7 +18,11 @@ public class ConversationHandler : MonoBehaviour
             Debug.Log("Stick Heart");
             questList.CompleteQuestItem("Find the Hidden Stick");
         }
-        if (collision.gameObject.tag == "NPC" || collision.gameObject.tag == "SideNPC" || collision.gameObject.name == "Fire Hydrant" || collision.gameObject.name == "ExitTown")
+        if (collision.gameObject.name == "ExitTown")
+        {
+            actManager.LoadEnding("Beanman Leaves Town");
+        }
+        if (collision.gameObject.tag == "NPC" || collision.gameObject.tag == "SideNPC" || collision.gameObject.name == "Fire Hydrant")
         {
             Debug.Log(collision.gameObject.name);
             //This initializes 
@@ -33,8 +34,14 @@ public class ConversationHandler : MonoBehaviour
             _playerController._canTalkBox.canTalkBoxAnimator.ShowText(collision.gameObject.name);
 
             _playerController.characterInRange = true;
-            
+
+            if (_gamestate.beanState == GameState.gameState.ISBAGGED)
+            {
+                _gamestate.wrongNPCGameObject = collision.gameObject;
+            }
+
             _gamestate.Conversation(collision.gameObject.name, 0);
+            Debug.Log("Pizza boy " + _gamestate.conversationDict["WRONGBAGGED"]);
         }
     }
 

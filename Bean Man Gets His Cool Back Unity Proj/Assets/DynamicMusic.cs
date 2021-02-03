@@ -24,9 +24,16 @@ public class DynamicMusic : MonoBehaviour
         CharacterProximity = gameState.winningNPCGameObject;
     }
 
-    public void ChangeWinnerBirthdayCake()
+    public void ChangeLastWinnerMusic(GameObject winner)
     {
-        CharacterProximity = BirthdayCake;
+        if (winner == null)
+        {
+            CharacterProximity = BirthdayCake;
+        }
+        else
+        {
+            CharacterProximity = winner;
+        }
     }
 
     // Update is called once per frame

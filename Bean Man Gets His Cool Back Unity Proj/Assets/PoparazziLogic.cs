@@ -90,7 +90,7 @@ public class PoparazziLogic : MonoBehaviour
             }
             if (endingsManager.endingsSeenList[endingsManager.endingsSeenList.Count - 1] == _actManager.PeanutTwinEnding)
             {
-                TurnPopCorn(false);
+                TurnPopCorn(true);
                 this.transform.position = PeanutTwinsPosition.transform.position;
             }
         }

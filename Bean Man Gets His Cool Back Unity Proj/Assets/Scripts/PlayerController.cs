@@ -35,7 +35,7 @@ public class PlayerController : MonoBehaviour
     public UIController _dialogueBox;
     public UIController _responseBox;
     public UIController _narrationBox;
-
+    
     public GameObject Bag;
     public GameObject m_BagStartPosition;
     public GameObject m_BagEndPosition;
@@ -70,7 +70,10 @@ public class PlayerController : MonoBehaviour
     public UIController journalController;
     public QuestListLayout questListLayout;
 
+    public UILogic uiLogic;
+
     public QuestNotification questNotification;
+    public StickLogic stickLogic;
 
     public NPC grannySmith;
 
@@ -104,13 +107,15 @@ public class PlayerController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-            //Movement and Animation
+        //Movement and Animation
         if (_actManager.activateGraphicTransition == false)
         {
             if (bagMoving == false)
             {
+                Journal();
                 Dialogue();
                 ProcessInputs();
+                uiLogic.ActivatePause();
             }
             else {
                 movementSpeed = 0;
@@ -123,10 +128,9 @@ public class PlayerController : MonoBehaviour
             movementDirection = new Vector2(0.0f, 0.0f);
             movementDirection.Normalize();
         }
-        Journal();
+
         Move();
         Animate();
-
 
         if (Bag.transform.position.y < m_BagEndPosition.transform.position.y + 0.05 && bagMoving == true && finishedBagMove == false)
         {
@@ -217,7 +221,7 @@ public class PlayerController : MonoBehaviour
                     }
                 }
 
-                if (thisCharacter.gameObject.name == "Stick") {
+                if (thisCharacter.gameObject.name == stickLogic.allObjects[endingsManager.endingsSeenList.Count].gameObject.name) {
                     return;
                 }
                 if (thisCharacter.gameObject.name == "Fire Hydrant" && gameState.beanState == GameState.gameState.WRONGBAGGED && !fireHydrantVomit.fireHydrantActivated)
@@ -301,11 +305,6 @@ public class PlayerController : MonoBehaviour
                 {
                     _responseBox.isActive = true;
                 }
-                if (thisCharacter.gameObject.name == "ExitTown")
-                {
-                    Debug.Log("Exit Town!");
-                    _responseBox.isActive = true;
-                }
 
                 if (!_dialogueBox.isActive)
                 {
@@ -317,34 +316,42 @@ public class PlayerController : MonoBehaviour
                 }
 
 
-                if (thisCharacter.gameObject.name == "Granny Smith")
+                //if (thisCharacter.gameObject.name == "Granny Smith")
+                if (thisCharacter.gameObject.GetComponent<NPC>())
                 {
-                    if (gameState.beanState == GameState.gameState.BEANGOHINT || gameState.beanState == GameState.gameState.ISCOOL)
+                    NPC thisNPC = thisCharacter.gameObject.GetComponent<NPC>();
+                    if (thisNPC.transitionWinner)
                     {
-                        int count = 0;
-                        if (endingsManager.endingsSeenList.Count > 0)
+                        if (gameState.beanState == GameState.gameState.BEANGOHINT)
                         {
-                            foreach (GameObject endingsFound in endingsManager.endingsSeenList)
+                            int count = 0;
+                            if (endingsManager.endingsSeenList.Count > 0)
                             {
-                                if (!endingsFound.gameObject.name.Contains("Beanman"))
+                                foreach (GameObject endingsFound in endingsManager.endingsSeenList)
                                 {
-                                    count++;
+                                    if (!endingsFound.gameObject.name.Contains("Beanman"))
+                                    {
+                                        count++;
+                                    }
                                 }
                             }
-                        }
-                        if (scriptNPCList.Count >= gameState.listTotalNPC.Count || count > 0)
-                        {
-                            _responseBox.isActive = true;
+                            if (scriptNPCList.Count >= gameState.listTotalNPC.Count || count > 0)
+                            {
+                                _responseBox.isActive = true;
+                            }
                         }
                     }
+                }
+                if (thisCharacter.gameObject.name == "Granny Smith")
+                {
                     if (gameState.beanState == GameState.gameState.ISNOTCOOL)
                     {
                         gameState.Conversation(thisCharacter.gameObject.name, 0);
                         gameState.IsBagged();
                     }
                 }
-
                 _dialogueBox.isActive = true;
+
             }
             else if (Input.GetKeyDown(KeyCode.Space) && _dialogueBox.isActive == true && skippedTypewriter == false)
             {
@@ -396,7 +403,7 @@ public class PlayerController : MonoBehaviour
         // Checking if the response box is true and if the "Y" Button is pressed.
         if (Input.GetKeyDown(KeyCode.Y) && _responseBox.isActive == true)
         {
-            if (thisCharacter.gameObject.name == "Granny Smith" && gameState.beanState == GameState.gameState.BEANGOHINT)
+            if (thisCharacter.gameObject.GetComponent<NPC>().transitionWinner && gameState.beanState == GameState.gameState.BEANGOHINT)
             {
                 gameState.beanState = GameState.gameState.BEANGOHINT;
                 gameState.Conversation(thisCharacter.gameObject.name, 0);
@@ -417,9 +424,9 @@ public class PlayerController : MonoBehaviour
                     }
                     else
                     {
-                        gameState.wrongNPCGameObject = thisCharacter.gameObject;
+                        //gameState.wrongNPCGameObject = thisCharacter.gameObject;
                         gameState.beanState = GameState.gameState.WRONGBAGGED;
-                        _dialogueBox.dialogueBoxAnimator.ShowText(gameState.conversationDict["WRONGBAGGED"]);
+                        _dialogueBox.dialogueBoxAnimator.ShowText(gameState.conversationDict["WRONGGUESS"]);
                         _actManager.IsNotCoolMusicEvent.stop(FMOD.Studio.STOP_MODE.IMMEDIATE);
                         _responseBox.isActive = false;
                         foreach (NPC npc in scriptNPCList) {

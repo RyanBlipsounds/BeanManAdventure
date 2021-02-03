@@ -13,7 +13,7 @@ public class SaveLoading : MonoBehaviour
     public HideyHole hideyHole;
     public SpriteRenderer Map;
     public GameObject VomitColliders;
-    //public HideyHole hideyHole;
+    public StickLogic Stick;
 
     public void Save()
     {
@@ -21,14 +21,16 @@ public class SaveLoading : MonoBehaviour
         ES3.Save<List<GameObject>>("PeeperList", hideyHole.PeeperList);
         ES3.Save<List<QuestItem>>("CompletedQuestList", questList.completedQuestList);
         ES3.Save<List<GameObject>>("Endings", endingsManager.endingsSeenList);
+        ES3.Save<List<NPC>>("TransitionsList", gameState.transitionsList);
+        ES3.Save<List<NPC>>("CompletedTransitionList", gameState.completedTransitionsList);
         ES3.Save<SpriteRenderer>("Map", Map);
+        ES3.Save<StickLogic>("Stick", Stick);
         ES3.Save<GameObject>("VomitColliders", VomitColliders);
         ES3.Save<List<NPC>>("NPCs", playerController.scriptNPCList);
         ES3.Save<int>("VomitCount", fireHydrantVomit.vomitCount);
         ES3.Save<List<GameObject>>("VomitList", fireHydrantVomit.vomitList);
     }
 
-    // Update is called once per frame
     public void Load()
     {
         questList.availableQuestList = ES3.Load("AvailableQuestList", questList.availableQuestList);
@@ -36,6 +38,9 @@ public class SaveLoading : MonoBehaviour
         hideyHole.PeeperList = ES3.Load("PeeperList", hideyHole.PeeperList);
         VomitColliders = ES3.Load("VomitColliders", VomitColliders);
         Map = ES3.Load("Map", Map);
+        Stick = ES3.Load("Stick", Stick);
+        gameState.transitionsList = ES3.Load("TransitionsList", gameState.transitionsList);
+        gameState.completedTransitionsList = ES3.Load("CompletedTransitionList", gameState.completedTransitionsList);
         playerController.scriptNPCList = ES3.Load("NPCs", playerController.scriptNPCList);
         endingsManager.endingsSeenList = ES3.Load("Endings", endingsManager.endingsSeenList);
         fireHydrantVomit.vomitCount = ES3.Load("VomitCount", fireHydrantVomit.vomitCount);
@@ -75,7 +80,10 @@ public class SaveLoading : MonoBehaviour
 
     public void ClearSaveData() {
         //ES3.DeleteKey("HideyHole");
+        ES3.DeleteKey("Stick");
         ES3.DeleteKey("VomitColliders");
+        ES3.DeleteKey("TransitionsList");
+        ES3.DeleteKey("CompletedTransitionList");
         ES3.DeleteKey("AvailableQuestList");
         ES3.DeleteKey("CompletedQuestList");
         ES3.DeleteKey("PeeperList");

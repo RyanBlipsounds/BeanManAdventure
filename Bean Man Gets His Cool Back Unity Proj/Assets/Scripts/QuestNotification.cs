@@ -24,7 +24,7 @@ public class QuestNotification : MonoBehaviour
             this.gameObject.transform.position = Vector3.MoveTowards(transform.position, EndPoint.transform.position, Time.deltaTime * speed);
             goAwayTimer -= Time.deltaTime;
             if (goAwayTimer < 0) {
-                isActive = false;
+                //isActive = false;
             }
         }
         else
@@ -34,4 +34,3 @@ public class QuestNotification : MonoBehaviour
         }
     }
 }
-
