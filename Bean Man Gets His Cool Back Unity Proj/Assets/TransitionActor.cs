@@ -19,9 +19,13 @@ public class TransitionActor : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (count - 1 <= slide.Count)
+        if (count < slide.Count)
         {
             timer += Time.deltaTime;
+        }
+        else
+        {
+            count = 0;
         }
 
         if (timer > transitionTimes[count])
